@@ -9,7 +9,8 @@ import { useLanguage } from "@/components/theme/LanguageContext";
 
 // Dynamically resolve Ant Design icon components by name
 const DynamicIcon = ({ name, className }: { name: string; className?: string }) => {
-  const IconComp = (AntIcons as Record<string, React.ComponentType<{ className?: string }>>)[name];
+  // Use any casting to bypass non-component exports in AntIcons
+  const IconComp = (AntIcons as any)[name] as React.ComponentType<{ className?: string }> | undefined;
   if (!IconComp) return <AntIcons.AppstoreOutlined className={className} />;
   return <IconComp className={className} />;
 };
