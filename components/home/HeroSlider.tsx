@@ -12,7 +12,7 @@ export default function HeroSlider() {
 
   const slides = [
     {
-      image: "/images/hero_slide_1.png",
+      image: "/images/photo-8.jpeg",
       titleKey: "hero.slide1_title",
       descKey: "hero.slide1_desc",
     },
@@ -46,7 +46,7 @@ export default function HeroSlider() {
       <Slider {...settings} className="hero-slider-slick">
         {slides.map((slide, idx) => (
           <div key={idx} className="relative w-full group">
-            
+
             {/* Slide Image Wrapper with Adaptive Height */}
             <div className="relative w-full h-[300px] sm:h-[450px] lg:h-[600px]">
               <Image
@@ -57,7 +57,7 @@ export default function HeroSlider() {
                 className="object-cover object-center brightness-50 transition-transform duration-[6000ms] ease-out scale-100 group-hover:scale-105"
                 sizes="100vw"
               />
-              
+
               {/* Premium Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-base-bg via-transparent to-[rgba(11,11,15,0.4)]" />
             </div>
@@ -67,15 +67,15 @@ export default function HeroSlider() {
               <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full text-left">
                 <div className="max-w-2xl space-y-4 md:space-y-6">
                   {/* Subtle Top Badge */}
-                  <span 
+                  <span
                     data-aos="fade-down"
                     className="inline-block bg-[rgba(243,107,33,0.15)] border border-[rgba(243,107,33,0.4)] px-3 py-1 rounded text-[10px] md:text-xs font-black text-[#F36B21] uppercase tracking-widest"
                   >
                     {t("hero.badge")}
                   </span>
-                  
+
                   {/* Title */}
-                  <h2 
+                  <h2
                     data-aos="fade-up"
                     data-aos-delay="100"
                     className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight drop-shadow-md"
@@ -84,7 +84,7 @@ export default function HeroSlider() {
                   </h2>
 
                   {/* Subtext */}
-                  <p 
+                  <p
                     data-aos="fade-up"
                     data-aos-delay="200"
                     className="text-xs sm:text-sm md:text-base text-gray-200 leading-relaxed drop-shadow"
@@ -93,7 +93,7 @@ export default function HeroSlider() {
                   </p>
 
                   {/* Buttons */}
-                  <div 
+                  <div
                     data-aos="fade-up"
                     data-aos-delay="300"
                     className="flex flex-wrap items-center gap-4 pt-2"
