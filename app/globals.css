@@ -1,26 +1,185 @@
 @import "tailwindcss";
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+@import "aos/dist/aos.css";
+
+@theme {
+  --color-primary: #7B1010;
+  --color-secondary: #F36B21;
+  --color-base-bg: var(--bg-base);
+  --color-base-card: var(--card-base);
+  --color-base-border: var(--border-base);
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+  
+  --font-sans: var(--font-geist-sans), Inter, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+}
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-base: #0B0B0F;
+  --card-base: #12121A;
+  --text-main: #FFFFFF;
+  --text-muted: #B8B8B8;
+  --border-base: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(18, 18, 26, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --shadow-base: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  --header-bg: rgba(11, 11, 15, 0.95);
+  
+  --background: #0B0B0F;
+  --foreground: #FFFFFF;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+[data-theme="light"] {
+  --bg-base: #F7F5EF;
+  --card-base: #FFFFFF;
+  --text-main: #333333;
+  --text-muted: #666666;
+  --border-base: rgba(0, 0, 0, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(0, 0, 0, 0.06);
+  --shadow-base: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+  --header-bg: rgba(247, 245, 239, 0.95);
+  
+  --background: #F7F5EF;
+  --foreground: #333333;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-base);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Smooth Transition for light/dark theme switch */
+body, header, footer, section, .glass-card, .glass-panel, h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, select {
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-base);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(243, 107, 33, 0.4);
+  box-shadow: 0 10px 30px -10px rgba(123, 16, 16, 0.3),
+              0 1px 1px 0 rgba(243, 107, 33, 0.1) inset;
+  transform: translateY(-4px);
+}
+
+/* Glow effects */
+.glow-maroon:hover {
+  box-shadow: 0 0 25px rgba(123, 16, 16, 0.45);
+}
+
+.glow-orange:hover {
+  box-shadow: 0 0 25px rgba(243, 107, 33, 0.45);
+}
+
+/* Custom Slick Carousel styles to look dark & premium */
+.slick-prev, .slick-next {
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+  background: var(--glass-bg) !important;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border) !important;
+  transition: all 0.3s ease;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.slick-prev {
+  left: 20px;
+}
+
+.slick-next {
+  right: 20px;
+}
+
+.slick-prev:hover, .slick-next:hover {
+  background: #7B1010 !important;
+  border-color: #F36B21 !important;
+}
+
+.slick-prev::before, .slick-next::before {
+  font-size: 20px;
+  opacity: 0.85;
+  transition: all 0.3s ease;
+  color: var(--text-main);
+}
+
+.slick-dots li button::before {
+  color: var(--text-main) !important;
+  font-size: 8px;
+  opacity: 0.25;
+}
+
+.slick-dots li.slick-active button::before {
+  color: #F36B21 !important;
+  opacity: 1;
+  font-size: 10px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--card-base);
+  border-radius: 4px;
+  border: 2px solid var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7B1010;
+}
+
+/* News Ticker Marquee keyframe animation */
+@keyframes ticker {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.ticker-wrap {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ticker-content {
+  display: inline-block;
+  padding-left: 100%;
+  animation: ticker 35s linear infinite;
+}
+
+.ticker-content:hover {
+  animation-play-state: paused;
 }
