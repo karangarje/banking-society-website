@@ -5,14 +5,17 @@ import Image from "next/image";
 import { Modal } from "antd";
 import { EyeOutlined, CalendarOutlined } from "@ant-design/icons";
 import { useTheme } from "@/components/theme/ThemeContext";
+import { useLanguage } from "@/components/theme/LanguageContext";
 
 interface GalleryItem {
   id: number;
   title: string;
+  titleMr: string;
   category: "agm" | "social" | "inauguration";
   image: string;
   date: string;
   description: string;
+  descriptionMr: string;
 }
 
 export default function PhotoGallery() {
@@ -20,93 +23,109 @@ export default function PhotoGallery() {
   const [selectedPhoto, setSelectedPhoto] = useState<GalleryItem | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const { isDark } = useTheme();
+  const { locale } = useLanguage();
+  const isMr = locale === "mr";
 
   const galleryItems: GalleryItem[] = [
     {
       id: 1,
       title: "Annual General Body Meeting 2024-25",
+      titleMr: "वार्षिक सर्वसाधारण सभा २०२४-२५",
       category: "agm",
       image: "/images/image-3.png",
       date: "Sep 15, 2024",
       description: "Members and Directors aligning on society financial growth guidelines during the AGM in Pune.",
+      descriptionMr: "पुण्यात आयोजित वार्षिक सर्वसाधारण सभेमध्ये सदस्य व संचालकांनी संस्थेच्या आर्थिक विकासावर चर्चा केली.",
     },
     {
       id: 2,
       title: "Community Blood Donation Camp",
+      titleMr: "रक्तदान शिबिर",
       category: "social",
       image: "/images/gallery_donation.png",
       date: "Nov 02, 2024",
       description: "Volunteers and medical staff organizing a blood drive on the founder's birth anniversary.",
+      descriptionMr: "संस्थापकांच्या जयंतीनिमित्त स्वयंसेवक आणि वैद्यकीय कर्मचाऱ्यांनी रक्तदान शिबिराचे आयोजन केले.",
     },
     {
       id: 3,
       title: "Village Afforestation Tree Plantation",
+      titleMr: "वृक्षारोपण अभियान",
       category: "social",
       image: "/images/gallery_plantation.png",
       date: "Jul 18, 2024",
       description: "Co-operative youth volunteers planting over 1,000 tree saplings in Nighoj village surroundings.",
+      descriptionMr: "सहकारी तरुण स्वयंसेवकांनी निघोज गावच्या परिसरात १,००० हून अधिक झाडांची रोपे लावली.",
     },
     {
       id: 4,
       title: "Inauguration of Thane West Branch",
+      titleMr: "ठाणे पश्चिम शाखा उद्घाटन",
       category: "inauguration",
       image: "/images/image8.jpeg",
       date: "Jan 10, 2024",
       description: "Opening of our 12th branch at Thane West to serve metropolitan merchant portfolios.",
+      descriptionMr: "महानगरीय व्यापारी सेवांसाठी ठाणे पश्चिम येथे आमच्या १२ व्या शाखेचे उद्घाटन करण्यात आले.",
     },
     {
       id: 5,
       title: "Head Office Central Conference Meeting",
+      titleMr: "मुख्य कार्यालय केंद्रीय आढावा बैठक",
       category: "inauguration",
       image: "/images/photo-10.jpeg",
       date: "May 22, 2024",
       description: "Review meeting of branch managers discussing core digital banking installations.",
+      descriptionMr: "मुख्य डिजिटल बँकिंग सेवांच्या स्थापनेवर चर्चा करण्यासाठी शाखा व्यवस्थापकांची आढावा बैठक.",
     },
     {
       id: 6,
       title: "Technology Summit & Digital Launch",
+      titleMr: "तंत्रज्ञान परिषद व डिजिटल सेवा प्रारंभ",
       category: "agm",
       image: "/images/photo-2.jpeg",
       date: "Aug 05, 2024",
       description: "Rollout event introducing mobile application UPI integration for local cooperative businesses.",
+      descriptionMr: "स्थानिक सहकारी व्यवसायांसाठी मोबाईल ॲप्लिकेशन युपीआय (UPI) एकत्रीकरण सुरू करण्याचा कार्यक्रम.",
     },
     {
       id: 7,
       title: "Community Cycling & Awareness Event",
+      titleMr: "सायकल जनजागृती व सामाजिक सहभाग कार्यक्रम",
       category: "social",
       image: "/images/photo-7.jpeg",
       date: "2025",
-      description:
-        "Cycling awareness rally and community participation event organized by the society members.",
+      description: "Cycling awareness rally and community participation event organized by the society members.",
+      descriptionMr: "संस्थेच्या सदस्यांद्वारे आयोजित सायकल जनजागृती रॅली आणि सामाजिक सहभाग कार्यक्रम.",
     },
-
-    // ✅ NEW IMAGE 2 (your upload)
     {
       id: 8,
       title: "Society Group Celebration & Meet",
+      titleMr: "सदस्य मेळावा व समाज स्नेहसंमेलन",
       category: "social",
       image: "/images/photo-8.jpeg",
       date: "2025",
-      description:
-        "Group gathering and celebration with members, directors, and community participants.",
+      description: "Group gathering and celebration with members, directors, and community participants.",
+      descriptionMr: "सदस्य, संचालक आणि सामाजिक सहभाग घेणाऱ्यांसोबत एकत्रित सोहळा आणि स्नेहसंमेलन.",
     },
     {
       id: 9,
       title: "Community Felicitation Ceremony",
+      titleMr: "समाज गौरव व सत्कार समारंभ",
       category: "social",
       image: "/images/photo-6.jpeg",
       date: "2025",
-      description:
-        "Honouring members and dignitaries during a cooperative society felicitation program.",
+      description: "Honouring members and dignitaries during a cooperative society felicitation program.",
+      descriptionMr: "सहकारी संस्था सत्कार समारंभादरम्यान सदस्य आणि मान्यवरांचा गौरव.",
     },
     {
       id: 10,
       title: "Annual Conference & Public Address",
+      titleMr: "वार्षिक परिषद व मार्गदर्शन कार्यक्रम",
       category: "agm",
       image: "/images/photo-5.jpeg",
       date: "2025",
-      description:
-        "Leadership addressing members during the annual cooperative society conference.",
+      description: "Leadership addressing members during the annual cooperative society conference.",
+      descriptionMr: "वार्षिक सहकारी संस्था परिषदेदरम्यान सदस्यांना मार्गदर्शन करताना नेतृत्व.",
     },
   ];
 
@@ -129,13 +148,15 @@ export default function PhotoGallery() {
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#7B1010]/5 rounded-full blur-3xl" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative text-center space-y-4">
           <span className="text-[#F36B21] text-xs font-black uppercase tracking-widest bg-[rgba(243,107,33,0.15)] border border-[rgba(243,107,33,0.4)] px-3 py-1 rounded">
-            Media Files
+            {isMr ? "माध्यम संग्रह" : "Media Files"}
           </span>
           <h1 className="text-3xl sm:text-5xl font-black text-text-main tracking-tight transition-colors duration-300">
-            Photo Gallery
+            {isMr ? "फोटो गॅलरी" : "Photo Gallery"}
           </h1>
           <p className="text-sm text-text-muted max-w-2xl mx-auto leading-relaxed transition-colors duration-300">
-            A visual timeline showcasing our annual meetings, branch expansions, and social charity programs.
+            {isMr
+              ? "आमच्या वार्षिक सभा, शाखा विस्तार आणि सामाजिक उपक्रमांचे छायाचित्र संग्रह."
+              : "A visual timeline showcasing our annual meetings, branch expansions, and social charity programs."}
           </p>
         </div>
       </section>
@@ -154,7 +175,21 @@ export default function PhotoGallery() {
                   : "bg-white text-gray-600 border-gray-300 hover:border-[#7B1010] hover:text-[#7B1010] shadow-sm"
                 }`}
             >
-              {filter === "agm" ? "AGMs & Summits" : filter === "social" ? "Social Work" : filter === "inauguration" ? "Branch Openings" : "All Photos"}
+              {filter === "agm"
+                ? isMr
+                  ? "सभा व परिषद"
+                  : "AGMs & Summits"
+                : filter === "social"
+                ? isMr
+                  ? "सामाजिक कार्य"
+                  : "Social Work"
+                : filter === "inauguration"
+                ? isMr
+                  ? "शाखा उद्घाटन"
+                  : "Branch Openings"
+                : isMr
+                ? "सर्व फोटो"
+                : "All Photos"}
             </button>
           ))}
         </div>
@@ -175,7 +210,7 @@ export default function PhotoGallery() {
               <div className="relative w-full h-[240px] overflow-hidden">
                 <Image
                   src={photo.image}
-                  alt={photo.title}
+                  alt={isMr ? photo.titleMr : photo.title}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-w-768px) 100vw, 33vw"
@@ -197,13 +232,23 @@ export default function PhotoGallery() {
               {/* Photo Title Footer */}
               <div className="p-4 space-y-1.5">
                 <span className="text-[9px] text-[#F36B21] font-black uppercase tracking-wider bg-[rgba(243,107,33,0.1)] px-2 py-0.5 rounded">
-                  {photo.category}
+                  {photo.category === "agm"
+                    ? isMr
+                      ? "सभा"
+                      : "AGM"
+                    : photo.category === "social"
+                    ? isMr
+                      ? "सामाजिक"
+                      : "Social"
+                    : isMr
+                    ? "उद्घाटन"
+                    : "Inauguration"}
                 </span>
                 <h3 className="text-sm font-bold text-text-main group-hover:text-[#F36B21] transition-colors mt-2 line-clamp-1">
-                  {photo.title}
+                  {isMr ? photo.titleMr : photo.title}
                 </h3>
                 <p className="text-[11px] text-text-muted line-clamp-2 leading-relaxed transition-colors">
-                  {photo.description}
+                  {isMr ? photo.descriptionMr : photo.description}
                 </p>
               </div>
 
@@ -242,7 +287,7 @@ export default function PhotoGallery() {
             <div className="relative w-full h-[320px] sm:h-[450px]">
               <Image
                 src={selectedPhoto.image}
-                alt={selectedPhoto.title}
+                alt={isMr ? selectedPhoto.titleMr : selectedPhoto.title}
                 fill
                 className="object-cover"
                 sizes="100vw"
@@ -253,9 +298,23 @@ export default function PhotoGallery() {
             <div className={`p-6 space-y-3 transition-colors ${isDark ? "bg-[#12121A]" : "bg-white"}`}>
               <div className={`flex flex-wrap items-center justify-between gap-2 border-b pb-3 ${isDark ? "border-[rgba(255,255,255,0.06)]" : "border-[rgba(0,0,0,0.06)]"
                 }`}>
-                <h3 className={`text-base sm:text-lg font-black ${isDark ? "text-white" : "text-[#333333]"}`}>{selectedPhoto.title}</h3>
+                <h3 className={`text-base sm:text-lg font-black ${isDark ? "text-white" : "text-[#333333]"}`}>
+                  {isMr ? selectedPhoto.titleMr : selectedPhoto.title}
+                </h3>
                 <div className="flex items-center gap-3 text-xs text-text-muted">
-                  <span className="bg-[#7B1010] text-white border border-[#9c1a1a] px-2 py-0.5 rounded font-bold uppercase text-[9px] tracking-widest">{selectedPhoto.category}</span>
+                  <span className="bg-[#7B1010] text-white border border-[#9c1a1a] px-2 py-0.5 rounded font-bold uppercase text-[9px] tracking-widest">
+                    {selectedPhoto.category === "agm"
+                      ? isMr
+                        ? "सभा"
+                        : "AGM"
+                      : selectedPhoto.category === "social"
+                      ? isMr
+                        ? "सामाजिक"
+                        : "Social"
+                      : isMr
+                      ? "उद्घाटन"
+                      : "Inauguration"}
+                  </span>
                   <span className="flex items-center gap-1">
                     <CalendarOutlined className="text-[#F36B21]" />
                     {selectedPhoto.date}
@@ -264,7 +323,7 @@ export default function PhotoGallery() {
               </div>
               <p className={`text-xs sm:text-sm leading-relaxed font-medium transition-colors ${isDark ? "text-gray-300" : "text-gray-700"
                 }`}>
-                {selectedPhoto.description}
+                {isMr ? selectedPhoto.descriptionMr : selectedPhoto.description}
               </p>
             </div>
 

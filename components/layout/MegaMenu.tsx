@@ -204,71 +204,81 @@ const MenuCard = ({
   item: MenuItem;
   isGrid?: boolean;
   isDark: boolean;
-}) => (
-  <Link
-    href={item.href}
-    className={`group flex items-start gap-3 p-4 rounded-lg border transition-all duration-200 ${isDark
-        ? "bg-[#0D1B2A] hover:bg-[#112236] border-[rgba(255,255,255,0.06)] hover:border-[#7B1010]/60"
-        : "bg-white hover:bg-gray-50 border-gray-200 hover:border-[#7B1010]/60 shadow-sm hover:shadow"
-      } ${isGrid ? "" : "w-full"}`}
-  >
-    {/* Icon */}
-    <div
-      className={`flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 ${isDark
-          ? "bg-[#7B1010]/20 border border-[#7B1010]/30 group-hover:bg-[#7B1010]/40 group-hover:border-[#7B1010]"
-          : "bg-[#7B1010]/10 border border-[#7B1010]/20 group-hover:bg-[#7B1010]/20 group-hover:border-[#7B1010]"
-        }`}
+}) => {
+  const { t } = useLanguage();
+  const itemSlug = item.title.toLowerCase().replace(/[^a-z0-9]+/g, "_");
+  const translatedTitle = t(`mega_menu.items_data.${itemSlug}.title`);
+  const displayTitle = translatedTitle === `mega_menu.items_data.${itemSlug}.title` ? item.title : translatedTitle;
+
+  const translatedDesc = t(`mega_menu.items_data.${itemSlug}.description`);
+  const displayDesc = translatedDesc === `mega_menu.items_data.${itemSlug}.description` ? item.description : translatedDesc;
+
+  return (
+    <Link
+      href={item.href}
+      className={`group flex items-start gap-3 p-4 rounded-lg border transition-all duration-200 ${isDark
+          ? "bg-[#0D1B2A] hover:bg-[#112236] border-[rgba(255,255,255,0.06)] hover:border-[#7B1010]/60"
+          : "bg-white hover:bg-gray-50 border-gray-200 hover:border-[#7B1010]/60 shadow-sm hover:shadow"
+        } ${isGrid ? "" : "w-full"}`}
     >
-      {item.icon && (
-        <DynamicIcon
-          name={item.icon}
-          className={`text-sm transition-colors ${isDark
-              ? "text-[#F36B21] group-hover:text-white"
-              : "text-[#7B1010] group-hover:text-[#F36B21]"
-            }`}
-        />
-      )}
-    </div>
-
-    {/* Content */}
-    <div className="flex-1 min-w-0 space-y-1">
-      <div className="flex items-center gap-2 flex-wrap">
-        <span
-          className={`text-[13px] font-bold transition-colors leading-tight ${isDark
-              ? "text-white group-hover:text-[#F36B21]"
-              : "text-gray-800 group-hover:text-[#7B1010]"
-            }`}
-        >
-          {item.title}
-        </span>
-
-        {item.badge && (
-          <span className="text-[9px] font-black uppercase tracking-wider px-1.5 py-0.5 bg-[#7B1010] text-white rounded border border-[#9c1a1a]">
-            {item.badge}
-          </span>
+      {/* Icon */}
+      <div
+        className={`flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 ${isDark
+            ? "bg-[#7B1010]/20 border border-[#7B1010]/30 group-hover:bg-[#7B1010]/40 group-hover:border-[#7B1010]"
+            : "bg-[#7B1010]/10 border border-[#7B1010]/20 group-hover:bg-[#7B1010]/20 group-hover:border-[#7B1010]"
+          }`}
+      >
+        {item.icon && (
+          <DynamicIcon
+            name={item.icon}
+            className={`text-sm transition-colors ${isDark
+                ? "text-[#F36B21] group-hover:text-white"
+                : "text-[#7B1010] group-hover:text-[#F36B21]"
+              }`}
+          />
         )}
       </div>
 
-      {item.description && (
-        <p
-          className={`text-[11px] leading-snug transition-colors ${isDark
-              ? "text-gray-400 group-hover:text-gray-300"
-              : "text-gray-600 group-hover:text-gray-800"
+      {/* Content */}
+      <div className="flex-1 min-w-0 space-y-1">
+        <div className="flex items-center gap-2 flex-wrap">
+          <span
+            className={`text-[13px] font-bold transition-colors leading-tight ${isDark
+                ? "text-white group-hover:text-[#F36B21]"
+                : "text-gray-800 group-hover:text-[#7B1010]"
+              }`}
+          >
+            {displayTitle}
+          </span>
+
+          {item.badge && (
+            <span className="text-[9px] font-black uppercase tracking-wider px-1.5 py-0.5 bg-[#7B1010] text-white rounded border border-[#9c1a1a]">
+              {item.badge}
+            </span>
+          )}
+        </div>
+
+        {item.description && (
+          <p
+            className={`text-[11px] leading-snug transition-colors ${isDark
+                ? "text-gray-400 group-hover:text-gray-300"
+                : "text-gray-600 group-hover:text-gray-800"
+              }`}
+          >
+            {displayDesc}
+          </p>
+        )}
+
+        <span
+          className={`text-[11px] font-bold group-hover:underline ${isDark ? "text-[#F36B21]" : "text-[#7B1010]"
             }`}
         >
-          {item.description}
-        </p>
-      )}
-
-      <span
-        className={`text-[11px] font-bold group-hover:underline ${isDark ? "text-[#F36B21]" : "text-[#7B1010]"
-          }`}
-      >
-        View
-      </span>
-    </div>
-  </Link>
-);
+          {t("mega_menu.view")}
+        </span>
+      </div>
+    </Link>
+  );
+};
 
 // ================= MAIN COMPONENT =================
 export default function MegaMenu({ sections, onClose }: MegaMenuProps) {
@@ -334,7 +344,7 @@ export default function MegaMenu({ sections, onClose }: MegaMenuProps) {
             className={`text-[10px] font-bold tracking-widest uppercase ${isDark ? "text-gray-400" : "text-gray-500"
               }`}
           >
-            {itemCount} {itemCount === 1 ? "item" : "items"}
+            {itemCount} {itemCount === 1 ? t("mega_menu.item") : t("mega_menu.items")}
           </span>
         </div>
 

@@ -95,10 +95,10 @@ export default function Header() {
             </div>
             <div className="leading-none">
               <p className="text-[13px] font-extrabold text-text-main tracking-wide group-hover:text-[#F36B21] transition-colors">
-                BABASAHEB KAVAD
+                {t("nav.logo_title")}
               </p>
               <p className="text-[9px] text-text-muted font-semibold uppercase tracking-widest mt-0.5">
-                Nighoj Nagari Sahakari Patsanstha
+                {t("nav.logo_subtitle")}
               </p>
             </div>
           </Link>
@@ -254,10 +254,22 @@ export default function Header() {
                                     }`}
                                 >
                                   <div>
-                                    <p className="text-xs font-bold text-text-main">{item.title}</p>
+                                    <p className="text-xs font-bold text-text-main">
+                                      {(() => {
+                                        const itemSlug = item.title.toLowerCase().replace(/[^a-z0-9]+/g, "_");
+                                        const transKey = `mega_menu.items_data.${itemSlug}.title`;
+                                        const translated = t(transKey);
+                                        return translated === transKey ? item.title : translated;
+                                      })()}
+                                    </p>
                                     {item.description && (
                                       <p className="text-[10px] text-text-muted mt-0.5 line-clamp-1">
-                                        {item.description}
+                                        {(() => {
+                                          const itemSlug = item.title.toLowerCase().replace(/[^a-z0-9]+/g, "_");
+                                          const transKey = `mega_menu.items_data.${itemSlug}.description`;
+                                          const translated = t(transKey);
+                                          return translated === transKey ? item.description : translated;
+                                        })()}
                                       </p>
                                     )}
                                   </div>
@@ -298,7 +310,7 @@ export default function Header() {
         title={
           <div className={`flex items-center gap-2 font-black tracking-wide text-base ${isDark ? "text-white" : "text-[#333333]"}`}>
             <LockOutlined className="text-[#F36B21]" />
-            <span>MEMBER PORTAL LOGIN</span>
+            <span>{t("nav.member_portal_login")}</span>
           </div>
         }
         open={loginModalVisible}
@@ -314,7 +326,7 @@ export default function Header() {
       >
         <form onSubmit={handleLoginSubmit} className="space-y-4 mt-4">
           <div>
-            <label className={`text-[10px] font-black uppercase tracking-widest ${isDark ? "text-gray-400" : "text-gray-600"}`}>Member ID</label>
+            <label className={`text-[10px] font-black uppercase tracking-widest ${isDark ? "text-gray-400" : "text-gray-600"}`}>{t("nav.member_id")}</label>
             <input
               type="text"
               required
@@ -326,7 +338,7 @@ export default function Header() {
             />
           </div>
           <div>
-            <label className={`text-[10px] font-black uppercase tracking-widest ${isDark ? "text-gray-400" : "text-gray-600"}`}>Password</label>
+            <label className={`text-[10px] font-black uppercase tracking-widest ${isDark ? "text-gray-400" : "text-gray-600"}`}>{t("nav.password")}</label>
             <input
               type="password"
               required
@@ -341,14 +353,14 @@ export default function Header() {
             type="submit"
             className="w-full bg-[#7B1010] hover:bg-[#9c1a1a] border border-[#9c1a1a] hover:border-[#F36B21] text-white py-2.5 rounded-lg font-black uppercase text-xs tracking-wider transition-all duration-200"
           >
-            Access Portal
+            {t("nav.access_portal")}
           </button>
         </form>
         <p className={`mt-5 text-[11px] text-center leading-relaxed border-t pt-4 ${isDark
             ? "text-gray-500 border-[rgba(255,255,255,0.06)]"
             : "text-gray-600 border-[rgba(0,0,0,0.06)]"
           }`}>
-          Contact your branch to register for online portal access.
+          {t("nav.portal_contact_msg")}
         </p>
       </Modal>
     </>

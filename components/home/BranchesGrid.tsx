@@ -18,7 +18,8 @@ export default function BranchesGrid() {
   const [selectedBranch, setSelectedBranch] = useState<Branch | null>(null);
   const [drawerVisible, setDrawerVisible] = useState(false);
   const { isDark } = useTheme();
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
+  const isMr = locale === "mr";
 
   const handleBranchClick = (branch: Branch) => {
     setSelectedBranch(branch);
@@ -65,17 +66,17 @@ export default function BranchesGrid() {
 
               {/* Branch Title */}
               <span className="text-sm font-bold text-text-main group-hover:text-[#F36B21] transition-colors leading-tight">
-                {branch.name}
+                {isMr ? branch.nameMr : branch.name}
               </span>
 
               {/* City Tag */}
               <span className="text-[10px] text-text-muted font-medium tracking-wider uppercase mt-1 transition-colors">
-                {branch.city}
+                {isMr ? branch.cityMr : branch.city}
               </span>
 
               {branch.isHeadOffice && (
                 <span className="text-[9px] bg-[#7B1010] text-white px-2 py-0.5 rounded-full font-extrabold uppercase mt-2 tracking-widest border border-[#9c1a1a]">
-                  Head Office
+                  {t("branches_sect.head_office")}
                 </span>
               )}
             </button>
@@ -87,7 +88,7 @@ export default function BranchesGrid() {
           title={
             <div className={`flex items-center gap-2 font-black tracking-wide ${isDark ? "text-white" : "text-[#333333]"}`}>
               <EnvironmentOutlined className="text-[#F36B21]" />
-              <span>{selectedBranch?.name}</span>
+              <span>{isMr ? selectedBranch?.nameMr : selectedBranch?.name}</span>
             </div>
           }
           placement="right"
@@ -113,7 +114,7 @@ export default function BranchesGrid() {
                 <div className={`p-3 border rounded-lg text-xs transition-colors ${
                   isDark ? "bg-[#7B1010]/20 border-[#7B1010] text-white" : "bg-[#7B1010]/10 border-[#7B1010]/30 text-[#7B1010]"
                 }`}>
-                  🏢 <span className="font-bold">Headquarters:</span> This is the society&apos;s principal office and central clearing desk.
+                  🏢 <span className="font-bold">{t("branches_sect.head_office")}:</span> {t("branches_sect.headquarters_desc")}
                 </div>
               )}
 
@@ -124,8 +125,8 @@ export default function BranchesGrid() {
                 <div className="flex gap-3 items-start">
                   <EnvironmentOutlined className="text-[#F36B21] text-lg mt-0.5" />
                   <div>
-                    <h5 className={`font-bold transition-colors ${isDark ? "text-gray-300" : "text-gray-700"}`}>Branch Address</h5>
-                    <p className={`mt-1 leading-relaxed transition-colors ${isDark ? "text-gray-400" : "text-gray-600"}`}>{selectedBranch.address}</p>
+                    <h5 className={`font-bold transition-colors ${isDark ? "text-gray-300" : "text-gray-700"}`}>{t("branches_sect.branch_address")}</h5>
+                    <p className={`mt-1 leading-relaxed transition-colors ${isDark ? "text-gray-400" : "text-gray-600"}`}>{isMr ? selectedBranch.addressMr : selectedBranch.address}</p>
                   </div>
                 </div>
 
@@ -133,7 +134,7 @@ export default function BranchesGrid() {
                 <div className="flex gap-3 items-start">
                   <UserOutlined className="text-[#F36B21] text-lg mt-0.5" />
                   <div>
-                    <h5 className={`font-bold transition-colors ${isDark ? "text-gray-300" : "text-gray-700"}`}>Branch Manager</h5>
+                    <h5 className={`font-bold transition-colors ${isDark ? "text-gray-300" : "text-gray-700"}`}>{t("branches_sect.branch_manager")}</h5>
                     <p className={`mt-1 transition-colors ${isDark ? "text-gray-400" : "text-gray-600"}`}>{selectedBranch.manager}</p>
                   </div>
                 </div>
@@ -142,7 +143,7 @@ export default function BranchesGrid() {
                 <div className="flex gap-3 items-start">
                   <PhoneOutlined className="text-[#F36B21] text-lg mt-0.5" />
                   <div>
-                    <h5 className={`font-bold transition-colors ${isDark ? "text-gray-300" : "text-gray-700"}`}>Contact Number</h5>
+                    <h5 className={`font-bold transition-colors ${isDark ? "text-gray-300" : "text-gray-700"}`}>{t("branches_sect.contact_number")}</h5>
                     <a href={`tel:${selectedBranch.phone}`} className={`transition-colors mt-1 block ${isDark ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-[#7B1010]"}`}>
                       {selectedBranch.phone}
                     </a>
@@ -153,7 +154,7 @@ export default function BranchesGrid() {
                 <div className="flex gap-3 items-start">
                   <MailOutlined className="text-[#F36B21] text-lg mt-0.5" />
                   <div>
-                    <h5 className={`font-bold transition-colors ${isDark ? "text-gray-300" : "text-gray-700"}`}>Email Address</h5>
+                    <h5 className={`font-bold transition-colors ${isDark ? "text-gray-300" : "text-gray-700"}`}>{t("branches_sect.email_address")}</h5>
                     <a href={`mailto:${selectedBranch.email}`} className={`transition-colors mt-1 block ${isDark ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-[#7B1010]"}`}>
                       {selectedBranch.email}
                     </a>
@@ -164,8 +165,8 @@ export default function BranchesGrid() {
                 <div className="flex gap-3 items-start">
                   <ClockCircleOutlined className="text-[#F36B21] text-lg mt-0.5" />
                   <div>
-                    <h5 className={`font-bold transition-colors ${isDark ? "text-gray-300" : "text-gray-700"}`}>Operational Hours</h5>
-                    <p className={`mt-1 leading-relaxed transition-colors ${isDark ? "text-gray-400" : "text-gray-600"}`}>{selectedBranch.hours}</p>
+                    <h5 className={`font-bold transition-colors ${isDark ? "text-gray-300" : "text-gray-700"}`}>{t("branches_sect.operational_hours")}</h5>
+                    <p className={`mt-1 leading-relaxed transition-colors ${isDark ? "text-gray-400" : "text-gray-600"}`}>{isMr ? selectedBranch.hoursMr : selectedBranch.hours}</p>
                   </div>
                 </div>
 
@@ -181,7 +182,7 @@ export default function BranchesGrid() {
                   rel="noopener noreferrer"
                   className="w-full bg-[#7B1010] hover:bg-[#9c1a1a] border border-[#9c1a1a] hover:border-[#F36B21] text-xs font-black uppercase tracking-wider py-5 flex items-center justify-center shadow-lg"
                 >
-                  Navigate via Google Maps
+                  {t("branches_sect.navigate_maps")}
                 </Button>
               </div>
 

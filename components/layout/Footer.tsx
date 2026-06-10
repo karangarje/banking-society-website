@@ -102,7 +102,7 @@ export default function Footer() {
           <div className="space-y-3.5 text-xs text-text-muted transition-colors duration-300">
             <div className="flex items-start gap-2.5">
               <CompassOutlined className="text-[#F36B21] text-sm mt-0.5 shrink-0" />
-              <span>Plot 42, Ghole Road, near Shivaji Nagar, Pune, Maharashtra - 411005</span>
+              <span>{t("footer.address")}</span>
             </div>
             <div className="flex items-center gap-2.5">
               <PhoneOutlined className="text-[#F36B21] text-sm shrink-0" />

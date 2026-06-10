@@ -10,9 +10,11 @@ import {
   SoundOutlined,
   PlaySquareOutlined
 } from "@ant-design/icons";
+import { useLanguage } from "@/components/theme/LanguageContext";
 
 interface VideoItem {
   id: number;
+  key: string;
   title: string;
   duration: string;
   date: string;
@@ -21,40 +23,45 @@ interface VideoItem {
 }
 
 export default function VideoGallery() {
+  const { t } = useLanguage();
   const [selectedVideo, setSelectedVideo] = useState<VideoItem | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const videoItems: VideoItem[] = [
     {
       id: 1,
-      title: "Founder's Vision and Patsanstha Success Journey",
+      key: "founder",
+      title: t("videoGallery.videos.founder.title"),
       duration: "08:45",
-      date: "Oct 12, 2024",
-      description: "An overview of how Babasaheb Kavad Patsanstha has driven financial inclusion and micro-banking growth since 1998.",
+      date: t("videoGallery.videos.founder.date"),
+      description: t("videoGallery.videos.founder.description"),
       thumbnailUrl: "bg-gradient-to-tr from-[#7B1010]/30 to-[#F36B21]/20",
     },
     {
       id: 2,
-      title: "Guide to Downloading & Setting up Mobile Banking App",
+      key: "mobileBanking",
+      title: t("videoGallery.videos.mobileBanking.title"),
       duration: "04:12",
-      date: "Nov 01, 2024",
-      description: "Step-by-step tutorial explaining how registered members can activate and configure the new secure mobile app.",
+      date: t("videoGallery.videos.mobileBanking.date"),
+      description: t("videoGallery.videos.mobileBanking.description"),
       thumbnailUrl: "bg-gradient-to-tr from-[#0B0B0F] to-[#12121A]",
     },
     {
       id: 3,
-      title: "Audits & Compliance: Class 'A' Governance Brief",
+      key: "audit",
+      title: t("videoGallery.videos.audit.title"),
       duration: "05:30",
-      date: "Dec 18, 2024",
-      description: "Auditors and financial experts detail our reserve metrics and asset liquidity that ensure 100% deposit protection.",
+      date: t("videoGallery.videos.audit.date"),
+      description: t("videoGallery.videos.audit.description"),
       thumbnailUrl: "bg-gradient-to-tr from-[#12121A] to-[#7B1010]/20",
     },
     {
       id: 4,
-      title: "Agricultural Gold Loan Scheme Introduction",
+      key: "goldLoan",
+      title: t("videoGallery.videos.goldLoan.title"),
       duration: "03:40",
-      date: "Feb 05, 2025",
-      description: "Understand valuation terms, instant cash disbursement processing, and crop credit alignments for local farming members.",
+      date: t("videoGallery.videos.goldLoan.date"),
+      description: t("videoGallery.videos.goldLoan.description"),
       thumbnailUrl: "bg-gradient-to-tr from-[#F36B21]/15 to-[#7B1010]/15",
     },
   ];
@@ -67,13 +74,13 @@ export default function VideoGallery() {
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#7B1010]/5 rounded-full blur-3xl" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative text-center space-y-4">
           <span className="text-[#F36B21] text-xs font-black uppercase tracking-widest bg-[rgba(243,107,33,0.15)] border border-[rgba(243,107,33,0.4)] px-3 py-1 rounded">
-            Media Files
+            {t("videoGallery.badge")}
           </span>
           <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
-            Video Gallery
+            {t("videoGallery.title")}
           </h1>
           <p className="text-sm text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Watch informative clips on how we manage credits, tutorials for mobile apps, and reports on audited compliance.
+            {t("videoGallery.description")}
           </p>
         </div>
       </section>
@@ -124,7 +131,7 @@ export default function VideoGallery() {
 
                 <div className="text-[10px] text-[#F36B21] font-bold uppercase tracking-wider mt-4 flex items-center gap-1">
                   <PlaySquareOutlined />
-                  <span>Launch Player</span>
+                  <span>{t("videoGallery.launchPlayer")}</span>
                 </div>
               </div>
 
@@ -182,7 +189,7 @@ export default function VideoGallery() {
               {/* Player text */}
               <div className="z-10 mt-6 space-y-2">
                 <p className="text-xs text-gray-400 font-bold tracking-widest uppercase">
-                  {isPlaying ? "▶ NOW STREAMING SECURE HOST" : "⏸ READY TO BROADCAST"}
+                  {isPlaying ? t("videoGallery.nowStreaming") : t("videoGallery.readyBroadcast")}
                 </p>
                 <h4 className="text-sm sm:text-base font-bold text-white max-w-md mx-auto line-clamp-1">
                   {selectedVideo.title}
@@ -195,7 +202,7 @@ export default function VideoGallery() {
                 className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/60 transition-colors z-20 group"
               >
                 <div className="w-16 h-16 rounded-full bg-[#7B1010]/80 group-hover:bg-[#7B1010] border border-[#F36B21] flex items-center justify-center text-white text-3xl transition-transform duration-300 group-hover:scale-110 shadow-lg shadow-[#7B1010]/30">
-                  {isPlaying ? <span className="text-sm font-black uppercase select-none tracking-widest">Pause</span> : <PlayCircleOutlined />}
+                  {isPlaying ? <span className="text-sm font-black uppercase select-none tracking-widest">{t("videoGallery.pause")}</span> : <PlayCircleOutlined />}
                 </div>
               </button>
 
@@ -226,7 +233,7 @@ export default function VideoGallery() {
                   {selectedVideo.date}
                 </span>
                 <span>•</span>
-                <span>Length: {selectedVideo.duration}</span>
+                <span>{t("videoGallery.documentLength")}: {selectedVideo.duration}</span>
               </div>
               <p className="text-xs sm:text-sm text-gray-300 leading-relaxed mt-2">
                 {selectedVideo.description}

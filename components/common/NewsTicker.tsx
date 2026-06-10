@@ -3,14 +3,17 @@
 import React from "react";
 import { SoundOutlined } from "@ant-design/icons";
 
+import { useLanguage } from "@/components/theme/LanguageContext";
+
 export default function NewsTicker() {
+  const { t } = useLanguage();
   const tickerItems = [
-    "🔥 Special FD Interest Rates: Earn up to 9.5% p.a. and 10.0% p.a. for Senior Citizens!",
-    "🏆 Babasaheb Kavad Nighoj Nagari Sahakari Patsanstha is rated with prestigious Class 'A' Audit standing.",
-    "📱 New Mobile Banking application is now available for download on Google Play Store.",
-    "💼 Instant Gold Loans processed in just 30 minutes with secure physical vaults & low interest rates.",
-    "🏢 Visit our newly opened branches at Thane West and Ratnagiri Coast for personalized services.",
-    "🛡️ Your deposits are safe and secured under cooperative societies guidelines.",
+    t("ticker.item1"),
+    t("ticker.item2"),
+    t("ticker.item3"),
+    t("ticker.item4"),
+    t("ticker.item5"),
+    t("ticker.item6"),
   ];
 
   return (
@@ -19,7 +22,7 @@ export default function NewsTicker() {
         {/* Fixed Title Label */}
         <div className="flex items-center gap-1 bg-[#7B1010] text-white px-3 py-1 rounded-sm font-bold text-xs uppercase tracking-wider shadow-sm z-10 mr-4 shrink-0">
           <SoundOutlined className="animate-pulse" />
-          <span>Updates</span>
+          <span>{t("ticker.label")}</span>
         </div>
 
         {/* Rolling Content */}

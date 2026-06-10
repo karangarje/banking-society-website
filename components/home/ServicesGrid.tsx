@@ -40,63 +40,68 @@ export default function ServicesGrid() {
 
         {/* Responsive Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {homeServices.map((service, index) => (
-            <div
-              key={service.id}
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
-              className="group relative rounded-xl p-6 glass-card overflow-hidden flex flex-col justify-between"
-            >
-              {/* Subtle Background Glow on Card */}
-              <div className="absolute top-0 right-0 w-24 h-24 bg-[#7B1010]/5 rounded-full blur-2xl group-hover:bg-[#F36B21]/10 transition-colors" />
+          {homeServices.map((service, idx) => {
+            const serviceTitle = t(`services.items.${service.id}.title`);
+            const serviceDesc = t(`services.items.${service.id}.desc`);
+            const serviceFeatures = t(`services.items.${service.id}.features`, { returnObjects: true }) as string[];
 
-              <div className="space-y-4">
-                {/* Icon Circle */}
-                <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-base-card border border-base-border group-hover:bg-[#7B1010] group-hover:border-[#F36B21] transition-all duration-300">
-                  {renderServiceCardIcon(service.icon)}
+            return (
+              <div
+                key={idx}
+                className="group relative bg-base-card p-6 rounded-2xl border border-base-border hover:border-[#F36B21] transition-all duration-300 shadow-sm hover:shadow-lg flex flex-col justify-between"
+              >
+                {/* Subtle Background Glow on Card */}
+                <div className="absolute top-0 right-0 w-24 h-24 bg-[#7B1010]/5 rounded-full blur-2xl group-hover:bg-[#F36B21]/10 transition-colors" />
+
+                <div className="space-y-4">
+                  {/* Icon Circle */}
+                  <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-base-card border border-base-border group-hover:bg-[#7B1010] group-hover:border-[#F36B21] transition-all duration-300">
+                    {renderServiceCardIcon(service.icon)}
+                  </div>
+
+                  {/* Service Metadata */}
+                  <div>
+                    {service.interestRate && (
+                      <span className="text-[10px] font-black text-[#F36B21] uppercase tracking-wide">
+                        {t(`services.rates.${service.id.replace(/-/g, "_")}`) !== `services.rates.${service.id.replace(/-/g, "_")}`
+                          ? t(`services.rates.${service.id.replace(/-/g, "_")}`)
+                          : service.interestRate}
+                      </span>
+                    )}
+                    <h3 className="text-lg font-bold text-text-main group-hover:text-[#F36B21] transition-colors duration-300 mt-1">
+                      {serviceTitle}
+                    </h3>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-xs text-text-muted leading-relaxed line-clamp-3 transition-colors duration-300">
+                    {serviceDesc}
+                  </p>
+
+                  {/* Features (Mini List) */}
+                  <ul className="space-y-1.5 pt-2 border-t border-base-border/50 transition-colors duration-300">
+                    {Array.isArray(serviceFeatures) ? serviceFeatures.slice(0, 2).map((feat, fIdx) => (
+                      <li key={fIdx} className="text-[10px] text-text-muted flex items-center gap-1.5 transition-colors duration-300">
+                        <span className="w-1 h-1 rounded-full bg-[#F36B21]" />
+                        <span className="truncate">{feat}</span>
+                      </li>
+                    )) : null}
+                  </ul>
                 </div>
 
-                {/* Service Metadata */}
-                <div>
-                  {service.interestRate && (
-                    <span className="text-[10px] font-black text-[#F36B21] uppercase tracking-wide">
-                      {service.interestRate}
-                    </span>
-                  )}
-                  <h3 className="text-lg font-bold text-text-main group-hover:text-[#F36B21] transition-colors duration-300 mt-1">
-                    {service.title}
-                  </h3>
+                {/* Action Button */}
+                <div className="pt-6 mt-4 border-t border-base-border/50 transition-colors duration-300">
+                  <Link
+                    href={`/services?tab=${service.category}`}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#F36B21] group-hover:text-[#7B1010] transition-colors"
+                  >
+                    <span>{t("services.btn_explore")}</span>
+                    <ArrowRightOutlined className="text-[9px] group-hover:translate-x-1 transition-transform" />
+                  </Link>
                 </div>
-
-                {/* Description */}
-                <p className="text-xs text-text-muted leading-relaxed line-clamp-3 transition-colors duration-300">
-                  {service.shortDesc}
-                </p>
-
-                {/* Features (Mini List) */}
-                <ul className="space-y-1.5 pt-2 border-t border-base-border/50 transition-colors duration-300">
-                  {service.features.slice(0, 2).map((feat, fIdx) => (
-                    <li key={fIdx} className="text-[10px] text-text-muted flex items-center gap-1.5 transition-colors duration-300">
-                      <span className="w-1 h-1 rounded-full bg-[#F36B21]" />
-                      <span className="truncate">{feat}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
-
-              {/* Action Button */}
-              <div className="pt-6 mt-4 border-t border-base-border/50 transition-colors duration-300">
-                <Link
-                  href={`/services?tab=${service.category}`}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#F36B21] group-hover:text-[#7B1010] transition-colors"
-                >
-                  <span>{t("services.btn_explore")}</span>
-                  <ArrowRightOutlined className="text-[9px] group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* View All Button */}

@@ -43,18 +43,8 @@ export default function LanguageProvider({ children }: { children: React.ReactNo
   // Translation helper function supporting nested dot-notated keys (e.g., "nav.home")
   const t = useCallback(
     (key: string): string => {
-      const keys = key.split(".");
-      let current: any = translations[locale];
-
-      for (const k of keys) {
-        if (current && typeof current === "object" && k in current) {
-          current = current[k];
-        } else {
-          return key; // Return key itself as fallback
-        }
-      }
-
-      return typeof current === "string" ? current : key;
+      const resolved = key.split(".").reduce((obj, i) => obj?.[i], translations[locale]);
+      return typeof resolved === "string" ? resolved : key;
     },
     [locale]
   );

@@ -9,6 +9,8 @@ import {
   CompassOutlined,
   CalendarOutlined
 } from "@ant-design/icons";
+import { useLanguage } from "@/components/theme/LanguageContext";
+import { useTheme } from "@/components/theme/ThemeContext";
 
 interface SocialActivity {
   id: number;
@@ -23,68 +25,75 @@ interface SocialActivity {
 }
 
 export default function SocialActivities() {
+  const { t } = useLanguage();
+  const { isDark } = useTheme();
+
   const activities: SocialActivity[] = [
     {
       id: 1,
-      title: "Village Afforestation Tree Plantation",
-      category: "Environmental",
+      title: t("social.activity1_title"),
+      category: t("social.environmental"),
       icon: <GlobalOutlined className="text-xl text-[#52c41a]" />,
-      date: "Monsoon Season (Annual)",
-      location: "Nighoj, Savedi, Savedi Sub-district",
-      description: "Driving environmental protection through collective action. Our members, employees, and local students plant thousands of native neem, banyan, and peepal trees to support soil water table retention.",
-      impact: "Over 15,000+ trees planted and sustained with 90%+ survival rate.",
+      date: t("social.activity1_date"),
+      location: t("social.activity1_location"),
+      description: t("social.activity1_description"),
+      impact: t("social.activity1_impact"),
       image: "/images/gallery_plantation.png",
     },
     {
       id: 2,
-      title: "Community Blood Donation & Health Camps",
-      category: "Healthcare Support",
+      title: t("social.activity2_title"),
+      category: t("social.healthcare"),
       icon: <HeartOutlined className="text-xl text-red-500" />,
-      date: "Semi-Annual Drives",
-      location: "Pune Main & Ahmednagar Branches",
-      description: "Partnering with municipal blood centers to host donation drives that support local hospitals. We also organize complimentary physical health checkups, diabetic screenings, and eye clinics.",
-      impact: "More than 2,500 units of blood accumulated for public emergencies.",
+      date: t("social.activity2_date"),
+      location: t("social.activity2_location"),
+      description: t("social.activity2_description"),
+      impact: t("social.activity2_impact"),
       image: "/images/gallery_donation.png",
     },
     {
       id: 3,
-      title: "Student Education Scholarships & Books",
-      category: "Education",
+      title: t("social.activity3_title"),
+      category: t("social.education"),
       icon: <BookOutlined className="text-xl text-[#F36B21]" />,
-      date: "Every June (Academic Start)",
-      location: "All 12 Branches Regionwide",
-      description: "Distributing school uniforms, reference books, and tuition scholarships to children of farmers and lower-income families who display high academic achievement in local schools.",
-      impact: "Aided 5,000+ school students to continue higher secondary education.",
+      date: t("social.activity3_date"),
+      location: t("social.activity3_location"),
+      description: t("social.activity3_description"),
+      impact: t("social.activity3_impact"),
       image: "/images/gallery_agm.png",
     },
     {
       id: 4,
-      title: "Drought Relief Water Schemes",
-      category: "Rural Relief",
+      title: t("social.activity4_title"),
+      category: t("social.rural_relief"),
       icon: <CompassOutlined className="text-xl text-[#1890ff]" />,
-      date: "Summer Season (Dry periods)",
-      location: "Ahmednagar & Rural Satara regions",
-      description: "Providing clean drinking water tankers to drought-affected rural villages. We also fund minor checks in streams to construct check-dams assisting rain water harvesting.",
-      impact: "Provided relief tanks to 45 villages during major water scarcity months.",
+      date: t("social.activity4_date"),
+      location: t("social.activity4_location"),
+      description: t("social.activity4_description"),
+      impact: t("social.activity4_impact"),
       image: "/images/hero_slide_1.png",
     },
   ];
 
   return (
-    <div className="w-full bg-[#0B0B0F]">
+    <div className="w-full bg-base-bg transition-colors duration-300">
       
       {/* Header Banner */}
-      <section className="relative py-20 bg-gradient-to-b from-[#12121A] to-[#0B0B0F] border-b border-[rgba(255,255,255,0.04)] overflow-hidden">
+      <section className="relative py-20 bg-gradient-to-b from-base-card to-base-bg border-b border-base-border/50 overflow-hidden transition-all duration-300">
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#7B1010]/5 rounded-full blur-3xl" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative text-center space-y-4">
           <span className="text-[#F36B21] text-xs font-black uppercase tracking-widest bg-[rgba(243,107,33,0.15)] border border-[rgba(243,107,33,0.4)] px-3 py-1 rounded">
-            Giving Back
+            {t("social.banner_badge")}
           </span>
-          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
-            Social Activities (CSR)
+          <h1 className={`text-3xl sm:text-5xl font-black tracking-tight transition-colors duration-300 ${
+            isDark ? "text-white" : "text-gray-900"
+          }`}>
+            {t("social.title")}
           </h1>
-          <p className="text-sm text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Cooperative banks do not just grow deposits; we grow communities. Read about our environmental and welfare initiatives.
+          <p className={`text-sm max-w-2xl mx-auto leading-relaxed transition-colors duration-300 ${
+            isDark ? "text-gray-400" : "text-gray-600"
+          }`}>
+            {t("social.description")}
           </p>
         </div>
       </section>
@@ -104,7 +113,9 @@ export default function SocialActivities() {
             >
               
               {/* Left Side: Photo Frame */}
-              <div className="relative w-full lg:w-1/2 h-[260px] sm:h-[320px] rounded-xl overflow-hidden border border-[rgba(255,255,255,0.08)] bg-neutral-900 shrink-0">
+              <div className={`relative w-full lg:w-1/2 h-[260px] sm:h-[320px] rounded-xl overflow-hidden border shrink-0 transition-colors duration-300 ${
+                isDark ? "border-[rgba(255,255,255,0.08)] bg-neutral-900" : "border-gray-200 bg-gray-100"
+              }`}>
                 <Image
                   src={act.image}
                   alt={act.title}
@@ -114,20 +125,28 @@ export default function SocialActivities() {
                 />
                 
                 {/* Visual Accent Layer */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0F]/85 via-transparent to-transparent" />
+                <div className={`absolute inset-0 transition-opacity duration-300 ${
+                  isDark ? "bg-gradient-to-t from-[#0B0B0F]/85 via-transparent to-transparent" : "bg-gradient-to-t from-black/40 via-transparent to-transparent"
+                }`} />
                 
                 {/* Category Floater */}
-                <span className="absolute top-4 left-4 bg-[#0B0B0F]/90 backdrop-blur-sm px-3 py-1 rounded text-xs text-white border border-[rgba(255,255,255,0.08)] flex items-center gap-1.5 font-bold">
+                <span className={`absolute top-4 left-4 backdrop-blur-sm px-3 py-1 rounded text-xs border flex items-center gap-1.5 font-bold transition-colors duration-300 ${
+                  isDark 
+                    ? "bg-[#0B0B0F]/90 text-white border-[rgba(255,255,255,0.08)]" 
+                    : "bg-white/90 text-gray-900 border-gray-200"
+                }`}>
                   {act.icon}
                   <span>{act.category}</span>
                 </span>
               </div>
 
               {/* Right Side: Narrative Details */}
-              <div className="space-y-4 flex-grow">
+              <div className="space-y-4 flex-grow break-words whitespace-normal w-full lg:w-1/2">
                 
                 {/* Meta details */}
-                <div className="flex flex-wrap items-center gap-4 text-xs text-gray-400 font-bold border-b border-[rgba(255,255,255,0.06)] pb-3">
+                <div className={`flex flex-wrap items-center gap-4 text-xs font-bold border-b pb-3 transition-colors duration-300 ${
+                  isDark ? "text-gray-400 border-[rgba(255,255,255,0.06)]" : "text-gray-500 border-gray-100"
+                }`}>
                   <span className="flex items-center gap-1">
                     <CalendarOutlined className="text-[#F36B21]" />
                     {act.date}
@@ -140,19 +159,27 @@ export default function SocialActivities() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl sm:text-2xl font-black text-white hover:text-[#F36B21] transition-colors leading-tight">
+                <h3 className={`text-xl sm:text-2xl font-black hover:text-[#F36B21] transition-colors leading-tight break-words whitespace-normal ${
+                  isDark ? "text-white" : "text-gray-900"
+                }`}>
                   {act.title}
                 </h3>
 
                 {/* Body Description */}
-                <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
+                <p className={`text-xs sm:text-sm leading-relaxed transition-colors duration-300 break-words whitespace-normal ${
+                  isDark ? "text-gray-300" : "text-gray-700"
+                }`}>
                   {act.description}
                 </p>
 
                 {/* Impact Stat */}
                 <div className="p-4 rounded-lg bg-[rgba(243,107,33,0.06)] border-l-4 border-[#F36B21] text-xs space-y-1">
-                  <p className="text-gray-400 uppercase font-black tracking-widest text-[9px]">Documented Impact</p>
-                  <p className="text-white font-extrabold leading-normal">{act.impact}</p>
+                  <p className={`uppercase font-black tracking-widest text-[9px] transition-colors duration-300 ${
+                    isDark ? "text-gray-400" : "text-gray-500"
+                  }`}>{t("social.impact_label")}</p>
+                  <p className={`font-extrabold leading-normal transition-colors duration-300 ${
+                    isDark ? "text-white" : "text-gray-900"
+                  }`}>{act.impact}</p>
                 </div>
 
               </div>
