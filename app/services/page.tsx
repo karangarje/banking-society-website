@@ -45,8 +45,8 @@ function ServicesTabs() {
   };
 
   const getLocalizedArray = (key: string, defaultArray: string[]) => {
-    const localized = t(key, { returnObjects: true });
-    return Array.isArray(localized) ? localized : defaultArray;
+    const localized = t(key);
+    return Array.isArray(localized) ? (localized as string[]) : defaultArray;
   };
 
   const renderTabContent = (category: string) => {
