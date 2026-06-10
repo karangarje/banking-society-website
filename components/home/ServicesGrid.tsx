@@ -42,10 +42,16 @@ export default function ServicesGrid() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {homeServices.map((service, idx) => {
             const getLocalizedArray = (key: string, defaultArray: string[]) => {
-  const localized = t(key);
-  return Array.isArray(localized) ? (localized as string[]) : defaultArray;
-};
-const serviceFeatures = getLocalizedArray(`services.items.${service.id}.features`, []);
+              const localized = t(key);
+              return Array.isArray(localized) ? (localized as string[]) : defaultArray;
+            };
+            const serviceTitle = t(`services.items.${service.id}.title`) !== `services.items.${service.id}.title`
+              ? t(`services.items.${service.id}.title`)
+              : service.title;
+            const serviceDesc = t(`services.items.${service.id}.desc`) !== `services.items.${service.id}.desc`
+              ? t(`services.items.${service.id}.desc`)
+              : service.shortDesc;
+            const serviceFeatures = getLocalizedArray(`services.items.${service.id}.features`, []);
 
             return (
               <div
