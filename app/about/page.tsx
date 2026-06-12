@@ -51,10 +51,10 @@ const content = {
     leadership: "नेतृत्व विधान",
     chairmanTitle: "अध्यक्षांचा संदेश",
     chairmanImageLabel: "संस्थेचे अध्यक्ष",
-    chairmanPara1: "प्रिय सभासद व हितचिंतकांनो,\n१९९८ पासून बाबासाहेब कवड पतसंस्था विश्वास, सुरक्षितता आणि पारदर्शकतेच्या तत्त्वांवर कार्यरत आहे. आम्हाला माहित आहे की आपण आमच्याकडे जमा केलेला प्रत्येक रुपया हा आपल्या कष्टाचा आणि भविष्यातील स्वप्नांचा आहे. म्हणूनच तुमचे पैसे सुरक्षित ठेवण्यासाठी आमचे मंडळ आणि व्यवस्थापन अत्यंत कडक जोखीम धोरणे राबवते.",
+    chairmanPara1: "प्रिय सभासद व हितचिंतकांनो,\n१९९८ पासून बाबासाहेब कवाद पतसंस्था विश्वास, सुरक्षितता आणि पारदर्शकतेच्या तत्त्वांवर कार्यरत आहे. आम्हाला माहित आहे की आपण आमच्याकडे जमा केलेला प्रत्येक रुपया हा आपल्या कष्टाचा आणि भविष्यातील स्वप्नांचा आहे. म्हणूनच तुमचे पैसे सुरक्षित ठेवण्यासाठी आमचे मंडळ आणि व्यवस्थापन अत्यंत कडक जोखीम धोरणे राबवते.",
     chairmanPara2: "आमचा सातत्यपूर्ण 'वर्ग अ' लेखापरीक्षण दर्जा आमच्या नियमांच्या पालनाची साक्ष देतो. आपण डिजिटल बँकिंगच्या युगात पाऊल टाकत असताना, आमच्या सहकारी संस्थेचे वैशिष्ट्य असणारी जिव्हाळ्याची नातेसंबंध-आधारित सेवा न गमावता, आम्ही रिअल-टाइम एसएमएस अलर्ट, इन्स्टंट ऑनलाईन ट्रान्सफर आणि व्यापारी सहाय्य सेवा प्रदान करून आमच्या सेवा आधुनिक करत आहोत.",
     inCooperation: "सहकार्याबद्दल धन्यवाद,",
-    chairmanPost: "अध्यक्ष, बाबासाहेब कवड पतसंस्था",
+    chairmanPost: "अध्यक्ष, बाबासाहेब कवाद पतसंस्था",
     timelineTitle: "आमचा प्रवास",
     timelineSubtitle: "निघोज गावातील एका छोट्या खोलीपासून ते राज्यभरातील नेटवर्कपर्यंत, आमचे काही महत्त्वाचे टप्पे खालीलप्रमाणे आहेत.",
     directorsTitle: "संचालक मंडळ",
@@ -79,22 +79,22 @@ export default function About() {
 
   const directors = [
     {
-      name: isMr ? "श्री. सोपानराव कवड" : "Shri. Sopanrao Kavad",
+      name: isMr ? "श्री. सोपानराव कवाद" : "Shri. Sopanrao Kavad",
       role: isMr ? "अध्यक्ष" : "Chairman",
       designation: isMr ? "संस्थापक आणि ज्येष्ठ सहकार नेते" : "Founder & Senior Co-operative Leader"
     },
     {
-      name: isMr ? "श्री. रामभाऊ कवड" : "Shri. Rambhau Kavad",
+      name: isMr ? "श्री. रामभाऊ कवाद" : "Shri. Rambhau Kavad",
       role: isMr ? "उपाध्यक्ष" : "Vice Chairman",
       designation: isMr ? "कृषी पत पुरवठा तज्ज्ञ" : "Agricultural Credit Specialist"
     },
     {
-      name: isMr ? "श्री. मच्छिंद्र कवड" : "Shri. Machhindra Kavad",
+      name: isMr ? "श्री. मच्छिंद्र कवाद" : "Shri. Machhindra Kavad",
       role: isMr ? "व्यवस्थापकीय संचालक" : "Managing Director",
       designation: isMr ? "वित्त आणि ऑपरेशन्स प्रमुख" : "Finance & Operations Lead"
     },
     {
-      name: isMr ? "सौ. सुजाता के. कवड" : "Sau. Sujata K. Kavad",
+      name: isMr ? "सौ. सुजाता के. कवाद" : "Sau. Sujata K. Kavad",
       role: isMr ? "महिला प्रतिनिधी संचालक" : "Director (Women Representative)",
       designation: isMr ? "सामाजिक कल्याण कार्यकर्त्या" : "Social Welfare Activist"
     },
@@ -219,7 +219,7 @@ export default function About() {
                 <div className="z-10 bg-base-bg/90 p-3 rounded-lg border border-base-border text-center transition-all duration-300">
                   <h4 className={`text-sm font-bold transition-colors duration-300 ${
                     isDark ? "text-white" : "text-gray-900"
-                  }`}>{isMr ? "श्री. सोपानराव कवड" : "Shri. Sopanrao Kavad"}</h4>
+                  }`}>{isMr ? "श्री. सोपानराव कवाद" : "Shri. Sopanrao Kavad"}</h4>
                   <p className="text-[10px] text-[#F36B21] font-semibold mt-0.5">{t.chairmanImageLabel}</p>
                 </div>
               </div>
@@ -248,7 +248,7 @@ export default function About() {
               }`}>{t.inCooperation}</p>
               <p className={`text-sm font-extrabold mt-0.5 transition-colors ${
                 isDark ? "text-white" : "text-gray-900"
-              }`}>{isMr ? "श्री. सोपानराव कवड" : "Shri. Sopanrao Kavad"}</p>
+              }`}>{isMr ? "श्री. सोपानराव कवाद" : "Shri. Sopanrao Kavad"}</p>
               <p className={`text-[10px] transition-colors ${
                 isDark ? "text-text-muted" : "text-gray-500"
               }`}>{t.chairmanPost}</p>
