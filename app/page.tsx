@@ -79,72 +79,85 @@ export default function Home() {
       <HeroSlider />
 
       {/* 2. Co-operative Overview and Key Pillars */}
-      <section className="py-20 px-4 bg-base-bg relative z-10 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <section className="about-section py-20 px-6 relative z-10 transition-colors duration-300">
+        <div className="max-w-[1400px] w-[95%] mx-auto space-y-12">
           
-          <div data-aos="fade-right" className="space-y-6">
-            <span className="text-[#F36B21] text-xs font-black uppercase tracking-widest bg-[rgba(243,107,33,0.15)] border border-[rgba(243,107,33,0.4)] px-3 py-1 rounded">
+          <div data-aos="fade-up" className="space-y-6 max-w-5xl">
+            <span className="text-white text-sm font-bold uppercase tracking-widest bg-[#F36F21] border border-[#F36F21] px-4 py-1.5 rounded inline-block">
               {t("welcome.badge")}
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-text-main leading-tight transition-colors duration-300">
+            <h2 className="hero-title transition-colors duration-300">
               {t("welcome.title")}
             </h2>
-            <p className="text-sm text-text-muted leading-relaxed transition-colors duration-300">
+            <p className="hero-description transition-colors duration-300">
               {t("welcome.desc")}
             </p>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
-              <div className="p-4 rounded-lg bg-base-card border border-base-border space-y-2 transition-all duration-300">
-                <SafetyOutlined className="text-xl text-[#F36B21]" />
-                <h4 className="text-xs font-bold text-text-main uppercase transition-colors duration-300">{t("welcome.pillar1_title")}</h4>
-                <p className="text-[10px] text-text-muted transition-colors duration-300">{t("welcome.pillar1_desc")}</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+            {/* Feature Cards (spanning 2 columns on desktop) */}
+            <div data-aos="fade-right" className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div className="feature-card flex flex-col justify-between space-y-4">
+                <div>
+                  <SafetyOutlined className="text-3xl text-[#F36F21] mb-2" />
+                  <h4 className="font-bold text-[#8B0000] uppercase transition-colors duration-300">{t("welcome.pillar1_title")}</h4>
+                </div>
+                <p className="text-xs text-gray-600 leading-relaxed transition-colors duration-300">{t("welcome.pillar1_desc")}</p>
               </div>
-              <div className="p-4 rounded-lg bg-base-card border border-base-border space-y-2 transition-all duration-300">
-                <UnlockOutlined className="text-xl text-[#7B1010]" />
-                <h4 className="text-xs font-bold text-text-main uppercase transition-colors duration-300">{t("welcome.pillar2_title")}</h4>
-                <p className="text-[10px] text-text-muted transition-colors duration-300">{t("welcome.pillar2_desc")}</p>
+
+              <div className="feature-card flex flex-col justify-between space-y-4">
+                <div>
+                  <UnlockOutlined className="text-3xl text-[#8B0000] mb-2" />
+                  <h4 className="font-bold text-[#8B0000] uppercase transition-colors duration-300">{t("welcome.pillar2_title")}</h4>
+                </div>
+                <p className="text-xs text-gray-600 leading-relaxed transition-colors duration-300">{t("welcome.pillar2_desc")}</p>
               </div>
-              <div className="p-4 rounded-lg bg-base-card border border-base-border space-y-2 transition-all duration-300">
-                <ThunderboltOutlined className="text-xl text-[#F36B21]" />
-                <h4 className="text-xs font-bold text-text-main uppercase transition-colors duration-300">{t("welcome.pillar3_title")}</h4>
-                <p className="text-[10px] text-text-muted transition-colors duration-300">{t("welcome.pillar3_desc")}</p>
+
+              <div className="feature-card flex flex-col justify-between space-y-4">
+                <div>
+                  <ThunderboltOutlined className="text-3xl text-[#F36F21] mb-2" />
+                  <h4 className="font-bold text-[#8B0000] uppercase transition-colors duration-300">{t("welcome.pillar3_title")}</h4>
+                </div>
+                <p className="text-xs text-gray-600 leading-relaxed transition-colors duration-300">{t("welcome.pillar3_desc")}</p>
               </div>
             </div>
 
-            <div className="pt-4">
-              <Link 
-                href="/about" 
-                className="inline-flex items-center gap-2 text-xs font-black uppercase text-[#F36B21] hover:text-[#7B1010] transition-colors"
-              >
-                <span>{t("welcome.btn_history")}</span>
-                <ArrowRightOutlined />
-              </Link>
+            {/* Right Information Card (spanning 1 column on desktop) */}
+            <div data-aos="fade-left" className="lg:col-span-1">
+              <div className="info-card h-full flex flex-col justify-between relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-48 h-48 bg-[#F36F21]/5 rounded-full blur-3xl" />
+                
+                <div className="space-y-4">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-500/10 border border-green-500/30 rounded text-xs font-bold text-green-600 uppercase tracking-widest">
+                    {t("welcome.integrity_badge")}
+                  </div>
+                  <h3 className="transition-colors duration-300">
+                    {t("welcome.integrity_title")}
+                  </h3>
+                </div>
+
+                <div className="grid grid-cols-2 gap-6 border-t border-[#F36F21]/20 pt-6 mt-8 transition-colors duration-300">
+                  <div>
+                    <p className="text-xs text-gray-500 uppercase font-semibold transition-colors duration-300">{t("welcome.audit_standing")}</p>
+                    <p className="text-lg font-black text-[#8B0000] mt-1 transition-colors duration-300">{t("welcome.audit_val")}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500 uppercase font-semibold transition-colors duration-300">{t("welcome.dividend")}</p>
+                    <p className="text-lg font-black text-[#F36F21] mt-1 transition-colors">{t("welcome.dividend_val")}</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Decorative graphic block representing co-operative building */}
-          <div data-aos="fade-left" className="relative p-6 rounded-2xl bg-base-card border border-base-border aspect-video flex flex-col justify-between overflow-hidden shadow-2xl transition-all duration-300">
-            <div className="absolute top-0 right-0 w-48 h-48 bg-[#7B1010]/10 rounded-full blur-3xl" />
-            
-            <div className="space-y-4">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-green-500/10 border border-green-500/30 rounded text-[10px] font-bold text-green-400 uppercase tracking-widest">
-                {t("welcome.integrity_badge")}
-              </div>
-              <h3 className="text-xl font-bold text-text-main transition-colors duration-300">
-                {t("welcome.integrity_title")}
-              </h3>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4 border-t border-base-border pt-4 mt-6 transition-colors duration-300">
-              <div>
-                <p className="text-[10px] text-text-muted uppercase font-semibold transition-colors duration-300">{t("welcome.audit_standing")}</p>
-                <p className="text-sm font-black text-text-main transition-colors duration-300">{t("welcome.audit_val")}</p>
-              </div>
-              <div>
-                <p className="text-[10px] text-text-muted uppercase font-semibold transition-colors duration-300">{t("welcome.dividend")}</p>
-                <p className="text-sm font-black text-[#F36B21] transition-colors">{t("welcome.dividend_val")}</p>
-              </div>
-            </div>
+          <div className="pt-4">
+            <Link 
+              href="/about" 
+              className="inline-flex items-center gap-2 text-sm font-black uppercase text-[#F36B21] hover:text-[#7B1010] transition-colors"
+            >
+              <span>{t("welcome.btn_history")}</span>
+              <ArrowRightOutlined />
+            </Link>
           </div>
 
         </div>
@@ -157,16 +170,14 @@ export default function Home() {
       <ServicesGrid />
 
       {/* 5. Interactive Financial Tools (EMI / FD Calculators) */}
-      <section className="py-20 px-4 bg-base-bg border-t border-base-border relative z-10 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto space-y-12">
+      <section className="py-20 px-6 bg-gradient-to-b from-white to-[#FFF8F3] border-t border-[#F36F21]/10 relative z-10 transition-colors duration-300">
+        <div className="max-w-[1400px] w-[95%] mx-auto space-y-12">
           
           <div className="text-center max-w-3xl mx-auto space-y-3">
             <span className="text-[#F36B21] text-xs font-black uppercase tracking-widest bg-[rgba(243,107,33,0.15)] border border-[rgba(243,107,33,0.4)] px-3 py-1 rounded">
               {t("calculator.badge")}
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-text-main tracking-tight transition-colors duration-300">
-              {t("calculator.title")}
-            </h2>
+            <h2 className="text-6xl font-extrabold text-[#8B0000] tracking-tight transition-colors duration-300">{t("calculator.title")}</h2>
             <div className="w-16 h-1 bg-gradient-to-r from-[#7B1010] to-[#F36B21] mx-auto rounded-full" />
             <p className="text-sm text-text-muted leading-relaxed transition-colors duration-300">
               {t("calculator.desc")}

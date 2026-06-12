@@ -81,13 +81,11 @@ export default function SocialActivities() {
       {/* Header Banner */}
       <section className="relative py-20 bg-gradient-to-b from-base-card to-base-bg border-b border-base-border/50 overflow-hidden transition-all duration-300">
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#7B1010]/5 rounded-full blur-3xl" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative text-center space-y-4">
-          <span className="text-[#F36B21] text-xs font-black uppercase tracking-widest bg-[rgba(243,107,33,0.15)] border border-[rgba(243,107,33,0.4)] px-3 py-1 rounded">
+        <div className="max-w-[1400px] mx-auto px-6 relative text-center space-y-4">
+          <span className="text-white text-xs font-black uppercase tracking-widest bg-[#8B0000] border border-[#8B0000] px-3 py-1 rounded">
             {t("social.banner_badge")}
           </span>
-          <h1 className={`text-3xl sm:text-5xl font-black tracking-tight transition-colors duration-300 ${
-            isDark ? "text-white" : "text-gray-900"
-          }`}>
+          <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-[#8B0000]">
             {t("social.title")}
           </h1>
           <p className={`text-sm max-w-2xl mx-auto leading-relaxed transition-colors duration-300 ${
@@ -99,7 +97,7 @@ export default function SocialActivities() {
       </section>
 
       {/* Activities Timeline Block */}
-      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
+      <section className="py-16 max-w-[1400px] mx-auto px-6 space-y-12">
         {activities.map((act, idx) => {
           const isEven = idx % 2 === 0;
 

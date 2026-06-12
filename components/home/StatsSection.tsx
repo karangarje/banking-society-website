@@ -61,7 +61,7 @@ const CounterItem: React.FC<CounterItemProps> = ({ end, suffix = "", duration = 
   }, [hasStarted, end, duration]);
 
   return (
-    <span ref={elementRef} className="font-extrabold text-3xl sm:text-4xl text-text-main transition-colors duration-300">
+    <span ref={elementRef} className="stat-number transition-colors duration-300">
       {count.toLocaleString()}{suffix}
     </span>
   );
@@ -102,8 +102,8 @@ export default function StatsSection() {
   ];
 
   return (
-    <section className="relative py-16 px-4 bg-base-bg z-10 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative py-20 px-6 bg-gradient-to-b from-white to-[#FFF8F3] z-10 transition-colors duration-300">
+      <div className="max-w-[1400px] w-[95%] mx-auto">
         {/* Main Stats Panel with Glassmorphism */}
         <div 
           data-aos="fade-up"
@@ -116,10 +116,10 @@ export default function StatsSection() {
           {stats.map((stat, index) => (
             <div 
               key={index}
-              className="flex flex-col items-center text-center space-y-3 p-4 rounded-xl border border-base-border/50 hover:bg-base-card/20 transition-all duration-300 relative group"
+              className="stat-card flex flex-col items-center text-center space-y-4 relative group"
             >
               {/* Icon Container with glowing effect */}
-              <div className="flex items-center justify-center w-14 h-14 rounded-full bg-base-card border border-base-border group-hover:border-[#F36B21] group-hover:bg-[#7B1010]/20 transition-all duration-300">
+              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#FFF8F3] border border-[#F36F21]/30 group-hover:border-[#F36F21] group-hover:bg-[#F36F21]/10 transition-all duration-300">
                 {stat.icon}
               </div>
 
@@ -130,10 +130,10 @@ export default function StatsSection() {
 
               {/* Labels */}
               <div>
-                <h4 className="text-sm font-bold text-[#F36B21] uppercase tracking-wide">
+                <h4 className="stat-label uppercase tracking-wide">
                   {t(stat.labelKey)}
                 </h4>
-                <p className="text-xs text-text-muted mt-1 transition-colors duration-300">
+                <p className="text-sm text-gray-500 mt-1 transition-colors duration-300">
                   {t(stat.descKey)}
                 </p>
               </div>

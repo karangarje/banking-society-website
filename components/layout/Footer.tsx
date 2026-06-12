@@ -20,8 +20,8 @@ export default function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer className="bg-base-card border-t border-base-border pt-16 pb-8 relative z-20 transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+    <footer className="bg-[#F36F21] text-white border-t border-base-border pt-16 pb-8 relative z-20 transition-all duration-300">
+      <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         
         {/* Column 1: About Society */}
         <div className="space-y-4">
@@ -38,17 +38,17 @@ export default function Footer() {
               </span>
             </div>
           </div>
-          <p className="text-xs text-text-muted leading-relaxed transition-colors duration-300">
+          <p className="text-xs text-white leading-relaxed">
             {t("footer.desc")}
           </p>
-          <div className="inline-block bg-[#7B1010]/20 border border-[#7B1010]/30 rounded-md px-3 py-1.5 text-xs text-text-main transition-all duration-300">
+          <div className="inline-block bg-[#7B1010]/20 border border-[#7B1010]/30 rounded-md px-3 py-1.5 text-xs text-white transition-all duration-300">
             ⭐ {t("footer.audit_status")}
           </div>
         </div>
 
         {/* Column 2: Quick Links */}
         <div className="space-y-4">
-          <h4 className="text-sm font-bold text-text-main tracking-widest uppercase border-l-2 border-[#F36B21] pl-2 transition-colors duration-300">
+          <h4 className="text-sm font-bold text-[#4A1D0A] tracking-widest uppercase border-l-2 border-[#F36B21] pl-2">
             {t("footer.quick_links")}
           </h4>
           <ul className="space-y-2.5 text-xs text-text-muted transition-colors duration-300">
@@ -61,7 +61,7 @@ export default function Footer() {
               { labelKey: "nav.download", path: "/download" },
             ].map((link, idx) => (
               <li key={idx}>
-                <Link href={link.path} className="hover:text-[#F36B21] flex items-center gap-1.5 group transition-colors">
+                <Link href={link.path} className="text-white hover:text-[#F36B21] flex items-center gap-1.5 group transition-colors">
                   <ArrowRightOutlined className="text-[9px] text-gray-500 group-hover:translate-x-1 transition-transform" />
                   <span>{t(link.labelKey)}</span>
                 </Link>
@@ -72,7 +72,7 @@ export default function Footer() {
 
         {/* Column 3: Co-op Schemes */}
         <div className="space-y-4">
-          <h4 className="text-sm font-bold text-text-main tracking-widest uppercase border-l-2 border-[#7B1010] pl-2 transition-colors duration-300">
+          <h4 className="text-sm font-bold text-[#4A1D0A] tracking-widest uppercase border-l-2 border-[#7B1010] pl-2">
             {t("footer.our_schemes")}
           </h4>
           <ul className="space-y-2.5 text-xs text-text-muted transition-colors duration-300">
@@ -85,7 +85,7 @@ export default function Footer() {
               { labelKey: "footer.safe_lockers", defaultLabel: "Safe Locker Vaults", path: "/services?tab=vault" },
             ].map((link, idx) => (
               <li key={idx}>
-                <Link href={link.path} className="hover:text-[#F36B21] flex items-center gap-1.5 group transition-colors">
+                <Link href={link.path} className="text-white hover:text-[#F36B21] flex items-center gap-1.5 group transition-colors">
                   <ArrowRightOutlined className="text-[9px] text-gray-500 group-hover:translate-x-1 transition-transform" />
                   <span>{t(link.labelKey) !== link.labelKey ? t(link.labelKey) : link.defaultLabel}</span>
                 </Link>
@@ -96,7 +96,7 @@ export default function Footer() {
 
         {/* Column 4: Head Office Contact */}
         <div className="space-y-4">
-          <h4 className="text-sm font-bold text-text-main tracking-widest uppercase border-l-2 border-[#F36B21] pl-2 transition-colors duration-300">
+          <h4 className="text-sm font-bold text-[#4A1D0A] tracking-widest uppercase border-l-2 border-[#F36B21] pl-2">
             {t("footer.head_office")}
           </h4>
           <div className="space-y-3.5 text-xs text-text-muted transition-colors duration-300">
@@ -120,7 +120,7 @@ export default function Footer() {
       </div>
 
       {/* Social Media & Regulatory bottom bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 mt-16 pt-8 border-t border-base-border space-y-6 transition-colors duration-300">
+      <div className="max-w-[1400px] mx-auto px-6 mt-16 pt-8 border-t border-base-border space-y-6 transition-colors duration-300">
         
         {/* Social Icons & Copyright */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">

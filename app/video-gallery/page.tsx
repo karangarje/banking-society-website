@@ -72,11 +72,11 @@ export default function VideoGallery() {
       {/* Header Banner */}
       <section className="relative py-20 bg-gradient-to-b from-[#12121A] to-[#0B0B0F] border-b border-[rgba(255,255,255,0.04)] overflow-hidden">
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#7B1010]/5 rounded-full blur-3xl" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative text-center space-y-4">
-          <span className="text-[#F36B21] text-xs font-black uppercase tracking-widest bg-[rgba(243,107,33,0.15)] border border-[rgba(243,107,33,0.4)] px-3 py-1 rounded">
+        <div className="max-w-[1400px] mx-auto px-6 relative text-center space-y-4">
+          <span className="text-white text-xs font-black uppercase tracking-widest bg-[#8B0000] border border-[#8B0000] px-3 py-1 rounded">
             {t("videoGallery.badge")}
           </span>
-          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
+          <h1 className="text-5xl sm:text-7xl font-black text-[#8B0000] tracking-tight">
             {t("videoGallery.title")}
           </h1>
           <p className="text-sm text-gray-400 max-w-2xl mx-auto leading-relaxed">
@@ -86,7 +86,7 @@ export default function VideoGallery() {
       </section>
 
       {/* Video Cards Grid */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6">
+      <section className="py-12 max-w-[1400px] mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {videoItems.map((video, idx) => (
             <div

@@ -81,12 +81,9 @@ export default function Header() {
     <>
       {/* ─── Sticky Header ─────────────────────────────── */}
       <header
-        className={`sticky top-0 z-40 transition-all duration-300 ${scrolled
-            ? "bg-base-bg/95 backdrop-blur-md shadow-xl border-b border-base-border"
-            : "bg-base-bg border-b border-base-border/50"
-          }`}
+        className="sticky top-0 z-40 transition-all duration-300 bg-[#F36F21] border-t-4 border-[#8b0000]"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
+        <div className="max-w-[1400px] mx-auto px-6 h-14 flex items-center justify-between gap-4">
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group shrink-0">
@@ -97,7 +94,7 @@ export default function Header() {
               <p className="text-[13px] font-extrabold text-text-main tracking-wide group-hover:text-[#F36B21] transition-colors">
                 {t("nav.logo_title")}
               </p>
-              <p className="text-[9px] text-text-muted font-semibold uppercase tracking-widest mt-0.5">
+              <p className="text-xs text-white text-center md:text-left transition-colors duration-300">
                 {t("nav.logo_subtitle")}
               </p>
             </div>
@@ -122,19 +119,13 @@ export default function Header() {
                   {link.href ? (
                     <Link
                       href={link.href}
-                      className={`inline-flex items-center h-14 px-4 text-[13px] font-semibold border-b-2 transition-all duration-200 ${isActive
-                          ? "text-[#F36B21] border-[#F36B21]"
-                          : "text-text-muted border-transparent hover:text-text-main hover:border-[#7B1010]"
-                        }`}
+                      className={`inline-flex items-center h-14 px-4 text-lg font-semibold ${isActive ? "bg-[#7a0f12] text-white border-b-2 border-[#7a0f12]" : "text-text-muted hover:bg-[#7a0f12] hover:text-white"} transition-all duration-200`}
                     >
                       {label}
                     </Link>
                   ) : (
                     <button
-                      className={`inline-flex items-center gap-1.5 h-14 px-4 text-[13px] font-semibold border-b-2 transition-all duration-200 ${isOpen
-                          ? "text-[#F36B21] border-[#F36B21]"
-                          : "text-text-muted border-transparent hover:text-text-main hover:border-[#7B1010]"
-                        }`}
+                      className={`inline-flex items-center gap-1.5 h-14 px-4 text-lg font-semibold ${isOpen ? "bg-[#7a0f12] text-white border-b-2 border-[#7a0f12]" : "text-text-muted hover:bg-[#7a0f12] hover:text-white"} transition-all duration-200`}
                     >
                       <span>{label}</span>
                       <DownOutlined
@@ -168,14 +159,14 @@ export default function Header() {
 
             {/* Language selector dropdown */}
             <select
-              value={locale}
-              onChange={(e) => setLocale(e.target.value as any)}
-              className={`text-[11px] font-black uppercase tracking-wider rounded border px-2 py-1 focus:outline-none transition-all duration-200 cursor-pointer ${isDark
-                  ? "bg-[#12121A] border-[rgba(255,255,255,0.08)] text-gray-300 focus:border-[#F36B21]"
-                  : "bg-white border-gray-300 text-gray-700 focus:border-[#7B1010]"
-                }`}
-              title="Select Language / भाषा निवडा"
-            >
+                value={locale}
+                onChange={(e) => setLocale(e.target.value as any)}
+                className={`text-[10px] leading-relaxed text-center md:text-left bg-base-bg/50 border border-base-border p-3 rounded transition-all duration-300 ${isDark
+                    ? "bg-[#12121A] border-[rgba(255,255,255,0.08)] text-gray-300 focus:border-[#F36B21]"
+                    : "bg-white border-gray-300 text-gray-700 focus:border-[#7B1010]"
+                  }`}
+                title="Select Language / भाषा निवडा"
+              >
               <option value="en">EN</option>
               <option value="mr">मराठी</option>
             </select>
@@ -221,8 +212,7 @@ export default function Header() {
                       <Link
                         href={link.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className={`block py-3.5 px-2 text-sm font-bold transition-colors ${pathname === link.href ? "text-[#F36B21]" : "text-text-main hover:text-[#F36B21]"
-                          }`}
+                        className={`block py-3.5 px-2 text-sm font-bold transition-colors ${pathname === link.href ? "bg-[#7a0f12] text-white" : "text-text-main hover:bg-[#7a0f12] hover:text-white"}`}
                       >
                         {label}
                       </Link>

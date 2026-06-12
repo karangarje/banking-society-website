@@ -146,11 +146,11 @@ export default function PhotoGallery() {
       {/* Header Banner */}
       <section className="relative py-20 bg-gradient-to-b from-base-card to-base-bg border-b border-base-border/50 overflow-hidden transition-all duration-300">
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#7B1010]/5 rounded-full blur-3xl" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative text-center space-y-4">
-          <span className="text-[#F36B21] text-xs font-black uppercase tracking-widest bg-[rgba(243,107,33,0.15)] border border-[rgba(243,107,33,0.4)] px-3 py-1 rounded">
+        <div className="max-w-[1400px] mx-auto px-6 relative text-center space-y-4">
+          <span className="text-white text-xs font-black uppercase tracking-widest bg-[#8B0000] border border-[#8B0000] px-3 py-1 rounded">
             {isMr ? "माध्यम संग्रह" : "Media Files"}
           </span>
-          <h1 className="text-3xl sm:text-5xl font-black text-text-main tracking-tight transition-colors duration-300">
+          <h1 className="text-3xl sm:text-5xl font-black text-[#8B0000] tracking-tight transition-colors duration-300">
             {isMr ? "फोटो गॅलरी" : "Photo Gallery"}
           </h1>
           <p className="text-sm text-text-muted max-w-2xl mx-auto leading-relaxed transition-colors duration-300">
@@ -162,7 +162,7 @@ export default function PhotoGallery() {
       </section>
 
       {/* Filter Tabs */}
-      <section className="py-8 max-w-7xl mx-auto px-4 sm:px-6">
+      <section className="py-8 max-w-[1400px] mx-auto px-6">
         <div className="flex justify-center items-center gap-3 flex-wrap">
           {filters.map((filter) => (
             <button
@@ -196,7 +196,7 @@ export default function PhotoGallery() {
       </section>
 
       {/* Photo Grid */}
-      <section className="pb-20 max-w-7xl mx-auto px-4 sm:px-6">
+      <section className="pb-20 max-w-[1400px] mx-auto px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredItems.map((photo) => (
             <div

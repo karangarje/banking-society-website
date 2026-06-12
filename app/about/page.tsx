@@ -154,13 +154,11 @@ export default function About() {
       {/* 1. Header Banner */}
       <section className="relative py-20 bg-gradient-to-b from-base-card to-base-bg border-b border-base-border/50 overflow-hidden transition-all duration-300">
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#7B1010]/5 rounded-full blur-3xl" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative text-center space-y-4">
-          <span className="text-[#F36B21] text-xs font-black uppercase tracking-widest bg-[rgba(243,107,33,0.15)] border border-[rgba(243,107,33,0.4)] px-3 py-1 rounded">
+        <div className="max-w-[1400px] mx-auto px-6 relative text-center space-y-4">
+          <span className="text-white text-xs font-black uppercase tracking-widest bg-[#8B0000] border border-[#8B0000] px-3 py-1 rounded">
             {t.legacy}
           </span>
-          <h1 className={`text-3xl sm:text-5xl font-black tracking-tight transition-colors duration-300 ${
-            isDark ? "text-white" : "text-gray-900"
-          }`}>
+          <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-[#8B0000]">
             {t.title}
           </h1>
           <p className={`text-sm max-w-2xl mx-auto leading-relaxed transition-colors duration-300 ${
@@ -172,7 +170,7 @@ export default function About() {
       </section>
 
       {/* 2. Mission & Vision */}
-      <section className="py-16 px-4 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+      <section className="py-16 max-w-[1400px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8">
         <div data-aos="fade-right" className="glass-panel p-8 rounded-2xl space-y-4 relative">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-lg bg-[#7B1010]/20 border border-[#7B1010]/40 flex items-center justify-center">
@@ -208,7 +206,7 @@ export default function About() {
 
       {/* 3. Chairman's Message */}
       <section id="chairman" className="py-16 px-4 bg-base-card/40 border-y border-base-border/50 transition-all duration-300">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
+        <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
           
           {/* Chairman Image / Frame */}
           <div data-aos="fade-right" className="flex justify-center">
@@ -231,9 +229,7 @@ export default function About() {
           {/* Chairman Message Text */}
           <div data-aos="fade-up" className="lg:col-span-2 space-y-5">
             <span className="text-xs font-bold text-[#F36B21] uppercase tracking-wider">{t.leadership}</span>
-            <h2 className={`text-2xl sm:text-3xl font-extrabold transition-colors duration-300 ${
-              isDark ? "text-white" : "text-gray-900"
-            }`}>{t.chairmanTitle}</h2>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#8B0000]">{t.chairmanTitle}</h2>
             <div className="w-12 h-1 bg-[#F36B21] rounded-full" />
             
             <div className={`space-y-4 text-xs sm:text-sm leading-relaxed font-medium transition-colors duration-300 ${
@@ -263,11 +259,9 @@ export default function About() {
       </section>
 
       {/* 4. Timeline / History Milestones */}
-      <section id="history" className="py-20 px-4 max-w-7xl mx-auto space-y-12">
+      <section id="history" className="py-20 max-w-[1400px] mx-auto px-6 space-y-12">
         <div className="text-center space-y-3">
-          <h2 className={`text-2xl sm:text-3xl font-extrabold transition-colors ${
-            isDark ? "text-white" : "text-gray-900"
-          }`}>{t.timelineTitle}</h2>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#8B0000]">{t.timelineTitle}</h2>
           <p className={`text-xs max-w-xl mx-auto transition-colors ${
             isDark ? "text-text-muted" : "text-gray-600"
           }`}>
@@ -305,15 +299,13 @@ export default function About() {
 
       {/* 5. Board of Directors */}
       <section id="directors" className="py-20 px-4 bg-base-card/40 border-t border-base-border/50 transition-all duration-300">
-        <div className="max-w-7xl mx-auto space-y-12">
+        <div className="max-w-[1400px] mx-auto px-6 space-y-12">
           
           <div className="text-center space-y-3">
-            <span className="text-[#F36B21] text-xs font-black uppercase tracking-widest bg-[rgba(243,107,33,0.15)] border border-[rgba(243,107,33,0.4)] px-3 py-1 rounded">
+            <span className="text-[#8B0000] text-xs font-black uppercase tracking-widest bg-[rgba(139,0,0,0.15)] border border-[rgba(139,0,0,0.4)] px-3 py-1 rounded">
               {t.governance}
             </span>
-            <h2 className={`text-3xl font-extrabold transition-colors ${
-              isDark ? "text-white" : "text-gray-900"
-            }`}>{t.directorsTitle}</h2>
+            <h2 className="text-3xl font-extrabold text-[#8B0000]">{t.directorsTitle}</h2>
             <p className={`text-xs max-w-xl mx-auto transition-colors ${
               isDark ? "text-text-muted" : "text-gray-600"
             }`}>
@@ -328,21 +320,17 @@ export default function About() {
                 key={idx}
                 data-aos="zoom-in"
                 data-aos-delay={(idx % 4) * 100}
-                className="group relative rounded-xl p-5 bg-base-card border border-base-border hover:border-[#F36B21] transition-all duration-300 flex flex-col justify-between"
+                className="group relative rounded-xl p-5 bg-[#F36F21] text-white border border-[#F36F21] hover:border-[#F36B21] transition-all duration-300 flex flex-col justify-between"
               >
                 <div className="space-y-4">
                   {/* Avatar SVG outline */}
-                  <div className="w-12 h-12 rounded-lg bg-base-bg group-hover:bg-[#7B1010] border border-base-border flex items-center justify-center text-lg text-text-muted/65 group-hover:text-white transition-all">
+                  <div className="w-12 h-12 rounded-lg bg-white/20 border border-white/40 flex items-center justify-center text-lg text-white transition-all">
                     <TeamOutlined />
                   </div>
                   <div>
-                    <h4 className={`text-sm font-extrabold group-hover:text-[#F36B21] transition-colors ${
-                      isDark ? "text-white" : "text-gray-900"
-                    }`}>{dir.name}</h4>
-                    <p className="text-[10px] text-[#F36B21] font-bold uppercase tracking-wider mt-1">{dir.role}</p>
-                    <p className={`text-[11px] leading-normal mt-1.5 transition-colors ${
-                      isDark ? "text-text-muted" : "text-gray-600"
-                    }`}>{dir.designation}</p>
+                    <h4 className="text-sm font-extrabold text-white">{dir.name}</h4>
+                    <p className="text-[10px] text-white/80 font-bold uppercase tracking-wider mt-1">{dir.role}</p>
+                    <p className="text-[11px] leading-normal mt-1.5 text-white/70">{dir.designation}</p>
                   </div>
                 </div>
               </div>
@@ -353,11 +341,9 @@ export default function About() {
       </section>
 
       {/* 6. Audited Financial Highlights */}
-      <section id="financials" className="py-20 px-4 max-w-7xl mx-auto space-y-12">
+      <section id="financials" className="py-20 max-w-[1400px] mx-auto px-6 space-y-12">
         <div className="text-center space-y-3">
-          <h2 className={`text-2xl sm:text-3xl font-extrabold transition-colors ${
-            isDark ? "text-white" : "text-gray-900"
-          }`}>{t.auditTitle}</h2>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#8B0000]">{t.auditTitle}</h2>
           <p className={`text-xs max-w-xl mx-auto transition-colors ${
             isDark ? "text-text-muted" : "text-gray-600"
           }`}>

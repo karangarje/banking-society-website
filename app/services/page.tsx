@@ -245,11 +245,11 @@ export default function Services() {
       {/* Header Banner */}
       <section className="relative py-20 bg-gradient-to-b from-base-card to-base-bg border-b border-base-border/50 overflow-hidden transition-all duration-300">
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#7B1010]/5 rounded-full blur-3xl" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative text-center space-y-4">
-          <span className="text-[#F36B21] text-xs font-black uppercase tracking-widest bg-[rgba(243,107,33,0.15)] border border-[rgba(243,107,33,0.4)] px-3 py-1 rounded">
+        <div className="max-w-[1400px] mx-auto px-6 relative text-center space-y-4">
+          <span className="text-white text-sm font-bold uppercase tracking-widest bg-[#F36F21] border border-[#F36F21] px-3 py-1 rounded">
             {t("services.badge")}
           </span>
-          <h1 className="text-3xl sm:text-5xl font-black text-text-main tracking-tight transition-colors duration-300">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-black text-[#8B0000] tracking-tight transition-colors duration-300">
             {t("services.title")}
           </h1>
           <p className="text-sm text-text-muted max-w-2xl mx-auto leading-relaxed transition-colors duration-300">
@@ -259,7 +259,7 @@ export default function Services() {
       </section>
 
       {/* Tabs Section wrapped in Suspense for Next.js query parsing */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6">
+      <section className="py-12 max-w-[1400px] mx-auto px-6">
         <Suspense fallback={<div className="text-center py-20 text-text-muted font-bold uppercase tracking-wider animate-pulse">Synchronizing Portfolios...</div>}>
           <ServicesTabs />
         </Suspense>
