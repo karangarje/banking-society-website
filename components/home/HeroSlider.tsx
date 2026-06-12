@@ -48,7 +48,7 @@ export default function HeroSlider() {
           <div key={idx} className="relative w-full group">
 
             {/* Slide Image Wrapper with Adaptive Height */}
-            <div className="relative w-full h-[300px] sm:h-[450px] lg:h-[600px]">
+            <div className="relative w-full h-[320px] sm:h-[480px] lg:h-[640px] xl:h-[720px]">
               <Image
                 src={slide.image}
                 alt={t(slide.titleKey)}
@@ -64,8 +64,8 @@ export default function HeroSlider() {
 
             {/* Slider Content Overlay */}
             <div className="absolute inset-0 flex items-center">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full text-left">
-                <div className="max-w-2xl space-y-4 md:space-y-6">
+              <div className="site-container w-full text-left">
+                <div className="max-w-3xl space-y-4 md:space-y-6">
                   {/* Subtle Top Badge */}
                   <span
                     data-aos="fade-down"
@@ -78,7 +78,7 @@ export default function HeroSlider() {
                   <h2
                     data-aos="fade-up"
                     data-aos-delay="100"
-                    className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight drop-shadow-md"
+                    className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-tight tracking-tight drop-shadow-md"
                   >
                     {t(slide.titleKey)}
                   </h2>
@@ -87,7 +87,7 @@ export default function HeroSlider() {
                   <p
                     data-aos="fade-up"
                     data-aos-delay="200"
-                    className="text-xs sm:text-sm md:text-base text-gray-200 leading-relaxed drop-shadow"
+                    className="text-sm sm:text-base md:text-lg text-gray-200 leading-relaxed drop-shadow max-w-2xl"
                   >
                     {t(slide.descKey)}
                   </p>
@@ -122,7 +122,7 @@ export default function HeroSlider() {
 
       {/* Quick Info Bar for Trust Elements */}
       <div className="absolute bottom-0 left-0 right-0 z-10 bg-gradient-to-t from-base-bg to-transparent py-4 hidden md:block">
-        <div className="max-w-7xl mx-auto px-6 flex justify-between text-xs text-text-muted transition-colors duration-300">
+        <div className="site-container flex justify-between text-xs text-text-muted transition-colors duration-300">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
             <span>{t("hero.trust1")}</span>

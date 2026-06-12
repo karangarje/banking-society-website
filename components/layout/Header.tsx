@@ -83,7 +83,7 @@ export default function Header() {
       <header
         className="sticky top-0 z-40 transition-all duration-300 bg-[#F36F21] border-t-4 border-[#8b0000]"
       >
-        <div className="max-w-[1400px] mx-auto px-6 h-14 flex items-center justify-between gap-4">
+        <div className="site-container h-16 flex items-center justify-between gap-4">
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group shrink-0">
@@ -91,7 +91,7 @@ export default function Header() {
               BK
             </div>
             <div className="leading-none">
-              <p className="text-[13px] font-extrabold text-text-main tracking-wide group-hover:text-[#F36B21] transition-colors">
+              <p className="text-sm font-extrabold text-text-main tracking-wide group-hover:text-[#F36B21] transition-colors">
                 {t("nav.logo_title")}
               </p>
               <p className="text-xs text-white text-center md:text-left transition-colors duration-300">
@@ -101,7 +101,7 @@ export default function Header() {
           </Link>
 
           {/* ─── Desktop Nav ──────────────────────── */}
-          <nav className="hidden lg:flex items-center gap-0.5">
+          <nav className="hidden lg:flex items-center gap-1">
             {navigationData.map((link, idx) => {
               const hasMegaMenu = !!link.megaMenu;
               const isOpen = activeMenu === link.title;
@@ -119,13 +119,13 @@ export default function Header() {
                   {link.href ? (
                     <Link
                       href={link.href}
-                      className={`inline-flex items-center h-14 px-4 text-lg font-semibold ${isActive ? "bg-[#7a0f12] text-white border-b-2 border-[#7a0f12]" : "text-text-muted hover:bg-[#7a0f12] hover:text-white"} transition-all duration-200`}
+                      className={`inline-flex items-center h-16 px-4 text-[15px] font-semibold ${isActive ? "bg-[#7a0f12] text-white border-b-2 border-[#7a0f12]" : "text-text-muted hover:bg-[#7a0f12] hover:text-white"} transition-all duration-200`}
                     >
                       {label}
                     </Link>
                   ) : (
                     <button
-                      className={`inline-flex items-center gap-1.5 h-14 px-4 text-lg font-semibold ${isOpen ? "bg-[#7a0f12] text-white border-b-2 border-[#7a0f12]" : "text-text-muted hover:bg-[#7a0f12] hover:text-white"} transition-all duration-200`}
+                      className={`inline-flex items-center gap-1.5 h-16 px-4 text-[15px] font-semibold ${isOpen ? "bg-[#7a0f12] text-white border-b-2 border-[#7a0f12]" : "text-text-muted hover:bg-[#7a0f12] hover:text-white"} transition-all duration-200`}
                     >
                       <span>{label}</span>
                       <DownOutlined
@@ -198,7 +198,7 @@ export default function Header() {
 
         {/* ─── Mobile Drawer ──────────────────────── */}
         {mobileMenuOpen && (
-          <div className="fixed inset-0 top-14 z-30 bg-base-bg overflow-y-auto lg:hidden">
+          <div className="fixed inset-0 top-16 z-30 bg-base-bg overflow-y-auto lg:hidden">
             <div className="px-4 py-4 space-y-1">
               {navigationData.map((link, idx) => {
                 const hasMegaMenu = !!link.megaMenu;

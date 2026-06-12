@@ -21,25 +21,25 @@ export default function ServicesGrid() {
   const homeServices = servicesData.slice(0, 8);
 
   return (
-    <section id="services-grid" className="py-20 px-4 bg-base-bg relative z-10 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto space-y-12">
+    <section id="services-grid" className="section-padding px-4 bg-base-bg relative z-10 transition-colors duration-300">
+      <div className="site-container space-y-12">
         
         {/* Header Text */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
           <span className="text-[#F36B21] text-xs font-black uppercase tracking-widest bg-[rgba(243,107,33,0.15)] border border-[rgba(243,107,33,0.4)] px-3 py-1 rounded">
             {t("services.badge")}
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-text-main tracking-tight transition-colors duration-300">
+          <h2 className="section-heading text-text-main transition-colors duration-300">
             {t("services.title")}
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#7B1010] to-[#F36B21] mx-auto rounded-full" />
-          <p className="text-sm text-text-muted leading-relaxed transition-colors duration-300">
+          <p className="section-subheading text-text-muted mx-auto leading-relaxed transition-colors duration-300">
             {t("services.desc")}
           </p>
         </div>
 
         {/* Responsive Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
           {homeServices.map((service, idx) => {
             const getLocalizedArray = (key: string, defaultArray: string[]) => {
               const localized = t(key);
@@ -76,13 +76,13 @@ export default function ServicesGrid() {
                           : service.interestRate}
                       </span>
                     )}
-                    <h3 className="text-lg font-bold text-text-main group-hover:text-[#F36B21] transition-colors duration-300 mt-1">
+                    <h3 className="text-base sm:text-lg font-bold text-text-main group-hover:text-[#F36B21] transition-colors duration-300 mt-1">
                       {serviceTitle}
                     </h3>
                   </div>
 
                   {/* Description */}
-                  <p className="text-xs text-text-muted leading-relaxed line-clamp-3 transition-colors duration-300">
+                  <p className="text-sm text-text-muted leading-relaxed line-clamp-3 transition-colors duration-300">
                     {serviceDesc}
                   </p>
 

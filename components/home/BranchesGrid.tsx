@@ -32,25 +32,25 @@ export default function BranchesGrid() {
   };
 
   return (
-    <section className="py-20 px-4 bg-base-bg border-t border-base-border relative z-10 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto space-y-12">
+    <section className="section-padding px-4 bg-base-bg border-t border-base-border relative z-10 transition-colors duration-300">
+      <div className="site-container space-y-12">
         
         {/* Header Text */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
           <span className="text-[#F36B21] text-xs font-black uppercase tracking-widest bg-[rgba(243,107,33,0.15)] border border-[rgba(243,107,33,0.4)] px-3 py-1 rounded">
             {t("branches_sect.badge")}
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-text-main tracking-tight transition-colors duration-300">
+          <h2 className="section-heading text-text-main transition-colors duration-300">
             {t("branches_sect.title")}
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[#7B1010] to-[#F36B21] mx-auto rounded-full" />
-          <p className="text-sm text-text-muted leading-relaxed transition-colors duration-300">
+          <p className="section-subheading text-text-muted mx-auto leading-relaxed transition-colors duration-300">
             {t("branches_sect.desc")}
           </p>
         </div>
 
         {/* Buttons / Cards Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
           {branchesData.map((branch, index) => (
             <button
               key={branch.id}

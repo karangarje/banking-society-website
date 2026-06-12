@@ -79,8 +79,8 @@ export default function Home() {
       <HeroSlider />
 
       {/* 2. Co-operative Overview and Key Pillars */}
-      <section className="about-section py-20 px-6 relative z-10 transition-colors duration-300">
-        <div className="max-w-[1400px] w-[95%] mx-auto space-y-12">
+      <section className="about-section section-padding px-6 relative z-10 transition-colors duration-300">
+        <div className="site-container space-y-12">
           
           <div data-aos="fade-up" className="space-y-6 max-w-5xl">
             <span className="text-white text-sm font-bold uppercase tracking-widest bg-[#F36F21] border border-[#F36F21] px-4 py-1.5 rounded inline-block">
@@ -170,22 +170,22 @@ export default function Home() {
       <ServicesGrid />
 
       {/* 5. Interactive Financial Tools (EMI / FD Calculators) */}
-      <section className="py-20 px-6 bg-gradient-to-b from-white to-[#FFF8F3] border-t border-[#F36F21]/10 relative z-10 transition-colors duration-300">
-        <div className="max-w-[1400px] w-[95%] mx-auto space-y-12">
+      <section className="section-padding px-6 bg-gradient-to-b from-white to-[#FFF8F3] border-t border-[#F36F21]/10 relative z-10 transition-colors duration-300">
+        <div className="site-container space-y-12">
           
           <div className="text-center max-w-3xl mx-auto space-y-3">
             <span className="text-[#F36B21] text-xs font-black uppercase tracking-widest bg-[rgba(243,107,33,0.15)] border border-[rgba(243,107,33,0.4)] px-3 py-1 rounded">
               {t("calculator.badge")}
             </span>
-            <h2 className="text-6xl font-extrabold text-[#8B0000] tracking-tight transition-colors duration-300">{t("calculator.title")}</h2>
+            <h2 className="section-heading text-[#8B0000] transition-colors duration-300">{t("calculator.title")}</h2>
             <div className="w-16 h-1 bg-gradient-to-r from-[#7B1010] to-[#F36B21] mx-auto rounded-full" />
-            <p className="text-sm text-text-muted leading-relaxed transition-colors duration-300">
+            <p className="section-subheading text-text-muted mx-auto leading-relaxed transition-colors duration-300">
               {t("calculator.desc")}
             </p>
           </div>
 
           {/* Calculator Grid */}
-          <div data-aos="fade-up" className="max-w-4xl mx-auto glass-panel p-6 sm:p-8 rounded-2xl relative overflow-hidden transition-all duration-300">
+          <div data-aos="fade-up" className="max-w-5xl mx-auto glass-panel p-6 sm:p-10 rounded-2xl relative overflow-hidden transition-all duration-300">
             <div className="absolute bottom-0 right-0 w-32 h-32 bg-[#F36B21]/5 rounded-full blur-3xl" />
             
             <Tabs

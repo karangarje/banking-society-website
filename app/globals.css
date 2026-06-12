@@ -29,6 +29,10 @@
   
   --background: #0B0B0F;
   --foreground: #FFFFFF;
+
+  /* Responsive section padding */
+  --section-py: clamp(3rem, 6vw, 5rem);
+  --section-px: clamp(1rem, 4vw, 1.5rem);
 }
 
 [data-theme="light"] {
@@ -46,6 +50,7 @@
   --foreground: #333333;
 }
 
+/* ─── Base ──────────────────────────────────── */
 body {
   background-color: var(--bg-base);
   color: var(--text-main);
@@ -60,7 +65,17 @@ body, header, footer, section, .glass-card, .glass-panel, h1, h2, h3, h4, h5, h6
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Glassmorphism Styles */
+/* ─── Unified Responsive Container ─────────── */
+.site-container {
+  width: 100%;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1rem, 4vw, 3rem);
+  padding-right: clamp(1rem, 4vw, 3rem);
+}
+
+/* ─── Glassmorphism ────────────────────────── */
 .glass-panel {
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
@@ -84,7 +99,7 @@ body, header, footer, section, .glass-card, .glass-panel, h1, h2, h3, h4, h5, h6
   transform: translateY(-4px);
 }
 
-/* Glow effects */
+/* ─── Glow Effects ─────────────────────────── */
 .glow-maroon:hover {
   box-shadow: 0 0 25px rgba(123, 16, 16, 0.45);
 }
@@ -93,7 +108,7 @@ body, header, footer, section, .glass-card, .glass-panel, h1, h2, h3, h4, h5, h6
   box-shadow: 0 0 25px rgba(243, 107, 33, 0.45);
 }
 
-/* Custom Slick Carousel styles to look dark & premium */
+/* ─── Slick Carousel ───────────────────────── */
 .slick-prev, .slick-next {
   width: 50px;
   height: 50px;
@@ -139,7 +154,7 @@ body, header, footer, section, .glass-card, .glass-panel, h1, h2, h3, h4, h5, h6
   font-size: 10px;
 }
 
-/* Custom Scrollbar */
+/* ─── Custom Scrollbar ─────────────────────── */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -159,7 +174,7 @@ body, header, footer, section, .glass-card, .glass-panel, h1, h2, h3, h4, h5, h6
   background: #7B1010;
 }
 
-/* News Ticker Marquee keyframe animation */
+/* ─── News Ticker ──────────────────────────── */
 @keyframes ticker {
   0% {
     transform: translate3d(0, 0, 0);
@@ -184,89 +199,114 @@ body, header, footer, section, .glass-card, .glass-panel, h1, h2, h3, h4, h5, h6
   animation-play-state: paused;
 }
 
-/* User Custom Layout Refinements */
+/* ─── Section Headings (Responsive Typography) ── */
+.section-heading {
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.section-subheading {
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  line-height: 1.7;
+  max-width: 48rem;
+}
+
+/* ─── About Section ────────────────────────── */
 .about-section {
   background: linear-gradient(180deg, #fff8f3 0%, #ffffff 100%) !important;
 }
 
+/* ─── Hero Section ─────────────────────────── */
 .hero-title {
-  font-size: 64px !important;
+  font-size: clamp(2rem, 5vw, 3.75rem) !important;
   font-weight: 800 !important;
   color: #8B0000 !important;
   line-height: 1.15;
+  letter-spacing: -0.025em;
 }
 
 .hero-description {
-  font-size: 18px !important;
+  font-size: clamp(0.875rem, 1.5vw, 1.125rem) !important;
   line-height: 1.8 !important;
   color: #555555 !important;
 }
 
+/* ─── Feature Cards ────────────────────────── */
 .feature-card {
-  padding: 24px !important;
-  min-height: 140px !important;
+  padding: clamp(1.25rem, 2vw, 2rem) !important;
+  min-height: 160px !important;
   background: white !important;
-  border: 1px solid rgba(243, 111, 33, 0.2) !important;
-  border-radius: 12px !important;
+  border: 1px solid rgba(243, 111, 33, 0.15) !important;
+  border-radius: 16px !important;
   transition: all 0.3s ease !important;
 }
 
 .feature-card:hover {
   transform: translateY(-5px) !important;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08) !important;
   border-color: rgba(243, 111, 33, 0.4) !important;
 }
 
 .feature-card h4 {
-  font-size: 18px !important;
+  font-size: clamp(0.9rem, 1.2vw, 1.125rem) !important;
+  font-weight: 700 !important;
 }
 
+/* ─── Info Card ────────────────────────────── */
 .info-card {
   background: white !important;
   border-left: 5px solid #F36F21 !important;
-  border-top: 1px solid rgba(243, 111, 33, 0.2) !important;
-  border-right: 1px solid rgba(243, 111, 33, 0.2) !important;
-  border-bottom: 1px solid rgba(243, 111, 33, 0.2) !important;
+  border-top: 1px solid rgba(243, 111, 33, 0.15) !important;
+  border-right: 1px solid rgba(243, 111, 33, 0.15) !important;
+  border-bottom: 1px solid rgba(243, 111, 33, 0.15) !important;
   border-radius: 16px !important;
-  padding: 32px !important;
+  padding: clamp(1.5rem, 2.5vw, 2rem) !important;
   transition: all 0.3s ease !important;
 }
 
 .info-card:hover {
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08) !important;
   transform: translateY(-5px) !important;
   border-color: rgba(243, 111, 33, 0.4) !important;
 }
 
 .info-card h3 {
-  font-size: 28px !important;
+  font-size: clamp(1.25rem, 2vw, 1.75rem) !important;
   color: #8B0000 !important;
   font-weight: 800 !important;
 }
 
+/* ─── Stats ────────────────────────────────── */
 .stat-card {
   background: white !important;
-  border: 1px solid rgba(243, 111, 33, 0.2) !important;
+  border: 1px solid rgba(243, 111, 33, 0.15) !important;
   border-radius: 16px !important;
-  padding: 24px !important;
+  padding: clamp(1.25rem, 2vw, 1.75rem) !important;
   transition: all 0.3s ease !important;
 }
 
 .stat-card:hover {
   transform: translateY(-5px) !important;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08) !important;
   border-color: rgba(243, 111, 33, 0.4) !important;
 }
 
 .stat-number {
-  font-size: 48px !important;
+  font-size: clamp(2rem, 4vw, 3rem) !important;
   font-weight: 800 !important;
   color: #F36F21 !important;
 }
 
 .stat-label {
-  font-size: 16px !important;
+  font-size: clamp(0.8rem, 1.2vw, 1rem) !important;
   font-weight: 600 !important;
   color: #8B0000 !important;
 }
 
+/* ─── Responsive Section Padding ───────────── */
+.section-padding {
+  padding-top: var(--section-py);
+  padding-bottom: var(--section-py);
+}

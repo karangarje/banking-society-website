@@ -102,12 +102,12 @@ export default function StatsSection() {
   ];
 
   return (
-    <section className="relative py-20 px-6 bg-gradient-to-b from-white to-[#FFF8F3] z-10 transition-colors duration-300">
-      <div className="max-w-[1400px] w-[95%] mx-auto">
+    <section className="relative section-padding px-6 bg-gradient-to-b from-white to-[#FFF8F3] z-10 transition-colors duration-300">
+      <div className="site-container">
         {/* Main Stats Panel with Glassmorphism */}
         <div 
           data-aos="fade-up"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-8 rounded-2xl glass-panel relative overflow-hidden transition-all duration-300"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 p-6 sm:p-10 rounded-2xl glass-panel relative overflow-hidden transition-all duration-300"
         >
           {/* Subtle decorative lights inside the card */}
           <div className="absolute top-0 left-1/4 w-40 h-40 bg-[#7B1010]/5 rounded-full blur-3xl" />
@@ -133,7 +133,7 @@ export default function StatsSection() {
                 <h4 className="stat-label uppercase tracking-wide">
                   {t(stat.labelKey)}
                 </h4>
-                <p className="text-sm text-gray-500 mt-1 transition-colors duration-300">
+                <p className="text-sm text-gray-500 mt-1.5 leading-relaxed transition-colors duration-300">
                   {t(stat.descKey)}
                 </p>
               </div>

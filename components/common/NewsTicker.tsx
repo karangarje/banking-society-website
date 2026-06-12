@@ -18,7 +18,7 @@ export default function NewsTicker() {
 
   return (
     <div className="bg-[#1C1C24] border-b border-[rgba(255,255,255,0.06)] py-2 text-xs md:text-sm font-medium overflow-hidden relative z-50">
-      <div className="max-w-7xl mx-auto px-4 flex items-center">
+      <div className="site-container flex items-center">
         {/* Fixed Title Label */}
         <div className="flex items-center gap-1 bg-[#7B1010] text-white px-3 py-1 rounded-sm font-bold text-xs uppercase tracking-wider shadow-sm z-10 mr-4 shrink-0">
           <SoundOutlined className="animate-pulse" />
