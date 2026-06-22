@@ -1,0 +1,525 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "branches": "Branches",
+    "photo_gallery": "Photos",
+    "video_gallery": "Videos",
+    "download": "Download",
+    "social_activities": "Social Activities",
+    "contact": "Contact",
+    "portal": "Portal",
+    "logo_title": "BABASAHEB KAVAD",
+    "logo_subtitle": "Co-operative Patsanstha",
+    "member_portal_login": "MEMBER PORTAL LOGIN",
+    "member_id": "Member ID",
+    "password": "Password",
+    "access_portal": "Access Portal",
+    "portal_contact_msg": "Contact your branch to register for online portal access."
+  },
+  "hero": {
+    "badge": "Babasaheb Kavad Co-operative",
+    "slide1_title": "Secure Your Future with Our Society",
+    "slide1_desc": "Empowering communities with customized financial structures, high deposit returns, and professional co-operative values.",
+    "slide2_title": "Lowest Interest Rates on Gold Loans",
+    "slide2_desc": "Get instant cash disbursements in 30 minutes, stored within physical security vaults under CCTV surveillance.",
+    "slide3_title": "Modern Digital Banking at Your Fingertips",
+    "slide3_desc": "Manage savings, pay merchants with QR scan codes, and transfer funds instantly using our secure mobile application.",
+    "btn_schemes": "View Schemes",
+    "btn_learn": "Learn More",
+    "trust1": "Govt. Registered Society",
+    "trust2": "Serving over 50,000+ satisfied members across Maharashtra",
+    "trust3": "Establishment Code: MH/PNE/3241/98"
+  },
+  "welcome": {
+    "badge": "Welcome to Babasaheb Kavad Patsanstha",
+    "title": "Pioneering Financial Security & Local Growth Since 1998",
+    "desc": "We operate under state co-operative principles, catering to the financing requirements of families, retail traders, agricultural farmers, and micro enterprises. For over two decades, our Class \"A\" Audit certificate reflects absolute trust, security, and high dividend values for our members.",
+    "pillar1_title": "100% Secure",
+    "pillar1_desc": "Guaranteed deposits and physical gold vaults.",
+    "pillar2_title": "Easy Schemes",
+    "pillar2_desc": "Minimum formalities and fast approvals.",
+    "pillar3_title": "Modern Tech",
+    "pillar3_desc": "Mobile banking app & scanner QR integration.",
+    "btn_history": "Read Our Success History",
+    "integrity_badge": "● Cooperative Integrity",
+    "integrity_title": "Cooperative growth drives independent progress.",
+    "audit_standing": "Audit Standing",
+    "audit_val": "Class \"A\" Certified",
+    "dividend": "Member Dividend",
+    "dividend_val": "Up to 15% Annual"
+  },
+  "stats": {
+    "branches": "Operational Branches",
+    "branches_desc": "Across Maharashtra network",
+    "members": "Satisfied Members",
+    "members_desc": "Our community of trust",
+    "deposits": "Total Deposits",
+    "deposits_desc": "Secured member assets",
+    "loans": "Disbursed Loans",
+    "loans_desc": "Fueling local enterprise"
+  },
+  "services": {
+    "badge": "Our Offerings",
+    "title": "Comprehensive Financial Solutions",
+    "desc": "Discover secure deposit options, instant gold-backed loans, and smart digital capabilities structured to fulfill your financial goals.",
+    "btn_explore": "Explore Scheme",
+    "btn_compare": "Compare All Schemes",
+    "compare_plans": "Compare All Schemes",
+    "category_label": "Category",
+    "rate_benefit_label": "Rate / Benefit",
+    "key_benefits_label": "Key Benefits",
+    "eligibility_label": "Member Eligibility",
+    "documents_label": "Required Documents",
+    "tabs": {
+      "deposits": "Deposit Schemes",
+      "loans": "Loan Offerings",
+      "digital": "E-Banking Tech",
+      "vault": "Locker Vaults"
+    },
+    "items": {
+
+      "savings-account": {
+        "title": "Savings Account",
+        "desc": "Start saving with a low minimum balance and earn high returns with absolute deposit security.",
+        "features": [
+          "Low minimum balance requirement of only ₹500.",
+          "Free SMS Alert service for instant transaction updates."
+        ]
+      },
+      "fixed-deposit": {
+        "title": "Fixed Deposits (FD)",
+        "desc": "Maximize your returns on surplus funds with flexible tenures and guaranteed, secure growth.",
+        "features": [
+          "Tenure options ranging from 15 days to 5 years.",
+          "Compounding option (quarterly/half-yearly) or monthly interest payouts."
+        ]
+      },
+      "recurring-deposit": {
+        "title": "Recurring Deposit (RD)",
+        "desc": "Develop a systematic savings habit. Deposit a fixed amount monthly and earn high term interest.",
+        "features": [
+          "Flexible monthly deposit starting from ₹500.",
+          "Tenures available from 12 months up to 60 months."
+        ]
+      },
+      "gold-loan": {
+        "title": "Instant Gold Loan",
+        "desc": "Unlock the value of your gold jewelry and get instant cash at competitive interest rates with zero hassle.",
+        "features": [
+          "Sanctioned within 30 minutes with instant cash/bank transfer.",
+          "High valuation of gold ornaments based on market rate."
+        ]
+      },
+      "home-loan": {
+        "title": "Home & Property Loan",
+        "desc": "Fulfill your dream of owning a home. We provide low-interest loans for house purchase, construction, or renovation.",
+        "features": [
+          "Funding up to 80% of the property value.",
+          "Long repayment tenure up to 15 years."
+        ]
+      },
+      "business-loan": {
+        "title": "Business & Personal Loan",
+        "desc": "Boost your business working capital or cover immediate family expenses with quick disbursals.",
+        "features": [
+          "Speedy evaluation and loan sanctioning.",
+          "Flexible repayment tenures from 12 to 60 months."
+        ]
+      },
+      "digital-banking": {
+        "title": "E-Services & Core Banking",
+        "desc": "Enjoy modern digital banking services, including our safe mobile application, SMS alerts, and merchant QR codes.",
+        "features": [
+          "Real-time funds transfer via IMPS and NEFT.",
+          "Interactive mobile app supporting balance checks and statements."
+        ]
+      }
+    },
+    "rates": {
+      "savings_account": "4.5% p.a. (Calculated Daily)",
+      "fixed_deposit": "Up to 9.5% p.a. (10.0% for Senior Citizens)",
+      "recurring_deposit": "8.5% p.a. (9.0% for Senior Citizens)",
+      "gold_loan": "10.5% p.a.",
+      "home_loan": "9.0% - 10.5% p.a.",
+      "business_loan": "11.5% - 13.0% p.a.",
+      "digital_banking": "Complimentary Service",
+      "safe_deposit": "Nominal Annual Rental"
+    },
+    "learn_more": "Explore Scheme"
+  },
+  "calculator": {
+    "badge": "Planners",
+    "title": "Interactive Financial Calculators",
+    "desc": "Estimate your monthly loan installments or fixed deposit maturity dividends using our standard calculation engine.",
+    "tab_loan": "Loan EMI Calculator",
+    "tab_fd": "FD Maturity Calculator",
+    "label_loan_amt": "LOAN AMOUNT",
+    "label_rate": "INTEREST RATE (% P.A.)",
+    "label_tenure": "TENURE (YEARS)",
+    "label_dep_amt": "DEPOSIT AMOUNT",
+    "est_emi": "Estimated Monthly EMI",
+    "total_interest": "Total Interest",
+    "total_repayment": "Total Repayment",
+    "btn_apply_loan": "Apply for Loan Now",
+    "exp_maturity": "Expected Maturity Amount",
+    "interest_earned": "Interest Earned",
+    "term_period": "FD Term Period",
+    "btn_open_fd": "Open Fixed Deposit",
+    "years_suffix": "Years"
+  },
+  "branches_sect": {
+    "badge": "Our Network",
+    "title": "12 Branch Locations to Serve You",
+    "desc": "Click on any branch button to access instant contact coordinates, branch manager names, office hours, and map routing details.",
+    "head_office": "Head Office",
+    "headquarters_desc": "This is the society's principal office and central clearing desk.",
+    "branch_address": "Branch Address",
+    "branch_manager": "Branch Manager",
+    "contact_number": "Contact Number",
+    "email_address": "Email Address",
+    "operational_hours": "Operational Hours",
+    "navigate_maps": "Navigate via Google Maps"
+  },
+  "mega_menu": {
+    "view": "View",
+    "item": "item",
+    "items": "items",
+    "items_data": {
+      "history": {
+        "title": "History",
+        "description": "Foundation, vision and past milestones."
+      },
+      "awards_achievements": {
+        "title": "Awards & Achievements",
+        "description": "Recognitions, member trust, and community performance."
+      },
+      "board_of_directors": {
+        "title": "Board of Directors",
+        "description": "Meet the leadership guiding member-first finance."
+      },
+      "interest_rate": {
+        "title": "Interest Rate",
+        "description": "Current deposit and loan rate details."
+      },
+
+      "banking_services": {
+        "title": "Banking Services",
+        "description": "Core banking products and financial services."
+      },
+      "digital_services": {
+        "title": "Digital Services",
+        "description": "Online and mobile banking solutions."
+      },
+      "member_services": {
+        "title": "Member Services",
+        "description": "Exclusive member-only facilities."
+      },
+      "future_services": {
+        "title": "Future Services",
+        "description": "Upcoming products and digital expansion."
+      },
+
+      "deposits": {
+        "title": "Deposits",
+        "description": "Secure savings options with attractive returns."
+      },
+      "loans": {
+        "title": "Loans",
+        "description": "Flexible loan products for personal and business needs."
+      },
+      "core_banking": {
+        "title": "Core Banking",
+        "description": "Reliable banking support across branches."
+      },
+      "e_services": {
+        "title": "E-Services",
+        "description": "Digital account access from any device."
+      },
+      "safe_deposit_vaults": {
+        "title": "Safe Deposit Vaults",
+        "description": "Secure storage for valuables and documents."
+      },
+      "sms_banking": {
+        "title": "SMS Banking",
+        "description": "Instant transaction alerts and balance updates."
+      },
+
+      "upcoming_services": {
+        "title": "Upcoming Services",
+        "description": "New products and digital expansion plans."
+      },
+      "photo_gallery": {
+        "title": "Photo Gallery",
+        "description": "Member events, branch updates, and community moments."
+      },
+      "new_branch_openings": {
+        "title": "New Branch Openings",
+        "description": "Opening ceremonies and branch inauguration photos."
+      },
+      "vikhroli_new_head_office_opening": {
+        "title": "Vikhroli New Head Office Opening",
+        "description": "Highlights from the new head office launch event."
+      },
+      "annual_reports": {
+        "title": "Annual Reports",
+        "description": "Full PDF reports for member review."
+      },
+      "forms": {
+        "title": "Forms",
+        "description": "All application and service request forms."
+      },
+      "gst_certificate": {
+        "title": "GST Certificate",
+        "description": "Official compliance certificate for the society."
+      }
+    }
+  },
+  "ticker": {
+    "label": "Updates",
+    "item1": "🔥 Special FD Interest Rates: Earn up to 9.5% p.a. and 10.0% p.a. for Senior Citizens!",
+    "item2": "🏆 Babasaheb Kavad Nighoj Nagari Sahakari Patsanstha is rated with prestigious Class 'A' Audit standing.",
+    "item3": "📱 New Mobile Banking application is now available for download on Google Play Store.",
+    "item4": "💼 Instant Gold Loans processed in just 30 minutes with secure physical vaults & low interest rates.",
+    "item5": "🏢 Visit our newly opened branches at Thane West and Ratnagiri Coast for personalized services.",
+    "item6": "🛡️ Your deposits are safe and secured under cooperative societies guidelines."
+  },
+  "services_data": {
+
+    "savings-account": {
+      "title": "Savings Account",
+      "shortDesc": "Start saving with a low minimum balance and earn high returns with absolute deposit security.",
+      "features": [
+        "Low minimum balance requirement of only ₹500.",
+        "Free SMS Alert service for instant transaction updates.",
+        "Free RuPay ATM / Debit card for cash withdrawal and shopping.",
+        "Standing Instruction facility for automated transfers."
+      ]
+    },
+    "fixed-deposit": {
+      "title": "Fixed Deposits (FD)",
+      "shortDesc": "Maximize your returns on surplus funds with flexible tenures and guaranteed, secure growth.",
+      "features": [
+        "Tenure options ranging from 15 days to 5 years.",
+        "Compounding option (quarterly/half-yearly) or monthly interest payouts.",
+        "Loan facility available up to 90% of the deposit amount.",
+        "Premature withdrawal allowed under society regulations."
+      ]
+    },
+    "recurring-deposit": {
+      "title": "Recurring Deposit (RD)",
+      "shortDesc": "Develop a systematic savings habit. Deposit a fixed amount monthly and earn high term interest.",
+      "features": [
+        "Flexible monthly deposit starting from ₹500.",
+        "Tenures available from 12 months up to 60 months.",
+        "Ideal tool to accumulate funds for child's education, wedding, or vacations.",
+        "Automated standing instructions from savings account."
+      ]
+    },
+    "gold-loan": {
+      "title": "Instant Gold Loan",
+      "shortDesc": "Unlock the value of your gold jewelry and get instant cash at competitive interest rates with zero hassle.",
+      "features": [
+        "Sanctioned within 30 minutes with instant cash/bank transfer.",
+        "High valuation of gold ornaments based on market rate.",
+        "Safe and highly secure vault storage under CCTV surveillance.",
+        "Flexible repayment options: bullet repayment or monthly interest."
+      ]
+    },
+    "home-loan": {
+      "title": "Home & Property Loan",
+      "shortDesc": "Fulfill your dream of owning a home. We provide low-interest loans for house purchase, construction, or renovation.",
+      "features": [
+        "Funding up to 80% of the property value.",
+        "Long repayment tenure up to 15 years.",
+        "No hidden administrative charges or penalty clauses.",
+        "Expert legal and technical evaluation support."
+      ]
+    },
+    "business-loan": {
+      "title": "Business & Personal Loan",
+      "shortDesc": "Boost your business working capital or cover immediate family expenses with quick disbursals.",
+      "features": [
+        "Speedy evaluation and loan sanctioning.",
+        "Flexible repayment tenures from 12 to 60 months.",
+        "Repayable via easy monthly EMIs.",
+        "Guarantor facility based on member references."
+      ]
+    },
+    "digital-banking": {
+      "title": "E-Services & Core Banking",
+      "shortDesc": "Enjoy modern digital banking services, including our safe mobile application, SMS alerts, and merchant QR codes.",
+      "features": [
+        "Real-time funds transfer via IMPS and NEFT.",
+        "Interactive mobile app supporting balance checks and statements.",
+        "Personalized UPI QR code cards for shop owners.",
+        "Instant SMS updates for deposit maturity or loan payments."
+      ]
+    },
+    "safe-deposit": {
+      "title": "Safe Deposit Locker Vaults",
+      "shortDesc": "Keep your jewelry, land title deeds, and precious items safe in our state-of-the-art secure vaults.",
+      "features": [
+        "Multiple locker sizes available (Small, Medium, Large).",
+        "Heavy duty physical steel safes and security systems.",
+        "CCTV-monitored locker room access with dual-key protection.",
+        "Nomination facility available."
+      ]
+    }
+  },
+  "footer": {
+    "title": "BABASAHEB KAVAD",
+    "subtitle": "Co-operative Patsanstha",
+    "desc": "Babasaheb Kavad Nighoj Nagari Sahakari Patsanstha is a trusted class-a audited co-operative financial institution committed to strengthening rural and urban communities since inception.",
+    "audit_status": "Audit Status: Class \"A\" Rated",
+    "quick_links": "Quick Links",
+    "our_schemes": "Our Schemes",
+    "head_office": "Head Office",
+    "working_hours": "Working Hours: 10:00 AM - 5:00 PM",
+    "rights": "All Rights Reserved.",
+    "disclaimer": "Disclaimer: Co-operative Patsanstha deposits are subject to cooperative regulatory norms under state bylaws. Interest rates and dividend payouts are subject to change by decision of the board and society earnings audits. This portal provides institutional transparency for members.",
+    "instant_gold_loans": "Instant Gold Loans",
+    "high_interest_fds": "High Interest Fixed FDs",
+    "property_loans": "Property & Home Loans",
+    "mobile_banking": "Mobile & Core Banking",
+    "safe_lockers": "Safe Locker Vaults",
+    "address": "Plot 42, Ghole Road, near Shivaji Nagar, Pune, Maharashtra - 411005"
+  },
+  "contact": {
+    "banner_badge": "Contact Section",
+    "title": "Contact Us",
+    "description": "Get in touch with our customer service help desks, drop us an email, or submit an online inquiry using the form below.",
+    "central_heading": "Central Contact Desk",
+    "central_description": "For any inquiries regarding account opening, gold loan evaluation, digital services, or institutional feedback, feel free to contact our head office desk or any of our regional branch offices.",
+    "head_office_label": "Head Office",
+    "head_office_address": "Plot 42, Ghole Road, near Shivaji Nagar, Pune, Maharashtra - 411005",
+    "working_hours_label": "Working Hours",
+    "working_hours": "Monday - Saturday: 10:00 AM - 5:00 PM",
+    "call_desk_label": "Call Desk Support",
+    "email_label": "Email Inquiries",
+    "map_heading": "Locate Us on Map",
+    "map_description": "Click the button below to view routing and maps directions to our head office location.",
+    "map_button": "Open Google Maps",
+    "form_heading": "Send Online Inquiry",
+    "form_description": "Fill out the form below and our customer relationship desk will reach back to you shortly.",
+    "label_name": "Full Name",
+    "placeholder_name": "e.g. Ramesh Patil",
+    "label_email": "Email Address",
+    "placeholder_email": "Your email address",
+    "label_phone": "Mobile Number",
+    "placeholder_phone": "9876543210",
+    "label_subject": "Select Subject",
+    "label_message": "Your Message",
+    "placeholder_message": "Type your query details here...",
+    "subject_general": "General Inquiry",
+    "subject_gold_loan": "Gold Loan",
+    "subject_fixed_deposit": "Fixed Deposit",
+    "subject_membership": "Membership Registration",
+    "subject_mobile_banking": "Mobile Banking",
+    "privacy_note": "Your information is safe with us. We do not share your details with third parties.",
+    "submit": "Submit Inquiry",
+    "submitting": "Submitting...",
+    "success_message": "Your inquiry has been submitted successfully."
+  },
+  "social": {
+    "banner_badge": "Giving Back",
+    "title": "Social Activities (CSR)",
+    "description": "Cooperative banks do not just grow deposits; we grow communities. Read about our environmental and welfare initiatives.",
+    "impact_label": "Documented Impact",
+    "environmental": "Environmental",
+    "healthcare": "Healthcare Support",
+    "education": "Education",
+    "rural_relief": "Rural Relief",
+    "activity1_title": "Village Afforestation Tree Plantation",
+    "activity1_date": "Monsoon Season (Annual)",
+    "activity1_location": "Nighoj, Savedi Sub-district",
+    "activity1_description": "Driving environmental protection through collective action. Our members, employees, and local students plant thousands of native neem, banyan, and peepal trees to support soil water table retention.",
+    "activity1_impact": "Over 15,000+ trees planted and sustained with 90%+ survival rate.",
+    "activity2_title": "Community Blood Donation & Health Camps",
+    "activity2_date": "Semi-Annual Drives",
+    "activity2_location": "Pune Main & Ahmednagar Branches",
+    "activity2_description": "Partnering with municipal blood centers to host donation drives that support local hospitals. We also organize complimentary physical health checkups, diabetic screenings, and eye clinics.",
+    "activity2_impact": "More than 2,500 units of blood accumulated for public emergencies.",
+    "activity3_title": "Student Education Scholarships & Books",
+    "activity3_date": "Every June (Academic Start)",
+    "activity3_location": "All 12 Branches Regionwide",
+    "activity3_description": "Distributing school uniforms, reference books, and tuition scholarships to children of farmers and lower-income families who display high academic achievement in local schools.",
+    "activity3_impact": "Aided 5,000+ school students to continue higher secondary education.",
+    "activity4_title": "Drought Relief Water Schemes",
+    "activity4_date": "Summer Season (Dry periods)",
+    "activity4_location": "Ahmednagar & Rural Satara regions",
+    "activity4_description": "Providing clean drinking water tankers to drought-affected rural villages. We also fund minor checks in streams to construct check-dams assisting rain water harvesting.",
+    "activity4_impact": "Provided relief tanks to 45 villages during major water scarcity months."
+  },
+  "videoGallery": {
+    "badge": "Media Files",
+    "title": "Video Gallery",
+    "description": "Watch informative clips on how we manage credits, tutorials for mobile apps, and reports on audited compliance.",
+    "launchPlayer": "Launch Player",
+    "documentLength": "Length",
+    "nowStreaming": "▶ NOW STREAMING SECURE HOST",
+    "readyBroadcast": "⏸ READY TO BROADCAST",
+    "pause": "Pause",
+    "videos": {
+      "founder": {
+        "title": "Founder's Vision and Patsanstha Success Journey",
+        "description": "An overview of how Babasaheb Kavad Patsanstha has driven financial inclusion and micro-banking growth since 1998.",
+        "date": "Oct 12, 2024"
+      },
+      "mobileBanking": {
+        "title": "Guide to Downloading & Setting up Mobile Banking App",
+        "description": "Step-by-step tutorial explaining how registered members can activate and configure the new secure mobile app.",
+        "date": "Nov 01, 2024"
+      },
+      "audit": {
+        "title": "Audits & Compliance: Class 'A' Governance Brief",
+        "description": "Auditors and financial experts detail our reserve metrics and asset liquidity that ensure 100% deposit protection.",
+        "date": "Dec 18, 2024"
+      },
+      "goldLoan": {
+        "title": "Agricultural Gold Loan Scheme Introduction",
+        "description": "Understand valuation terms, instant cash disbursement processing, and crop credit alignments for local farming members.",
+        "date": "Feb 05, 2025"
+      }
+    }
+  },
+  "loanCalculator": {
+    "title": "Loan EMI Calculator",
+    "subtitle": "Calculate loan repayments and generate detailed schedules instantly.",
+    "badge": "Financial Planners",
+    "calculate_now": "Calculate Now",
+    "form_title": "Loan Details Form",
+    "field_amount": "Loan Amount (INR)",
+    "field_rate": "Annual Interest Rate (%)",
+    "field_tenure": "Loan Tenure (Months)",
+    "field_start_date": "Repayment Start Date",
+    "field_emi_type": "EMI Type",
+    "field_interest_calc": "Interest Calculation Period",
+    "monthly_emi": "Monthly EMI",
+    "weekly_emi": "Weekly EMI",
+    "monthly": "Monthly",
+    "weekly": "Weekly",
+    "btn_generate": "Generate Schedule",
+    "summary_title": "Loan Summary",
+    "card_amount": "Loan Amount",
+    "card_rate": "Interest Rate",
+    "card_tenure": "Tenure (Months)",
+    "card_emi": "EMI Amount",
+    "card_interest": "Total Interest Accrued",
+    "card_payment": "Total Repayment Cost",
+    "table_title": "Repayment Schedule Table",
+    "placeholder_search": "Search installments...",
+    "btn_export_pdf": "Export PDF",
+    "col_installment": "Installment No.",
+    "col_due_date": "Due Date",
+    "col_emi": "EMI",
+    "col_principal": "Principal Component",
+    "col_interest": "Interest Component",
+    "col_balance": "Outstanding Balance",
+    "validation_amount": "Loan amount must be greater than 0",
+    "validation_rate": "Interest rate must be greater than 0",
+    "validation_tenure": "Tenure must be greater than 0",
+    "validation_date": "Please choose a valid start date"
+  }
+}
