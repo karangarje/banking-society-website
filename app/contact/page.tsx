@@ -52,10 +52,10 @@ export default function Contact() {
   return (
     <div className="w-full bg-white">
       {/* Header Banner */}
-      <section className="relative py-20 bg-gradient-to-b from-[#B3003C] to-[#1E1B6B] overflow-hidden">
+      <section className="relative py-12 md:py-16 lg:py-20 bg-gradient-to-b from-[#B3003C] to-[#1E1B6B] overflow-hidden">
         <div className="absolute inset-0 bg-black/15" />
         <div className="absolute top-0 right-0 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative text-center space-y-4 z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center space-y-4 z-10">
           <span className="inline-block mb-2 text-rose-200 text-sm uppercase tracking-widest font-semibold">
             {t("contact.banner_badge")}
           </span>
@@ -69,7 +69,7 @@ export default function Contact() {
       </section>
 
       {/* Main Grid Layout */}
-      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section className="py-12 md:py-16 lg:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {/* Left Column: Contact info & Map */}
         <div data-aos="fade-right" className="space-y-8">
           <div className="space-y-4">
@@ -179,7 +179,7 @@ export default function Contact() {
       </section>
 
       {/* Quick Contact Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 md:pb-16 lg:pb-20">
         <QuickContact />
       </div>
     </div>

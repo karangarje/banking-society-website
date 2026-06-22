@@ -21,7 +21,7 @@ export default function ServicesGrid() {
   const homeServices = servicesData.slice(0, 8);
 
   return (
-    <section id="services-grid" className="py-20 px-4 bg-base-bg relative z-10 transition-colors duration-300">
+    <section id="services-grid" className="py-12 md:py-16 lg:py-20 px-4 bg-base-bg relative z-10 transition-colors duration-300">
       <div className="max-w-7xl mx-auto space-y-12">
         
         {/* Header Text */}
@@ -58,7 +58,7 @@ export default function ServicesGrid() {
                 key={idx}
                 data-aos="fade-up"
                 data-aos-delay={(idx % 4) * 100}
-                className="group relative bg-base-card hover:bg-[#AD002E] p-6 rounded-2xl border border-[rgba(0,0,0,0.04)] transition-all duration-400 shadow-sm hover:shadow-[0_12px_30px_-8px_rgba(173,0,46,0.4)] hover:-translate-y-1.5 flex flex-col justify-between"
+                className="group relative bg-base-card hover:bg-[#AD002E] p-6 rounded-2xl border border-[rgba(0,0,0,0.04)] transition-all duration-400 shadow-sm hover:shadow-[0_12px_30px_-8px_rgba(173,0,46,0.4)] hover:-translate-y-1.5 flex flex-col justify-between h-full break-words max-w-full"
               >
                 {/* Subtle Background Glow on Card */}
                 <div className="absolute top-0 right-0 w-24 h-24 bg-[#AD002E]/5 rounded-full blur-2xl group-hover:bg-white/10 transition-colors" />

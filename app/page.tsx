@@ -113,7 +113,7 @@ export default function Home() {
 
 
       {/* 5. Interactive Financial Tools (EMI / FD Calculators) */}
-      <section className="py-20 px-4 bg-base-bg border-t border-base-border relative z-10 transition-colors duration-300">
+      <section className="py-12 md:py-16 lg:py-20 px-4 bg-base-bg border-t border-base-border relative z-10 transition-colors duration-300">
         <div className="max-w-7xl mx-auto space-y-12">
           
           <div className="text-center max-w-3xl mx-auto space-y-3">
@@ -320,7 +320,7 @@ export default function Home() {
       </section>
 
       {/* 2. Co-operative Overview and Key Pillars */}
-      <section className="py-20 px-4 bg-base-bg relative z-10 transition-colors duration-300">
+      <section className="py-12 md:py-16 lg:py-20 px-4 bg-base-bg relative z-10 transition-colors duration-300">
         <div className="max-w-5xl mx-auto">
           
           <div data-aos="fade-up" className="space-y-6">

@@ -34,10 +34,15 @@ export default function HeroSlider() {
               linkUrl: b.linkUrl,
             }));
             setSlides(mapped);
+          } else {
+            setSlides([]);
           }
+        } else {
+          setSlides([]);
         }
       } catch (err) {
         console.error("Error loading home banners:", err);
+        setSlides([]);
       }
     };
     fetchBanners();
@@ -86,7 +91,7 @@ export default function HeroSlider() {
         {bannerSlides.map((slide, idx) => (
           <div key={idx} className="relative w-full group">
             {/* Slide Image Wrapper */}
-            <div className="relative w-full h-[450px] sm:h-[550px] lg:h-[700px] bg-black">
+            <div className="relative w-full h-[420px] md:h-[550px] lg:h-[700px] bg-black">
               <Image
                 src={slide.image}
                 alt={slide.title}
@@ -101,16 +106,16 @@ export default function HeroSlider() {
 
               {/* Slide Content */}
               <div className="absolute inset-0 flex items-center">
-                <div className="max-w-7xl mx-auto px-6 sm:px-12 w-full text-left text-white space-y-4">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-left text-white space-y-4 break-words max-w-full">
                   <span className="inline-block px-3 py-1 bg-[#B3003C] text-xs font-bold uppercase tracking-widest rounded shadow-sm">
                     {isMr ? "कवाड नागरी सहकारी पतसंस्था" : "Kavad Co-operative Society"}
                   </span>
                   
-                  <h2 className="text-3xl sm:text-5xl lg:text-7xl font-black tracking-tight leading-none text-white max-w-4xl">
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black tracking-tight leading-none text-white max-w-4xl break-words">
                     {slide.title}
                   </h2>
                   
-                  <p className="text-base sm:text-xl lg:text-2xl text-gray-200 max-w-2xl font-medium leading-relaxed">
+                  <p className="text-sm sm:text-base md:text-xl lg:text-2xl text-gray-200 max-w-2xl font-medium leading-relaxed break-words">
                     {slide.subtitle}
                   </p>
 

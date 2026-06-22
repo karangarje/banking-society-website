@@ -6,7 +6,9 @@ import prisma from "@/lib/prisma";
 export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const session = await getServerSession(authOptions);
-    if (!session || ((session.user as any)?.role !== "MANAGER" && (session.user as any)?.role !== "SUPER_ADMIN")) {
+    const userRole = (session?.user as any)?.role;
+    const allowedRoles = ["SUPER_ADMIN", "MANAGER", "EMPLOYEE"];
+    if (!session || !allowedRoles.includes(userRole)) {
       return NextResponse.json({ message: "Forbidden" }, { status: 403 });
     }
 
@@ -45,7 +47,9 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
 export async function DELETE(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const session = await getServerSession(authOptions);
-    if (!session || ((session.user as any)?.role !== "MANAGER" && (session.user as any)?.role !== "SUPER_ADMIN")) {
+    const userRole = (session?.user as any)?.role;
+    const allowedRoles = ["SUPER_ADMIN", "MANAGER", "EMPLOYEE"];
+    if (!session || !allowedRoles.includes(userRole)) {
       return NextResponse.json({ message: "Forbidden" }, { status: 403 });
     }
 

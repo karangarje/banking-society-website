@@ -21,6 +21,16 @@ export default function BranchesGrid() {
   const { t, locale } = useLanguage();
   const isMr = locale === "mr";
 
+  const [drawerWidth, setDrawerWidth] = useState<number | string>(420);
+  React.useEffect(() => {
+    const handleResize = () => {
+      setDrawerWidth(window.innerWidth < 480 ? "100%" : 420);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const handleBranchClick = (branch: Branch) => {
     setSelectedBranch(branch);
     setDrawerVisible(true);
@@ -32,7 +42,7 @@ export default function BranchesGrid() {
   };
 
   return (
-    <section className="py-20 px-4 bg-base-bg border-t border-base-border relative z-10 transition-colors duration-300">
+    <section className="py-12 md:py-16 lg:py-20 px-4 bg-base-bg border-t border-base-border relative z-10 transition-colors duration-300">
       <div className="max-w-7xl mx-auto space-y-12">
         
         {/* Header Text */}
@@ -50,7 +60,7 @@ export default function BranchesGrid() {
         </div>
 
         {/* Buttons / Cards Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
           {branchesData.map((branch, index) => (
             <button
               key={branch.id}
@@ -94,7 +104,7 @@ export default function BranchesGrid() {
           placement="right"
           onClose={closeDrawer}
           open={drawerVisible}
-          style={{ width: 420 }}
+          width={drawerWidth}
           styles={{
             header: {
               backgroundColor: isDark ? "#FDFDFD" : "#FFFFFF",

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Table, Button, Modal, Form, Input, Switch, Select, DatePicker, message, Popconfirm, Space, Card, Row, Col, Tabs, Upload, Image, InputNumber } from "antd";
+import { Table, Button, Modal, Form, Input, Switch, Select, DatePicker, message, Popconfirm, Space, Card, Row, Col, Tabs, Upload, Image, InputNumber, Tag } from "antd";
 import type { UploadFile } from "antd";
 import { PlusOutlined, DeleteOutlined, ReloadOutlined, EditOutlined, UploadOutlined, InfoCircleOutlined, TrophyOutlined, TeamOutlined, HeartOutlined } from "@ant-design/icons";
 import type { ColumnsType } from "antd/es/table";

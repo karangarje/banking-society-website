@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { 
@@ -9,10 +11,7 @@ import {
   BellOutlined
 } from "@ant-design/icons";
 
-export const metadata = {
-  title: "Member Portal | Babasaheb Kavad",
-  description: "Secure member portal for Babasaheb Kavad Patsanstha",
-};
+
 
 export default function MemberDashboardLayout({
   children,

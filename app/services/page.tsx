@@ -111,7 +111,7 @@ function ServicesTabs() {
               </p>
 
               {/* Structured details grids */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-2">
                 
                 {/* Features Column */}
                 <div className="space-y-3 p-4 rounded-lg bg-base-card/50 border border-base-border/50 transition-all duration-300">
@@ -231,7 +231,7 @@ export default function Services() {
     <div className="w-full bg-base-bg transition-colors duration-300">
       
       {/* Header Banner */}
-      <section className="relative py-20 bg-gradient-to-b from-base-card to-base-bg border-b border-base-border/50 overflow-hidden transition-all duration-300">
+      <section className="relative py-12 md:py-16 lg:py-20 bg-gradient-to-b from-base-card to-base-bg border-b border-base-border/50 overflow-hidden transition-all duration-300">
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#AD002E]/5 rounded-full blur-3xl" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative text-center space-y-4">
           <span className="inline-block mb-2 ">
@@ -247,7 +247,7 @@ export default function Services() {
       </section>
 
       {/* Tabs Section wrapped in Suspense for Next.js query parsing */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6">
+      <section className="py-12 md:py-16 lg:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Suspense fallback={<div className="text-center py-20 text-text-muted font-bold uppercase tracking-wider animate-pulse">Synchronizing Portfolios...</div>}>
           <ServicesTabs />
         </Suspense>

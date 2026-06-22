@@ -102,7 +102,7 @@ export default function StatsSection() {
   ];
 
   return (
-    <section className="relative py-16 px-4 bg-base-bg z-10 transition-colors duration-300">
+    <section className="relative py-12 md:py-16 lg:py-20 px-4 bg-base-bg z-10 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         {/* Main Stats Panel with Glassmorphism */}
         <div 
@@ -118,7 +118,7 @@ export default function StatsSection() {
               key={index}
               data-aos="fade-up"
               data-aos-delay={index * 100}
-              className="flex flex-col items-center text-center space-y-4 p-6 rounded-2xl border border-[rgba(0,0,0,0.04)] bg-base-card shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-400 relative group"
+              className="flex flex-col items-center text-center space-y-4 p-6 rounded-2xl border border-[rgba(0,0,0,0.04)] bg-base-card shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-400 relative group h-full break-words max-w-full"
             >
               {/* Icon Container with glowing effect */}
               <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-[rgba(173,0,46,0.05)] border border-[rgba(173,0,46,0.1)] group-hover:border-[#AD002E] group-hover:bg-[#AD002E] transition-all duration-400">

@@ -22,13 +22,13 @@ export default function RootLayout({
       suppressHydrationWarning
       className="h-full antialiased"
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col overflow-x-hidden w-full max-w-full">
         <ThemeProvider>
           <LanguageProvider>
             <ClientProvider>
               <AntdApp>
                 {!isEmployeeDashboard && <Header />}
-                <main className="flex-grow flex flex-col">{children}</main>
+                <main className="flex-grow flex flex-col overflow-x-hidden w-full max-w-full">{children}</main>
                 {!isEmployeeDashboard && <Footer />}
               </AntdApp>
             </ClientProvider>

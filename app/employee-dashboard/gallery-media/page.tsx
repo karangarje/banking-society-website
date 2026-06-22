@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { Tabs, Table, Button, Modal, Form, Input, Select, Switch, message, Popconfirm, Image, Tag, Space, Card, Upload } from "antd";
 import type { UploadFile, UploadProps } from "antd";
+import type { ColumnsType } from "antd/es/table";
 import { PlusOutlined, DeleteOutlined, PlaySquareOutlined, FileImageOutlined, ReloadOutlined, UploadOutlined } from "@ant-design/icons";
 import { useSession } from "next-auth/react";
 
@@ -220,7 +221,7 @@ export default function GalleryMediaPage() {
       dataIndex: "imageUrl",
       key: "preview",
       width: 100,
-      render: (url) => <Image src={url} alt="preview" width={60} height={40} style={{ objectFit: "cover", borderRadius: 4 }} />,
+      render: (url: string) => <Image src={url} alt="preview" width={60} height={40} style={{ objectFit: "cover", borderRadius: 4 }} />,
     },
     {
       title: "Title (English)",
@@ -236,7 +237,7 @@ export default function GalleryMediaPage() {
       title: "Category",
       dataIndex: "category",
       key: "category",
-      render: (v) => <Tag color="blue">{v.toUpperCase()}</Tag>,
+      render: (v: string) => <Tag color="blue">{v.toUpperCase()}</Tag>,
     },
     {
       title: "Sort Order",
@@ -247,13 +248,13 @@ export default function GalleryMediaPage() {
       title: "Status",
       dataIndex: "isActive",
       key: "isActive",
-      render: (active) => <Tag color={active ? "green" : "red"}>{active ? "ACTIVE" : "INACTIVE"}</Tag>,
+      render: (active: boolean) => <Tag color={active ? "green" : "red"}>{active ? "ACTIVE" : "INACTIVE"}</Tag>,
     },
     {
       title: "Actions",
       key: "actions",
       width: 100,
-      render: (_, record) => (
+      render: (_, record: GalleryImageRow) => (
         <Popconfirm title="Delete image?" onConfirm={() => handleDeleteImage(record.id)} okText="Yes" cancelText="No">
           <Button danger icon={<DeleteOutlined />} />
         </Popconfirm>
@@ -267,7 +268,7 @@ export default function GalleryMediaPage() {
       dataIndex: "youtubeUrl",
       key: "thumbnail",
       width: 120,
-      render: (url) => {
+      render: (url: string) => {
         const id = getYoutubeId(url);
         return id ? (
           <Image
@@ -296,19 +297,19 @@ export default function GalleryMediaPage() {
       title: "Youtube URL",
       dataIndex: "youtubeUrl",
       key: "youtubeUrl",
-      render: (url) => <a href={url} target="_blank" rel="noopener noreferrer" style={{ color: "#AD002E" }}>{url}</a>,
+      render: (url: string) => <a href={url} target="_blank" rel="noopener noreferrer" style={{ color: "#AD002E" }}>{url}</a>,
     },
     {
       title: "Featured",
       dataIndex: "isFeatured",
       key: "isFeatured",
-      render: (featured) => <Tag color={featured ? "gold" : "default"}>{featured ? "FEATURED" : "NO"}</Tag>,
+      render: (featured: boolean) => <Tag color={featured ? "gold" : "default"}>{featured ? "FEATURED" : "NO"}</Tag>,
     },
     {
       title: "Actions",
       key: "actions",
       width: 100,
-      render: (_, record) => (
+      render: (_, record: GalleryVideoRow) => (
         <Popconfirm title="Delete video?" onConfirm={() => handleDeleteVideo(record.id)} okText="Yes" cancelText="No">
           <Button danger icon={<DeleteOutlined />} />
         </Popconfirm>

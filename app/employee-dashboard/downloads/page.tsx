@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Table, Button, Modal, Form, Input, Select, message, Popconfirm, Space, Upload, Card, Row, Col, Tabs } from "antd";
+import { Table, Button, Modal, Form, Input, Select, Popconfirm, Space, Upload, Card, Row, Col, Tabs, App } from "antd";
 import type { UploadFile } from "antd";
 import { PlusOutlined, DeleteOutlined, ReloadOutlined, UploadOutlined, EditOutlined, FilePdfOutlined, FileWordOutlined, FileExcelOutlined, FileOutlined } from "@ant-design/icons";
 import type { ColumnsType } from "antd/es/table";
@@ -16,6 +16,7 @@ interface DownloadRow {
 }
 
 export default function DownloadsPage() {
+  const { message } = App.useApp();
   const [data, setData] = useState<DownloadRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);

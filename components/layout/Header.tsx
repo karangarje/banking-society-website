@@ -130,8 +130,8 @@ export default function Header() {
             <div className="w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-md bg-gradient-to-br from-[#AD002E] to-[#AD002E] flex items-center justify-center font-black text-white text-base sm:text-lg shadow-md shadow-[#AD002E]/30 transition-transform duration-300 group-hover:scale-110">
               BK
             </div>
-            <div className="leading-none shrink-0">
-              <p className="text-sm sm:text-base font-extrabold text-text-main tracking-wide group-hover:text-[#AD002E] transition-colors truncate">
+            <div className="leading-none shrink-0 max-w-[130px] xs:max-w-[180px] sm:max-w-[240px] md:max-w-[300px] lg:max-w-none">
+              <p className="text-xs xs:text-sm sm:text-base font-extrabold text-text-main tracking-wide group-hover:text-[#AD002E] transition-colors truncate">
                 {t("nav.logo_title")}
               </p>
               <p className="text-[10px] sm:text-xs text-text-muted font-semibold uppercase tracking-widest mt-0.5 truncate hidden sm:block">

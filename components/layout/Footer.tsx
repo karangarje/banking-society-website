@@ -21,7 +21,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-base-card border-t border-base-border pt-16 pb-8 relative z-20 transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         
         {/* Column 1: About Society */}
         <div className="space-y-4">
@@ -120,7 +120,7 @@ export default function Footer() {
       </div>
 
       {/* Social Media & Regulatory bottom bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 mt-16 pt-8 border-t border-base-border space-y-6 transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 pt-8 border-t border-base-border space-y-6 transition-colors duration-300">
         
         {/* Social Icons & Copyright */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">

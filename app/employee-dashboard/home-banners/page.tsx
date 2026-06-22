@@ -293,29 +293,31 @@ export default function HomeBannersPage() {
 
       {/* Banner Table */}
       <Card className="shadow-sm border border-gray-100">
-        <Table
-          columns={columns}
-          dataSource={data}
-          rowKey="id"
-          loading={loading}
-          locale={{
-            emptyText: (
-              <div className="py-8 text-center">
-                <p className="text-gray-400 mb-4">No home banners uploaded yet.</p>
-                <Button
-                  type="primary"
-                  icon={<PlusOutlined />}
-                  onClick={openAddModal}
-                  style={{ backgroundColor: "#B3003C", borderColor: "#B3003C" }}
-                >
-                  Upload First Banner
-                </Button>
-              </div>
-            ),
-          }}
-        />
+        <div className="overflow-x-auto">
+          <Table
+            columns={columns}
+            dataSource={data}
+            rowKey="id"
+            loading={loading}
+            locale={{
+              emptyText: (
+                <div className="py-8 text-center">
+                  <p className="text-gray-400 mb-4">No home banners uploaded yet.</p>
+                  <Button
+                    type="primary"
+                    icon={<PlusOutlined />}
+                    onClick={openAddModal}
+                    style={{ backgroundColor: "#B3003C", borderColor: "#B3003C" }}
+                  >
+                    Upload First Banner
+                  </Button>
+                </div>
+              ),
+            }}
+          />
+        </div>
       </Card>
-
+ 
       {/* Add/Edit Modal */}
       <Modal
         title={editingId ? "Edit Home Banner" : "Add Home Banner"}
@@ -325,48 +327,49 @@ export default function HomeBannersPage() {
         confirmLoading={uploading}
         okText={editingId ? "Save Changes" : "Upload Banner"}
         okButtonProps={{ style: { backgroundColor: "#B3003C", borderColor: "#B3003C" } }}
-        width={700}
+        width="95vw"
+        style={{ maxWidth: 700 }}
       >
         <Form form={form} layout="vertical" className="mt-4">
           <Row gutter={16}>
-            <Col span={12}>
+            <Col xs={24} md={12}>
               <Form.Item name="titleEn" label="Title (English)" rules={[{ required: true, message: "English title is required" }]}>
                 <Input placeholder="e.g. Welcome to Kavad Bank" />
               </Form.Item>
             </Col>
-            <Col span={12}>
+            <Col xs={24} md={12}>
               <Form.Item name="titleMr" label="Title (Marathi)" rules={[{ required: true, message: "Marathi title is required" }]}>
                 <Input placeholder="e.g. कवाड बँकेत आपले स्वागत आहे" />
               </Form.Item>
             </Col>
           </Row>
-
+ 
           <Row gutter={16}>
-            <Col span={12}>
+            <Col xs={24} md={12}>
               <Form.Item name="subtitleEn" label="Subtitle (English)" rules={[{ required: true, message: "English subtitle is required" }]}>
                 <Input placeholder="e.g. Your Trusted Financial Partner" />
               </Form.Item>
             </Col>
-            <Col span={12}>
+            <Col xs={24} md={12}>
               <Form.Item name="subtitleMr" label="Subtitle (Marathi)" rules={[{ required: true, message: "Marathi subtitle is required" }]}>
                 <Input placeholder="e.g. आपला विश्वासू आर्थिक भागीदार" />
               </Form.Item>
             </Col>
           </Row>
-
+ 
           <Row gutter={16}>
-            <Col span={12}>
+            <Col xs={24} md={12}>
               <Form.Item name="linkUrl" label="Link URL (Optional)">
                 <Input placeholder="e.g. /services/loans" />
               </Form.Item>
             </Col>
-            <Col span={12}>
+            <Col xs={24} md={12}>
               <Form.Item name="sortingOrder" label="Sort Order" rules={[{ required: true, message: "Sort order is required" }]}>
                 <InputNumber min={0} style={{ width: "100%" }} placeholder="e.g. 1" />
               </Form.Item>
             </Col>
           </Row>
-
+ 
           <Form.Item label="Upload Banner Image" required>
             <Upload
               listType="picture"
@@ -384,7 +387,7 @@ export default function HomeBannersPage() {
                   message.error("Image file must be smaller than 5MB!");
                   return Upload.LIST_IGNORE;
                 }
-
+ 
                 setFileList([
                   {
                     uid: file.uid,
@@ -399,7 +402,7 @@ export default function HomeBannersPage() {
               <Button icon={<UploadOutlined />}>Select Image from PC (JPG, PNG, WEBP)</Button>
             </Upload>
           </Form.Item>
-
+ 
           <Form.Item name="isActive" label="Active Status" valuePropName="checked">
             <Switch />
           </Form.Item>

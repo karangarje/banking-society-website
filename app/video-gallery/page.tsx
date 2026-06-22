@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal } from "antd";
 import { 
   VideoCameraOutlined, 
@@ -100,7 +100,7 @@ export default function VideoGallery() {
     <div className="w-full bg-[#FFFFFF]">
       
       {/* Header Banner */}
-      <section className="relative py-20 bg-gradient-to-b from-[#FDFDFD] to-[#FFFFFF] border-b border-[rgba(255,255,255,0.04)] overflow-hidden">
+      <section className="relative py-12 md:py-16 lg:py-20 bg-gradient-to-b from-[#FDFDFD] to-[#FFFFFF] border-b border-[rgba(255,255,255,0.04)] overflow-hidden">
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#AD002E]/5 rounded-full blur-3xl" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative text-center space-y-4">
           <span className="inline-block mb-2 ">
@@ -116,7 +116,7 @@ export default function VideoGallery() {
       </section>
 
       {/* Video Cards Grid */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6">
+      <section className="py-12 md:py-16 lg:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {videoItems.map((video, idx) => (
             <div
@@ -124,7 +124,7 @@ export default function VideoGallery() {
               onClick={() => setSelectedVideo(video)}
               data-aos="fade-up"
               data-aos-delay={idx * 150}
-              className="group cursor-pointer rounded-2xl overflow-hidden bg-[#FDFDFD] border border-[rgba(255,255,255,0.05)] hover:border-[#AD002E] transition-all duration-300 flex flex-col md:flex-row relative"
+              className="group cursor-pointer rounded-2xl overflow-hidden bg-[#FDFDFD] border border-[rgba(255,255,255,0.05)] hover:border-[#AD002E] transition-all duration-300 flex flex-col md:flex-row relative h-full break-words max-w-full"
             >
               {/* Fake Video Thumbnail (CSS Pattern overlayed with Play Button) */}
               <div className={`relative w-full md:w-56 h-44 shrink-0 flex items-center justify-center border-b md:border-b-0 md:border-r border-[rgba(255,255,255,0.06)] ${video.thumbnailUrl}`}>
@@ -176,7 +176,7 @@ export default function VideoGallery() {
         onCancel={() => { setSelectedVideo(null); setIsPlaying(false); }}
         footer={null}
         centered
-        width={700}
+        width="95vw"
         styles={{
           mask: {
             backdropFilter: "blur(4px)",
@@ -187,6 +187,7 @@ export default function VideoGallery() {
           },
         }}
         style={{
+          maxWidth: "700px",
           backgroundColor: "#FDFDFD",
           border: "1px solid rgba(255, 255, 255, 0.1)",
           borderRadius: "12px",

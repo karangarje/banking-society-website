@@ -174,7 +174,7 @@ export default function PhotoGallery() {
     <div className="w-full bg-base-bg transition-colors duration-300">
 
       {/* Header Banner */}
-      <section className="relative py-20 bg-gradient-to-b from-base-card to-base-bg border-b border-base-border/50 overflow-hidden transition-all duration-300">
+      <section className="relative py-12 md:py-16 lg:py-20 bg-gradient-to-b from-base-card to-base-bg border-b border-base-border/50 overflow-hidden transition-all duration-300">
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#AD002E]/5 rounded-full blur-3xl" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative text-center space-y-4">
           <span className="inline-block mb-2 ">
@@ -226,14 +226,14 @@ export default function PhotoGallery() {
       </section>
 
       {/* Photo Grid */}
-      <section className="pb-20 max-w-7xl mx-auto px-4 sm:px-6">
+      <section className="pb-12 md:pb-16 lg:pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredItems.map((photo) => (
             <div
               key={photo.id}
               onClick={() => handlePhotoClick(photo)}
               data-aos="zoom-in"
-              className="group cursor-pointer rounded-xl overflow-hidden bg-base-card border border-base-border hover:border-[#AD002E] transition-all duration-300 relative shadow-sm hover:shadow"
+              className="group cursor-pointer rounded-xl overflow-hidden bg-base-card border border-base-border hover:border-[#AD002E] transition-all duration-300 relative shadow-sm hover:shadow h-full break-words max-w-full"
             >
 
               {/* Image Frame */}
@@ -293,7 +293,7 @@ export default function PhotoGallery() {
         onCancel={() => setModalOpen(false)}
         footer={null}
         centered
-        width={720}
+        width="95vw"
         styles={{
           mask: {
             backdropFilter: "blur(4px)",
@@ -304,6 +304,7 @@ export default function PhotoGallery() {
           },
         }}
         style={{
+          maxWidth: "720px",
           backgroundColor: isDark ? "#FDFDFD" : "#FFFFFF",
           border: isDark ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid rgba(0, 0, 0, 0.1)",
           borderRadius: "12px",
