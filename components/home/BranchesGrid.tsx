@@ -76,12 +76,12 @@ export default function BranchesGrid() {
 
               {/* Branch Title */}
               <span className="text-sm sm:text-base font-bold text-text-main group-hover:text-[#AD002E] transition-colors leading-tight">
-                {isMr ? branch.nameMr : branch.name}
+                {isMr ? branch.nameMr : branch.nameEn}
               </span>
 
               {/* City Tag */}
               <span className="text-xs sm:text-sm text-text-muted font-medium tracking-wider uppercase mt-1 transition-colors">
-                {isMr ? branch.cityMr : branch.city}
+                {isMr ? branch.cityMr : branch.cityEn}
               </span>
 
               {branch.isHeadOffice && (
@@ -98,7 +98,7 @@ export default function BranchesGrid() {
           title={
             <div className={`flex items-center gap-2 font-black tracking-wide ${"text-text-main"}`}>
               <EnvironmentOutlined className="text-[#AD002E]" />
-              <span>{isMr ? selectedBranch?.nameMr : selectedBranch?.name}</span>
+              <span>{isMr ? selectedBranch?.nameMr : selectedBranch?.nameEn}</span>
             </div>
           }
           placement="right"
@@ -136,7 +136,7 @@ export default function BranchesGrid() {
                   <EnvironmentOutlined className="text-[#AD002E] text-xl mt-0.5" />
                   <div>
                     <h5 className={`font-bold transition-colors ${isDark ? "text-gray-600" : "text-gray-700"}`}>{t("branches_sect.branch_address")}</h5>
-                    <p className={`mt-1 leading-relaxed transition-colors ${isDark ? "text-text-muted" : "text-gray-600"}`}>{isMr ? selectedBranch.addressMr : selectedBranch.address}</p>
+                    <p className={`mt-1 leading-relaxed transition-colors ${isDark ? "text-text-muted" : "text-gray-600"}`}>{isMr ? selectedBranch.addressMr : selectedBranch.addressEn}</p>
                   </div>
                 </div>
 
@@ -145,7 +145,7 @@ export default function BranchesGrid() {
                   <UserOutlined className="text-[#AD002E] text-xl mt-0.5" />
                   <div>
                     <h5 className={`font-bold transition-colors ${isDark ? "text-gray-600" : "text-gray-700"}`}>{t("branches_sect.branch_manager")}</h5>
-                    <p className={`mt-1 transition-colors ${isDark ? "text-text-muted" : "text-gray-600"}`}>{selectedBranch.manager}</p>
+                    <p className={`mt-1 transition-colors ${isDark ? "text-text-muted" : "text-gray-600"}`}>{isMr ? selectedBranch.managerMr : selectedBranch.managerEn}</p>
                   </div>
                 </div>
 
@@ -155,7 +155,7 @@ export default function BranchesGrid() {
                   <div>
                     <h5 className={`font-bold transition-colors ${isDark ? "text-gray-600" : "text-gray-700"}`}>{t("branches_sect.contact_number")}</h5>
                     <a href={`tel:${selectedBranch.phone}`} className={`transition-colors mt-1 block ${isDark ? "text-gray-600 hover:text-[#AD002E]" : "text-gray-600 hover:text-[#AD002E]"}`}>
-                      {isMr && selectedBranch.phoneMr ? selectedBranch.phoneMr : selectedBranch.phone}
+                      {selectedBranch.phone}
                     </a>
                   </div>
                 </div>
@@ -176,7 +176,7 @@ export default function BranchesGrid() {
                   <ClockCircleOutlined className="text-[#AD002E] text-xl mt-0.5" />
                   <div>
                     <h5 className={`font-bold transition-colors ${isDark ? "text-gray-600" : "text-gray-700"}`}>{t("branches_sect.operational_hours")}</h5>
-                    <p className={`mt-1 leading-relaxed transition-colors ${isDark ? "text-text-muted" : "text-gray-600"}`}>{isMr ? selectedBranch.hoursMr : selectedBranch.hours}</p>
+                    <p className={`mt-1 leading-relaxed transition-colors ${isDark ? "text-text-muted" : "text-gray-600"}`}>{isMr ? selectedBranch.hoursMr : selectedBranch.hoursEn}</p>
                   </div>
                 </div>
 
@@ -187,7 +187,7 @@ export default function BranchesGrid() {
                 <Button
                   type="primary"
                   icon={<CompassOutlined />}
-                  href={selectedBranch.mapLink}
+                  href={selectedBranch.mapUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full bg-[#AD002E] hover:bg-[#850024] border border-[#850024] hover:border-[#AD002E] text-sm font-black uppercase tracking-wider py-5 flex items-center justify-center shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
