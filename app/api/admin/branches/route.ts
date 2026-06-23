@@ -24,10 +24,15 @@ export async function POST(req: NextRequest) {
     const data = await req.json();
     const item = await prisma.branch.create({
       data: {
-        name: data.name,
-        address: data.address,
+        nameEn: data.nameEn,
+        nameMr: data.nameMr,
+        addressEn: data.addressEn,
+        addressMr: data.addressMr,
+        cityEn: data.cityEn,
+        cityMr: data.cityMr,
         contact: data.contact,
-        managerName: data.managerName,
+        managerNameEn: data.managerNameEn,
+        managerNameMr: data.managerNameMr,
         googleMapUrl: data.googleMapUrl,
         imageUrl: data.imageUrl,
       },
@@ -38,7 +43,7 @@ export async function POST(req: NextRequest) {
         userId: (session.user as any)?.id,
         userRole: (session.user as any)?.role,
         action: "CREATE_BRANCH",
-        details: `Created branch: ${item.name}`,
+        details: `Created branch: ${item.nameEn}`,
       },
     });
 

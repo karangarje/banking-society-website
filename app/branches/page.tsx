@@ -29,22 +29,22 @@ export default function Branches() {
           const json = await res.json();
           if (json && json.length > 0) {
             const mapped = json.map((b: any) => {
-              const isNighoj = b.name.includes("निघोज") || b.name.toLowerCase().includes("nighoj");
               return {
                 id: b.id,
-                name: b.name,
-                nameMr: b.name,
-                city: isNighoj ? "Nighoj" : "Other",
-                cityMr: isNighoj ? "निघोज" : "इतर",
-                address: b.address,
-                addressMr: b.address,
+                nameEn: b.nameEn,
+                nameMr: b.nameMr,
+                addressEn: b.addressEn,
+                addressMr: b.addressMr,
+                cityEn: b.cityEn,
+                cityMr: b.cityMr,
                 phone: b.contact,
                 email: "info@kavadbank.com",
-                manager: b.managerName,
-                hours: "10:00 AM - 5:00 PM",
-                hoursMr: "सकाळी १०:०० ते संध्याकाळी ०५:००",
-                mapLink: b.googleMapUrl || "#",
-                isHeadOffice: b.name.toLowerCase().includes("head") || b.name.toLowerCase().includes("main") || b.name.includes("मुख्य")
+                managerEn: b.managerNameEn,
+                managerMr: b.managerNameMr,
+                hoursEn: "Mon - Sat: 10:00 AM - 5:00 PM (2nd & 4th Sat Holiday)",
+                hoursMr: "सोम - शनि: सकाळी १०:०० - सायंकाळी ५:०० (२रा व ४था शनिवार सुटी)",
+                mapUrl: b.googleMapUrl || "#",
+                isHeadOffice: b.nameEn.toLowerCase().includes("head") || b.nameEn.toLowerCase().includes("main") || b.nameMr.includes("मुख्य")
               };
             });
             setDynamicBranches(mapped);
@@ -61,7 +61,7 @@ export default function Branches() {
 
   const cities = isMr
     ? ["सर्व", ...Array.from(new Set(branchesList.map((b) => b.cityMr)))]
-    : ["All", ...Array.from(new Set(branchesList.map((b) => b.city)))];
+    : ["All", ...Array.from(new Set(branchesList.map((b) => b.cityEn)))];
 
   // Reset city filter when language changes
   useEffect(() => {
@@ -71,15 +71,16 @@ export default function Branches() {
   const filteredBranches = branchesList.filter((branch) => {
     const term = searchTerm.toLowerCase();
     const matchesSearch =
-      branch.name.toLowerCase().includes(term) ||
+      branch.nameEn.toLowerCase().includes(term) ||
       branch.nameMr.includes(searchTerm) ||
-      branch.address.toLowerCase().includes(term) ||
+      branch.addressEn.toLowerCase().includes(term) ||
       branch.addressMr.includes(searchTerm) ||
-      branch.manager.toLowerCase().includes(term);
+      branch.managerEn.toLowerCase().includes(term) ||
+      branch.managerMr.includes(searchTerm);
 
     const matchesCity =
       (isMr ? selectedCity === "सर्व" : selectedCity === "All") ||
-      (isMr ? branch.cityMr === selectedCity : branch.city === selectedCity);
+      (isMr ? branch.cityMr === selectedCity : branch.cityEn === selectedCity);
 
     return matchesSearch && matchesCity;
   });
@@ -91,7 +92,7 @@ export default function Branches() {
       <section className="relative py-20 bg-gradient-to-b from-base-card to-base-bg border-b border-base-border/50 overflow-hidden transition-all duration-300">
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#AD002E]/5 rounded-full blur-3xl" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative text-center space-y-4">
-          <span className="inline-block mb-2 ">
+          <span className="inline-block mb-2 text-sm font-bold text-[#AD002E] bg-[#AD002E]/10 px-3 py-1 rounded-full uppercase tracking-wider">
             {isMr ? "आमचे नेटवर्क" : "Our Network"}
           </span>
           <h1 className="text-4xl sm:text-6xl font-black text-text-main tracking-tight transition-colors duration-300">
@@ -99,8 +100,8 @@ export default function Branches() {
           </h1>
           <p className="text-base text-text-muted max-w-2xl mx-auto leading-relaxed transition-colors duration-300">
             {isMr
-              ? "विभागातील सर्व १२ शाखांचे पत्ते, संपर्क, कार्यालयीन वेळा आणि नकाशे येथे पहा."
-              : "Find addresses, contact desks, operating hours, and maps for all 12 operational branches across the region."}
+              ? "विभागातील आमच्या सर्व शाखांचे पत्ते, संपर्क, कार्यालयीन वेळा आणि नकाशे येथे पहा."
+              : "Find addresses, contact desks, operating hours, and maps for all operational branches across the region."}
           </p>
         </div>
       </section>
@@ -124,7 +125,7 @@ export default function Branches() {
           {/* City Selector */}
           <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">
             <span className="text-sm font-bold text-text-muted uppercase mr-2 shrink-0 transition-colors">
-              {isMr ? "शहरानुसार:" : "Filter by City:"}
+              {isMr ? "शहरानुसार फिल्टर:" : "Filter by City:"}
             </span>
             {cities.map((city) => (
               <button
@@ -159,15 +160,15 @@ export default function Branches() {
                 <div className="flex justify-between items-start mb-4">
                   <div>
                     <h3 className="text-lg font-extrabold text-text-main group-hover:text-[#AD002E] transition-colors leading-tight">
-                      {isMr ? branch.nameMr : branch.name}
+                      {isMr ? branch.nameMr : branch.nameEn}
                     </h3>
                     <span className="text-sm text-[#AD002E] font-bold uppercase tracking-wider">
-                      {isMr ? branch.cityMr : branch.city}
+                      {isMr ? branch.cityMr : branch.cityEn}
                     </span>
                   </div>
                   {branch.isHeadOffice && (
                     <span className="text-xs bg-[#AD002E] text-white border border-[#850024] px-2 py-0.5 rounded font-black uppercase tracking-wider">
-                      {isMr ? "मुख्य कार्यालय" : "H.O."}
+                      {isMr ? "मुख्य कार्यालय" : "Head Office"}
                     </span>
                   )}
                 </div>
@@ -176,11 +177,16 @@ export default function Branches() {
                 <div className="space-y-3.5 text-sm text-text-muted border-t border-base-border/50 pt-4 flex-grow transition-colors duration-300">
                   <div className="flex gap-2 items-start">
                     <EnvironmentOutlined className="text-[#AD002E] mt-0.5 shrink-0" />
-                    <span>{isMr ? branch.addressMr : branch.address}</span>
+                    <span>{isMr ? branch.addressMr : branch.addressEn}</span>
                   </div>
                   <div className="flex gap-2 items-center">
                     <UserOutlined className="text-[#AD002E] shrink-0" />
-                    <span>{isMr ? "व्यवस्थापक" : "Manager"}: <strong className="text-text-main transition-colors">{branch.manager}</strong></span>
+                    <span>
+                      {isMr ? "शाखा व्यवस्थापक" : "Branch Manager"}:{" "}
+                      <strong className="text-text-main transition-colors">
+                        {isMr ? branch.managerMr : branch.managerEn}
+                      </strong>
+                    </span>
                   </div>
                   <div className="flex gap-2 items-center">
                     <PhoneOutlined className="text-[#AD002E] shrink-0" />
@@ -196,14 +202,14 @@ export default function Branches() {
                   </div>
                   <div className="flex gap-2 items-start">
                     <ClockCircleOutlined className="text-[#AD002E] mt-0.5 shrink-0" />
-                    <span className="leading-relaxed text-sm">{isMr ? branch.hoursMr : branch.hours}</span>
+                    <span className="leading-relaxed text-sm">{isMr ? branch.hoursMr : branch.hoursEn}</span>
                   </div>
                 </div>
 
                 {/* Card footer CTA */}
                 <div className="pt-6 mt-6 border-t border-base-border/50 transition-colors duration-300">
                   <a
-                    href={branch.mapLink}
+                    href={branch.mapUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full flex items-center justify-center gap-1.5 bg-base-card hover:bg-[#AD002E] border border-base-border hover:border-[#AD002E] text-text-main hover:text-white py-2 rounded text-sm font-black uppercase tracking-wider transition-all duration-300"

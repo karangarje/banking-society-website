@@ -8,62 +8,74 @@ const branches = [
     en: "Pune Main Branch",
     mr: "पुणे मुख्य शाखा",
     city: "PUNE",
-    badge: "मुख्य कार्यालय",
+    cityMr: "पुणे",
+    badge: true,
   },
   {
     en: "Mumbai Fort Branch",
     mr: "मुंबई फोर्ट शाखा",
     city: "MUMBAI",
+    cityMr: "मुंबई",
   },
   {
     en: "Nashik Road Branch",
     mr: "नाशिक रोड शाखा",
     city: "NASHIK",
+    cityMr: "नाशिक",
   },
   {
     en: "Nagpur City Branch",
     mr: "नागपूर शहर शाखा",
     city: "NAGPUR",
+    cityMr: "नागपूर",
   },
   {
     en: "Aurangabad Central Branch",
     mr: "छत्रपती संभाजीनगर मध्य शाखा",
     city: "AURANGABAD",
+    cityMr: "छत्रपती संभाजीनगर",
   },
   {
     en: "Kolhapur Market Branch",
     mr: "कोल्हापूर मार्केट शाखा",
     city: "KOLHAPUR",
+    cityMr: "कोल्हापूर",
   },
   {
     en: "Satara Road Branch",
     mr: "सातारा रोड शाखा",
     city: "SATARA",
+    cityMr: "सातारा",
   },
   {
     en: "Sangli Center Branch",
     mr: "सांगली केंद्र शाखा",
     city: "SANGLI",
+    cityMr: "सांगली",
   },
   {
     en: "Solapur City Branch",
     mr: "सोलापूर शहर शाखा",
     city: "SOLAPUR",
+    cityMr: "सोलापूर",
   },
   {
     en: "Ahmednagar Branch",
     mr: "अहमदनगर शाखा",
     city: "AHMEDNAGAR",
+    cityMr: "अहमदनगर",
   },
   {
     en: "Ratnagiri Coast Branch",
     mr: "रत्नागिरी किनारपट्टी शाखा",
     city: "RATNAGIRI",
+    cityMr: "रत्नागिरी",
   },
   {
     en: "Thane West Branch",
     mr: "ठाणे पश्चिम शाखा",
     city: "THANE",
+    cityMr: "ठाणे",
   },
 ];
 
@@ -77,12 +89,12 @@ export default function BranchesSection() {
 
         {/* Heading */}
         <h2 className="text-4xl md:text-5xl font-bold text-center">
-          {isMr ? "आमच्या शाखा" : "Our Branches"}
+          {isMr ? "आमचे नेटवर्क" : "Our Network"}
         </h2>
 
         <p className="text-text-muted text-center mt-2 mb-10">
           {isMr
-            ? "महाराष्ट्रातील आमच्या सर्व शाखा येथे दिल्या आहेत"
+            ? "महाराष्ट्रातील आमच्या सर्व शाखा येथे दिलेल्या आहेत"
             : "All our branches across Maharashtra are listed below"}
         </p>
 
@@ -104,11 +116,13 @@ export default function BranchesSection() {
               </h3>
 
               {/* City */}
-              <p className="text-sm text-text-muted mt-1">{b.city}</p>
+              <p className="text-sm text-text-muted mt-1">
+                {isMr ? b.cityMr : b.city}
+              </p>
 
               {/* Badge – shown only for head office */}
               {b.badge && (
-                <span className="inline-block mt-3 text-sm bg-red-700 px-2 py-1 rounded">
+                <span className="inline-block mt-3 text-sm bg-red-700 px-2 py-1 rounded text-white">
                   {isMr ? "मुख्य कार्यालय" : "Head Office"}
                 </span>
               )}

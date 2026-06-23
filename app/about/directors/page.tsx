@@ -13,7 +13,7 @@ const content = {
   en: {
     legacy: "Our Legacy",
     title: "About Our Co-operative Society",
-    subtitle: "Building trusted bridges of credit and prosperity for businesses, farmers, and families since 1998.",
+    subtitle: "Building trusted bridges of credit and prosperity for businesses, farmers, and families since 1997.",
     visionTitle: "Our Vision",
     visionDesc: "To emerge as the most trusted, technology-driven, and socially-responsible financial co-operative society in Maharashtra, offering high-returns on deposits and seamless credit to empower common citizens.",
     missionTitle: "Our Mission",
@@ -58,7 +58,7 @@ const content = {
   mr: {
     legacy: "आमचा वारसा",
     title: "आमच्या सहकारी संस्थेबद्दल",
-    subtitle: "१९९८ पासून व्यवसाय, शेतकरी आणि कुटुंबांच्या प्रगतीसाठी विश्वासार्ह आर्थिक सेवा.",
+    subtitle: "१९९७ पासून व्यवसाय, शेतकरी आणि कुटुंबांच्या प्रगतीसाठी विश्वासार्ह आर्थिक सेवा.",
     visionTitle: "आमची दृष्टी",
     visionDesc: "महाराष्ट्रातील सर्वाधिक विश्वासार्ह, तंत्रज्ञानाधारित आणि सामाजिकदृष्ट्या उत्तरदायी सहकारी संस्था बनणे.",
     missionTitle: "आमचे ध्येय",
@@ -135,7 +135,7 @@ export default function About() {
 
   const milestones = [
     {
-      year: isMr ? "१९९८" : "1998",
+      year: isMr ? "१९९७" : "1997",
       title: isMr ? "स्थापना व पहिली शाखा" : "Inception & First Branch",
       desc: isMr ? "निघोज येथे १५० सभासदांसह संस्थेची स्थापना." : "Founded in Nighoj village (Ahmednagar) with 150 members to cater to rural microfinance."
     },

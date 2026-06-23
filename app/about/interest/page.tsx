@@ -24,11 +24,11 @@ import { useLanguage } from "@/components/theme/LanguageContext";
 
 const content = {
   en: {
-    heroTitle: "व्याजदर माहिती",
-    heroSubtitle: "बाबासाहेब कावड नागरी सहकारी पतसंस्था मर्या., निघोज",
-    heroDesc: "सभासदांसाठी आकर्षक ठेव योजना व स्पर्धात्मक कर्ज व्याजदर.",
+    heroTitle: "Interest Rate Information",
+    heroSubtitle: "Babasaheb Kavad Nagari Sahakari Patsanstha Ltd., Nighoj",
+    heroDesc: "Attractive deposit schemes and competitive loan interest rates for members.",
     legacy: "About Us",
-    title: "Interest Rates (व्याजदर)",
+    title: "Interest Rates",
     subtitle: "Transparent and highly beneficial rate structure for our valued members",
     
     navHero: "Overview",
@@ -38,7 +38,7 @@ const content = {
     navStats: "Quick Stats",
     printButton: "Print Rates",
 
-    depositTitle: "ठेव व्याजदर (Deposit Interest Rates)",
+    depositTitle: "Deposit Interest Rates",
     depositSubtitle: "Attractive and safe deposit schemes designed for maximum growth",
     colDepositType: "Deposit Type",
     colDuration: "Period / Duration",
@@ -53,35 +53,35 @@ const content = {
     pensionPeriod: "3 Years",
     noPeriod: "-",
 
-    specialTitle: "विशेष ठेव योजना (Special Schemes)",
+    specialTitle: "Special Schemes",
     specialSubtitle: "Exclusive savings plans offering exponential returns",
-    lakhpatiTitle: "लखपती ठेव योजना",
+    lakhpatiTitle: "Lakhpati Deposit Scheme",
     lakhpatiSubtitle: "Lakhpati Deposit Scheme",
-    lakhpatiPeriod: "Period: 5 Years (५ वर्षे)",
-    lakhpatiSanctitTitle: "लखपती संचित ठेव",
+    lakhpatiPeriod: "Period: 5 Years",
+    lakhpatiSanctitTitle: "Lakhpati Cumulative Deposit",
     lakhpatiSanctitSubtitle: "Lakhpati Cumulative Deposit",
-    lakhpatiSanctitPeriod: "Period: 5 Years (५ वर्षे)",
+    lakhpatiSanctitPeriod: "Period: 5 Years",
     monthlyLabel: "monthly",
     maturityLabel: "Maturity",
 
-    loanTitle: "कर्ज व्याजदर (Loan Interest Rates)",
+    loanTitle: "Loan Interest Rates",
     loanSubtitle: "Empowering your dreams and ventures with competitive credit rates",
     colLoanType: "Loan Category",
     colLoanRate: "Interest Rate (p.a.)",
-    goldLoan: "Gold Loan (सोने तारण कर्ज)",
-    businessLoan: "Business Loan (व्यवसाय कर्ज)",
-    vehicleLoan: "Vehicle Loan (वाहन तारण कर्ज)",
-    personalLoan: "Personal Loan (वैयक्तिक कर्ज)",
-    cashCreditLoan: "Cash Credit Loan (कॅश क्रेडिट कर्ज)",
-    propertyLoan: "Property Loan (स्थावर तारण कर्ज)",
-    depositAgainstLoan: "Loan Against Deposit (ठेव तारण कर्ज)",
+    goldLoan: "Gold Loan",
+    businessLoan: "Business Loan",
+    vehicleLoan: "Vehicle Loan",
+    personalLoan: "Personal Loan",
+    cashCreditLoan: "Cash Credit Loan",
+    propertyLoan: "Property Loan",
+    depositAgainstLoan: "Loan Against Deposit",
     depositAgainstLoanDesc: "Related Deposit Rate + 2%",
 
-    noticeTitle: "महत्त्वाची टीप (Important Notice)",
+    noticeTitle: "Important Notice",
     noticeText1: "Interest rates are subject to change from time to time according to the society's policies.",
     noticeText2: "For more details and custom queries, please contact your nearest branch.",
 
-    statsTitle: "वित्तीय स्थिती (Financial Stats 2024-25)",
+    statsTitle: "Financial Stats (2024-25)",
     statsSubtitle: "Key milestones achieved from our Annual Report 2024-2025",
     statDeposits: "Total Deposits",
     statLoans: "Total Loan Distribution",
@@ -97,7 +97,7 @@ const content = {
     heroSubtitle: "बाबासाहेब कावड नागरी सहकारी पतसंस्था मर्या., निघोज",
     heroDesc: "सभासदांसाठी आकर्षक ठेव योजना व स्पर्धात्मक कर्ज व्याजदर.",
     legacy: "आमच्याबद्दल",
-    title: "व्याजदर (Interest Rates)",
+    title: "व्याजदर",
     subtitle: "आमच्या आदरणीय सभासदांसाठी पारदर्शक आणि अत्यंत फायदेशीर व्याजदर रचना",
     
     navHero: "आढावा",
@@ -125,10 +125,10 @@ const content = {
     specialTitle: "विशेष ठेव योजना",
     specialSubtitle: "तुमची संपत्ती वेगाने वाढवण्यासाठी डिझाइन केलेल्या विशेष ठेव योजना",
     lakhpatiTitle: "लखपती ठेव योजना",
-    lakhpatiSubtitle: "Lakhpati Deposit Scheme",
+    lakhpatiSubtitle: "लखपती ठेव योजना",
     lakhpatiPeriod: "कालावधी: ५ वर्षे",
     lakhpatiSanctitTitle: "लखपती संचित ठेव",
-    lakhpatiSanctitSubtitle: "Lakhpati Cumulative Deposit",
+    lakhpatiSanctitSubtitle: "लखपती संचित ठेव",
     lakhpatiSanctitPeriod: "कालावधी: ५ वर्षे",
     monthlyLabel: "प्रति महिना",
     maturityLabel: "मॅच्युरिटी",
@@ -146,7 +146,7 @@ const content = {
     depositAgainstLoan: "ठेव तारण कर्ज",
     depositAgainstLoanDesc: "संबंधित ठेव व्याजदर + २%",
 
-    noticeTitle: "टीप:",
+    noticeTitle: "महत्त्वाची टीप",
     noticeText1: "व्याजदर संस्थेच्या धोरणानुसार वेळोवेळी बदलू शकतात.",
     noticeText2: "अधिक माहितीसाठी जवळच्या शाखेशी संपर्क साधावा.",
 
@@ -454,9 +454,9 @@ export default function InterestPage() {
                     {isMr ? "गुंतवणूक" : "Investment"}
                   </div>
                   <div className="flex items-center gap-3 text-lg font-black text-[#AD002E]">
-                    <span>₹३२,५००</span>
+                    <span>{isMr ? "₹३२,५००" : "₹32,500"}</span>
                     <ArrowRightOutlined className="text-xs text-text-muted" />
-                    <span className="px-2 py-0.5 text-xs bg-[#AD002E]/10 rounded">{t.maturityLabel} ₹५०,०००</span>
+                    <span className="px-2 py-0.5 text-xs bg-[#AD002E]/10 rounded">{t.maturityLabel} {isMr ? "₹५०,०००" : "₹50,000"}</span>
                   </div>
                 </div>
 
@@ -465,9 +465,9 @@ export default function InterestPage() {
                     {isMr ? "गुंतवणूक" : "Investment"}
                   </div>
                   <div className="flex items-center gap-3 text-lg font-black text-[#AD002E]">
-                    <span>₹६५,०००</span>
+                    <span>{isMr ? "₹६५,०००" : "₹65,000"}</span>
                     <ArrowRightOutlined className="text-xs text-text-muted" />
-                    <span className="px-2 py-0.5 text-xs bg-[#AD002E]/10 rounded">{t.maturityLabel} ₹१,००,०००</span>
+                    <span className="px-2 py-0.5 text-xs bg-[#AD002E]/10 rounded">{t.maturityLabel} {isMr ? "₹१,००,०००" : "₹1,00,000"}</span>
                   </div>
                 </div>
               </div>
@@ -495,9 +495,9 @@ export default function InterestPage() {
                     {isMr ? "मासिक ठेव" : "Monthly Installment"}
                   </div>
                   <div className="flex items-center gap-3 text-lg font-black text-[#AD002E]">
-                    <span>₹६५० / {t.monthlyLabel}</span>
+                    <span>{isMr ? "₹६५०" : "₹650"} / {t.monthlyLabel}</span>
                     <ArrowRightOutlined className="text-xs text-text-muted" />
-                    <span className="px-2 py-0.5 text-xs bg-[#AD002E]/10 rounded">{t.maturityLabel} ₹५०,०००</span>
+                    <span className="px-2 py-0.5 text-xs bg-[#AD002E]/10 rounded">{t.maturityLabel} {isMr ? "₹५०,०००" : "₹50,000"}</span>
                   </div>
                 </div>
 
@@ -506,9 +506,9 @@ export default function InterestPage() {
                     {isMr ? "मासिक ठेव" : "Monthly Installment"}
                   </div>
                   <div className="flex items-center gap-3 text-lg font-black text-[#AD002E]">
-                    <span>₹१३०० / {t.monthlyLabel}</span>
+                    <span>{isMr ? "₹१,३००" : "₹1,300"} / {t.monthlyLabel}</span>
                     <ArrowRightOutlined className="text-xs text-text-muted" />
-                    <span className="px-2 py-0.5 text-xs bg-[#AD002E]/10 rounded">{t.maturityLabel} ₹१,००,०००</span>
+                    <span className="px-2 py-0.5 text-xs bg-[#AD002E]/10 rounded">{t.maturityLabel} {isMr ? "₹१,००,०००" : "₹1,00,000"}</span>
                   </div>
                 </div>
               </div>

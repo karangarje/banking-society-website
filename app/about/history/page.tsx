@@ -21,18 +21,18 @@ const content = {
   en: {
     legacy: "Our Legacy",
     title: "About Our Co-operative Society",
-    subtitle: "Building trusted bridges of credit and prosperity for businesses, farmers, and families since 1998.",
+    subtitle: "Building trusted bridges of credit and prosperity for businesses, farmers, and families since 1997.",
     visionTitle: "Our Vision",
     visionDesc: "To emerge as the most trusted, technology-driven, and socially-responsible financial co-operative society in Maharashtra, offering high-returns on deposits and seamless credit to empower common citizens.",
     missionTitle: "Our Mission",
     missionDesc: "To provide affordable financial schemes, reduce paperwork barriers, maintain absolute financial integrity through Class \"A\" governance, and deliver digital banking benefits directly to rural and urban households.",
     leadership: "Leadership Statement",
     chairmanTitle: "Message from the Chairman",
-    chairmanImageLabel: "Society Chairman",
-    chairmanPara1: "Dear Members and Partners, since our foundation in 1998, Babasaheb Kavad Patsanstha has operated on the absolute foundation of mutual benefit and financial safety. We understand that every rupee you deposit with us represents hard-earned labor and future dreams. That is why our board and management execute the strictest risk policies to safeguard your funds.",
-    chairmanPara2: "Our continuous Class 'A' Auditing status stands as testament to our compliance. As we step into the digital banking era, we are modernizing our services, providing real-time SMS alerts, instant online transfers, and merchant support services, without losing the warm relationship-driven service that defines our co-operative.",
+    chairmanImageLabel: "Chairman",
+    chairmanPara1: "Dear Members and Partners,\n\nSince our establishment in 1997, Babasaheb Kavad Nighoj Nagari Sahakari Patsanstha has remained committed to providing reliable and member-focused financial services. The continued trust of our members, strong financial performance, and Class 'A' Audit Grade reflect our dedication to transparency, compliance, and responsible growth.",
+    chairmanPara2: "During the financial year 2024–25, the institution continued to strengthen its position with more than 24,183 members, deposits exceeding ₹269.46 crore, and a loan portfolio of over ₹169.22 crore. These achievements have been possible because of the confidence placed in us by our members, customers, employees, and well-wishers.\n\nWe remain committed to expanding quality financial services while preserving the cooperative values on which our institution was founded.",
     inCooperation: "In Co-operation,",
-    chairmanPost: "Chairman, Babasaheb Kavad Patsanstha",
+    chairmanPost: "Chairman, Babasaheb Kavad Nighoj Nagari Sahakari Patsanstha",
     timelineTitle: "Our Journey Through Time",
     timelineSubtitle: "From a tiny room in Nighoj village to a state-wide network, here are our major milestones.",
     nighojTitle: "Nighoj Kund – Natural Wonder Near Morachi Chincholi",
@@ -66,18 +66,18 @@ const content = {
   mr: {
     legacy: "आमचा वारसा",
     title: "आमच्या सहकारी संस्थेबद्दल",
-    subtitle: "१९९८ पासून व्यवसाय, शेतकरी आणि कुटुंबांच्या प्रगतीसाठी विश्वासार्ह आर्थिक सेवा.",
+    subtitle: "१९९७ पासून व्यवसाय, शेतकरी आणि कुटुंबांच्या प्रगतीसाठी विश्वासार्ह आर्थिक सेवा.",
     visionTitle: "आमची दृष्टी",
     visionDesc: "महाराष्ट्रातील सर्वाधिक विश्वासार्ह, तंत्रज्ञानाधारित आणि सामाजिकदृष्ट्या उत्तरदायी सहकारी संस्था बनणे.",
     missionTitle: "आमचे ध्येय",
     missionDesc: "परवडणाऱ्या आर्थिक योजना उपलब्ध करून देणे, पारदर्शकता राखणे आणि ग्रामीण तसेच शहरी भागांपर्यंत डिजिटल बँकिंग पोहोचवणे.",
     leadership: "नेतृत्व विधान",
     chairmanTitle: "अध्यक्षांचा संदेश",
-    chairmanImageLabel: "संस्थेचे अध्यक्ष",
-    chairmanPara1: "प्रिय सभासद व हितचिंतकांनो,\n१९९८ पासून बाबासाहेब कवाद पतसंस्था विश्वास, सुरक्षितता आणि पारदर्शकतेच्या तत्त्वांवर कार्यरत आहे. आम्हाला माहित आहे की आपण आमच्याकडे जमा केलेला प्रत्येक रुपया हा आपल्या कष्टाचा आणि भविष्यातील स्वप्नांचा आहे. म्हणूनच तुमचे पैसे सुरक्षित ठेवण्यासाठी आमचे मंडळ आणि व्यवस्थापन अत्यंत कडक जोखीम धोरणे राबवते.",
-    chairmanPara2: "आमचा सातत्यपूर्ण 'वर्ग अ' लेखापरीक्षण दर्जा आमच्या नियमांच्या पालनाची साक्ष देतो. आपण डिजिटल बँकिंगच्या युगात पाऊल टाकत असताना, आमच्या सहकारी संस्थेचे वैशिष्ट्य असणारी जिव्हाळ्याची नातेसंबंध-आधारित सेवा न गमावता, आम्ही रिअल-टाइम एसएमएस अलर्ट, इन्स्टंट ऑनलाईन ट्रान्सफर आणि व्यापारी सहाय्य सेवा प्रदान करून आमच्या सेवा आधुनिक करत आहोत.",
+    chairmanImageLabel: "अध्यक्ष",
+    chairmanPara1: "प्रिय सभासद आणि भागीदारांनो,\n\n१९९७ मधील आमच्या स्थापनेपासून, बाबासाहेब कवाद निघोज नागरी सहकारी पतसंस्था विश्वसनीय आणि सभासद-केंद्रित आर्थिक सेवा प्रदान करण्यासाठी कटिबद्ध आहे. आमच्या सभासदांचा सातत्यपूर्ण विश्वास, मजबूत आर्थिक कामगिरी आणि ऑडिट वर्ग 'अ' मानांकन हे आमची पारदर्शकता, नियमपालन आणि जबाबदार वाढीची वचनबद्धता दर्शवतात.",
+    chairmanPara2: "आर्थिक वर्ष २०२४-२५ दरम्यान, संस्थेने २४,१८३ पेक्षा जास्त सभासद, ₹२६९.४६ कोटींपेक्षा जास्त ठेवी आणि ₹१६९.२२ कोटींपेक्षा जास्त कर्ज वितरणासह आपले स्थान मजबूत करणे सुरू ठेवले. हे यश आमचे सभासद, ग्राहक, कर्मचारी आणि हितचिंतकांनी आमच्यावर दाखवलेल्या विश्वासामुळे शक्य झाले आहे.\n\nआमच्या संस्थेची स्थापना ज्या सहकार मूल्यांवर झाली आहे ती मूल्ये जपत दर्जेदार आर्थिक सेवांचा विस्तार करण्यासाठी आम्ही कटिबद्ध आहोत.",
     inCooperation: "सहकार्याबद्दल धन्यवाद,",
-    chairmanPost: "अध्यक्ष, बाबासाहेब कवाद पतसंस्था",
+    chairmanPost: "अध्यक्ष, बाबासाहेब कवाद निघोज नागरी सहकारी पतसंस्था",
     timelineTitle: "आमचा प्रवास",
     timelineSubtitle: "निघोज गावातील एका छोट्या खोलीपासून ते राज्यभरातील नेटवर्कपर्यंत, आमचे काही महत्त्वाचे टप्पे खालीलप्रमाणे आहेत.",
     nighojTitle: "निघोज कुंड - आशियातील सर्वात मोठी नैसर्गिक नदीची रांजणखळगे",
@@ -135,7 +135,7 @@ export default function About() {
         if (res.ok) {
           const map = await res.json();
           const lang = locale;
-          
+
           if (map["about.vision"]?.[lang]) {
             setVisionText(map["about.vision"][lang]);
           }
@@ -158,7 +158,7 @@ export default function About() {
 
   const milestones = [
     {
-      year: isMr ? "१९९८" : "1998",
+      year: isMr ? "१९९७" : "1997",
       title: isMr ? "स्थापना व पहिली शाखा" : "Inception & First Branch",
       desc: isMr ? "निघोज येथे १५० सभासदांसह संस्थेची स्थापना." : "Founded in Nighoj village (Ahmednagar) with 150 members to cater to rural microfinance."
     },
@@ -250,7 +250,7 @@ export default function About() {
                 </div>
                 <div className="z-10 bg-base-bg/90 p-3 rounded-lg border border-base-border text-center transition-all duration-300">
                   <h4 className={`text-base font-bold transition-colors duration-300 ${"text-text-main"
-                    }`}>{isMr ? "श्री. सोपानराव कवड" : "Shri. Sopanrao Kavad"}</h4>
+                    }`}>{isMr ? "श्री. वसंत बाबासाहेब कवाद" : "Shri. Vasant Babasaheb Kavad"}</h4>
                   <p className="text-sm text-[#AD002E] font-semibold mt-0.5">{t.chairmanImageLabel}</p>
                 </div>
               </div>
@@ -274,7 +274,7 @@ export default function About() {
               <p className={`text-sm font-bold transition-colors ${isDark ? "text-text-muted" : "text-gray-500"
                 }`}>{t.inCooperation}</p>
               <p className={`text-base font-extrabold mt-0.5 transition-colors ${"text-text-main"
-                }`}>{isMr ? "श्री. सोपानराव कवड" : "Shri. Sopanrao Kavad"}</p>
+                }`}>{isMr ? "श्री. वसंत बाबासाहेब कवाद" : "Shri. Vasant Babasaheb Kavad"}</p>
               <p className={`text-sm transition-colors ${isDark ? "text-text-muted" : "text-gray-500"
                 }`}>{t.chairmanPost}</p>
             </div>

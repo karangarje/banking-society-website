@@ -16,10 +16,15 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
     const item = await prisma.branch.update({
       where: { id },
       data: {
-        name: data.name,
-        address: data.address,
+        nameEn: data.nameEn,
+        nameMr: data.nameMr,
+        addressEn: data.addressEn,
+        addressMr: data.addressMr,
+        cityEn: data.cityEn,
+        cityMr: data.cityMr,
         contact: data.contact,
-        managerName: data.managerName,
+        managerNameEn: data.managerNameEn,
+        managerNameMr: data.managerNameMr,
         googleMapUrl: data.googleMapUrl,
         imageUrl: data.imageUrl,
       },
@@ -30,7 +35,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
         userId: (session.user as any)?.id,
         userRole: (session.user as any)?.role,
         action: "UPDATE_BRANCH",
-        details: `Updated branch: ${item.name}`,
+        details: `Updated branch: ${item.nameEn}`,
       },
     });
 
@@ -61,7 +66,7 @@ export async function DELETE(req: NextRequest, { params }: { params: Promise<{ i
         userId: (session.user as any)?.id,
         userRole: (session.user as any)?.role,
         action: "DELETE_BRANCH",
-        details: `Deleted branch: ${target.name}`,
+        details: `Deleted branch: ${target.nameEn}`,
       },
     });
 

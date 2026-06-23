@@ -1,13 +1,13 @@
 "use client";
 
 import React from "react";
-import { 
-  HistoryOutlined, 
-  TeamOutlined, 
-  BranchesOutlined, 
-  WalletOutlined, 
-  DollarOutlined, 
-  LikeOutlined 
+import {
+  HistoryOutlined,
+  TeamOutlined,
+  BranchesOutlined,
+  WalletOutlined,
+  DollarOutlined,
+  LikeOutlined
 } from "@ant-design/icons";
 
 export default function Stats() {

@@ -188,10 +188,15 @@ model AuditLog {
 
 model Branch {
   id              String      @id @default(uuid())
-  name            String
-  address         String      @db.Text
+  nameEn          String
+  nameMr          String
+  addressEn       String      @db.Text
+  addressMr       String      @db.Text
+  cityEn          String
+  cityMr          String
   contact         String
-  managerName     String
+  managerNameEn   String
+  managerNameMr   String
   googleMapUrl    String?     @db.Text
   imageUrl        String?     @db.Text
   
