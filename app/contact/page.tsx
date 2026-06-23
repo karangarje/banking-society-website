@@ -98,8 +98,8 @@ export default function Contact() {
               <PhoneOutlined className="text-xl text-[#AD002E] shrink-0 mt-0.5" />
               <div>
                 <h5 className="font-bold text-gray-900 text-sm uppercase tracking-wide">{t("contact.call_desk_label")}</h5>
-                <a href="tel:+912025534567" className="text-sm text-gray-600 hover:text-[#AD002E] mt-1 block">+91 20 2553 4567</a>
-                <a href="tel:+912025534568" className="text-sm text-gray-600 hover:text-[#AD002E] block">+91 20 2553 4568</a>
+                <a href="tel:+912488230449" className="text-sm text-gray-600 hover:text-[#AD002E] mt-1 block">(02488) 230449</a>
+                <a href="tel:+912488230442" className="text-sm text-gray-600 hover:text-[#AD002E] block">(02488) 230442</a>
               </div>
             </div>
             <div className="flex gap-3 items-start p-4 rounded-xl bg-rose-50/60 border border-rose-100">

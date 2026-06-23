@@ -96,11 +96,11 @@ export default function Header() {
           {/* Contact Info Section */}
           <div className="text-right flex flex-col items-end justify-center gap-2">
              <div className="flex items-center gap-6 text-sm font-semibold tracking-wider text-white/90">
-                <a href="tel:+912025534567" className="flex items-center gap-2 hover:text-white transition-colors">
+                <a href="tel:+912488230449" className="flex items-center gap-2 hover:text-white transition-colors">
                   <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
                     <PhoneOutlined className="text-lg" />
                   </div>
-                  <span>+91 20 2553 4567</span>
+                  <span>(02488) 230449, 230442</span>
                 </a>
                 <a href="mailto:info@babasahebkavad.com" className="flex items-center gap-2 hover:text-white transition-colors">
                   <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
@@ -426,11 +426,11 @@ export default function Header() {
             <div className="p-4 mt-4 bg-base-card border-t border-base-border space-y-3">
               <div className="flex items-center gap-2 text-sm text-text-muted">
                 <PhoneOutlined className="text-[#AD002E]" />
-                <span className="font-bold text-text-main">+91 20 2553 4567</span>
+                <span className="font-bold text-text-main">(02488) 230449, 230442</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-text-muted">
                 <CompassOutlined className="text-[#AD002E]" />
-                <span className="text-text-main font-semibold">Plot 42, Ghole Road, Shivaji Nagar, Pune</span>
+                <span className="text-text-main font-semibold">S.T. Stand, Nighoj–Parner Road, Nighoj</span>
               </div>
             </div>
           </div>
