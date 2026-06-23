@@ -65,18 +65,18 @@ export default function Gallery() {
   };
 
   return (
-    <section id="gallery" className="py-20 bg-white dark:bg-base-bg transition-colors duration-300">
+    <section id="gallery" className="py-20 bg-white dark:bg-white transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
         
         {/* Title */}
         <div className="text-center space-y-3" data-aos="fade-up">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1E1B6B] dark:text-white transition-colors">
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#1E1B6B] dark:text-white transition-colors">
             Photo Gallery
           </h2>
-          <p className="text-sm sm:text-base text-gray-500 max-w-xl mx-auto">
+          <p className="text-sm sm:text-base text-[#AD002E]/70 max-w-xl mx-auto">
             Glimpses of memorable moments, award functions and felicitations.
           </p>
-          <div className="w-16 h-1 bg-[#B3003C] mx-auto rounded-full" />
+          <div className="w-16 h-1 bg-[#AD002E] mx-auto rounded-full" />
         </div>
 
         {/* Gallery Grid */}
@@ -87,11 +87,11 @@ export default function Gallery() {
               data-aos="fade-up"
               data-aos-delay={idx * 100}
               onClick={() => setActiveIdx(idx)}
-              className="group relative aspect-[4/3] rounded-2xl overflow-hidden shadow-md hover:shadow-2xl border border-gray-100 dark:border-white/5 cursor-pointer bg-gray-100 dark:bg-base-card"
+              className="group relative aspect-[4/3] rounded-lg overflow-hidden shadow-md hover:shadow-md border border-[#AD002E]/20 dark:border-[#AD002E]/20 cursor-pointer bg-white dark:bg-white"
             >
               {/* Overlay with zoom icon */}
               <div className="absolute inset-0 bg-[#1E1B6B]/40 opacity-0 group-hover:opacity-100 z-15 transition-opacity duration-300 flex items-center justify-center">
-                <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white text-xl">
+                <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-[#AD002E]/20 flex items-center justify-center text-white text-xl">
                   <ZoomInOutlined />
                 </div>
               </div>
@@ -115,7 +115,7 @@ export default function Gallery() {
 
       {/* LIGHTBOX MODAL */}
       {activeIdx !== null && (
-        <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 sm:p-10 no-print animate-fade-in">
+        <div className="fixed inset-0 z-50 bg-white/95 flex items-center justify-center p-4 sm:p-10 no-print animate-fade-in">
           {/* Close button */}
           <button
             onClick={() => setActiveIdx(null)}

@@ -55,7 +55,7 @@ export default function AuditLogsPage() {
   if (!session || (userRole !== "MANAGER" && userRole !== "SUPER_ADMIN")) {
     return (
       <div style={{ padding: "2rem", textAlign: "center" }}>
-        <h1 style={{ color: "#B3003C" }}>403 - Access Denied</h1>
+        <h1 style={{ color: "#AD002E" }}>403 - Access Denied</h1>
         <p>You do not have permission to view audit logs.</p>
       </div>
     );

@@ -32,17 +32,17 @@ export default function Timeline() {
   ];
 
   return (
-    <section id="timeline" className="py-20 bg-white dark:bg-base-card/20 transition-all duration-300">
+    <section id="timeline" className="py-20 bg-white dark:bg-white/20 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-16">
         {/* Section Title */}
         <div className="text-center space-y-3" data-aos="fade-up">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#B3003C] dark:text-[#D4AF37] transition-colors">
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#AD002E] dark:text-[#D4AF37] transition-colors">
             Our Historic Milestones
           </h2>
-          <p className="text-sm sm:text-base text-gray-800 dark:text-gray-200 max-w-xl mx-auto">
+          <p className="text-sm sm:text-base text-[#AD002E]/70 dark:text-[#AD002E]/70 max-w-xl mx-auto">
             A chronological timeline of key leadership recognitions and co-operative achievements.
           </p>
-          <div className="w-16 h-1 bg-[#B3003C] dark:bg-[#D4AF37] mx-auto rounded-full" />
+          <div className="w-16 h-1 bg-[#AD002E] dark:bg-[#D4AF37] mx-auto rounded-full" />
         </div>
 
         {/* Timeline Stack */}

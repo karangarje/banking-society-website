@@ -103,7 +103,7 @@ export default function BranchesSection() {
           {branches.map((b, i) => (
             <div
               key={i}
-              className="bg-[#F9F9F9] border border-[#AD002E]/20 rounded-xl p-5 hover:border-[#AD002E] transition"
+              className="bg-[#F9F9F9] border border-[#AD002E]/20 rounded-lg p-5 hover:border-[#AD002E] transition"
             >
               {/* Icon */}
               <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center mb-3 text-lg">
@@ -122,7 +122,7 @@ export default function BranchesSection() {
 
               {/* Badge – shown only for head office */}
               {b.badge && (
-                <span className="inline-block mt-3 text-sm bg-red-700 px-2 py-1 rounded text-white">
+                <span className="inline-block mt-3 text-sm bg-[#AD002E] px-2 py-1 rounded-lg text-white">
                   {isMr ? "मुख्य कार्यालय" : "Head Office"}
                 </span>
               )}

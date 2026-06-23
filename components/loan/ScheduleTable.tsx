@@ -73,8 +73,8 @@ export default function ScheduleTable({
       className="space-y-4"
     >
       {/* Table Actions Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-gray-200 pb-4">
-        <h3 className="text-xl font-black text-[#111827]">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-[#AD002E]/20 pb-4">
+        <h3 className="text-xl font-bold text-[#AD002E]">
           {t("loanCalculator.table_title") || "Repayment Schedule"}
         </h3>
 
@@ -86,7 +86,7 @@ export default function ScheduleTable({
               type="text"
               placeholder={t("loanCalculator.placeholder_search") || "Search installments..."}
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)} className="w-full bg-white border border-gray-300 focus:border-[#B3003C] focus:ring-[#B3003C]/20 rounded-xl pl-10 pr-4 py-2 text-sm text-[#111827] outline-none transition-colors duration-200"
+              onChange={(e) => setSearchTerm(e.target.value)} className="w-full bg-white border border-[#AD002E]/20 focus:border-[#AD002E] focus:ring-[#AD002E]/20 rounded-lg pl-10 pr-4 py-2 text-sm text-[#AD002E] outline-none transition-colors duration-200"
               
             />
           </div>
@@ -97,7 +97,7 @@ export default function ScheduleTable({
           {/* Print Button */}
           <button
             onClick={handlePrint}
-            className="flex items-center gap-1.5 bg-[#1E1B6B] hover:bg-[#141249] text-white px-4 py-2 rounded-xl text-sm font-black uppercase tracking-wider transition-colors duration-200 shadow-sm"
+            className="flex items-center gap-1.5 bg-[#1E1B6B] hover:bg-[#141249] text-white px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors duration-200 shadow-md"
           >
             <Printer className="w-4 h-4" />
             <span className="hidden xs:inline">{t("loanCalculator.print") || "Print"}</span>
@@ -106,47 +106,47 @@ export default function ScheduleTable({
       </div>
 
       {/* Main Repayment Table */}
-      <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-md">
+      <div className="bg-white border border-[#AD002E]/20 rounded-lg overflow-hidden shadow-md">
         <div className="overflow-x-auto">
           <table className="min-w-[900px] w-full table-fixed">
             {/* Sticky Table Header */}
-            <thead className="sticky top-0 bg-[#B3003C] text-white z-10">
+            <thead className="sticky top-0 bg-[#AD002E] text-white z-10">
               <tr>
-                <th className="px-4 py-4 text-xs font-black uppercase tracking-wider text-center w-[12%] whitespace-nowrap">
+                <th className="px-4 py-4 text-xs font-bold uppercase tracking-wider text-center w-[12%] whitespace-nowrap">
                   {t("loanCalculator.col_installment") || "Installment No."}
                 </th>
-                <th className="px-4 py-4 text-xs font-black uppercase tracking-wider text-center w-[16%] whitespace-nowrap">
+                <th className="px-4 py-4 text-xs font-bold uppercase tracking-wider text-center w-[16%] whitespace-nowrap">
                   {t("loanCalculator.col_due_date") || "Due Date"}
                 </th>
-                <th className="px-4 py-4 text-xs font-black uppercase tracking-wider text-right w-[14%] whitespace-nowrap">
+                <th className="px-4 py-4 text-xs font-bold uppercase tracking-wider text-right w-[14%] whitespace-nowrap">
                   {t("loanCalculator.col_emi") || "EMI"}
                 </th>
-                <th className="px-4 py-4 text-xs font-black uppercase tracking-wider text-right w-[18%] whitespace-nowrap">
+                <th className="px-4 py-4 text-xs font-bold uppercase tracking-wider text-right w-[18%] whitespace-nowrap">
                   {t("loanCalculator.col_principal") || "Principal"}
                 </th>
-                <th className="px-4 py-4 text-xs font-black uppercase tracking-wider text-right w-[18%] whitespace-nowrap">
+                <th className="px-4 py-4 text-xs font-bold uppercase tracking-wider text-right w-[18%] whitespace-nowrap">
                   {t("loanCalculator.col_interest") || "Interest"}
                 </th>
-                <th className="px-4 py-4 text-xs font-black uppercase tracking-wider text-right w-[22%] whitespace-nowrap">
+                <th className="px-4 py-4 text-xs font-bold uppercase tracking-wider text-right w-[22%] whitespace-nowrap">
                   {t("loanCalculator.col_balance") || "Outstanding Balance"}
                 </th>
               </tr>
             </thead>
             {/* Table Body */}
-            <tbody className="divide-y divide-gray-200 text-sm text-[#111827]">
+            <tbody className="divide-y divide-gray-200 text-sm text-[#AD002E]">
               {paginatedSchedule.length > 0 ? (
                 paginatedSchedule.map((row) => (
-                  <tr key={row.installment} className="hover:bg-[#F7F5EF]">
+                  <tr key={row.installment} className="hover:bg-white">
                     <td className="px-4 py-4 text-center font-bold w-[12%] whitespace-nowrap">
                       {row.installment}
                     </td>
                     <td className="px-4 py-4 text-center w-[16%] whitespace-nowrap">
                       {row.dueDate}
                     </td>
-                    <td className="px-4 py-4 text-right font-semibold text-[#B3003C] w-[14%] whitespace-nowrap">
+                    <td className="px-4 py-4 text-right font-semibold text-[#AD002E] w-[14%] whitespace-nowrap">
                       ₹{row.emi.toLocaleString(undefined, { minimumFractionDigits: 2 })}
                     </td>
-                    <td className="px-4 py-4 text-right font-medium w-[18%] whitespace-nowrap">
+                    <td className="px-4 py-4 text-right font-normal w-[18%] whitespace-nowrap">
                       ₹{row.principal.toLocaleString(undefined, { minimumFractionDigits: 2 })}
                     </td>
                     <td className="px-4 py-4 text-right w-[18%] whitespace-nowrap">
@@ -170,14 +170,14 @@ export default function ScheduleTable({
 
         {/* Pagination Section */}
         {totalItems > 0 && (
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-6 py-4 border-t border-gray-200 bg-white">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-6 py-4 border-t border-[#AD002E]/20 bg-white">
             {/* Size selector & Info */}
             <div className="flex items-center gap-4 text-xs font-semibold text-text-muted">
               <div className="flex items-center gap-1.5">
                 <span>Show:</span>
                 <select
                   value={pageSize}
-                  onChange={(e) => setPageSize(Number(e.target.value))} className="bg-white border border-gray-300 rounded-md px-2 py-1 outline-none text-[#111827]"
+                  onChange={(e) => setPageSize(Number(e.target.value))} className="bg-white border border-[#AD002E]/20 rounded-lg px-2 py-1 outline-none text-[#AD002E]"
                   
                 >
                   <option value={10}>10</option>
@@ -196,36 +196,36 @@ export default function ScheduleTable({
             <div className="flex items-center gap-1.5">
               <button
                 onClick={() => handlePageChange(1)}
-                disabled={currentPage === 1} className="p-1.5 rounded-lg border border-gray-200 hover:bg-[#F7F5EF] disabled:opacity-40 transition-colors"
+                disabled={currentPage === 1} className="p-1.5 rounded-lg border border-[#AD002E]/20 hover:bg-white disabled:opacity-40 transition-colors"
                                 
               >
-                                  <ChevronsLeft className="w-4 h-4 text-[#111827]" />
+                                  <ChevronsLeft className="w-4 h-4 text-[#AD002E]" />
               </button>
               <button
                 onClick={() => handlePageChange(currentPage - 1)}
-                disabled={currentPage === 1} className="p-1.5 rounded-lg border border-gray-200 hover:bg-[#F7F5EF] disabled:opacity-40 transition-colors"
+                disabled={currentPage === 1} className="p-1.5 rounded-lg border border-[#AD002E]/20 hover:bg-white disabled:opacity-40 transition-colors"
                 
               >
-                                  <ChevronLeft className="w-4 h-4 text-[#111827]" />
+                                  <ChevronLeft className="w-4 h-4 text-[#AD002E]" />
               </button>
 
-                              <span className="text-xs font-bold text-[#111827] px-2">
+                              <span className="text-xs font-bold text-[#AD002E] px-2">
                 {currentPage} / {totalPages}
               </span>
 
               <button
                 onClick={() => handlePageChange(currentPage + 1)}
-                disabled={currentPage === totalPages} className="p-1.5 rounded-lg border border-gray-200 hover:bg-[#F7F5EF] disabled:opacity-40 transition-colors"
+                disabled={currentPage === totalPages} className="p-1.5 rounded-lg border border-[#AD002E]/20 hover:bg-white disabled:opacity-40 transition-colors"
                 
               >
-                                  <ChevronRight className="w-4 h-4 text-[#111827]" />
+                                  <ChevronRight className="w-4 h-4 text-[#AD002E]" />
               </button>
               <button
                 onClick={() => handlePageChange(totalPages)}
                 disabled={currentPage === totalPages}
                 
               >
-                                  <ChevronsRight className="w-4 h-4 text-[#111827]" />
+                                  <ChevronsRight className="w-4 h-4 text-[#AD002E]" />
               </button>
             </div>
           </div>

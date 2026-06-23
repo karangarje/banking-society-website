@@ -79,7 +79,7 @@ export default function LoanApplicationsPage() {
     return (
       <div style={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: 300 }}>
         <div style={{ textAlign: "center" }}>
-          <div className="animate-spin" style={{ width: 40, height: 40, border: "4px solid #e5e7eb", borderTopColor: "#B3003C", borderRadius: "50%", margin: "0 auto 16px" }} />
+          <div className="animate-spin" style={{ width: 40, height: 40, border: "4px solid #e5e7eb", borderTopColor: "#AD002E", borderRadius: "50%", margin: "0 auto 16px" }} />
           <p style={{ color: "#666" }}>Loading...</p>
         </div>
       </div>
@@ -90,7 +90,7 @@ export default function LoanApplicationsPage() {
     return (
       <div style={{ padding: "4rem 2rem", textAlign: "center" }}>
         <div style={{ fontSize: 64, marginBottom: 16 }}>🚫</div>
-        <h1 style={{ color: "#B3003C", fontSize: 28, fontWeight: 800 }}>403 — Access Denied</h1>
+        <h1 style={{ color: "#AD002E", fontSize: 28, fontWeight: 800 }}>403 — Access Denied</h1>
         <p style={{ color: "#666", marginTop: 8 }}>You do not have permission to view this page.</p>
       </div>
     );
@@ -250,7 +250,7 @@ export default function LoanApplicationsPage() {
         </div>
         <Space>
           <Button icon={<DownloadOutlined />}>Export CSV</Button>
-          <Button type="primary" icon={<PlusOutlined />} style={{ backgroundColor: "#B3003C" }}>New Application</Button>
+          <Button type="primary" icon={<PlusOutlined />} style={{ backgroundColor: "#AD002E" }}>New Application</Button>
         </Space>
       </div>
 
@@ -379,7 +379,7 @@ export default function LoanApplicationsPage() {
                   <Descriptions.Item label="Member ID" span={2}>{selectedApp.member.memberId}</Descriptions.Item>
                   <Descriptions.Item label="Loan Type" style={{ textTransform: "capitalize" }}>{selectedApp.type.replace("_", " ")}</Descriptions.Item>
                   <Descriptions.Item label="Amount">
-                    <span style={{ fontWeight: 700, color: "#B3003C" }}>₹{parseFloat(selectedApp.amount as string).toLocaleString("en-IN")}</span>
+                    <span style={{ fontWeight: 700, color: "#AD002E" }}>₹{parseFloat(selectedApp.amount as string).toLocaleString("en-IN")}</span>
                   </Descriptions.Item>
                   <Descriptions.Item label="Tenure">{selectedApp.tenureMonths} Months</Descriptions.Item>
                   <Descriptions.Item label="Interest Rate">{selectedApp.interestRate}%</Descriptions.Item>

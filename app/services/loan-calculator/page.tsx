@@ -37,7 +37,7 @@ export default function LoanCalculatorPage() {
   };
 
   return (
-    <div className="loan-calculator-light min-h-screen bg-[#F7F5EF] text-[#111827]">
+    <div className="loan-calculator-light min-h-screen bg-white text-[#AD002E]">
       <LoanHero onCtaClick={handleScrollToCalculator} />
       <div ref={calculatorRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 lg:py-20 grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-8 items-start">
         <div className="lg:col-span-1">

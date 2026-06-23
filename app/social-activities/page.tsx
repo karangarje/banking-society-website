@@ -44,7 +44,7 @@ export default function SocialActivities() {
       id: 2,
       title: t("social.activity2_title"),
       category: t("social.healthcare"),
-      icon: <HeartOutlined className="text-2xl text-red-500" />,
+      icon: <HeartOutlined className="text-2xl text-[#AD002E]" />,
       date: t("social.activity2_date"),
       location: t("social.activity2_location"),
       description: t("social.activity2_description"),
@@ -76,22 +76,22 @@ export default function SocialActivities() {
   ];
 
   return (
-    <div className="w-full bg-base-bg transition-colors duration-300">
+    <div className="w-full bg-white transition-colors duration-300">
       
       {/* Header Banner */}
-      <section className="relative py-20 bg-gradient-to-b from-base-card to-base-bg border-b border-base-border/50 overflow-hidden transition-all duration-300">
+      <section className="relative py-20 bg-gradient-to-b from-base-card to-base-bg border-b border-[#AD002E]/20/50 overflow-hidden transition-all duration-300">
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#AD002E]/5 rounded-full blur-3xl" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative text-center space-y-4">
           <span className="inline-block mb-2 ">
             {t("social.banner_badge")}
           </span>
-          <h1 className={`text-4xl sm:text-6xl font-black tracking-tight transition-colors duration-300 ${
+          <h1 className={`text-4xl sm:text-6xl font-bold tracking-tight transition-colors duration-300 ${
             "text-text-main"
           }`}>
             {t("social.title")}
           </h1>
           <p className={`text-base max-w-2xl mx-auto leading-relaxed transition-colors duration-300 ${
-            isDark ? "text-text-muted" : "text-gray-600"
+            isDark ? "text-text-muted" : "text-[#AD002E]/70"
           }`}>
             {t("social.description")}
           </p>
@@ -107,14 +107,14 @@ export default function SocialActivities() {
             <div
               key={act.id}
               data-aos={isEven ? "fade-right" : "fade-left"}
-              className={`flex flex-col lg:flex-row items-center gap-10 p-6 sm:p-8 rounded-2xl glass-panel relative ${
+              className={`flex flex-col lg:flex-row items-center gap-10 p-6 sm:p-8 rounded-lg glass-panel relative ${
                 isEven ? "" : "lg:flex-row-reverse"
               }`}
             >
               
               {/* Left Side: Photo Frame */}
-              <div className={`relative w-full lg:w-1/2 h-[260px] sm:h-[320px] rounded-xl overflow-hidden border shrink-0 transition-colors duration-300 ${
-                isDark ? "border-[rgba(255,255,255,0.08)] bg-neutral-900" : "border-gray-200 bg-gray-100"
+              <div className={`relative w-full lg:w-1/2 h-[260px] sm:h-[320px] rounded-lg overflow-hidden border shrink-0 transition-colors duration-300 ${
+                isDark ? "border-[#AD002E]/20 bg-white" : "border-[#AD002E]/20 bg-white"
               }`}>
                 <Image
                   src={act.image}
@@ -130,10 +130,10 @@ export default function SocialActivities() {
                 }`} />
                 
                 {/* Category Floater */}
-                <span className={`absolute top-4 left-4 backdrop-blur-sm px-3 py-1 rounded text-sm border flex items-center gap-1.5 font-bold transition-colors duration-300 ${
+                <span className={`absolute top-4 left-4 backdrop-blur-sm px-3 py-1 rounded-lg text-sm border flex items-center gap-1.5 font-bold transition-colors duration-300 ${
                   isDark 
-                    ? "bg-[#FFFFFF]/90 text-white border-[rgba(255,255,255,0.08)]" 
-                    : "bg-white/90 text-gray-900 border-gray-200"
+                    ? "bg-[#FFFFFF]/90 text-white border-[#AD002E]/20" 
+                    : "bg-white/90 text-[#AD002E]/70 border-[#AD002E]/20"
                 }`}>
                   {act.icon}
                   <span>{act.category}</span>
@@ -145,7 +145,7 @@ export default function SocialActivities() {
                 
                 {/* Meta details */}
                 <div className={`flex flex-wrap items-center gap-4 text-sm font-bold border-b pb-3 transition-colors duration-300 ${
-                  isDark ? "text-text-muted border-[rgba(255,255,255,0.06)]" : "text-gray-500 border-gray-100"
+                  isDark ? "text-text-muted border-[#AD002E]/20" : "text-[#AD002E]/70 border-[#AD002E]/20"
                 }`}>
                   <span className="flex items-center gap-1">
                     <CalendarOutlined className="text-[#AD002E]" />
@@ -159,7 +159,7 @@ export default function SocialActivities() {
                 </div>
 
                 {/* Title */}
-                <h3 className={`text-2xl sm:text-3xl font-black hover:text-[#AD002E] transition-colors leading-tight break-words whitespace-normal ${
+                <h3 className={`text-2xl sm:text-3xl font-bold hover:text-[#AD002E] transition-colors leading-tight break-words whitespace-normal ${
                   "text-text-main"
                 }`}>
                   {act.title}
@@ -167,17 +167,17 @@ export default function SocialActivities() {
 
                 {/* Body Description */}
                 <p className={`text-sm sm:text-base leading-relaxed transition-colors duration-300 break-words whitespace-normal ${
-                  isDark ? "text-gray-600" : "text-gray-700"
+                  isDark ? "text-[#AD002E]/70" : "text-[#AD002E]/70"
                 }`}>
                   {act.description}
                 </p>
 
                 {/* Impact Stat */}
                 <div className="p-4 rounded-lg bg-[rgba(173,0,46,0.06)] border-l-4 border-[#AD002E] text-sm space-y-1">
-                  <p className={`uppercase font-black tracking-widest text-xs transition-colors duration-300 ${
-                    isDark ? "text-text-muted" : "text-gray-500"
+                  <p className={`uppercase font-bold tracking-widest text-xs transition-colors duration-300 ${
+                    isDark ? "text-text-muted" : "text-[#AD002E]/70"
                   }`}>{t("social.impact_label")}</p>
-                  <p className={`font-extrabold leading-normal transition-colors duration-300 ${
+                  <p className={`font-bold leading-normal transition-colors duration-300 ${
                     "text-text-main"
                   }`}>{act.impact}</p>
                 </div>

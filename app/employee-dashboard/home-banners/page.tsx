@@ -180,9 +180,9 @@ export default function HomeBannersPage() {
       key: "detailsEn",
       render: (_, record) => (
         <div className="flex flex-col">
-          <span className="font-semibold text-gray-800">{record.titleEn}</span>
-          <span className="text-xs text-gray-500">{record.subtitleEn}</span>
-          {record.linkUrl && <span className="text-xs text-blue-500 font-medium mt-1">Link: {record.linkUrl}</span>}
+          <span className="font-semibold text-[#AD002E]/70">{record.titleEn}</span>
+          <span className="text-xs text-[#AD002E]/70">{record.subtitleEn}</span>
+          {record.linkUrl && <span className="text-xs text-[#AD002E] font-normal mt-1">Link: {record.linkUrl}</span>}
         </div>
       ),
     },
@@ -191,8 +191,8 @@ export default function HomeBannersPage() {
       key: "detailsMr",
       render: (_, record) => (
         <div className="flex flex-col text-sm">
-          <span className="text-gray-700">{record.titleMr}</span>
-          <span className="text-xs text-gray-400">{record.subtitleMr}</span>
+          <span className="text-[#AD002E]/70">{record.titleMr}</span>
+          <span className="text-xs text-[#AD002E]/70">{record.subtitleMr}</span>
         </div>
       ),
     },
@@ -200,7 +200,7 @@ export default function HomeBannersPage() {
       title: "Sort Order",
       dataIndex: "sortingOrder",
       key: "sortingOrder",
-      render: (val) => <span className="font-bold text-gray-700">{val}</span>,
+      render: (val) => <span className="font-bold text-[#AD002E]/70">{val}</span>,
     },
     {
       title: "Status",
@@ -219,7 +219,7 @@ export default function HomeBannersPage() {
         <Space size="middle">
           <Button
             type="text"
-            icon={<EditOutlined className="text-blue-600 hover:text-blue-800" />}
+            icon={<EditOutlined className="text-[#AD002E] hover:text-[#AD002E]" />}
             onClick={() => openEditModal(record)}
           />
           <Popconfirm
@@ -228,7 +228,7 @@ export default function HomeBannersPage() {
             onConfirm={() => handleDelete(record.id)}
             okText="Yes"
             cancelText="No"
-            okButtonProps={{ style: { backgroundColor: "#B3003C", borderColor: "#B3003C" } }}
+            okButtonProps={{ style: { backgroundColor: "#AD002E", borderColor: "#AD002E" } }}
           >
             <Button
               type="text"
@@ -244,18 +244,18 @@ export default function HomeBannersPage() {
   return (
     <div className="space-y-6">
       {/* Title Header */}
-      <div className="flex justify-between items-center bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+      <div className="flex justify-between items-center bg-white p-6 rounded-lg shadow-md border border-[#AD002E]/20">
         <div>
-          <h1 className="text-2xl font-bold text-gray-800">Home Banner Manager</h1>
-          <p className="text-sm text-gray-500">Add, upload, and sort images for the public website homepage slider.</p>
+          <h1 className="text-2xl font-bold text-[#AD002E]/70">Home Banner Manager</h1>
+          <p className="text-sm text-[#AD002E]/70">Add, upload, and sort images for the public website homepage slider.</p>
         </div>
         <Space>
-          <Button icon={<ReloadOutlined />} onClick={fetchData} className="border-gray-300 hover:border-[#B3003C] hover:text-[#B3003C]" />
+          <Button icon={<ReloadOutlined />} onClick={fetchData} className="border-[#AD002E]/20 hover:border-[#AD002E] hover:text-[#AD002E]" />
           <Button
             type="primary"
             icon={<PlusOutlined />}
             onClick={openAddModal}
-            style={{ backgroundColor: "#B3003C", borderColor: "#B3003C" }}
+            style={{ backgroundColor: "#AD002E", borderColor: "#AD002E" }}
             className="hover:opacity-90"
           >
             Add Home Banner
@@ -266,33 +266,33 @@ export default function HomeBannersPage() {
       {/* Stats Cards */}
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={12} lg={6}>
-          <Card className="shadow-sm border-gray-100 hover:shadow-md transition-shadow">
-            <div className="text-sm text-gray-400 font-semibold uppercase tracking-wider">Total Banners</div>
-            <div className="text-3xl font-bold text-gray-800 mt-2">{totalBanners}</div>
+          <Card className="shadow-md border-[#AD002E]/20 hover:shadow-md transition-shadow-md">
+            <div className="text-sm text-[#AD002E]/70 font-semibold uppercase tracking-wider">Total Banners</div>
+            <div className="text-3xl font-bold text-[#AD002E]/70 mt-2">{totalBanners}</div>
           </Card>
         </Col>
         <Col xs={24} sm={12} lg={6}>
-          <Card className="shadow-sm border-gray-100 hover:shadow-md transition-shadow">
-            <div className="text-sm text-gray-400 font-semibold uppercase tracking-wider">Active Banners</div>
-            <div className="text-3xl font-bold text-[#B3003C] mt-2">{activeBanners}</div>
+          <Card className="shadow-md border-[#AD002E]/20 hover:shadow-md transition-shadow-md">
+            <div className="text-sm text-[#AD002E]/70 font-semibold uppercase tracking-wider">Active Banners</div>
+            <div className="text-3xl font-bold text-[#AD002E] mt-2">{activeBanners}</div>
           </Card>
         </Col>
         <Col xs={24} sm={12} lg={6}>
-          <Card className="shadow-sm border-gray-100 hover:shadow-md transition-shadow">
-            <div className="text-sm text-gray-400 font-semibold uppercase tracking-wider">Linked Banners</div>
-            <div className="text-3xl font-bold text-gray-800 mt-2">{linkBanners}</div>
+          <Card className="shadow-md border-[#AD002E]/20 hover:shadow-md transition-shadow-md">
+            <div className="text-sm text-[#AD002E]/70 font-semibold uppercase tracking-wider">Linked Banners</div>
+            <div className="text-3xl font-bold text-[#AD002E]/70 mt-2">{linkBanners}</div>
           </Card>
         </Col>
         <Col xs={24} sm={12} lg={6}>
-          <Card className="shadow-sm border-gray-100 hover:shadow-md transition-shadow">
-            <div className="text-sm text-gray-400 font-semibold uppercase tracking-wider">Last Updated</div>
-            <div className="text-xl font-bold text-gray-700 mt-3">{lastUpdatedText}</div>
+          <Card className="shadow-md border-[#AD002E]/20 hover:shadow-md transition-shadow-md">
+            <div className="text-sm text-[#AD002E]/70 font-semibold uppercase tracking-wider">Last Updated</div>
+            <div className="text-xl font-bold text-[#AD002E]/70 mt-3">{lastUpdatedText}</div>
           </Card>
         </Col>
       </Row>
 
       {/* Banner Table */}
-      <Card className="shadow-sm border border-gray-100">
+      <Card className="shadow-md border border-[#AD002E]/20">
         <div className="overflow-x-auto">
           <Table
             columns={columns}
@@ -302,12 +302,12 @@ export default function HomeBannersPage() {
             locale={{
               emptyText: (
                 <div className="py-8 text-center">
-                  <p className="text-gray-400 mb-4">No home banners uploaded yet.</p>
+                  <p className="text-[#AD002E]/70 mb-4">No home banners uploaded yet.</p>
                   <Button
                     type="primary"
                     icon={<PlusOutlined />}
                     onClick={openAddModal}
-                    style={{ backgroundColor: "#B3003C", borderColor: "#B3003C" }}
+                    style={{ backgroundColor: "#AD002E", borderColor: "#AD002E" }}
                   >
                     Upload First Banner
                   </Button>
@@ -326,7 +326,7 @@ export default function HomeBannersPage() {
         onCancel={() => setIsModalOpen(false)}
         confirmLoading={uploading}
         okText={editingId ? "Save Changes" : "Upload Banner"}
-        okButtonProps={{ style: { backgroundColor: "#B3003C", borderColor: "#B3003C" } }}
+        okButtonProps={{ style: { backgroundColor: "#AD002E", borderColor: "#AD002E" } }}
         width="95vw"
         style={{ maxWidth: 700 }}
       >

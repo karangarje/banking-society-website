@@ -86,16 +86,16 @@ export default function Branches() {
   });
 
   return (
-    <div className="w-full bg-base-bg transition-colors duration-300">
+    <div className="w-full bg-white transition-colors duration-300">
 
       {/* Header Banner */}
-      <section className="relative py-20 bg-gradient-to-b from-base-card to-base-bg border-b border-base-border/50 overflow-hidden transition-all duration-300">
+      <section className="relative py-20 bg-gradient-to-b from-base-card to-base-bg border-b border-[#AD002E]/20/50 overflow-hidden transition-all duration-300">
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#AD002E]/5 rounded-full blur-3xl" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative text-center space-y-4">
           <span className="inline-block mb-2 text-sm font-bold text-[#AD002E] bg-[#AD002E]/10 px-3 py-1 rounded-full uppercase tracking-wider">
             {isMr ? "आमचे नेटवर्क" : "Our Network"}
           </span>
-          <h1 className="text-4xl sm:text-6xl font-black text-text-main tracking-tight transition-colors duration-300">
+          <h1 className="text-4xl sm:text-6xl font-bold text-text-main tracking-tight transition-colors duration-300">
             {isMr ? "शाखा निर्देशिका" : "Branch Directory"}
           </h1>
           <p className="text-base text-text-muted max-w-2xl mx-auto leading-relaxed transition-colors duration-300">
@@ -108,7 +108,7 @@ export default function Branches() {
 
       {/* Filter & Search Bar */}
       <section className="py-8 max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="glass-panel p-4 rounded-xl flex flex-col md:flex-row items-center justify-between gap-4 transition-all duration-300">
+        <div className="glass-panel p-4 rounded-lg flex flex-col md:flex-row items-center justify-between gap-4 transition-all duration-300">
 
           {/* Search Input */}
           <div className="relative w-full md:w-96 flex items-center">
@@ -118,7 +118,7 @@ export default function Branches() {
               placeholder={isMr ? "शाखेचे नाव, व्यवस्थापक किंवा पत्ता शोधा..." : "Search branch name, manager, or address..."}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-base-bg border border-base-border rounded-lg pl-10 pr-4 py-2 text-base text-text-main focus:outline-none focus:border-[#AD002E] transition-all"
+              className="w-full bg-white border border-[#AD002E]/20 rounded-lg pl-10 pr-4 py-2 text-base text-text-main focus:outline-none focus:border-[#AD002E] transition-all"
             />
           </div>
 
@@ -133,8 +133,8 @@ export default function Branches() {
                 onClick={() => setSelectedCity(city)}
                 className={`text-sm px-3.5 py-1.5 rounded-full font-bold uppercase transition-all ${
                   selectedCity === city
-                    ? "bg-[#AD002E] text-white border border-[#850024]"
-                    : "bg-base-card text-text-muted border border-base-border hover:border-text-main hover:text-text-main"
+                    ? "bg-[#AD002E] text-white border border-[#AD002E]"
+                    : "bg-white text-text-muted border border-[#AD002E]/20 hover:border-text-main hover:text-text-main"
                 }`}
               >
                 {city}
@@ -154,12 +154,12 @@ export default function Branches() {
                 key={branch.id}
                 data-aos="fade-up"
                 data-aos-delay={(index % 3) * 100}
-                className="group relative rounded-2xl p-6 glass-card border border-base-border hover:border-[#AD002E] flex flex-col justify-between transition-all duration-300"
+                className="group relative rounded-lg p-6 glass-card border border-[#AD002E]/20 hover:border-[#AD002E] flex flex-col justify-between transition-all duration-300"
               >
                 {/* Branch Head Accent */}
                 <div className="flex justify-between items-start mb-4">
                   <div>
-                    <h3 className="text-lg font-extrabold text-text-main group-hover:text-[#AD002E] transition-colors leading-tight">
+                    <h3 className="text-lg font-bold text-text-main group-hover:text-[#AD002E] transition-colors leading-tight">
                       {isMr ? branch.nameMr : branch.nameEn}
                     </h3>
                     <span className="text-sm text-[#AD002E] font-bold uppercase tracking-wider">
@@ -167,14 +167,14 @@ export default function Branches() {
                     </span>
                   </div>
                   {branch.isHeadOffice && (
-                    <span className="text-xs bg-[#AD002E] text-white border border-[#850024] px-2 py-0.5 rounded font-black uppercase tracking-wider">
+                    <span className="text-xs bg-[#AD002E] text-white border border-[#AD002E] px-2 py-0.5 rounded-lg font-bold uppercase tracking-wider">
                       {isMr ? "मुख्य कार्यालय" : "Head Office"}
                     </span>
                   )}
                 </div>
 
                 {/* Details list */}
-                <div className="space-y-3.5 text-sm text-text-muted border-t border-base-border/50 pt-4 flex-grow transition-colors duration-300">
+                <div className="space-y-3.5 text-sm text-text-muted border-t border-[#AD002E]/20/50 pt-4 flex-grow transition-colors duration-300">
                   <div className="flex gap-2 items-start">
                     <EnvironmentOutlined className="text-[#AD002E] mt-0.5 shrink-0" />
                     <span>{isMr ? branch.addressMr : branch.addressEn}</span>
@@ -207,12 +207,12 @@ export default function Branches() {
                 </div>
 
                 {/* Card footer CTA */}
-                <div className="pt-6 mt-6 border-t border-base-border/50 transition-colors duration-300">
+                <div className="pt-6 mt-6 border-t border-[#AD002E]/20/50 transition-colors duration-300">
                   <a
                     href={branch.mapUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full flex items-center justify-center gap-1.5 bg-base-card hover:bg-[#AD002E] border border-base-border hover:border-[#AD002E] text-text-main hover:text-white py-2 rounded text-sm font-black uppercase tracking-wider transition-all duration-300"
+                    className="w-full flex items-center justify-center gap-1.5 bg-white hover:bg-[#AD002E] border border-[#AD002E]/20 hover:border-[#AD002E] text-text-main hover:text-white py-2 rounded-lg text-sm font-bold uppercase tracking-wider transition-all duration-300"
                   >
                     <CompassOutlined />
                     <span>{isMr ? "दिशा मिळवा" : "Get Directions"}</span>
@@ -223,8 +223,8 @@ export default function Branches() {
             ))}
           </div>
         ) : (
-          <div className="text-center py-20 bg-base-card border border-base-border rounded-2xl transition-all duration-300">
-            <p className="text-text-muted font-medium transition-colors">
+          <div className="text-center py-20 bg-white border border-[#AD002E]/20 rounded-lg transition-all duration-300">
+            <p className="text-text-muted font-normal transition-colors">
               {isMr ? "तुमच्या शोध फिल्टरशी जुळणारी कोणतीही शाखा सापडली नाही." : "No branches found matching your search filters."}
             </p>
             <button

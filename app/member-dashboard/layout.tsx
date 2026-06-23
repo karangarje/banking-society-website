@@ -19,12 +19,12 @@ export default function MemberDashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-white">
       {/* Sidebar */}
-      <aside className="w-64 bg-[#B3003C] text-white flex flex-col hidden md:flex fixed h-full z-10">
-        <div className="p-6 border-b border-white/10">
-          <h2 className="text-xl font-black tracking-wider text-white">MEMBER PORTAL</h2>
-          <p className="text-xs text-red-200 mt-1 uppercase tracking-widest">Babasaheb Kavad</p>
+      <aside className="w-64 bg-[#AD002E] text-white flex flex-col hidden md:flex fixed h-full z-10">
+        <div className="p-6 border-b border-[#AD002E]/20">
+          <h2 className="text-xl font-bold tracking-wider text-white">MEMBER PORTAL</h2>
+          <p className="text-xs text-[#AD002E] mt-1 uppercase tracking-widest">Babasaheb Kavad</p>
         </div>
         
         <nav className="flex-1 overflow-y-auto py-4">
@@ -56,8 +56,8 @@ export default function MemberDashboardLayout({
           </ul>
         </nav>
 
-        <div className="p-4 border-t border-white/10">
-          <Link href="/api/auth/signout" className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold text-red-200 hover:bg-white/20 transition-colors">
+        <div className="p-4 border-t border-[#AD002E]/20">
+          <Link href="/api/auth/signout" className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold text-[#AD002E] hover:bg-white/20 transition-colors">
             <LogoutOutlined />
             <span>Logout</span>
           </Link>
@@ -65,15 +65,15 @@ export default function MemberDashboardLayout({
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 md:ml-64 bg-gray-50 flex flex-col min-h-screen">
-        <header className="h-16 bg-white border-b border-gray-200 px-6 flex items-center justify-between sticky top-0 z-20">
-          <h1 className="text-lg font-bold text-gray-800 hidden sm:block">Welcome back, Member</h1>
+      <main className="flex-1 md:ml-64 bg-white flex flex-col min-h-screen">
+        <header className="h-16 bg-white border-b border-[#AD002E]/20 px-6 flex items-center justify-between sticky top-0 z-20">
+          <h1 className="text-lg font-bold text-[#AD002E]/70 hidden sm:block">Welcome back, Member</h1>
           <div className="flex items-center gap-4">
-            <button className="relative p-2 text-gray-500 hover:text-[#B3003C] transition-colors">
+            <button className="relative p-2 text-[#AD002E]/70 hover:text-[#AD002E] transition-colors">
               <BellOutlined className="text-xl" />
-              <span className="absolute top-1 right-1 w-2 h-2 bg-[#B3003C] rounded-full"></span>
+              <span className="absolute top-1 right-1 w-2 h-2 bg-[#AD002E] rounded-full"></span>
             </button>
-            <div className="w-8 h-8 rounded-full bg-[#B3003C]/10 flex items-center justify-center text-[#B3003C] font-bold">
+            <div className="w-8 h-8 rounded-full bg-[#AD002E]/10 flex items-center justify-center text-[#AD002E] font-bold">
               M
             </div>
           </div>

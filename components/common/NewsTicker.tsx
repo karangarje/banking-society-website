@@ -48,18 +48,18 @@ export default function NewsTicker() {
   if (!isVisible) return null;
 
   return (
-    <div className="bg-[#1C1C24] border-b border-[rgba(255,255,255,0.06)] py-2 text-sm md:text-base font-medium overflow-hidden relative z-50 transition-all duration-300">
+    <div className="bg-[#1C1C24] border-b border-[#AD002E]/20 py-2 text-sm md:text-base font-normal overflow-hidden relative z-50 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
         <div className="flex items-center flex-1 overflow-hidden">
           {/* Fixed Title Label */}
-          <div className="flex items-center gap-1 bg-[#AD002E] text-white px-3 py-1 rounded-sm font-bold text-sm uppercase tracking-wider shadow-sm z-10 mr-4 shrink-0">
+          <div className="flex items-center gap-1 bg-[#AD002E] text-white px-3 py-1 rounded-lg font-bold text-sm uppercase tracking-wider shadow-md z-10 mr-4 shrink-0">
             <SoundOutlined className="animate-pulse" />
             <span>{t("ticker.label")}</span>
           </div>
 
           {/* Rolling Content */}
           <div className="ticker-wrap flex-1 overflow-hidden relative">
-            <div className="ticker-content flex gap-16 whitespace-nowrap text-gray-700">
+            <div className="ticker-content flex gap-16 whitespace-nowrap text-[#AD002E]/70">
               {/* Repeat list twice for seamless loop */}
               {tickerItems.map((item, index) => (
                 <span key={`ticker-1-${index}`} className="hover:text-[#AD002E] transition-colors cursor-pointer text-[rgba(255,255,255,0.8)]">
@@ -78,7 +78,7 @@ export default function NewsTicker() {
         {/* Close Button */}
         <button
           onClick={() => setIsVisible(false)}
-          className="ml-4 flex items-center justify-center w-6 h-6 rounded-full text-gray-400 hover:text-white hover:bg-[rgba(255,255,255,0.1)] transition-colors shrink-0"
+          className="ml-4 flex items-center justify-center w-6 h-6 rounded-full text-[#AD002E]/70 hover:text-white hover:bg-[rgba(255,255,255,0.1)] transition-colors shrink-0"
           title="Close Updates"
         >
           <CloseOutlined className="text-xs" />

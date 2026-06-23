@@ -25,8 +25,8 @@ export default function LoanSummary({ inputs, summary }: LoanSummaryProps) {
     {
       title: t("loanCalculator.card_amount") || "Loan Amount",
       value: `₹${inputs.loanAmount.toLocaleString()}`,
-      icon: <Banknote className="w-6 h-6 text-[#B3003C]" />,
-      color: "border-l-4 border-l-[#B3003C]",
+      icon: <Banknote className="w-6 h-6 text-[#AD002E]" />,
+      color: "border-l-4 border-l-[#AD002E]",
     },
     {
       title: t("loanCalculator.card_rate") || "Interest Rate",
@@ -44,8 +44,8 @@ export default function LoanSummary({ inputs, summary }: LoanSummaryProps) {
       title: t("loanCalculator.card_emi") || "EMI Amount",
       value: `₹${summary.emi.toLocaleString(undefined, { minimumFractionDigits: 2 })}`,
       subtitle: inputs.emiType === "weekly" ? t("loanCalculator.weekly_emi") : t("loanCalculator.monthly_emi"),
-      icon: <CreditCard className="w-6 h-6 text-[#B3003C]" />,
-      color: "border-l-4 border-l-[#B3003C]",
+      icon: <CreditCard className="w-6 h-6 text-[#AD002E]" />,
+      color: "border-l-4 border-l-[#AD002E]",
     },
     {
       title: t("loanCalculator.card_interest") || "Total Interest Accrued",
@@ -62,8 +62,8 @@ export default function LoanSummary({ inputs, summary }: LoanSummaryProps) {
   ];
 
   return (
-    <div className="space-y-5 bg-white border border-gray-200 rounded-2xl shadow-md p-6 text-[#111827]">
-      <h3 className="text-xl font-extrabold text-[#111827] border-b border-gray-200 pb-3">
+    <div className="space-y-5 bg-white border border-[#AD002E]/20 rounded-lg shadow-md p-6 text-[#AD002E]">
+      <h3 className="text-xl font-bold text-[#AD002E] border-b border-[#AD002E]/20 pb-3">
         {t("loanCalculator.summary_title") || "Loan Summary"}
       </h3>
 
@@ -75,23 +75,23 @@ export default function LoanSummary({ inputs, summary }: LoanSummaryProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: idx * 0.05 }}
             whileHover={{ y: -4, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.05)" }}
-          className={`bg-white border border-gray-200 rounded-2xl shadow-sm p-5 flex flex-col justify-between transition-all duration-200 ${card.color}`}
+          className={`bg-white border border-[#AD002E]/20 rounded-lg shadow-md p-5 flex flex-col justify-between transition-all duration-200 ${card.color}`}
           >
             <div className="flex justify-between items-start gap-4">
               <div className="space-y-1">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-gray-500">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#AD002E]/70">
                   {card.title}
                 </span>
-                <h4 className="text-xl md:text-2xl font-extrabold text-[#111827]">
+                <h4 className="text-xl md:text-2xl font-bold text-[#AD002E]">
                   {card.value}
                 </h4>
                 {card.subtitle && (
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-[#AD002E]/70">
                     {card.subtitle}
                   </p>
                 )}
               </div>
-              <div className="p-3 bg-white rounded-xl flex items-center justify-center border border-gray-200">
+              <div className="p-3 bg-white rounded-lg flex items-center justify-center border border-[#AD002E]/20">
                 {card.icon}
               </div>
             </div>

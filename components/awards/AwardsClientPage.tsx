@@ -24,7 +24,7 @@ export default function AwardsClientPage() {
   };
 
   return (
-    <div className="w-full bg-white dark:bg-base-bg transition-colors duration-300">
+    <div className="w-full bg-white dark:bg-white transition-colors duration-300">
       {/* Hero Section */}
       <Hero onScrollToAchievements={scrollToTimeline} />
 

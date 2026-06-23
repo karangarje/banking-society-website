@@ -32,10 +32,10 @@ export default function Sidebar({ role, isManagerOrAdmin }: SidebarProps) {
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
 
   return (
-    <aside className="w-[260px] bg-white border-r border-[#E5E7EB] text-gray-900 fixed h-full flex flex-col z-10">
+    <aside className="w-[260px] bg-white border-r border-[#E5E7EB] text-[#AD002E]/70 fixed h-full flex flex-col z-10">
       {/* Header */}
-      <div className="p-6 border-b border-gray-200 bg-white">
-        <h2 className="text-xl font-black tracking-wider text-[#111827]">BANK PORTAL</h2>
+      <div className="p-6 border-b border-[#AD002E]/20 bg-white">
+        <h2 className="text-xl font-bold tracking-wider text-[#AD002E]">BANK PORTAL</h2>
         <p className="text-sm text-[#6B7280] mt-1 uppercase tracking-widest">Employee Access</p>
       </div>
       {/* Navigation */}
@@ -47,9 +47,9 @@ export default function Sidebar({ role, isManagerOrAdmin }: SidebarProps) {
             const baseClasses =
               "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors";
             const activeClasses = active
-              ? "bg-[#FCE7EF] border-l-4 border-[#B3003C] text-[#B3003C] font-semibold"
-              : "text-gray-900 hover:bg-[#F3F4F6] hover:text-[#B3003C]";
-            const iconClasses = active ? "text-[#B3003C]" : "text-[#6B7280]";
+              ? "bg-[#FCE7EF] border-l-4 border-[#AD002E] text-[#AD002E] font-semibold"
+              : "text-[#AD002E]/70 hover:bg-[#F3F4F6] hover:text-[#AD002E]";
+            const iconClasses = active ? "text-[#AD002E]" : "text-[#6B7280]";
             return (
               <li key={item.name}>
                 <Link href={item.href} className={`${baseClasses} ${active ? activeClasses : activeClasses}`}>
@@ -62,12 +62,12 @@ export default function Sidebar({ role, isManagerOrAdmin }: SidebarProps) {
         </ul>
       </nav>
       {/* Logout */}
-      <div className="p-4 border-t border-gray-200 bg-white">
+      <div className="p-4 border-t border-[#AD002E]/20 bg-white">
         <Link
           href="/api/auth/signout"
-          className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#111827] bg-white hover:bg-[#FEF2F2] transition-colors"
+          className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#AD002E] bg-white hover:bg-[#FEF2F2] transition-colors"
         >
-          <span className="text-[#B3003C]">🚪</span>
+          <span className="text-[#AD002E]">🚪</span>
           <span>Logout</span>
         </Link>
       </div>

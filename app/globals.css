@@ -11,27 +11,28 @@
 }
 
 :root {
-  --bg-base: #F7F5EF;
+  --bg-base: #FFFFFF;
   --card-base: #FFFFFF;
-  --text-main: #111827;
-  --text-muted: #555555;
-  --border-base: rgba(0, 0, 0, 0.08);
-  --glass-bg: #FFFFFF;
-  --glass-border: rgba(0, 0, 0, 0.08);
-  --shadow-base: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
-  --header-bg: rgba(255, 255, 255, 0.98);
+  --text-main: #AD002E;
+  --text-muted: rgba(173, 0, 46, 0.7);
+  --border-base: rgba(173, 0, 46, 0.15);
+  --glass-bg: rgba(255, 255, 255, 0.95);
+  --glass-border: rgba(173, 0, 46, 0.15);
+  --shadow-base: 0 4px 20px -2px rgba(173, 0, 46, 0.08);
+  --header-bg: #FFFFFF;
 }
 
+/* No dark mode, map dark to root variables */
 .dark {
-  --bg-base: #070711;
-  --card-base: #11111A;
-  --text-main: #FFFFFF;
-  --text-muted: rgba(255, 255, 255, 0.65);
-  --border-base: rgba(255, 255, 255, 0.1);
-  --glass-bg: #11111A;
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --shadow-base: 0 4px 20px -2px rgba(0, 0, 0, 0.3);
-  --header-bg: rgba(17, 17, 26, 0.98);
+  --bg-base: #FFFFFF;
+  --card-base: #FFFFFF;
+  --text-main: #AD002E;
+  --text-muted: rgba(173, 0, 46, 0.7);
+  --border-base: rgba(173, 0, 46, 0.15);
+  --glass-bg: rgba(255, 255, 255, 0.95);
+  --glass-border: rgba(173, 0, 46, 0.15);
+  --shadow-base: 0 4px 20px -2px rgba(173, 0, 46, 0.08);
+  --header-bg: #FFFFFF;
 }
 
 html {
@@ -87,8 +88,8 @@ select {
 }
 
 .glass-card:hover {
-  border-color: rgba(173, 0, 46, 0.2);
-  box-shadow: 0 12px 30px -8px rgba(173, 0, 46, 0.12);
+  border-color: rgba(173, 0, 46, 0.3);
+  box-shadow: 0 12px 30px -8px rgba(173, 0, 46, 0.15);
   transform: translateY(-4px);
 }
 
@@ -140,7 +141,7 @@ select {
 }
 
 .slick-dots li button::before {
-  color: var(--text-main) !important;
+  color: #AD002E !important;
   font-size: 8px;
   opacity: 0.25;
 }
@@ -158,13 +159,13 @@ select {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-base);
+  background: #FFFFFF;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #D0D0D0;
+  background: rgba(173, 0, 46, 0.3);
   border-radius: 4px;
-  border: 2px solid var(--bg-base);
+  border: 2px solid #FFFFFF;
 }
 
 ::-webkit-scrollbar-thumb:hover {

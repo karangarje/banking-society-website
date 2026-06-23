@@ -86,24 +86,43 @@ export default function HeroSlider() {
   };
 
   return (
-    <section className="relative w-full overflow-hidden bg-base-bg transition-colors duration-300">
-      <Slider {...settings} className="hero-slider-slick">
-        {bannerSlides.map((slide, idx) => (
-          <div key={idx} className="relative w-full group">
-            {/* Slide Image Wrapper */}
-            <div className="relative w-full h-[420px] md:h-[550px] lg:h-[700px]">
-              <Image
-                src={slide.image}
-                alt={slide.title}
-                fill
-                priority={idx === 0}
-                className="object-cover object-center transition-transform duration-[6500ms] ease-out scale-100 group-hover:scale-105"
-                sizes="100vw"
-              />
-            </div>
-          </div>
-        ))}
-      </Slider>
+    <section className="relative w-full overflow-hidden bg-white transition-colors duration-300">
+      <div className="flex flex-col lg:flex-row w-full">
+        {/* Left Section: Static Image */}
+        <div className="w-full lg:w-1/3 relative h-[350px] md:h-[450px] lg:h-[700px] border-b-4 lg:border-b-0 lg:border-r-4 border-gray-100 bg-white overflow-hidden">
+          <Image
+            src="/images/main.png"
+            alt="Feature image"
+            fill
+            className="object-contain object-center p-2 lg:p-4"
+            sizes="(max-width: 1024px) 100vw, 33vw"
+            priority
+          />
+        </div>
+
+        {/* Right Section: Slider */}
+        <div className="w-full lg:w-2/3 relative">
+          <Slider {...settings} className="hero-slider-slick">
+            {bannerSlides.map((slide, idx) => (
+              <div key={idx} className="relative w-full group focus:outline-none">
+                {/* Slide Image Wrapper */}
+                <div className="relative w-full h-[420px] md:h-[550px] lg:h-[700px]">
+                  <Image
+                    src={slide.image}
+                    alt={slide.title}
+                    fill
+                    priority={idx === 0}
+                    className="object-cover object-center transition-transform duration-[6500ms] ease-out scale-100 group-hover:scale-105"
+                    sizes="(max-width: 1024px) 100vw, 66vw"
+                  />
+                  {/* Subtle dark overlay for better aesthetics */}
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-700" />
+                </div>
+              </div>
+            ))}
+          </Slider>
+        </div>
+      </div>
     </section>
   );
 }

@@ -131,11 +131,11 @@ export default function NewsPage() {
       render: (_, record) => (
         <div className="flex flex-col max-w-xl">
           <div className="flex items-center gap-2">
-            {record.isPinned && <PushpinOutlined className="text-red-500 font-bold" />}
-            <span className="font-bold text-gray-800 text-base">{record.titleEn}</span>
+            {record.isPinned && <PushpinOutlined className="text-[#AD002E] font-bold" />}
+            <span className="font-bold text-[#AD002E]/70 text-base">{record.titleEn}</span>
           </div>
-          <span className="text-xs text-gray-400 mt-1">{record.titleMr}</span>
-          <p className="text-xs text-gray-500 line-clamp-2 mt-1">{record.contentEn}</p>
+          <span className="text-xs text-[#AD002E]/70 mt-1">{record.titleMr}</span>
+          <p className="text-xs text-[#AD002E]/70 line-clamp-2 mt-1">{record.contentEn}</p>
         </div>
       ),
     },
@@ -163,10 +163,10 @@ export default function NewsPage() {
       title: "Date Info",
       key: "dateInfo",
       render: (_, record) => (
-        <div className="flex flex-col text-xs text-gray-500">
+        <div className="flex flex-col text-xs text-[#AD002E]/70">
           <span>Created: {new Date(record.createdAt).toLocaleDateString()}</span>
           {record.scheduledPublish && (
-            <span className="text-blue-600 font-medium">Publish: {new Date(record.scheduledPublish).toLocaleDateString()}</span>
+            <span className="text-[#AD002E] font-normal">Publish: {new Date(record.scheduledPublish).toLocaleDateString()}</span>
           )}
         </div>
       ),
@@ -178,7 +178,7 @@ export default function NewsPage() {
         <Space size="middle">
           <Button
             type="text"
-            icon={<EditOutlined className="text-blue-600 hover:text-blue-800" />}
+            icon={<EditOutlined className="text-[#AD002E] hover:text-[#AD002E]" />}
             onClick={() => openEditModal(record)}
           />
           <Popconfirm
@@ -187,7 +187,7 @@ export default function NewsPage() {
             onConfirm={() => handleDelete(record.id)}
             okText="Yes"
             cancelText="No"
-            okButtonProps={{ style: { backgroundColor: "#B3003C", borderColor: "#B3003C" } }}
+            okButtonProps={{ style: { backgroundColor: "#AD002E", borderColor: "#AD002E" } }}
           >
             <Button
               type="text"
@@ -203,18 +203,18 @@ export default function NewsPage() {
   return (
     <div className="space-y-6">
       {/* Title Header */}
-      <div className="flex justify-between items-center bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+      <div className="flex justify-between items-center bg-white p-6 rounded-lg shadow-md border border-[#AD002E]/20">
         <div>
-          <h1 className="text-2xl font-bold text-gray-800">News & Notices Management</h1>
-          <p className="text-sm text-gray-500">Publish flash announcements, press releases, circular summaries, and pin important notices.</p>
+          <h1 className="text-2xl font-bold text-[#AD002E]/70">News & Notices Management</h1>
+          <p className="text-sm text-[#AD002E]/70">Publish flash announcements, press releases, circular summaries, and pin important notices.</p>
         </div>
         <Space>
-          <Button icon={<ReloadOutlined />} onClick={fetchData} className="border-gray-300 hover:border-[#B3003C] hover:text-[#B3003C]" />
+          <Button icon={<ReloadOutlined />} onClick={fetchData} className="border-[#AD002E]/20 hover:border-[#AD002E] hover:text-[#AD002E]" />
           <Button
             type="primary"
             icon={<PlusOutlined />}
             onClick={openAddModal}
-            style={{ backgroundColor: "#B3003C", borderColor: "#B3003C" }}
+            style={{ backgroundColor: "#AD002E", borderColor: "#AD002E" }}
             className="hover:opacity-90"
           >
             Create Notice / News
@@ -225,33 +225,33 @@ export default function NewsPage() {
       {/* Stats Cards */}
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={12} lg={6}>
-          <Card className="shadow-sm border-gray-100 hover:shadow-md transition-shadow">
-            <div className="text-sm text-gray-400 font-semibold uppercase tracking-wider">Total Notices</div>
-            <div className="text-3xl font-bold text-gray-800 mt-2">{totalNews}</div>
+          <Card className="shadow-md border-[#AD002E]/20 hover:shadow-md transition-shadow-md">
+            <div className="text-sm text-[#AD002E]/70 font-semibold uppercase tracking-wider">Total Notices</div>
+            <div className="text-3xl font-bold text-[#AD002E]/70 mt-2">{totalNews}</div>
           </Card>
         </Col>
         <Col xs={24} sm={12} lg={6}>
-          <Card className="shadow-sm border-gray-100 hover:shadow-md transition-shadow">
-            <div className="text-sm text-gray-400 font-semibold uppercase tracking-wider">Pinned Notices</div>
-            <div className="text-3xl font-bold text-[#B3003C] mt-2">{pinnedCount}</div>
+          <Card className="shadow-md border-[#AD002E]/20 hover:shadow-md transition-shadow-md">
+            <div className="text-sm text-[#AD002E]/70 font-semibold uppercase tracking-wider">Pinned Notices</div>
+            <div className="text-3xl font-bold text-[#AD002E] mt-2">{pinnedCount}</div>
           </Card>
         </Col>
         <Col xs={24} sm={12} lg={6}>
-          <Card className="shadow-sm border-gray-100 hover:shadow-md transition-shadow">
-            <div className="text-sm text-gray-400 font-semibold uppercase tracking-wider">Published</div>
-            <div className="text-3xl font-bold text-gray-800 mt-2">{publishedCount}</div>
+          <Card className="shadow-md border-[#AD002E]/20 hover:shadow-md transition-shadow-md">
+            <div className="text-sm text-[#AD002E]/70 font-semibold uppercase tracking-wider">Published</div>
+            <div className="text-3xl font-bold text-[#AD002E]/70 mt-2">{publishedCount}</div>
           </Card>
         </Col>
         <Col xs={24} sm={12} lg={6}>
-          <Card className="shadow-sm border-gray-100 hover:shadow-md transition-shadow">
-            <div className="text-sm text-gray-400 font-semibold uppercase tracking-wider">Scheduled</div>
-            <div className="text-3xl font-bold text-gray-800 mt-2">{scheduledCount}</div>
+          <Card className="shadow-md border-[#AD002E]/20 hover:shadow-md transition-shadow-md">
+            <div className="text-sm text-[#AD002E]/70 font-semibold uppercase tracking-wider">Scheduled</div>
+            <div className="text-3xl font-bold text-[#AD002E]/70 mt-2">{scheduledCount}</div>
           </Card>
         </Col>
       </Row>
 
       {/* Filter and Table */}
-      <Card className="shadow-sm border border-gray-100">
+      <Card className="shadow-md border border-[#AD002E]/20">
         <div className="mb-4">
           <Input.Search
             placeholder="Search news and notices by title or content..."
@@ -270,12 +270,12 @@ export default function NewsPage() {
           locale={{
             emptyText: (
               <div className="py-8 text-center">
-                <p className="text-gray-400 mb-4">No news notices found matching your criteria.</p>
+                <p className="text-[#AD002E]/70 mb-4">No news notices found matching your criteria.</p>
                 <Button
                   type="primary"
                   icon={<PlusOutlined />}
                   onClick={openAddModal}
-                  style={{ backgroundColor: "#B3003C", borderColor: "#B3003C" }}
+                  style={{ backgroundColor: "#AD002E", borderColor: "#AD002E" }}
                 >
                   Create News / Notice
                 </Button>
@@ -292,7 +292,7 @@ export default function NewsPage() {
         onOk={handleSave}
         onCancel={() => setIsModalOpen(false)}
         okText={editingId ? "Save Changes" : "Publish / Schedule"}
-        okButtonProps={{ style: { backgroundColor: "#B3003C", borderColor: "#B3003C" } }}
+        okButtonProps={{ style: { backgroundColor: "#AD002E", borderColor: "#AD002E" } }}
         width={750}
       >
         <Form form={form} layout="vertical" className="mt-4">

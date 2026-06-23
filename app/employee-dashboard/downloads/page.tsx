@@ -145,13 +145,13 @@ export default function DownloadsPage() {
   const getFileInfo = (url: string) => {
     const ext = url.split("?")[0].split(".").pop()?.toLowerCase() || "";
     if (ext === "pdf") {
-      return { icon: <FilePdfOutlined className="text-red-500 text-lg mr-2" />, label: "PDF" };
+      return { icon: <FilePdfOutlined className="text-[#AD002E] text-lg mr-2" />, label: "PDF" };
     } else if (["doc", "docx"].includes(ext)) {
-      return { icon: <FileWordOutlined className="text-blue-500 text-lg mr-2" />, label: "DOCX" };
+      return { icon: <FileWordOutlined className="text-[#AD002E] text-lg mr-2" />, label: "DOCX" };
     } else if (["xls", "xlsx"].includes(ext)) {
-      return { icon: <FileExcelOutlined className="text-green-500 text-lg mr-2" />, label: "XLSX" };
+      return { icon: <FileExcelOutlined className="text-[#AD002E] text-lg mr-2" />, label: "XLSX" };
     }
-    return { icon: <FileOutlined className="text-gray-500 text-lg mr-2" />, label: ext.toUpperCase() || "FILE" };
+    return { icon: <FileOutlined className="text-[#AD002E]/70 text-lg mr-2" />, label: ext.toUpperCase() || "FILE" };
   };
 
   // Helper to get deterministic downloads count based on ID
@@ -188,13 +188,13 @@ export default function DownloadsPage() {
         const { icon } = getFileInfo(record.fileUrl);
         return (
           <div className="flex flex-col">
-            <span className="font-semibold text-gray-800 flex items-center">
+            <span className="font-semibold text-[#AD002E]/70 flex items-center">
               {icon}
-              <a href={record.fileUrl} target="_blank" rel="noreferrer" className="hover:underline text-gray-800">
+              <a href={record.fileUrl} target="_blank" rel="noreferrer" className="hover:underline text-[#AD002E]/70">
                 {text}
               </a>
             </span>
-            <span className="text-xs text-gray-400 pl-7">{record.titleMr}</span>
+            <span className="text-xs text-[#AD002E]/70 pl-7">{record.titleMr}</span>
           </div>
         );
       },
@@ -204,7 +204,7 @@ export default function DownloadsPage() {
       dataIndex: "type",
       key: "type",
       render: (type) => (
-        <span className="px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs font-semibold">
+        <span className="px-2 py-1 bg-white text-[#AD002E]/70 rounded-lg text-xs font-semibold">
           {type.replace("_", " ")}
         </span>
       ),
@@ -215,7 +215,7 @@ export default function DownloadsPage() {
       key: "fileType",
       render: (url) => {
         const { label } = getFileInfo(url);
-        return <span className="font-medium text-gray-500 text-sm">{label}</span>;
+        return <span className="font-normal text-[#AD002E]/70 text-sm">{label}</span>;
       },
     },
     {
@@ -228,7 +228,7 @@ export default function DownloadsPage() {
       title: "Downloads",
       dataIndex: "id",
       key: "downloads",
-      render: (id) => <span className="font-bold text-gray-700">{getDownloadCount(id)}</span>,
+      render: (id) => <span className="font-bold text-[#AD002E]/70">{getDownloadCount(id)}</span>,
     },
     {
       title: "Actions",
@@ -237,7 +237,7 @@ export default function DownloadsPage() {
         <Space size="middle">
           <Button
             type="text"
-            icon={<EditOutlined className="text-blue-600 hover:text-blue-800" />}
+            icon={<EditOutlined className="text-[#AD002E] hover:text-[#AD002E]" />}
             onClick={() => openEditModal(record)}
           />
           <Popconfirm
@@ -246,7 +246,7 @@ export default function DownloadsPage() {
             onConfirm={() => handleDelete(record.id)}
             okText="Yes"
             cancelText="No"
-            okButtonProps={{ style: { backgroundColor: "#B3003C", borderColor: "#B3003C" } }}
+            okButtonProps={{ style: { backgroundColor: "#AD002E", borderColor: "#AD002E" } }}
           >
             <Button
               type="text"
@@ -270,18 +270,18 @@ export default function DownloadsPage() {
   return (
     <div className="space-y-6">
       {/* Title Header */}
-      <div className="flex justify-between items-center bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+      <div className="flex justify-between items-center bg-white p-6 rounded-lg shadow-md border border-[#AD002E]/20">
         <div>
-          <h1 className="text-2xl font-bold text-gray-800">Downloads Management</h1>
-          <p className="text-sm text-gray-500">Upload, edit, and organize public downloadable files and bank forms.</p>
+          <h1 className="text-2xl font-bold text-[#AD002E]/70">Downloads Management</h1>
+          <p className="text-sm text-[#AD002E]/70">Upload, edit, and organize public downloadable files and bank forms.</p>
         </div>
         <Space>
-          <Button icon={<ReloadOutlined />} onClick={fetchData} className="border-gray-300 hover:border-[#B3003C] hover:text-[#B3003C]" />
+          <Button icon={<ReloadOutlined />} onClick={fetchData} className="border-[#AD002E]/20 hover:border-[#AD002E] hover:text-[#AD002E]" />
           <Button
             type="primary"
             icon={<PlusOutlined />}
             onClick={openAddModal}
-            style={{ backgroundColor: "#B3003C", borderColor: "#B3003C" }}
+            style={{ backgroundColor: "#AD002E", borderColor: "#AD002E" }}
             className="hover:opacity-90"
           >
             Upload Document
@@ -292,33 +292,33 @@ export default function DownloadsPage() {
       {/* Stats Cards */}
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={12} lg={6}>
-          <Card className="shadow-sm border-gray-100 hover:shadow-md transition-shadow">
-            <div className="text-sm text-gray-400 font-semibold uppercase tracking-wider">Total Documents</div>
-            <div className="text-3xl font-bold text-gray-800 mt-2">{totalDocs}</div>
+          <Card className="shadow-md border-[#AD002E]/20 hover:shadow-md transition-shadow-md">
+            <div className="text-sm text-[#AD002E]/70 font-semibold uppercase tracking-wider">Total Documents</div>
+            <div className="text-3xl font-bold text-[#AD002E]/70 mt-2">{totalDocs}</div>
           </Card>
         </Col>
         <Col xs={24} sm={12} lg={6}>
-          <Card className="shadow-sm border-gray-100 hover:shadow-md transition-shadow">
-            <div className="text-sm text-gray-400 font-semibold uppercase tracking-wider">Total Downloads</div>
-            <div className="text-3xl font-bold text-[#B3003C] mt-2">{totalDownloads}</div>
+          <Card className="shadow-md border-[#AD002E]/20 hover:shadow-md transition-shadow-md">
+            <div className="text-sm text-[#AD002E]/70 font-semibold uppercase tracking-wider">Total Downloads</div>
+            <div className="text-3xl font-bold text-[#AD002E] mt-2">{totalDownloads}</div>
           </Card>
         </Col>
         <Col xs={24} sm={12} lg={6}>
-          <Card className="shadow-sm border-gray-100 hover:shadow-md transition-shadow">
-            <div className="text-sm text-gray-400 font-semibold uppercase tracking-wider">PDF Forms</div>
-            <div className="text-3xl font-bold text-gray-800 mt-2">{pdfFormsCount}</div>
+          <Card className="shadow-md border-[#AD002E]/20 hover:shadow-md transition-shadow-md">
+            <div className="text-sm text-[#AD002E]/70 font-semibold uppercase tracking-wider">PDF Forms</div>
+            <div className="text-3xl font-bold text-[#AD002E]/70 mt-2">{pdfFormsCount}</div>
           </Card>
         </Col>
         <Col xs={24} sm={12} lg={6}>
-          <Card className="shadow-sm border-gray-100 hover:shadow-md transition-shadow">
-            <div className="text-sm text-gray-400 font-semibold uppercase tracking-wider">Storage Used</div>
-            <div className="text-3xl font-bold text-gray-800 mt-2">{storageUsedMB} MB</div>
+          <Card className="shadow-md border-[#AD002E]/20 hover:shadow-md transition-shadow-md">
+            <div className="text-sm text-[#AD002E]/70 font-semibold uppercase tracking-wider">Storage Used</div>
+            <div className="text-3xl font-bold text-[#AD002E]/70 mt-2">{storageUsedMB} MB</div>
           </Card>
         </Col>
       </Row>
 
       {/* Main Table with Tabs */}
-      <Card className="shadow-sm border border-gray-100">
+      <Card className="shadow-md border border-[#AD002E]/20">
         <Tabs
           activeKey={activeTab}
           onChange={setActiveTab}
@@ -334,12 +334,12 @@ export default function DownloadsPage() {
           locale={{
             emptyText: (
               <div className="py-8 text-center">
-                <p className="text-gray-400 mb-4">No documents found matching this category.</p>
+                <p className="text-[#AD002E]/70 mb-4">No documents found matching this category.</p>
                 <Button
                   type="primary"
                   icon={<PlusOutlined />}
                   onClick={openAddModal}
-                  style={{ backgroundColor: "#B3003C", borderColor: "#B3003C" }}
+                  style={{ backgroundColor: "#AD002E", borderColor: "#AD002E" }}
                 >
                   Upload New Document
                 </Button>
@@ -357,7 +357,7 @@ export default function DownloadsPage() {
         onCancel={() => setIsModalOpen(false)}
         confirmLoading={uploading}
         okText={editingId ? "Save Changes" : "Upload File"}
-        okButtonProps={{ style: { backgroundColor: "#B3003C", borderColor: "#B3003C" } }}
+        okButtonProps={{ style: { backgroundColor: "#AD002E", borderColor: "#AD002E" } }}
       >
         <Form form={form} layout="vertical" className="mt-4">
           <Form.Item name="titleEn" label="Document Title (English)" rules={[{ required: true, message: "English title is required" }]}>

@@ -185,20 +185,20 @@ export default function About() {
   ];
 
   return (
-    <div className="w-full bg-base-bg transition-colors duration-300">
+    <div className="w-full bg-white transition-colors duration-300">
 
       {/* 1. Header Banner */}
-      <section className="relative py-20 bg-gradient-to-b from-base-card to-base-bg border-b border-base-border/50 overflow-hidden transition-all duration-300">
+      <section className="relative py-20 bg-gradient-to-b from-base-card to-base-bg border-b border-[#AD002E]/20/50 overflow-hidden transition-all duration-300">
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#AD002E]/5 rounded-full blur-3xl" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative text-center space-y-4">
           <span className="inline-block mb-2 ">
             {t.legacy}
           </span>
-          <h1 className={`text-4xl sm:text-6xl font-black tracking-tight transition-colors duration-300 ${"text-text-main"
+          <h1 className={`text-4xl sm:text-6xl font-bold tracking-tight transition-colors duration-300 ${"text-text-main"
             }`}>
             {isMr ? "इतिहास" : "History"}
           </h1>
-          <p className={`text-base max-w-2xl mx-auto leading-relaxed transition-colors duration-300 ${isDark ? "text-text-muted" : "text-gray-600"
+          <p className={`text-base max-w-2xl mx-auto leading-relaxed transition-colors duration-300 ${isDark ? "text-text-muted" : "text-[#AD002E]/70"
             }`}>
             {historyText}
           </p>
@@ -207,7 +207,7 @@ export default function About() {
 
       {/* 2. Mission & Vision */}
       <section className="py-16 px-4 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div data-aos="fade-right" className="glass-panel p-8 rounded-2xl space-y-4 relative">
+        <div data-aos="fade-right" className="glass-panel p-8 rounded-lg space-y-4 relative">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-lg bg-[#AD002E]/20 border border-[#AD002E]/40 flex items-center justify-center">
               <EyeOutlined className="text-2xl text-[#AD002E]" />
@@ -215,13 +215,13 @@ export default function About() {
             <h3 className={`text-2xl font-bold transition-colors duration-300 ${"text-text-main"
               }`}>{t.visionTitle}</h3>
           </div>
-          <p className={`text-sm leading-relaxed transition-colors duration-300 ${isDark ? "text-text-muted" : "text-gray-600"
+          <p className={`text-sm leading-relaxed transition-colors duration-300 ${isDark ? "text-text-muted" : "text-[#AD002E]/70"
             }`}>
             {visionText}
           </p>
         </div>
 
-        <div data-aos="fade-left" className="glass-panel p-8 rounded-2xl space-y-4 relative">
+        <div data-aos="fade-left" className="glass-panel p-8 rounded-lg space-y-4 relative">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-lg bg-[#AD002E]/20 border border-[#AD002E]/40 flex items-center justify-center">
               <AimOutlined className="text-2xl text-[#AD002E]" />
@@ -229,7 +229,7 @@ export default function About() {
             <h3 className={`text-2xl font-bold transition-colors duration-300 ${"text-text-main"
               }`}>{t.missionTitle}</h3>
           </div>
-          <p className={`text-sm leading-relaxed transition-colors duration-300 ${isDark ? "text-text-muted" : "text-gray-600"
+          <p className={`text-sm leading-relaxed transition-colors duration-300 ${isDark ? "text-text-muted" : "text-[#AD002E]/70"
             }`}>
             {missionText}
           </p>
@@ -237,18 +237,18 @@ export default function About() {
       </section>
 
       {/* 3. Chairman's Message */}
-      <section id="chairman" className="py-16 px-4 bg-base-card/40 border-y border-base-border/50 transition-all duration-300">
+      <section id="chairman" className="py-16 px-4 bg-white/40 border-y border-[#AD002E]/20/50 transition-all duration-300">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
 
           {/* Chairman Image / Frame */}
           <div data-aos="fade-right" className="flex justify-center">
-            <div className="relative w-64 h-80 rounded-2xl overflow-hidden border-2 border-base-border bg-gradient-to-tr from-[#AD002E] to-[#AD002E] p-1.5 shadow-2xl transition-all duration-300">
-              <div className="relative w-full h-full bg-base-card rounded-xl overflow-hidden flex flex-col justify-end p-4 transition-all duration-300">
+            <div className="relative w-64 h-80 rounded-lg overflow-hidden border-2 border-[#AD002E]/20 bg-gradient-to-tr from-[#AD002E] to-[#AD002E] p-1.5 shadow-md transition-all duration-300">
+              <div className="relative w-full h-full bg-white rounded-lg overflow-hidden flex flex-col justify-end p-4 transition-all duration-300">
                 {/* SVG profile avatar representation */}
-                <div className="absolute inset-0 flex items-center justify-center bg-base-bg transition-colors duration-300">
+                <div className="absolute inset-0 flex items-center justify-center bg-white transition-colors duration-300">
                   <TeamOutlined className="text-7xl text-text-muted/30 transition-colors" />
                 </div>
-                <div className="z-10 bg-base-bg/90 p-3 rounded-lg border border-base-border text-center transition-all duration-300">
+                <div className="z-10 bg-white/90 p-3 rounded-lg border border-[#AD002E]/20 text-center transition-all duration-300">
                   <h4 className={`text-base font-bold transition-colors duration-300 ${"text-text-main"
                     }`}>{isMr ? "श्री. वसंत बाबासाहेब कवाद" : "Shri. Vasant Babasaheb Kavad"}</h4>
                   <p className="text-sm text-[#AD002E] font-semibold mt-0.5">{t.chairmanImageLabel}</p>
@@ -260,22 +260,22 @@ export default function About() {
           {/* Chairman Message Text */}
           <div data-aos="fade-up" className="lg:col-span-2 space-y-5">
             <span className="text-sm font-bold text-[#AD002E] uppercase tracking-wider">{t.leadership}</span>
-            <h2 className={`text-3xl sm:text-4xl font-extrabold transition-colors duration-300 ${"text-text-main"
+            <h2 className={`text-3xl sm:text-4xl font-bold transition-colors duration-300 ${"text-text-main"
               }`}>{t.chairmanTitle}</h2>
             <div className="w-12 h-1 bg-[#AD002E] rounded-full" />
 
-            <div className={`space-y-4 text-sm sm:text-base leading-relaxed font-medium transition-colors duration-300 ${false ? "text-white" : "text-gray-800"
+            <div className={`space-y-4 text-sm sm:text-base leading-relaxed font-normal transition-colors duration-300 ${false ? "text-white" : "text-[#AD002E]/70"
               }`}>
               {chairmanMsg.split("\n").map((para, i) => (
                 <p key={i} className="mb-3">{para}</p>
               ))}
             </div>
             <div className="pt-2">
-              <p className={`text-sm font-bold transition-colors ${isDark ? "text-text-muted" : "text-gray-500"
+              <p className={`text-sm font-bold transition-colors ${isDark ? "text-text-muted" : "text-[#AD002E]/70"
                 }`}>{t.inCooperation}</p>
-              <p className={`text-base font-extrabold mt-0.5 transition-colors ${"text-text-main"
+              <p className={`text-base font-bold mt-0.5 transition-colors ${"text-text-main"
                 }`}>{isMr ? "श्री. वसंत बाबासाहेब कवाद" : "Shri. Vasant Babasaheb Kavad"}</p>
-              <p className={`text-sm transition-colors ${isDark ? "text-text-muted" : "text-gray-500"
+              <p className={`text-sm transition-colors ${isDark ? "text-text-muted" : "text-[#AD002E]/70"
                 }`}>{t.chairmanPost}</p>
             </div>
           </div>
@@ -287,9 +287,9 @@ export default function About() {
       {/* 5. Timeline / History Milestones */}
       <section id="history" className="py-20 px-4 max-w-7xl mx-auto space-y-12">
         <div className="text-center space-y-3">
-          <h2 className={`text-3xl sm:text-4xl font-extrabold transition-colors ${"text-text-main"
+          <h2 className={`text-3xl sm:text-4xl font-bold transition-colors ${"text-text-main"
             }`}>{t.timelineTitle}</h2>
-          <p className={`text-sm max-w-xl mx-auto transition-colors ${isDark ? "text-text-muted" : "text-gray-600"
+          <p className={`text-sm max-w-xl mx-auto transition-colors ${isDark ? "text-text-muted" : "text-[#AD002E]/70"
             }`}>
             {t.timelineSubtitle}
           </p>
@@ -299,21 +299,21 @@ export default function About() {
           {milestones.map((stone, idx) => (
             <div key={idx} data-aos="fade-up" className="relative pl-8 md:pl-12 group">
               {/* Year circle indicator */}
-              <div className="absolute -left-[11px] top-0 w-5 h-5 rounded-full bg-base-card border-2 border-[#AD002E] group-hover:border-[#AD002E] group-hover:bg-[#AD002E] transition-all flex items-center justify-center">
+              <div className="absolute -left-[11px] top-0 w-5 h-5 rounded-full bg-white border-2 border-[#AD002E] group-hover:border-[#AD002E] group-hover:bg-[#AD002E] transition-all flex items-center justify-center">
                 <div className="w-1.5 h-1.5 rounded-full bg-white" />
               </div>
 
               {/* Year floating block on left for wide screens */}
               <div className="hidden md:block absolute -left-32 top-0 w-24 text-right">
-                <span className="text-base font-black text-[#AD002E] tracking-wider">{stone.year}</span>
+                <span className="text-base font-bold text-[#AD002E] tracking-wider">{stone.year}</span>
               </div>
 
               {/* Milestone details card */}
-              <div className="glass-card p-5 rounded-lg border border-base-border/50 relative transition-all duration-300">
-                <span className="md:hidden block text-sm font-black text-[#AD002E] mb-1">{stone.year}</span>
+              <div className="glass-card p-5 rounded-lg border border-[#AD002E]/20/50 relative transition-all duration-300">
+                <span className="md:hidden block text-sm font-bold text-[#AD002E] mb-1">{stone.year}</span>
                 <h4 className={`text-base sm:text-lg font-bold mb-1.5 transition-colors ${"text-text-main"
                   }`}>{stone.title}</h4>
-                <p className={`text-sm leading-relaxed transition-colors ${isDark ? "text-text-muted" : "text-gray-600"
+                <p className={`text-sm leading-relaxed transition-colors ${isDark ? "text-text-muted" : "text-[#AD002E]/70"
                   }`}>{stone.desc}</p>
               </div>
             </div>
@@ -322,14 +322,14 @@ export default function About() {
       </section>
 
       {/* 5. Nighoj Kund & Agri Tourism */}
-      <section id="nighoj-kund" className="py-24 px-4 bg-base-card/40 border-t border-base-border/50 overflow-hidden transition-all duration-300">
+      <section id="nighoj-kund" className="py-24 px-4 bg-white/40 border-t border-[#AD002E]/20/50 overflow-hidden transition-all duration-300">
         <div className="max-w-7xl mx-auto space-y-16">
 
           {/* Section Header */}
           <div className="text-center space-y-4 max-w-3xl mx-auto" data-aos="fade-up">
-            <h2 className={`text-3xl md:text-5xl font-black tracking-tight transition-colors ${"text-text-main"
+            <h2 className={`text-3xl md:text-5xl font-bold tracking-tight transition-colors ${"text-text-main"
               }`}>{t.nighojTitle}</h2>
-            <p className={`text-lg md:text-xl font-medium transition-colors ${isDark ? "text-text-muted" : "text-gray-600"
+            <p className={`text-lg md:text-xl font-normal transition-colors ${isDark ? "text-text-muted" : "text-[#AD002E]/70"
               }`}>
               {t.nighojSubtitle}
             </p>
@@ -339,7 +339,7 @@ export default function About() {
 
             {/* Left side: Image and Quote */}
             <div className="lg:col-span-5 space-y-8" data-aos="fade-right">
-              <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden shadow-lg border border-base-border/50 group">
+              <div className="relative w-full aspect-[4/5] rounded-lg overflow-hidden shadow-md border border-[#AD002E]/20/50 group">
                 <div className="absolute inset-0 bg-[#AD002E]/10 z-10 group-hover:bg-transparent transition-colors duration-500" />
                 <Image
                   src="/images/history/nighoj-kund.png"
@@ -349,11 +349,11 @@ export default function About() {
                 />
               </div>
 
-              <div className="glass-panel p-8 rounded-2xl relative overflow-hidden border-l-4 border-l-[#AD002E]">
+              <div className="glass-panel p-8 rounded-lg relative overflow-hidden border-l-4 border-l-[#AD002E]">
                 <div className="absolute top-0 right-0 p-4 opacity-10">
                   <span className="text-8xl font-serif text-[#AD002E]">"</span>
                 </div>
-                <p className={`text-lg md:text-xl font-medium italic relative z-10 transition-colors ${isDark ? "text-gray-300" : "text-gray-700"
+                <p className={`text-lg md:text-xl font-normal italic relative z-10 transition-colors ${isDark ? "text-[#AD002E]/70" : "text-[#AD002E]/70"
                   }`}>
                   {t.nighojQuote}
                 </p>
@@ -365,11 +365,11 @@ export default function About() {
 
               {/* Description */}
               <div className="space-y-6">
-                <p className={`text-base md:text-lg leading-relaxed transition-colors ${isDark ? "text-text-muted" : "text-gray-600"
+                <p className={`text-base md:text-lg leading-relaxed transition-colors ${isDark ? "text-text-muted" : "text-[#AD002E]/70"
                   }`}>
                   {t.nighojDesc1}
                 </p>
-                <p className={`text-base md:text-lg leading-relaxed transition-colors ${isDark ? "text-text-muted" : "text-gray-600"
+                <p className={`text-base md:text-lg leading-relaxed transition-colors ${isDark ? "text-text-muted" : "text-[#AD002E]/70"
                   }`}>
                   {t.nighojDesc2}
                 </p>
@@ -377,47 +377,47 @@ export default function About() {
 
               {/* Feature Cards Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="glass-card p-6 rounded-xl hover:-translate-y-1 transition-all duration-300">
+                <div className="glass-card p-6 rounded-lg hover:-translate-y-1 transition-all duration-300">
                   <div className="w-12 h-12 rounded-full bg-[#AD002E]/10 flex items-center justify-center mb-4">
                     <GlobalOutlined className="text-2xl text-[#AD002E]" />
                   </div>
                   <h4 className={`text-xl font-bold mb-2 transition-colors ${"text-text-main"}`}>{t.nighojCard1Title}</h4>
-                  <p className={`text-sm leading-relaxed ${isDark ? "text-text-muted" : "text-gray-600"}`}>{t.nighojCard1Desc}</p>
+                  <p className={`text-sm leading-relaxed ${isDark ? "text-text-muted" : "text-[#AD002E]/70"}`}>{t.nighojCard1Desc}</p>
                 </div>
 
-                <div className="glass-card p-6 rounded-xl hover:-translate-y-1 transition-all duration-300">
+                <div className="glass-card p-6 rounded-lg hover:-translate-y-1 transition-all duration-300">
                   <div className="w-12 h-12 rounded-full bg-[#AD002E]/10 flex items-center justify-center mb-4">
                     <AimOutlined className="text-2xl text-[#AD002E]" />
                   </div>
                   <h4 className={`text-xl font-bold mb-2 transition-colors ${"text-text-main"}`}>{t.nighojCard2Title}</h4>
-                  <p className={`text-sm leading-relaxed ${isDark ? "text-text-muted" : "text-gray-600"}`}>{t.nighojCard2Desc}</p>
+                  <p className={`text-sm leading-relaxed ${isDark ? "text-text-muted" : "text-[#AD002E]/70"}`}>{t.nighojCard2Desc}</p>
                 </div>
 
-                <div className="glass-card p-6 rounded-xl hover:-translate-y-1 transition-all duration-300">
+                <div className="glass-card p-6 rounded-lg hover:-translate-y-1 transition-all duration-300">
                   <div className="w-12 h-12 rounded-full bg-[#AD002E]/10 flex items-center justify-center mb-4">
                     <BankOutlined className="text-2xl text-[#AD002E]" />
                   </div>
                   <h4 className={`text-xl font-bold mb-2 transition-colors ${"text-text-main"}`}>{t.nighojCard3Title}</h4>
-                  <p className={`text-sm leading-relaxed ${isDark ? "text-text-muted" : "text-gray-600"}`}>{t.nighojCard3Desc}</p>
+                  <p className={`text-sm leading-relaxed ${isDark ? "text-text-muted" : "text-[#AD002E]/70"}`}>{t.nighojCard3Desc}</p>
                 </div>
 
-                <div className="glass-card p-6 rounded-xl hover:-translate-y-1 transition-all duration-300">
+                <div className="glass-card p-6 rounded-lg hover:-translate-y-1 transition-all duration-300">
                   <div className="w-12 h-12 rounded-full bg-[#AD002E]/10 flex items-center justify-center mb-4">
                     <CameraOutlined className="text-2xl text-[#AD002E]" />
                   </div>
                   <h4 className={`text-xl font-bold mb-2 transition-colors ${"text-text-main"}`}>{t.nighojCard4Title}</h4>
-                  <p className={`text-sm leading-relaxed ${isDark ? "text-text-muted" : "text-gray-600"}`}>{t.nighojCard4Desc}</p>
+                  <p className={`text-sm leading-relaxed ${isDark ? "text-text-muted" : "text-[#AD002E]/70"}`}>{t.nighojCard4Desc}</p>
                 </div>
               </div>
 
               {/* Location & Time info */}
-              <div className="flex flex-col sm:flex-row gap-6 p-6 rounded-2xl bg-base-card border border-[#AD002E]/20">
+              <div className="flex flex-col sm:flex-row gap-6 p-6 rounded-lg bg-white border border-[#AD002E]/20">
                 <div className="flex-1 space-y-2">
                   <div className="flex items-center gap-2 text-[#AD002E] font-bold">
                     <EnvironmentOutlined />
                     <span>{t.nighojLocTitle}</span>
                   </div>
-                  <p className={`text-sm ${isDark ? "text-text-muted" : "text-gray-600"}`}>{t.nighojLocDesc}</p>
+                  <p className={`text-sm ${isDark ? "text-text-muted" : "text-[#AD002E]/70"}`}>{t.nighojLocDesc}</p>
                 </div>
                 <div className="w-px bg-base-border hidden sm:block" />
                 <div className="flex-1 space-y-2">
@@ -425,14 +425,14 @@ export default function About() {
                     <CalendarOutlined />
                     <span>{t.nighojTimeTitle}</span>
                   </div>
-                  <p className={`text-sm ${isDark ? "text-text-muted" : "text-gray-600"}`}>{t.nighojTimeDesc}</p>
+                  <p className={`text-sm ${isDark ? "text-text-muted" : "text-[#AD002E]/70"}`}>{t.nighojTimeDesc}</p>
                 </div>
               </div>
 
               {/* Agri Tourism Section */}
-              <div className="glass-panel p-8 rounded-2xl border-t-4 border-t-[#AD002E] mt-8 shadow-xl">
+              <div className="glass-panel p-8 rounded-lg border-t-4 border-t-[#AD002E] mt-8 shadow-md">
                 <h3 className={`text-2xl font-bold mb-4 transition-colors ${"text-text-main"}`}>{t.agriTitle}</h3>
-                <p className={`text-base mb-6 ${isDark ? "text-text-muted" : "text-gray-600"}`}>{t.agriContent}</p>
+                <p className={`text-base mb-6 ${isDark ? "text-text-muted" : "text-[#AD002E]/70"}`}>{t.agriContent}</p>
 
                 <div>
                   <h4 className="font-bold text-[#AD002E] mb-4">{t.agriHighlightsTitle}</h4>
@@ -440,7 +440,7 @@ export default function About() {
                     {t.agriHighlights.map((highlight: string, idx: number) => (
                       <li key={idx} className="flex items-start gap-2">
                         <CheckCircleOutlined className="text-[#AD002E] mt-1" />
-                        <span className={`text-sm font-medium transition-colors ${isDark ? "text-text-muted" : "text-gray-700"}`}>{highlight}</span>
+                        <span className={`text-sm font-normal transition-colors ${isDark ? "text-text-muted" : "text-[#AD002E]/70"}`}>{highlight}</span>
                       </li>
                     ))}
                   </ul>

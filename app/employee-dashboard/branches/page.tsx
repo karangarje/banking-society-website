@@ -185,9 +185,9 @@ export default function BranchesPage() {
       key: "details",
       render: (_, record) => (
         <div className="flex flex-col">
-          <span className="font-semibold text-gray-800 text-base">{record.nameEn} ({record.nameMr})</span>
-          <span className="text-sm text-gray-500">{record.addressEn} / {record.addressMr}</span>
-          <span className="text-xs text-gray-400 font-medium">City: {record.cityEn} / {record.cityMr}</span>
+          <span className="font-semibold text-[#AD002E]/70 text-base">{record.nameEn} ({record.nameMr})</span>
+          <span className="text-sm text-[#AD002E]/70">{record.addressEn} / {record.addressMr}</span>
+          <span className="text-xs text-[#AD002E]/70 font-normal">City: {record.cityEn} / {record.cityMr}</span>
         </div>
       ),
     },
@@ -195,9 +195,9 @@ export default function BranchesPage() {
       title: "Manager",
       key: "managerName",
       render: (_, record) => (
-        <span className="font-medium text-gray-700 flex flex-col">
+        <span className="font-normal text-[#AD002E]/70 flex flex-col">
           <span>{record.managerNameEn}</span>
-          <span className="text-xs text-gray-400">{record.managerNameMr}</span>
+          <span className="text-xs text-[#AD002E]/70">{record.managerNameMr}</span>
         </span>
       ),
     },
@@ -205,7 +205,7 @@ export default function BranchesPage() {
       title: "Contact Info",
       dataIndex: "contact",
       key: "contact",
-      render: (text) => <span className="text-gray-600 font-semibold">{text}</span>,
+      render: (text) => <span className="text-[#AD002E]/70 font-semibold">{text}</span>,
     },
     {
       title: "Google Map",
@@ -213,11 +213,11 @@ export default function BranchesPage() {
       key: "googleMapUrl",
       render: (url) =>
         url ? (
-          <a href={url} target="_blank" rel="noreferrer" className="text-green-600 hover:text-green-800 flex items-center font-medium gap-1 text-xs">
+          <a href={url} target="_blank" rel="noreferrer" className="text-[#AD002E] hover:text-[#AD002E] flex items-center font-normal gap-1 text-xs">
             <EnvironmentOutlined /> View Map
           </a>
         ) : (
-          <span className="text-gray-400 text-xs">Not Configured</span>
+          <span className="text-[#AD002E]/70 text-xs">Not Configured</span>
         ),
     },
     {
@@ -227,7 +227,7 @@ export default function BranchesPage() {
         <Space size="middle">
           <Button
             type="text"
-            icon={<EditOutlined className="text-blue-600 hover:text-blue-800" />}
+            icon={<EditOutlined className="text-[#AD002E] hover:text-[#AD002E]" />}
             onClick={() => openEditModal(record)}
           />
           <Popconfirm
@@ -236,7 +236,7 @@ export default function BranchesPage() {
             onConfirm={() => handleDelete(record.id)}
             okText="Yes"
             cancelText="No"
-            okButtonProps={{ style: { backgroundColor: "#B3003C", borderColor: "#B3003C" } }}
+            okButtonProps={{ style: { backgroundColor: "#AD002E", borderColor: "#AD002E" } }}
           >
             <Button
               type="text"
@@ -252,18 +252,18 @@ export default function BranchesPage() {
   return (
     <div className="space-y-6">
       {/* Title Header */}
-      <div className="flex justify-between items-center bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+      <div className="flex justify-between items-center bg-white p-6 rounded-lg shadow-md border border-[#AD002E]/20">
         <div>
-          <h1 className="text-2xl font-bold text-gray-800">Branch Management</h1>
-          <p className="text-sm text-gray-500">Configure corporate branch addresses, manager designations, contact info, and map locations.</p>
+          <h1 className="text-2xl font-bold text-[#AD002E]/70">Branch Management</h1>
+          <p className="text-sm text-[#AD002E]/70">Configure corporate branch addresses, manager designations, contact info, and map locations.</p>
         </div>
         <Space>
-          <Button icon={<ReloadOutlined />} onClick={fetchData} className="border-gray-300 hover:border-[#B3003C] hover:text-[#B3003C]" />
+          <Button icon={<ReloadOutlined />} onClick={fetchData} className="border-[#AD002E]/20 hover:border-[#AD002E] hover:text-[#AD002E]" />
           <Button
             type="primary"
             icon={<PlusOutlined />}
             onClick={openAddModal}
-            style={{ backgroundColor: "#B3003C", borderColor: "#B3003C" }}
+            style={{ backgroundColor: "#AD002E", borderColor: "#AD002E" }}
             className="hover:opacity-90"
           >
             Add Branch
@@ -274,33 +274,33 @@ export default function BranchesPage() {
       {/* Stats Cards */}
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={12} lg={6}>
-          <Card className="shadow-sm border-gray-100 hover:shadow-md transition-shadow">
-            <div className="text-sm text-gray-400 font-semibold uppercase tracking-wider">Total Branches</div>
-            <div className="text-3xl font-bold text-gray-800 mt-2">{totalBranches}</div>
+          <Card className="shadow-md border-[#AD002E]/20 hover:shadow-md transition-shadow-md">
+            <div className="text-sm text-[#AD002E]/70 font-semibold uppercase tracking-wider">Total Branches</div>
+            <div className="text-3xl font-bold text-[#AD002E]/70 mt-2">{totalBranches}</div>
           </Card>
         </Col>
         <Col xs={24} sm={12} lg={6}>
-          <Card className="shadow-sm border-gray-100 hover:shadow-md transition-shadow">
-            <div className="text-sm text-gray-400 font-semibold uppercase tracking-wider">Map Locations</div>
-            <div className="text-3xl font-bold text-[#B3003C] mt-2">{mapLinkedCount}</div>
+          <Card className="shadow-md border-[#AD002E]/20 hover:shadow-md transition-shadow-md">
+            <div className="text-sm text-[#AD002E]/70 font-semibold uppercase tracking-wider">Map Locations</div>
+            <div className="text-3xl font-bold text-[#AD002E] mt-2">{mapLinkedCount}</div>
           </Card>
         </Col>
         <Col xs={24} sm={12} lg={6}>
-          <Card className="shadow-sm border-gray-100 hover:shadow-md transition-shadow">
-            <div className="text-sm text-gray-400 font-semibold uppercase tracking-wider">With Photos</div>
-            <div className="text-3xl font-bold text-gray-800 mt-2">{imageCount}</div>
+          <Card className="shadow-md border-[#AD002E]/20 hover:shadow-md transition-shadow-md">
+            <div className="text-sm text-[#AD002E]/70 font-semibold uppercase tracking-wider">With Photos</div>
+            <div className="text-3xl font-bold text-[#AD002E]/70 mt-2">{imageCount}</div>
           </Card>
         </Col>
         <Col xs={24} sm={12} lg={6}>
-          <Card className="shadow-sm border-gray-100 hover:shadow-md transition-shadow">
-            <div className="text-sm text-gray-400 font-semibold uppercase tracking-wider">Last Updated</div>
-            <div className="text-xl font-bold text-gray-700 mt-3">{lastUpdatedText}</div>
+          <Card className="shadow-md border-[#AD002E]/20 hover:shadow-md transition-shadow-md">
+            <div className="text-sm text-[#AD002E]/70 font-semibold uppercase tracking-wider">Last Updated</div>
+            <div className="text-xl font-bold text-[#AD002E]/70 mt-3">{lastUpdatedText}</div>
           </Card>
         </Col>
       </Row>
 
       {/* Filter and Table Card */}
-      <Card className="shadow-sm border border-gray-100">
+      <Card className="shadow-md border border-[#AD002E]/20">
         <div className="mb-4">
           <Input.Search
             placeholder="Search branches by name, manager or address..."
@@ -319,12 +319,12 @@ export default function BranchesPage() {
           locale={{
             emptyText: (
               <div className="py-8 text-center">
-                <p className="text-gray-400 mb-4">No branches match your search or exist in database.</p>
+                <p className="text-[#AD002E]/70 mb-4">No branches match your search or exist in database.</p>
                 <Button
                   type="primary"
                   icon={<PlusOutlined />}
                   onClick={openAddModal}
-                  style={{ backgroundColor: "#B3003C", borderColor: "#B3003C" }}
+                  style={{ backgroundColor: "#AD002E", borderColor: "#AD002E" }}
                 >
                   Create Branch
                 </Button>
@@ -342,7 +342,7 @@ export default function BranchesPage() {
         onCancel={() => setIsModalOpen(false)}
         confirmLoading={uploading}
         okText={editingId ? "Save Changes" : "Create Branch"}
-        okButtonProps={{ style: { backgroundColor: "#B3003C", borderColor: "#B3003C" } }}
+        okButtonProps={{ style: { backgroundColor: "#AD002E", borderColor: "#AD002E" } }}
       >
         <Form form={form} layout="vertical" className="mt-4">
           <Row gutter={16}>

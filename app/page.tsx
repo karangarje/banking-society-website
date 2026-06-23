@@ -104,7 +104,7 @@ export default function Home() {
   const fdResult = calculateFD();
 
   return (
-    <div className="w-full bg-base-bg transition-colors duration-300">
+    <div className="w-full bg-white transition-colors duration-300">
       {/* 1. Hero Section Banner */}
       <HeroSlider />
       
@@ -113,24 +113,24 @@ export default function Home() {
 
 
       {/* 5. Interactive Financial Tools (EMI / FD Calculators) */}
-      <section className="py-12 md:py-16 lg:py-20 px-4 bg-base-bg border-t border-base-border relative z-10 transition-colors duration-300">
+      <section className="py-12 md:py-16 lg:py-20 px-4 bg-white border-t border-[#AD002E]/20 relative z-10 transition-colors duration-300">
         <div className="max-w-7xl mx-auto space-y-12">
           
           <div className="text-center max-w-3xl mx-auto space-y-3">
-            <span className="inline-block mb-3 px-3 py-1 bg-[rgba(173,0,46,0.08)] text-[#AD002E] text-xs font-black uppercase tracking-widest rounded shadow-sm border border-[rgba(173,0,46,0.1)]">
+            <span className="inline-block mb-3 px-3 py-1 bg-[rgba(173,0,46,0.08)] text-[#AD002E] text-xs font-bold uppercase tracking-widest rounded-lg shadow-md border border-[rgba(173,0,46,0.1)]">
               {t("calculator.badge")}
             </span>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-text-main tracking-tight transition-colors duration-300">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-text-main tracking-tight transition-colors duration-300">
               {calcTitle}
             </h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-[#AD002E] to-[#AD002E] mx-auto rounded-full" />
+            <div className="w-16 h-1 bg-[#AD002E] mx-auto rounded-full" />
             <p className="text-base text-text-muted leading-relaxed transition-colors duration-300">
               {calcDesc}
             </p>
           </div>
 
           {/* Calculator Grid */}
-          <div data-aos="fade-up" className="max-w-4xl mx-auto glass-panel p-6 sm:p-8 rounded-2xl relative overflow-hidden transition-all duration-300">
+          <div data-aos="fade-up" className="max-w-4xl mx-auto glass-panel p-6 sm:p-8 rounded-lg relative overflow-hidden transition-all duration-300">
             <div className="absolute bottom-0 right-0 w-32 h-32 bg-[#AD002E]/5 rounded-full blur-3xl" />
             
             <Tabs
@@ -197,14 +197,14 @@ export default function Home() {
                       </div>
 
                       {/* Right: Results Display */}
-                        <div className="bg-base-card border border-base-border rounded-xl p-6 flex flex-col justify-between text-center relative transition-all duration-300 shadow-sm hover:shadow-md">
+                        <div className="bg-white border border-[#AD002E]/20 rounded-lg p-6 flex flex-col justify-between text-center relative transition-all duration-300 shadow-md hover:shadow-md">
                         <div className="space-y-4">
                           <div>
                             <span className="text-sm font-bold text-text-muted uppercase tracking-widest transition-colors duration-300">{t("calculator.est_emi")}</span>
-                            <h4 className="text-4xl font-black text-[#AD002E] mt-1">₹{emiResult.monthlyEMI.toLocaleString()}</h4>
+                            <h4 className="text-4xl font-bold text-[#AD002E] mt-1">₹{emiResult.monthlyEMI.toLocaleString()}</h4>
                           </div>
 
-                          <div className="grid grid-cols-2 gap-4 border-t border-base-border pt-4 transition-colors duration-300">
+                          <div className="grid grid-cols-2 gap-4 border-t border-[#AD002E]/20 pt-4 transition-colors duration-300">
                             <div>
                               <span className="text-xs text-text-muted uppercase font-semibold transition-colors duration-300">{t("calculator.total_interest")}</span>
                               <p className="text-base font-bold text-text-main mt-0.5 transition-colors duration-300">₹{emiResult.totalInterest.toLocaleString()}</p>
@@ -217,7 +217,7 @@ export default function Home() {
                         </div>
 
                         <div className="pt-6">
-                          <Link href="/services?tab=loans" className="block text-center bg-[#AD002E] hover:bg-[#850024] text-white py-3 rounded font-black text-sm uppercase tracking-wider transition-all duration-300 shadow hover:shadow-lg hover:-translate-y-0.5">
+                          <Link href="/services?tab=loans" className="block text-center bg-[#AD002E] hover:bg-[#AD002E] text-white py-3 rounded-lg font-bold text-sm uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-md hover:-translate-y-0.5">
                             {t("calculator.btn_apply_loan")}
                           </Link>
                         </div>
@@ -284,14 +284,14 @@ export default function Home() {
                       </div>
 
                       {/* Right: Results Display */}
-                      <div className="bg-base-card border border-base-border rounded-xl p-6 flex flex-col justify-between text-center relative transition-all duration-300 shadow-sm hover:shadow-md">
+                      <div className="bg-white border border-[#AD002E]/20 rounded-lg p-6 flex flex-col justify-between text-center relative transition-all duration-300 shadow-md hover:shadow-md">
                         <div className="space-y-4">
                           <div>
                             <span className="text-sm font-bold text-text-muted uppercase tracking-widest transition-colors duration-300">{t("calculator.exp_maturity")}</span>
-                            <h4 className="text-4xl font-black text-[#AD002E] mt-1">₹{fdResult.maturityAmount.toLocaleString()}</h4>
+                            <h4 className="text-4xl font-bold text-[#AD002E] mt-1">₹{fdResult.maturityAmount.toLocaleString()}</h4>
                           </div>
 
-                          <div className="grid grid-cols-2 gap-4 border-t border-base-border pt-4 transition-colors duration-300">
+                          <div className="grid grid-cols-2 gap-4 border-t border-[#AD002E]/20 pt-4 transition-colors duration-300">
                             <div>
                               <span className="text-xs text-text-muted uppercase font-semibold transition-colors duration-300">{t("calculator.interest_earned")}</span>
                               <p className="text-base font-bold text-text-main mt-0.5 transition-colors duration-300">₹{fdResult.interestEarned.toLocaleString()}</p>
@@ -304,7 +304,7 @@ export default function Home() {
                         </div>
 
                         <div className="pt-6">
-                          <Link href="/services?tab=deposits" className="block text-center bg-[#AD002E] hover:bg-[#850024] text-white py-3 rounded font-black text-sm uppercase tracking-wider transition-all duration-300 shadow hover:shadow-lg hover:-translate-y-0.5">
+                          <Link href="/services?tab=deposits" className="block text-center bg-[#AD002E] hover:bg-[#AD002E] text-white py-3 rounded-lg font-bold text-sm uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-md hover:-translate-y-0.5">
                             {t("calculator.btn_open_fd")}
                           </Link>
                         </div>
@@ -320,14 +320,14 @@ export default function Home() {
       </section>
 
       {/* 2. Co-operative Overview and Key Pillars */}
-      <section className="py-12 md:py-16 lg:py-20 px-4 bg-base-bg relative z-10 transition-colors duration-300">
+      <section className="py-12 md:py-16 lg:py-20 px-4 bg-white relative z-10 transition-colors duration-300">
         <div className="max-w-5xl mx-auto">
           
           <div data-aos="fade-up" className="space-y-6">
-            <span className="inline-block mb-3 px-3 py-1 bg-[rgba(173,0,46,0.08)] text-[#AD002E] text-xs font-black uppercase tracking-widest rounded shadow-sm border border-[rgba(173,0,46,0.1)]">
+            <span className="inline-block mb-3 px-3 py-1 bg-[rgba(173,0,46,0.08)] text-[#AD002E] text-xs font-bold uppercase tracking-widest rounded-lg shadow-md border border-[rgba(173,0,46,0.1)]">
               {t("welcome.badge")}
             </span>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-text-main leading-tight tracking-tight transition-colors duration-300">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-text-main leading-tight tracking-tight transition-colors duration-300">
               {t("welcome.title")}
             </h2>
             <p className="text-base sm:text-lg text-text-muted leading-relaxed transition-colors duration-300">
@@ -355,7 +355,7 @@ export default function Home() {
             <div className="pt-4">
               <Link 
                 href="/about" 
-                className="inline-flex items-center gap-2 text-sm font-black uppercase text-[#AD002E] hover:text-[#AD002E] transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-bold uppercase text-[#AD002E] hover:text-[#AD002E] transition-colors"
               >
                 <span>{t("welcome.btn_history")}</span>
                 <ArrowRightOutlined />

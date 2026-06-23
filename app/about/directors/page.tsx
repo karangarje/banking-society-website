@@ -164,20 +164,20 @@ export default function About() {
   const directorsList = dynamicDirectors.length > 0 ? dynamicDirectors : directorsData;
 
   return (
-    <div className="w-full bg-base-bg transition-colors duration-300">
+    <div className="w-full bg-white transition-colors duration-300">
 
       {/* 1. Header Banner */}
-      <section className="relative py-20 bg-gradient-to-b from-base-card to-base-bg border-b border-base-border/50 overflow-hidden transition-all duration-300">
+      <section className="relative py-20 bg-gradient-to-b from-base-card to-base-bg border-b border-[#AD002E]/20/50 overflow-hidden transition-all duration-300">
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#AD002E]/5 rounded-full blur-3xl" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative text-center space-y-4">
           <span className="inline-block mb-2 ">
             {t.legacy}
           </span>
-          <h1 className={`text-4xl sm:text-6xl font-black tracking-tight transition-colors duration-300 ${"text-text-main"
+          <h1 className={`text-4xl sm:text-6xl font-bold tracking-tight transition-colors duration-300 ${"text-text-main"
             }`}>
             {isMr ? "संचालक मंडळ" : "Board of Directors"}
           </h1>
-          <p className={`text-base max-w-2xl mx-auto leading-relaxed transition-colors duration-300 ${isDark ? "text-text-muted" : "text-gray-600"
+          <p className={`text-base max-w-2xl mx-auto leading-relaxed transition-colors duration-300 ${isDark ? "text-text-muted" : "text-[#AD002E]/70"
             }`}>
             {t.subtitle}
           </p>
@@ -188,7 +188,7 @@ export default function About() {
       {/* 4. Board of Directors */}
       <section id="directors" className="py-20 px-4 max-w-[1536px] mx-auto space-y-12">
         <div className="text-center space-y-3" data-aos="fade-up">
-          <h2 className={`text-3xl sm:text-4xl font-extrabold transition-colors ${"text-text-main"}`}>
+          <h2 className={`text-3xl sm:text-4xl font-bold transition-colors ${"text-text-main"}`}>
             {isMr ? "संचालक मंडळ" : "Board of Directors"}
           </h2>
           <div className="w-16 h-1 bg-[#AD002E] mx-auto rounded-full" />
@@ -200,7 +200,7 @@ export default function About() {
               key={director.id} 
               data-aos="fade-up" 
               data-aos-delay={(idx % 5) * 50}
-              className="glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all duration-300 shadow-md hover:shadow-xl border border-base-border/50 flex flex-col"
+              className="glass-card rounded-lg overflow-hidden group hover:-translate-y-2 transition-all duration-300 shadow-md hover:shadow-md border border-[#AD002E]/20/50 flex flex-col"
             >
               <div className="aspect-[3/4] relative w-full bg-gradient-to-b from-[#AD002E]/5 to-[#AD002E]/10 dark:from-[#AD002E]/10 dark:to-[#AD002E]/20 overflow-hidden">
                 {/* Fallback avatar icon if image fails or isn't loaded */}
@@ -214,7 +214,7 @@ export default function About() {
                   className="object-cover object-top transition-transform duration-500 group-hover:scale-105 z-10 relative"
                 />
               </div>
-              <div className="p-4 text-center border-t border-base-border/50 bg-base-card transition-colors flex-grow flex flex-col justify-center">
+              <div className="p-4 text-center border-t border-[#AD002E]/20/50 bg-white transition-colors flex-grow flex flex-col justify-center">
                 <h4 className={`text-[13px] sm:text-sm font-bold mb-1 transition-colors ${"text-text-main"}`}>{director.name}</h4>
                 <p className="text-xs font-semibold text-[#AD002E]">{director.position}</p>
               </div>

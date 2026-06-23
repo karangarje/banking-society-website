@@ -61,7 +61,7 @@ const CounterItem: React.FC<CounterItemProps> = ({ end, suffix = "", duration = 
   }, [hasStarted, end, duration]);
 
   return (
-    <span ref={elementRef} className="font-extrabold text-4xl sm:text-5xl text-text-main transition-colors duration-300">
+    <span ref={elementRef} className="font-bold text-4xl sm:text-5xl text-text-main transition-colors duration-300">
       {count.toLocaleString()}{suffix}
     </span>
   );
@@ -102,12 +102,12 @@ export default function StatsSection() {
   ];
 
   return (
-    <section className="relative py-12 md:py-16 lg:py-20 px-4 bg-base-bg z-10 transition-colors duration-300">
+    <section className="relative py-12 md:py-16 lg:py-20 px-4 bg-white z-10 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         {/* Main Stats Panel with Glassmorphism */}
         <div 
           data-aos="fade-up"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-8 rounded-2xl glass-panel relative overflow-hidden transition-all duration-300"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-8 rounded-lg glass-panel relative overflow-hidden transition-all duration-300"
         >
           {/* Subtle decorative lights inside the card */}
           <div className="absolute top-0 left-1/4 w-40 h-40 bg-[#AD002E]/5 rounded-full blur-3xl" />
@@ -118,10 +118,10 @@ export default function StatsSection() {
               key={index}
               data-aos="fade-up"
               data-aos-delay={index * 100}
-              className="flex flex-col items-center text-center space-y-4 p-6 rounded-2xl border border-[rgba(0,0,0,0.04)] bg-base-card shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-400 relative group h-full break-words max-w-full"
+              className="flex flex-col items-center text-center space-y-4 p-6 rounded-lg border border-[rgba(0,0,0,0.04)] bg-white shadow-md hover:shadow-md hover:-translate-y-1 transition-all duration-400 relative group h-full break-words max-w-full"
             >
               {/* Icon Container with glowing effect */}
-              <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-[rgba(173,0,46,0.05)] border border-[rgba(173,0,46,0.1)] group-hover:border-[#AD002E] group-hover:bg-[#AD002E] transition-all duration-400">
+              <div className="flex items-center justify-center w-16 h-16 rounded-lg bg-[rgba(173,0,46,0.05)] border border-[rgba(173,0,46,0.1)] group-hover:border-[#AD002E] group-hover:bg-[#AD002E] transition-all duration-400">
                 {stat.icon}
               </div>
 

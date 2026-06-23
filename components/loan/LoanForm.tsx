@@ -42,18 +42,18 @@ export default function LoanForm({ onSubmit, initialValues }: LoanFormProps) {
     },
   });
 
-  const labelClass = "block text-xs font-bold uppercase tracking-wide text-[#111827] mb-1.5";
+  const labelClass = "block text-xs font-bold uppercase tracking-wide text-[#AD002E] mb-1.5";
 
-  const inputClass = "w-full h-12 bg-white text-[#111827] placeholder:text-gray-500 border border-gray-300 focus:border-[#B3003C] focus:ring-2 focus:ring-[#B3003C]/20 rounded-xl px-4 text-sm outline-none transition-all duration-200";
+  const inputClass = "w-full h-12 bg-white text-[#AD002E] placeholder:text-[#AD002E]/70 border border-[#AD002E]/20 focus:border-[#AD002E] focus:ring-2 focus:ring-[#AD002E]/20 rounded-lg px-4 text-sm outline-none transition-all duration-200";
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="mb-6 bg-white border border-gray-200 rounded-2xl p-6 text-[#111827] loan-card"
+      className="mb-6 bg-white border border-[#AD002E]/20 rounded-lg p-6 text-[#AD002E] loan-card"
     >
-      <h3 className="text-xl sm:text-2xl font-black text-[#111827] dark:text-white mb-5 text-center">
+      <h3 className="text-xl sm:text-2xl font-bold text-[#AD002E] dark:text-white mb-5 text-center">
         {t("loanCalculator.form_title") || "Loan Details Form"}
       </h3>
 
@@ -69,7 +69,7 @@ export default function LoanForm({ onSubmit, initialValues }: LoanFormProps) {
             className={inputClass}
           />
           {errors.loanAmount && (
-            <p className="text-xs text-[#B3003C] mt-1 font-semibold">
+            <p className="text-xs text-[#AD002E] mt-1 font-semibold">
               {errors.loanAmount.message}
             </p>
           )}
@@ -146,7 +146,7 @@ export default function LoanForm({ onSubmit, initialValues }: LoanFormProps) {
         >
           <button
             type="submit"
-            className="w-full bg-[#B3003C] hover:bg-[#92002f] text-white py-3.5 rounded-xl font-black text-sm uppercase tracking-wider transition-colors duration-200 shadow-md hover:shadow-lg"
+            className="w-full bg-[#AD002E] hover:bg-[#AD002E] text-white py-3.5 rounded-lg font-bold text-sm uppercase tracking-wider transition-colors duration-200 shadow-md hover:shadow-md"
           >
             {t("loanCalculator.btn_generate") || "Generate Schedule"}
           </button>

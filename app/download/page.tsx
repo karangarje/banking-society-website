@@ -176,22 +176,22 @@ export default function Download() {
   };
 
   return (
-    <div className="w-full bg-base-bg transition-colors duration-300">
+    <div className="w-full bg-white transition-colors duration-300">
       
       {/* Header Banner */}
-      <section className="relative py-20 bg-gradient-to-b from-base-card to-base-bg border-b border-base-border/50 overflow-hidden transition-all duration-300">
+      <section className="relative py-20 bg-gradient-to-b from-base-card to-base-bg border-b border-[#AD002E]/20/50 overflow-hidden transition-all duration-300">
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#AD002E]/5 rounded-full blur-3xl" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative text-center space-y-4">
           <span className="inline-block mb-2 ">
             {isMr ? "दस्तऐवज संग्रह" : "Resource Library"}
           </span>
-          <h1 className={`text-4xl sm:text-6xl font-black tracking-tight transition-colors duration-300 ${
+          <h1 className={`text-4xl sm:text-6xl font-bold tracking-tight transition-colors duration-300 ${
             "text-text-main"
           }`}>
             {isMr ? "डाउनलोड व अर्ज" : "Downloads & Forms"}
           </h1>
           <p className={`text-base max-w-2xl mx-auto leading-relaxed transition-colors duration-300 ${
-            isDark ? "text-text-muted" : "text-gray-600"
+            isDark ? "text-text-muted" : "text-[#AD002E]/70"
           }`}>
             {isMr
               ? "महत्त्वाचे अर्ज, केवायसी नमुने आणि वार्षिक अहवाल डाउनलोड करा."
@@ -202,7 +202,7 @@ export default function Download() {
 
       {/* Filter & Search Panel */}
       <section className="py-8 max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="glass-panel p-4 rounded-xl flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="glass-panel p-4 rounded-lg flex flex-col md:flex-row items-center justify-between gap-4">
           
           {/* Search bar */}
           <div className="relative w-full md:w-96 flex items-center">
@@ -218,8 +218,8 @@ export default function Download() {
               onChange={(e) => setSearchTerm(e.target.value)}
               className={`w-full border rounded-lg pl-10 pr-4 py-2 text-base focus:outline-none focus:border-[#AD002E] transition-colors ${
                 isDark 
-                  ? "bg-[#FFFFFF] border-[rgba(255,255,255,0.1)] text-white" 
-                  : "bg-white border-gray-300 text-gray-900"
+                  ? "bg-[#FFFFFF] border-[#AD002E]/20 text-white" 
+                  : "bg-white border-[#AD002E]/20 text-[#AD002E]/70"
               }`}
             />
           </div>
@@ -243,12 +243,12 @@ export default function Download() {
               <button
                 key={cat.key}
                 onClick={() => setActiveCategory(cat.key)}
-                className={`text-sm px-4 py-2 rounded-lg font-black uppercase tracking-wider transition-all border ${
+                className={`text-sm px-4 py-2 rounded-lg font-bold uppercase tracking-wider transition-all border ${
                   activeCategory === cat.key
-                    ? "bg-[#AD002E] text-white border-[#850024]"
+                    ? "bg-[#AD002E] text-white border-[#AD002E]"
                     : isDark
-                      ? "bg-[#FDFDFD] text-text-muted border-[rgba(255,255,255,0.06)] hover:border-white hover:text-white"
-                      : "bg-white text-gray-600 border-gray-300 hover:border-[#AD002E] hover:text-[#AD002E] shadow-sm"
+                      ? "bg-[#FDFDFD] text-text-muted border-[#AD002E]/20 hover:border-[#AD002E]/20 hover:text-white"
+                      : "bg-white text-[#AD002E]/70 border-[#AD002E]/20 hover:border-[#AD002E] hover:text-[#AD002E] shadow-md"
                 }`}
               >
                 {cat.label}
@@ -263,8 +263,8 @@ export default function Download() {
       <section className="pb-20 max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* Responsive Table Wrapper */}
-        <div className={`glass-panel rounded-2xl overflow-hidden border transition-colors duration-300 ${
-          isDark ? "border-[rgba(255,255,255,0.06)]" : "border-gray-200"
+        <div className={`glass-panel rounded-lg overflow-hidden border transition-colors duration-300 ${
+          isDark ? "border-[#AD002E]/20" : "border-[#AD002E]/20"
         }`}>
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm sm:text-lg">
@@ -272,8 +272,8 @@ export default function Download() {
               {/* Table Header */}
               <thead className={`border-b text-[#AD002E] font-bold uppercase tracking-wider transition-colors duration-300 ${
                 isDark 
-                  ? "bg-[#FDFDFD] border-[rgba(255,255,255,0.06)]" 
-                  : "bg-gray-100 border-gray-200"
+                  ? "bg-[#FDFDFD] border-[#AD002E]/20" 
+                  : "bg-white border-[#AD002E]/20"
               }`}>
                 <tr>
                   <th className="py-4 px-6">{isMr ? "दस्तऐवजाचे नाव" : "Document Title"}</th>
@@ -286,13 +286,13 @@ export default function Download() {
               {/* Table Body */}
               <tbody className={`divide-y transition-colors duration-300 ${
                 isDark 
-                  ? "divide-[rgba(255,255,255,0.04)] text-gray-600" 
-                  : "divide-gray-200 text-gray-700"
+                  ? "divide-[rgba(255,255,255,0.04)] text-[#AD002E]/70" 
+                  : "divide-gray-200 text-[#AD002E]/70"
               }`}>
                 {filteredDocs.length > 0 ? (
                   filteredDocs.map((doc) => (
                     <tr key={doc.id} className={`transition-colors ${
-                      isDark ? "hover:bg-[rgba(255,255,255,0.01)]" : "hover:bg-gray-50/50"
+                      isDark ? "hover:bg-[rgba(255,255,255,0.01)]" : "hover:bg-white/50"
                     }`}>
                       
                       {/* Title & Desc */}
@@ -300,13 +300,13 @@ export default function Download() {
                         <div className="flex gap-3 items-start">
                           <FilePdfOutlined className="text-2xl text-[#AD002E] shrink-0 mt-0.5" />
                           <div className="break-words whitespace-normal w-full">
-                            <h4 className={`font-extrabold transition-colors duration-300 break-words whitespace-normal ${
+                            <h4 className={`font-bold transition-colors duration-300 break-words whitespace-normal ${
                               "text-text-main"
                             }`}>
                               {isMr ? doc.titleMr : doc.title}
                             </h4>
                             <p className={`text-sm mt-1 leading-relaxed transition-colors duration-300 break-words whitespace-normal ${
-                              isDark ? "text-text-muted" : "text-gray-600"
+                              isDark ? "text-text-muted" : "text-[#AD002E]/70"
                             }`}>
                               {isMr ? doc.descriptionMr : doc.description}
                             </p>
@@ -316,11 +316,11 @@ export default function Download() {
 
                       {/* Type Category */}
                       <td className="py-5 px-6 hidden sm:table-cell">
-                        <span className={`text-xs font-black uppercase tracking-wider px-2 py-0.5 rounded ${
+                        <span className={`text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded-lg ${
                           doc.category === "form" 
                             ? "bg-[rgba(173,0,46,0.1)] text-[#AD002E] border border-[rgba(173,0,46,0.2)]" 
                             : isDark
-                              ? "bg-[rgba(173,0,46,0.15)] text-[#FFFFFF] border border-[#850024]"
+                              ? "bg-[rgba(173,0,46,0.15)] text-[#FFFFFF] border border-[#AD002E]"
                               : "bg-[#AD002E] text-[#FFFFFF] border border-[#AD002E]"
                         }`}>
                           {doc.category === "form"
@@ -337,9 +337,9 @@ export default function Download() {
                       <td className="py-5 px-6">
                         <div className="space-y-1">
                           <span className={`font-semibold block transition-colors duration-300 ${
-                            isDark ? "text-text-muted" : "text-gray-700"
+                            isDark ? "text-text-muted" : "text-[#AD002E]/70"
                           }`}>{doc.size}</span>
-                          <span className="text-xs font-bold text-white bg-red-600/90 border border-red-500 rounded px-1">{doc.format}</span>
+                          <span className="text-xs font-bold text-white bg-[#AD002E]/90 border border-[#AD002E] rounded-lg px-1">{doc.format}</span>
                         </div>
                       </td>
 
@@ -347,7 +347,7 @@ export default function Download() {
                       <td className="py-5 px-6 text-center">
                         <button
                           onClick={() => handleDownload(doc)}
-                          className="bg-[#AD002E] hover:bg-[#850024] border border-[#850024] hover:border-[#AD002E] text-white p-2 sm:px-4 sm:py-2 rounded font-bold uppercase tracking-wider text-sm inline-flex items-center gap-1.5 transition-all shadow-md shadow-[#AD002E]/20 cursor-pointer"
+                          className="bg-[#AD002E] hover:bg-[#AD002E] border border-[#AD002E] hover:border-[#AD002E] text-white p-2 sm:px-4 sm:py-2 rounded-lg font-bold uppercase tracking-wider text-sm inline-flex items-center gap-1.5 transition-all shadow-md shadow-[#AD002E]/20 cursor-pointer"
                         >
                           <DownloadOutlined />
                           <span className="hidden sm:inline">
@@ -360,7 +360,7 @@ export default function Download() {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan={4} className="py-12 text-center text-text-muted font-medium">
+                    <td colSpan={4} className="py-12 text-center text-text-muted font-normal">
                       {isMr
                         ? "तुमच्या शोधाशी जुळणारे दस्तऐवज सापडले नाहीत."
                         : "No documents found matching your search criteria."}
@@ -374,20 +374,20 @@ export default function Download() {
         </div>
 
         {/* Regulatory Alert */}
-        <div className={`mt-8 p-4 rounded-xl flex gap-3 items-start text-sm leading-relaxed max-w-4xl border ${
+        <div className={`mt-8 p-4 rounded-lg flex gap-3 items-start text-sm leading-relaxed max-w-4xl border ${
           isDark 
             ? "bg-[rgba(255,255,255,0.01)] border-[rgba(255,255,255,0.04)] text-text-muted" 
-            : "bg-gray-50 border-gray-200 text-gray-600"
+            : "bg-white border-[#AD002E]/20 text-[#AD002E]/70"
         }`}>
           <InfoCircleOutlined className="text-[#AD002E] text-lg shrink-0 mt-0.5" />
           <p>
             💡 {isMr ? (
               <>
-                <strong className={isDark ? "text-gray-600" : "text-gray-800"}>सूचना:</strong> पूर्ण भरलेले अर्ज स्वाक्षरी करून संबंधित शाखेत जमा करावेत. अलीकडील पासपोर्ट आकाराचे छायाचित्र तसेच स्वयंप्रमाणित आधार कार्ड व पॅन कार्ड प्रती जोडणे आवश्यक आहे.
+                <strong className={isDark ? "text-[#AD002E]/70" : "text-[#AD002E]/70"}>सूचना:</strong> पूर्ण भरलेले अर्ज स्वाक्षरी करून संबंधित शाखेत जमा करावेत. अलीकडील पासपोर्ट आकाराचे छायाचित्र तसेच स्वयंप्रमाणित आधार कार्ड व पॅन कार्ड प्रती जोडणे आवश्यक आहे.
               </>
             ) : (
               <>
-                <strong className={isDark ? "text-gray-600" : "text-gray-800"}>Instructions:</strong> Completed application forms must be signed physically and submitted to your base branch. Ensure you affix recent passport-sized photos and enclose photocopies of self-attested Aadhaar and PAN documents for identity validation checks.
+                <strong className={isDark ? "text-[#AD002E]/70" : "text-[#AD002E]/70"}>Instructions:</strong> Completed application forms must be signed physically and submitted to your base branch. Ensure you affix recent passport-sized photos and enclose photocopies of self-attested Aadhaar and PAN documents for identity validation checks.
               </>
             )}
           </p>

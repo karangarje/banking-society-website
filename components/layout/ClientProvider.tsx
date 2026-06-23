@@ -50,7 +50,7 @@ export default function ClientProvider({ children }: { children: React.ReactNode
               Button: {
                 colorPrimary: "#AD002E",
                 colorLink: "#AD002E",
-                colorPrimaryHover: "#850024",
+                colorPrimaryHover: "#AD002E",
               },
               Tabs: {
                 itemSelectedColor: "#AD002E",

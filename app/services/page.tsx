@@ -74,22 +74,22 @@ function ServicesTabs() {
             <div 
               key={service.id}
               data-aos="fade-up"
-              className="glass-panel p-6 sm:p-8 rounded-2xl relative overflow-hidden border border-base-border transition-all duration-300"
+              className="glass-panel p-6 sm:p-8 rounded-lg relative overflow-hidden border border-[#AD002E]/20 transition-all duration-300"
             >
               {/* Corner visual accent */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#AD002E]/5 rounded-full blur-3xl" />
               
               {/* Header info */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-base-border pb-5 transition-colors duration-300">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#AD002E]/20 pb-5 transition-colors duration-300">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-base-card border border-base-border flex items-center justify-center transition-all duration-300">
+                  <div className="w-12 h-12 rounded-lg bg-white border border-[#AD002E]/20 flex items-center justify-center transition-all duration-300">
                     {renderServiceIcon(service.icon)}
                   </div>
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-extrabold text-text-main transition-colors duration-300">
+                    <h3 className="text-xl sm:text-2xl font-bold text-text-main transition-colors duration-300">
                       {serviceTitle}
                     </h3>
-                    <span className="text-sm text-text-muted font-medium tracking-wide uppercase transition-colors duration-300">
+                    <span className="text-sm text-text-muted font-normal tracking-wide uppercase transition-colors duration-300">
                       {t("services.category_label")}: {t(`services.tabs.${service.category}`)}
                     </span>
                   </div>
@@ -100,7 +100,7 @@ function ServicesTabs() {
                     <p className="text-sm font-bold text-text-muted uppercase tracking-widest transition-colors duration-300">
                       {t("services.rate_benefit_label")}
                     </p>
-                    <p className="text-base font-black text-[#AD002E] mt-0.5">{serviceRate}</p>
+                    <p className="text-base font-bold text-[#AD002E] mt-0.5">{serviceRate}</p>
                   </div>
                 )}
               </div>
@@ -114,8 +114,8 @@ function ServicesTabs() {
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-2">
                 
                 {/* Features Column */}
-                <div className="space-y-3 p-4 rounded-lg bg-base-card/50 border border-base-border/50 transition-all duration-300">
-                  <h4 className="text-sm font-black text-[#AD002E] uppercase tracking-wider flex items-center gap-1.5">
+                <div className="space-y-3 p-4 rounded-lg bg-white/50 border border-[#AD002E]/20/50 transition-all duration-300">
+                  <h4 className="text-sm font-bold text-[#AD002E] uppercase tracking-wider flex items-center gap-1.5">
                     <CheckCircleOutlined />
                     <span>{t("services.key_benefits_label")}</span>
                   </h4>
@@ -130,8 +130,8 @@ function ServicesTabs() {
                 </div>
 
                 {/* Eligibility Column */}
-                <div className="space-y-3 p-4 rounded-lg bg-base-card/50 border border-base-border/50 transition-all duration-300">
-                  <h4 className="text-sm font-black text-[#AD002E] uppercase tracking-wider flex items-center gap-1.5">
+                <div className="space-y-3 p-4 rounded-lg bg-white/50 border border-[#AD002E]/20/50 transition-all duration-300">
+                  <h4 className="text-sm font-bold text-[#AD002E] uppercase tracking-wider flex items-center gap-1.5">
                     <CheckCircleOutlined />
                     <span>{t("services.eligibility_label")}</span>
                   </h4>
@@ -146,15 +146,15 @@ function ServicesTabs() {
                 </div>
 
                 {/* Documents Column */}
-                <div className="space-y-3 p-4 rounded-lg bg-base-card/50 border border-base-border/50 transition-all duration-300">
-                  <h4 className="text-sm font-black text-[#AD002E] uppercase tracking-wider flex items-center gap-1.5">
+                <div className="space-y-3 p-4 rounded-lg bg-white/50 border border-[#AD002E]/20/50 transition-all duration-300">
+                  <h4 className="text-sm font-bold text-[#AD002E] uppercase tracking-wider flex items-center gap-1.5">
                     <FileTextOutlined />
                     <span>{t("services.documents_label")}</span>
                   </h4>
                   <ul className="space-y-2 text-sm text-text-main transition-colors duration-300">
                     {documents.map((doc, dIdx) => (
                       <li key={dIdx} className="flex items-start gap-1.5 leading-normal">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-500 mt-1.5 shrink-0" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-white mt-1.5 shrink-0" />
                         <span>{doc}</span>
                       </li>
                     ))}
@@ -228,16 +228,16 @@ export default function Services() {
   const { t } = useLanguage();
 
   return (
-    <div className="w-full bg-base-bg transition-colors duration-300">
+    <div className="w-full bg-white transition-colors duration-300">
       
       {/* Header Banner */}
-      <section className="relative py-12 md:py-16 lg:py-20 bg-gradient-to-b from-base-card to-base-bg border-b border-base-border/50 overflow-hidden transition-all duration-300">
+      <section className="relative py-12 md:py-16 lg:py-20 bg-gradient-to-b from-base-card to-base-bg border-b border-[#AD002E]/20/50 overflow-hidden transition-all duration-300">
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#AD002E]/5 rounded-full blur-3xl" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative text-center space-y-4">
           <span className="inline-block mb-2 ">
             {t("services.badge")}
           </span>
-          <h1 className="text-4xl sm:text-6xl font-black text-text-main tracking-tight transition-colors duration-300">
+          <h1 className="text-4xl sm:text-6xl font-bold text-text-main tracking-tight transition-colors duration-300">
             {t("services.title")}
           </h1>
           <p className="text-base text-text-muted max-w-2xl mx-auto leading-relaxed transition-colors duration-300">

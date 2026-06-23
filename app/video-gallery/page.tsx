@@ -106,7 +106,7 @@ export default function VideoGallery() {
           <span className="inline-block mb-2 ">
             {t("videoGallery.badge")}
           </span>
-          <h1 className="text-4xl sm:text-6xl font-black text-text-main tracking-tight">
+          <h1 className="text-4xl sm:text-6xl font-bold text-text-main tracking-tight">
             {t("videoGallery.title")}
           </h1>
           <p className="text-base text-text-muted max-w-2xl mx-auto leading-relaxed">
@@ -124,21 +124,21 @@ export default function VideoGallery() {
               onClick={() => setSelectedVideo(video)}
               data-aos="fade-up"
               data-aos-delay={idx * 150}
-              className="group cursor-pointer rounded-2xl overflow-hidden bg-[#FDFDFD] border border-[rgba(255,255,255,0.05)] hover:border-[#AD002E] transition-all duration-300 flex flex-col md:flex-row relative h-full break-words max-w-full"
+              className="group cursor-pointer rounded-lg overflow-hidden bg-[#FDFDFD] border border-[rgba(255,255,255,0.05)] hover:border-[#AD002E] transition-all duration-300 flex flex-col md:flex-row relative h-full break-words max-w-full"
             >
               {/* Fake Video Thumbnail (CSS Pattern overlayed with Play Button) */}
-              <div className={`relative w-full md:w-56 h-44 shrink-0 flex items-center justify-center border-b md:border-b-0 md:border-r border-[rgba(255,255,255,0.06)] ${video.thumbnailUrl}`}>
+              <div className={`relative w-full md:w-56 h-44 shrink-0 flex items-center justify-center border-b md:border-b-0 md:border-r border-[#AD002E]/20 ${video.thumbnailUrl}`}>
                 
                 {/* Visual lines resembling equalizer waves */}
                 <div className="absolute inset-0 opacity-10 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:100%_8px]" />
 
                 {/* Big Glowing Play Button */}
-                <div className="w-12 h-12 rounded-full bg-[#AD002E]/80 group-hover:bg-[#AD002E] border border-[#AD002E] flex items-center justify-center text-white text-xl transition-transform duration-300 group-hover:scale-110 shadow-lg shadow-[#AD002E]/40 z-10">
+                <div className="w-12 h-12 rounded-full bg-[#AD002E]/80 group-hover:bg-[#AD002E] border border-[#AD002E] flex items-center justify-center text-white text-xl transition-transform duration-300 group-hover:scale-110 shadow-md shadow-[#AD002E]/40 z-10">
                   <PlayCircleOutlined />
                 </div>
 
                 {/* Floating Duration badge */}
-                <span className="absolute bottom-2.5 right-2.5 bg-[#FFFFFF]/90 backdrop-blur-sm px-2 py-0.5 rounded text-sm text-gray-600 font-bold border border-[rgba(255,255,255,0.08)] flex items-center gap-1">
+                <span className="absolute bottom-2.5 right-2.5 bg-[#FFFFFF]/90 backdrop-blur-sm px-2 py-0.5 rounded-lg text-sm text-[#AD002E]/70 font-bold border border-[#AD002E]/20 flex items-center gap-1">
                   <ClockCircleOutlined />
                   {video.duration}
                 </span>
@@ -151,7 +151,7 @@ export default function VideoGallery() {
                     <CalendarOutlined className="text-[#AD002E]" />
                     <span>{video.date}</span>
                   </div>
-                  <h3 className="text-base sm:text-lg font-extrabold text-text-main group-hover:text-[#AD002E] transition-colors leading-snug line-clamp-2">
+                  <h3 className="text-base sm:text-lg font-bold text-text-main group-hover:text-[#AD002E] transition-colors leading-snug line-clamp-2">
                     {video.title}
                   </h3>
                   <p className="text-sm text-text-muted leading-relaxed line-clamp-3">
@@ -230,10 +230,10 @@ export default function VideoGallery() {
               {/* Big central Play overlay toggle */}
               <button 
                 onClick={() => setIsPlaying(!isPlaying)}
-                className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/60 transition-colors z-20 group"
+                className="absolute inset-0 flex items-center justify-center bg-white/40 hover:bg-white/60 transition-colors z-20 group"
               >
-                <div className="w-16 h-16 rounded-full bg-[#AD002E]/80 group-hover:bg-[#AD002E] border border-[#AD002E] flex items-center justify-center text-white text-4xl transition-transform duration-300 group-hover:scale-110 shadow-lg shadow-[#AD002E]/30">
-                  {isPlaying ? <span className="text-base font-black uppercase select-none tracking-widest">{t("videoGallery.pause")}</span> : <PlayCircleOutlined />}
+                <div className="w-16 h-16 rounded-full bg-[#AD002E]/80 group-hover:bg-[#AD002E] border border-[#AD002E] flex items-center justify-center text-white text-4xl transition-transform duration-300 group-hover:scale-110 shadow-md shadow-[#AD002E]/30">
+                  {isPlaying ? <span className="text-base font-bold uppercase select-none tracking-widest">{t("videoGallery.pause")}</span> : <PlayCircleOutlined />}
                 </div>
               </button>
 
@@ -242,7 +242,7 @@ export default function VideoGallery() {
                 <span>{isPlaying ? "01:24" : "00:00"}</span>
                 
                 {/* Horizontal Progress Timeline */}
-                <div className="flex-grow h-1.5 rounded-full bg-neutral-800 relative overflow-hidden cursor-pointer">
+                <div className="flex-grow h-1.5 rounded-full bg-white relative overflow-hidden cursor-pointer">
                   <div 
                     className="absolute top-0 bottom-0 left-0 bg-[#AD002E] transition-all duration-300"
                     style={{ width: isPlaying ? "22%" : "0%" }}
@@ -252,13 +252,13 @@ export default function VideoGallery() {
                 <span>{selectedVideo.duration}</span>
                 
                 {/* Volume icon */}
-                <SoundOutlined className="text-base text-gray-600" />
+                <SoundOutlined className="text-base text-[#AD002E]/70" />
               </div>
             </div>
 
             {/* Description Details */}
             <div className="p-6 space-y-2">
-              <div className="flex items-center gap-4 text-sm text-text-muted font-bold border-b border-[rgba(255,255,255,0.06)] pb-3">
+              <div className="flex items-center gap-4 text-sm text-text-muted font-bold border-b border-[#AD002E]/20 pb-3">
                 <span className="flex items-center gap-1">
                   <CalendarOutlined className="text-[#AD002E]" />
                   {selectedVideo.date}
@@ -266,7 +266,7 @@ export default function VideoGallery() {
                 <span>•</span>
                 <span>{t("videoGallery.documentLength")}: {selectedVideo.duration}</span>
               </div>
-              <p className="text-sm sm:text-base text-gray-600 leading-relaxed mt-2">
+              <p className="text-sm sm:text-base text-[#AD002E]/70 leading-relaxed mt-2">
                 {selectedVideo.description}
               </p>
             </div>

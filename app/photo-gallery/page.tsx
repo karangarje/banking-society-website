@@ -171,16 +171,16 @@ export default function PhotoGallery() {
   };
 
   return (
-    <div className="w-full bg-base-bg transition-colors duration-300">
+    <div className="w-full bg-white transition-colors duration-300">
 
       {/* Header Banner */}
-      <section className="relative py-12 md:py-16 lg:py-20 bg-gradient-to-b from-base-card to-base-bg border-b border-base-border/50 overflow-hidden transition-all duration-300">
+      <section className="relative py-12 md:py-16 lg:py-20 bg-gradient-to-b from-base-card to-base-bg border-b border-[#AD002E]/20/50 overflow-hidden transition-all duration-300">
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#AD002E]/5 rounded-full blur-3xl" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative text-center space-y-4">
           <span className="inline-block mb-2 ">
             {isMr ? "माध्यम संग्रह" : "Media Files"}
           </span>
-          <h1 className="text-4xl sm:text-6xl font-black text-text-main tracking-tight transition-colors duration-300">
+          <h1 className="text-4xl sm:text-6xl font-bold text-text-main tracking-tight transition-colors duration-300">
             {isMr ? "फोटो गॅलरी" : "Photo Gallery"}
           </h1>
           <p className="text-base text-text-muted max-w-2xl mx-auto leading-relaxed transition-colors duration-300">
@@ -198,11 +198,11 @@ export default function PhotoGallery() {
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
-              className={`text-sm px-5 py-2 rounded-lg font-black uppercase tracking-wider transition-all border ${activeFilter === filter
-                ? "bg-[#AD002E] text-white border-[#850024] shadow-lg shadow-[#AD002E]/20"
+              className={`text-sm px-5 py-2 rounded-lg font-bold uppercase tracking-wider transition-all border ${activeFilter === filter
+                ? "bg-[#AD002E] text-white border-[#AD002E] shadow-md shadow-[#AD002E]/20"
                 : isDark
-                  ? "bg-[#FDFDFD] text-text-muted border-base-border hover:border-white hover:text-white"
-                  : "bg-white text-gray-600 border-gray-300 hover:border-[#AD002E] hover:text-[#AD002E] shadow-sm"
+                  ? "bg-[#FDFDFD] text-text-muted border-[#AD002E]/20 hover:border-[#AD002E]/20 hover:text-white"
+                  : "bg-white text-[#AD002E]/70 border-[#AD002E]/20 hover:border-[#AD002E] hover:text-[#AD002E] shadow-md"
                 }`}
             >
               {filter === "agm"
@@ -233,7 +233,7 @@ export default function PhotoGallery() {
               key={photo.id}
               onClick={() => handlePhotoClick(photo)}
               data-aos="zoom-in"
-              className="group cursor-pointer rounded-xl overflow-hidden bg-base-card border border-base-border hover:border-[#AD002E] transition-all duration-300 relative shadow-sm hover:shadow h-full break-words max-w-full"
+              className="group cursor-pointer rounded-lg overflow-hidden bg-white border border-[#AD002E]/20 hover:border-[#AD002E] transition-all duration-300 relative shadow-md hover:shadow-md h-full break-words max-w-full"
             >
 
               {/* Image Frame */}
@@ -247,21 +247,21 @@ export default function PhotoGallery() {
                 />
 
                 {/* Overlay Hover Icon */}
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="w-12 h-12 rounded-full bg-[#AD002E] border border-[#AD002E] flex items-center justify-center text-white text-xl shadow-lg">
+                <div className="absolute inset-0 bg-white/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-full bg-[#AD002E] border border-[#AD002E] flex items-center justify-center text-white text-xl shadow-md">
                     <EyeOutlined />
                   </div>
                 </div>
 
                 {/* Floating Date Badge */}
-                <span className="absolute top-3 left-3 bg-base-bg/85 backdrop-blur-sm px-2.5 py-1 rounded text-sm text-text-main font-bold border border-base-border transition-colors duration-300">
+                <span className="absolute top-3 left-3 bg-white/85 backdrop-blur-sm px-2.5 py-1 rounded-lg text-sm text-text-main font-bold border border-[#AD002E]/20 transition-colors duration-300">
                   {photo.date}
                 </span>
               </div>
 
               {/* Photo Title Footer */}
               <div className="p-4 space-y-1.5">
-                <span className="text-xs text-[#AD002E] font-black uppercase tracking-wider bg-[rgba(173,0,46,0.1)] px-2 py-0.5 rounded">
+                <span className="text-xs text-[#AD002E] font-bold uppercase tracking-wider bg-[rgba(173,0,46,0.1)] px-2 py-0.5 rounded-lg">
                   {photo.category === "agm"
                     ? isMr
                       ? "सभा"
@@ -327,13 +327,13 @@ export default function PhotoGallery() {
 
             {/* Description Info overlay */}
             <div className={`p-6 space-y-3 transition-colors ${isDark ? "bg-[#FDFDFD]" : "bg-white"}`}>
-              <div className={`flex flex-wrap items-center justify-between gap-2 border-b pb-3 ${isDark ? "border-[rgba(255,255,255,0.06)]" : "border-[rgba(0,0,0,0.06)]"
+              <div className={`flex flex-wrap items-center justify-between gap-2 border-b pb-3 ${isDark ? "border-[#AD002E]/20" : "border-[#AD002E]/20"
                 }`}>
-                <h3 className={`text-lg sm:text-xl font-black ${"text-text-main"}`}>
+                <h3 className={`text-lg sm:text-xl font-bold ${"text-text-main"}`}>
                   {isMr ? selectedPhoto.titleMr : selectedPhoto.title}
                 </h3>
                 <div className="flex items-center gap-3 text-sm text-text-muted">
-                  <span className="bg-[#AD002E] text-white border border-[#850024] px-2 py-0.5 rounded font-bold uppercase text-xs tracking-widest">
+                  <span className="bg-[#AD002E] text-white border border-[#AD002E] px-2 py-0.5 rounded-lg font-bold uppercase text-xs tracking-widest">
                     {selectedPhoto.category === "agm"
                       ? isMr
                         ? "सभा"
@@ -352,7 +352,7 @@ export default function PhotoGallery() {
                   </span>
                 </div>
               </div>
-              <p className={`text-sm sm:text-base leading-relaxed font-medium transition-colors ${isDark ? "text-gray-600" : "text-gray-700"
+              <p className={`text-sm sm:text-base leading-relaxed font-normal transition-colors ${isDark ? "text-[#AD002E]/70" : "text-[#AD002E]/70"
                 }`}>
                 {isMr ? selectedPhoto.descriptionMr : selectedPhoto.description}
               </p>

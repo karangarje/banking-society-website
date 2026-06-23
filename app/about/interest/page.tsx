@@ -295,12 +295,12 @@ export default function InterestPage() {
   ];
 
   return (
-    <div className="w-full bg-base-bg transition-colors duration-300">
+    <div className="w-full bg-white transition-colors duration-300">
       <style dangerouslySetInnerHTML={{__html: `
         @media print {
           .no-print { display: none !important; }
           .print-full-width { width: 100% !important; max-width: 100% !important; padding: 0 !important; margin: 0 !important; }
-          .print-card { border: 1px solid #666 !important; box-shadow: none !important; background: transparent !important; color: black !important; }
+          .print-card { border: 1px solid #666 !important; box-shadow-md: none !important; background: transparent !important; color: black !important; }
           .print-table { border: 1px solid #333 !important; border-collapse: collapse !important; width: 100% !important; }
           .print-table th, .print-table td { border: 1px solid #333 !important; padding: 8px !important; color: black !important; background: transparent !important; }
           body { background: white !important; color: black !important; }
@@ -309,26 +309,26 @@ export default function InterestPage() {
       `}} />
 
       {/* 1. HERO SECTION */}
-      <section id="hero" className="relative py-20 bg-gradient-to-b from-base-card to-base-bg border-b border-base-border/50 overflow-hidden transition-all duration-300 print-full-width">
+      <section id="hero" className="relative py-20 bg-gradient-to-b from-base-card to-base-bg border-b border-[#AD002E]/20/50 overflow-hidden transition-all duration-300 print-full-width">
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#AD002E]/5 rounded-full blur-3xl no-print" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative text-center space-y-4">
           <span className="inline-block px-3 py-1 text-xs font-bold text-[#AD002E] bg-[#AD002E]/10 rounded-full uppercase tracking-wider">
             {t.legacy}
           </span>
-          <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-text-main transition-colors duration-300">
+          <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-text-main transition-colors duration-300">
             {t.heroTitle}
           </h1>
           <p className="text-lg font-bold text-[#AD002E] max-w-2xl mx-auto leading-relaxed">
             {t.heroSubtitle}
           </p>
-          <p className={`text-base max-w-2xl mx-auto leading-relaxed transition-colors duration-300 ${isDark ? "text-text-muted" : "text-gray-600"}`}>
+          <p className={`text-base max-w-2xl mx-auto leading-relaxed transition-colors duration-300 ${isDark ? "text-text-muted" : "text-[#AD002E]/70"}`}>
             {t.heroDesc}
           </p>
         </div>
       </section>
 
       {/* STICKY SECTION NAVIGATION */}
-      <div className="sticky top-[72px] z-40 w-full bg-base-card/90 backdrop-blur border-b border-base-border/50 py-3 shadow-md transition-all duration-300 no-print">
+      <div className="sticky top-[72px] z-40 w-full bg-white/90 backdrop-blur border-b border-[#AD002E]/20/50 py-3 shadow-md transition-all duration-300 no-print">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-1 sm:gap-2">
             {[
@@ -345,8 +345,8 @@ export default function InterestPage() {
                   activeSec === sec.id
                     ? "bg-[#AD002E] text-white shadow-md shadow-[#AD002E]/20"
                     : isDark
-                    ? "text-gray-300 hover:bg-white/5 hover:text-white"
-                    : "text-gray-600 hover:bg-gray-100 hover:text-[#AD002E]"
+                    ? "text-[#AD002E]/70 hover:bg-white/5 hover:text-white"
+                    : "text-[#AD002E]/70 hover:bg-white hover:text-[#AD002E]"
                 }`}
               >
                 {sec.label}
@@ -368,48 +368,48 @@ export default function InterestPage() {
         {/* 2. DEPOSIT INTEREST RATES SECTION */}
         <section id="deposit-rates" className="space-y-8 scroll-mt-28 print-full-width">
           <div className="text-center space-y-3" data-aos="fade-up">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-text-main transition-colors">
+            <h2 className="text-3xl sm:text-4xl font-bold text-text-main transition-colors">
               {t.depositTitle}
             </h2>
-            <p className={`text-sm max-w-2xl mx-auto transition-colors ${isDark ? "text-text-muted" : "text-gray-600"}`}>
+            <p className={`text-sm max-w-2xl mx-auto transition-colors ${isDark ? "text-text-muted" : "text-[#AD002E]/70"}`}>
               {t.depositSubtitle}
             </p>
             <div className="w-16 h-1 bg-[#AD002E] mx-auto rounded-full" />
           </div>
 
-          <div className="overflow-x-auto rounded-2xl border border-base-border/50 shadow-lg bg-base-card transition-colors duration-300 print-card" data-aos="fade-up">
+          <div className="overflow-x-auto rounded-lg border border-[#AD002E]/20/50 shadow-md bg-white transition-colors duration-300 print-card" data-aos="fade-up">
             <table className="w-full text-left border-collapse print-table">
               <thead>
                 <tr className="bg-[#AD002E] text-white text-xs sm:text-sm font-bold">
                   <th className="p-4 sm:p-5">{t.colDepositType}</th>
                   <th className="p-4 sm:p-5">{t.colDuration}</th>
                   <th className="p-4 sm:p-5">{t.colGeneralRate}</th>
-                  <th className="p-4 sm:p-5 bg-[#850024]">{t.colSeniorRate}</th>
+                  <th className="p-4 sm:p-5 bg-[#AD002E]">{t.colSeniorRate}</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-base-border/50 text-xs sm:text-sm font-medium">
+              <tbody className="divide-y divide-base-border/50 text-xs sm:text-sm font-normal">
                 {depositRates.map((row, idx) => (
                   <tr
                     key={idx}
-                    className={`transition-colors hover:bg-base-card/80 ${
+                    className={`transition-colors hover:bg-white/80 ${
                       row.isSpecial
                         ? "bg-[#AD002E]/5 dark:bg-[#AD002E]/10"
                         : idx % 2 === 0
                         ? "bg-transparent"
-                        : "bg-base-card/20"
+                        : "bg-white/20"
                     }`}
                   >
                     <td className="p-4 sm:p-5 font-bold text-text-main flex items-center gap-2">
                       {row.isSpecial && (
-                        <span className="px-2 py-0.5 text-[10px] font-black uppercase tracking-wider bg-[#AD002E] text-white rounded">
+                        <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-[#AD002E] text-white rounded-lg">
                           {isMr ? "विशेष" : "Special"}
                         </span>
                       )}
                       {row.type}
                     </td>
                     <td className="p-4 sm:p-5 text-text-main">{row.duration}</td>
-                    <td className="p-4 sm:p-5 text-[#AD002E] font-extrabold text-base">{row.rate}</td>
-                    <td className="p-4 sm:p-5 bg-[#AD002E]/5 dark:bg-[#AD002E]/15 text-[#AD002E] font-black text-base print-card">
+                    <td className="p-4 sm:p-5 text-[#AD002E] font-bold text-base">{row.rate}</td>
+                    <td className="p-4 sm:p-5 bg-[#AD002E]/5 dark:bg-[#AD002E]/15 text-[#AD002E] font-bold text-base print-card">
                       {row.seniorRate}
                     </td>
                   </tr>
@@ -422,10 +422,10 @@ export default function InterestPage() {
         {/* 3. SPECIAL DEPOSIT SCHEMES SECTION */}
         <section id="special-schemes" className="space-y-8 scroll-mt-28 print-full-width">
           <div className="text-center space-y-3" data-aos="fade-up">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-text-main transition-colors">
+            <h2 className="text-3xl sm:text-4xl font-bold text-text-main transition-colors">
               {t.specialTitle}
             </h2>
-            <p className={`text-sm max-w-2xl mx-auto transition-colors ${isDark ? "text-text-muted" : "text-gray-600"}`}>
+            <p className={`text-sm max-w-2xl mx-auto transition-colors ${isDark ? "text-text-muted" : "text-[#AD002E]/70"}`}>
               {t.specialSubtitle}
             </p>
             <div className="w-16 h-1 bg-[#AD002E] mx-auto rounded-full" />
@@ -434,40 +434,40 @@ export default function InterestPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 print-full-width">
             {/* Card 1 */}
             <div
-              className="glass-card rounded-2xl p-6 sm:p-8 border border-base-border/50 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 print-card"
+              className="glass-card rounded-lg p-6 sm:p-8 border border-[#AD002E]/20/50 shadow-md hover:shadow-md hover:-translate-y-1 transition-all duration-300 print-card"
               data-aos="fade-right"
             >
               <div className="flex items-center justify-between mb-6">
                 <div className="w-12 h-12 rounded-full bg-[#AD002E]/10 flex items-center justify-center">
                   <WalletOutlined className="text-2xl text-[#AD002E]" />
                 </div>
-                <span className="px-3 py-1 text-xs font-extrabold text-[#AD002E] border border-[#AD002E]/30 rounded-full">
+                <span className="px-3 py-1 text-xs font-bold text-[#AD002E] border border-[#AD002E]/30 rounded-full">
                   {t.lakhpatiPeriod}
                 </span>
               </div>
-              <h3 className="text-2xl font-black text-text-main mb-1">{t.lakhpatiTitle}</h3>
+              <h3 className="text-2xl font-bold text-text-main mb-1">{t.lakhpatiTitle}</h3>
               <p className="text-xs font-semibold text-text-muted tracking-wider uppercase mb-6">{t.lakhpatiSubtitle}</p>
               
               <div className="space-y-4">
-                <div className="flex items-center justify-between p-4 rounded-xl bg-base-bg/50 border border-base-border/30 transition-colors">
+                <div className="flex items-center justify-between p-4 rounded-lg bg-white/50 border border-[#AD002E]/20/30 transition-colors">
                   <div className="text-sm font-bold text-text-main">
                     {isMr ? "गुंतवणूक" : "Investment"}
                   </div>
-                  <div className="flex items-center gap-3 text-lg font-black text-[#AD002E]">
+                  <div className="flex items-center gap-3 text-lg font-bold text-[#AD002E]">
                     <span>{isMr ? "₹३२,५००" : "₹32,500"}</span>
                     <ArrowRightOutlined className="text-xs text-text-muted" />
-                    <span className="px-2 py-0.5 text-xs bg-[#AD002E]/10 rounded">{t.maturityLabel} {isMr ? "₹५०,०००" : "₹50,000"}</span>
+                    <span className="px-2 py-0.5 text-xs bg-[#AD002E]/10 rounded-lg">{t.maturityLabel} {isMr ? "₹५०,०००" : "₹50,000"}</span>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between p-4 rounded-xl bg-base-bg/50 border border-base-border/30 transition-colors">
+                <div className="flex items-center justify-between p-4 rounded-lg bg-white/50 border border-[#AD002E]/20/30 transition-colors">
                   <div className="text-sm font-bold text-text-main">
                     {isMr ? "गुंतवणूक" : "Investment"}
                   </div>
-                  <div className="flex items-center gap-3 text-lg font-black text-[#AD002E]">
+                  <div className="flex items-center gap-3 text-lg font-bold text-[#AD002E]">
                     <span>{isMr ? "₹६५,०००" : "₹65,000"}</span>
                     <ArrowRightOutlined className="text-xs text-text-muted" />
-                    <span className="px-2 py-0.5 text-xs bg-[#AD002E]/10 rounded">{t.maturityLabel} {isMr ? "₹१,००,०००" : "₹1,00,000"}</span>
+                    <span className="px-2 py-0.5 text-xs bg-[#AD002E]/10 rounded-lg">{t.maturityLabel} {isMr ? "₹१,००,०००" : "₹1,00,000"}</span>
                   </div>
                 </div>
               </div>
@@ -475,40 +475,40 @@ export default function InterestPage() {
 
             {/* Card 2 */}
             <div
-              className="glass-card rounded-2xl p-6 sm:p-8 border border-base-border/50 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 print-card"
+              className="glass-card rounded-lg p-6 sm:p-8 border border-[#AD002E]/20/50 shadow-md hover:shadow-md hover:-translate-y-1 transition-all duration-300 print-card"
               data-aos="fade-left"
             >
               <div className="flex items-center justify-between mb-6">
                 <div className="w-12 h-12 rounded-full bg-[#AD002E]/10 flex items-center justify-center">
                   <PercentageOutlined className="text-2xl text-[#AD002E]" />
                 </div>
-                <span className="px-3 py-1 text-xs font-extrabold text-[#AD002E] border border-[#AD002E]/30 rounded-full">
+                <span className="px-3 py-1 text-xs font-bold text-[#AD002E] border border-[#AD002E]/30 rounded-full">
                   {t.lakhpatiSanctitPeriod}
                 </span>
               </div>
-              <h3 className="text-2xl font-black text-text-main mb-1">{t.lakhpatiSanctitTitle}</h3>
+              <h3 className="text-2xl font-bold text-text-main mb-1">{t.lakhpatiSanctitTitle}</h3>
               <p className="text-xs font-semibold text-text-muted tracking-wider uppercase mb-6">{t.lakhpatiSanctitSubtitle}</p>
               
               <div className="space-y-4">
-                <div className="flex items-center justify-between p-4 rounded-xl bg-base-bg/50 border border-base-border/30 transition-colors">
+                <div className="flex items-center justify-between p-4 rounded-lg bg-white/50 border border-[#AD002E]/20/30 transition-colors">
                   <div className="text-sm font-bold text-text-main">
                     {isMr ? "मासिक ठेव" : "Monthly Installment"}
                   </div>
-                  <div className="flex items-center gap-3 text-lg font-black text-[#AD002E]">
+                  <div className="flex items-center gap-3 text-lg font-bold text-[#AD002E]">
                     <span>{isMr ? "₹६५०" : "₹650"} / {t.monthlyLabel}</span>
                     <ArrowRightOutlined className="text-xs text-text-muted" />
-                    <span className="px-2 py-0.5 text-xs bg-[#AD002E]/10 rounded">{t.maturityLabel} {isMr ? "₹५०,०००" : "₹50,000"}</span>
+                    <span className="px-2 py-0.5 text-xs bg-[#AD002E]/10 rounded-lg">{t.maturityLabel} {isMr ? "₹५०,०००" : "₹50,000"}</span>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between p-4 rounded-xl bg-base-bg/50 border border-base-border/30 transition-colors">
+                <div className="flex items-center justify-between p-4 rounded-lg bg-white/50 border border-[#AD002E]/20/30 transition-colors">
                   <div className="text-sm font-bold text-text-main">
                     {isMr ? "मासिक ठेव" : "Monthly Installment"}
                   </div>
-                  <div className="flex items-center gap-3 text-lg font-black text-[#AD002E]">
+                  <div className="flex items-center gap-3 text-lg font-bold text-[#AD002E]">
                     <span>{isMr ? "₹१,३००" : "₹1,300"} / {t.monthlyLabel}</span>
                     <ArrowRightOutlined className="text-xs text-text-muted" />
-                    <span className="px-2 py-0.5 text-xs bg-[#AD002E]/10 rounded">{t.maturityLabel} {isMr ? "₹१,००,०००" : "₹1,00,000"}</span>
+                    <span className="px-2 py-0.5 text-xs bg-[#AD002E]/10 rounded-lg">{t.maturityLabel} {isMr ? "₹१,००,०००" : "₹1,00,000"}</span>
                   </div>
                 </div>
               </div>
@@ -519,10 +519,10 @@ export default function InterestPage() {
         {/* 4. LOAN INTEREST RATES SECTION */}
         <section id="loan-rates" className="space-y-8 scroll-mt-28 print-full-width">
           <div className="text-center space-y-3" data-aos="fade-up">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-text-main transition-colors">
+            <h2 className="text-3xl sm:text-4xl font-bold text-text-main transition-colors">
               {t.loanTitle}
             </h2>
-            <p className={`text-sm max-w-2xl mx-auto transition-colors ${isDark ? "text-text-muted" : "text-gray-600"}`}>
+            <p className={`text-sm max-w-2xl mx-auto transition-colors ${isDark ? "text-text-muted" : "text-[#AD002E]/70"}`}>
               {t.loanSubtitle}
             </p>
             <div className="w-16 h-1 bg-[#AD002E] mx-auto rounded-full" />
@@ -532,7 +532,7 @@ export default function InterestPage() {
             {loanRates.map((loan, idx) => (
               <div
                 key={idx}
-                className={`glass-card rounded-2xl p-5 border border-base-border/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex items-center justify-between print-card ${
+                className={`glass-card rounded-lg p-5 border border-[#AD002E]/20/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex items-center justify-between print-card ${
                   loan.isFullWidth ? "sm:col-span-2 lg:col-span-3 border-l-4 border-l-[#AD002E]" : ""
                 }`}
                 data-aos="fade-up"
@@ -545,7 +545,7 @@ export default function InterestPage() {
                   <h4 className="text-base font-bold text-text-main">{loan.title}</h4>
                 </div>
                 <div className="text-right">
-                  <span className="text-xl font-black text-[#AD002E] whitespace-nowrap">{loan.rate}</span>
+                  <span className="text-xl font-bold text-[#AD002E] whitespace-nowrap">{loan.rate}</span>
                 </div>
               </div>
             ))}
@@ -554,13 +554,13 @@ export default function InterestPage() {
 
         {/* 5. IMPORTANT NOTICE SECTION */}
         <section className="print-full-width" data-aos="fade-up">
-          <div className="rounded-2xl p-6 bg-[#AD002E]/5 border border-[#AD002E]/20 border-l-4 border-l-[#AD002E] flex flex-col sm:flex-row items-center gap-4 transition-colors print-card">
+          <div className="rounded-lg p-6 bg-[#AD002E]/5 border border-[#AD002E]/20 border-l-4 border-l-[#AD002E] flex flex-col sm:flex-row items-center gap-4 transition-colors print-card">
             <div className="w-12 h-12 rounded-full bg-[#AD002E]/10 flex items-center justify-center flex-shrink-0">
               <InfoCircleOutlined className="text-2xl text-[#AD002E]" />
             </div>
             <div className="space-y-1 text-center sm:text-left">
-              <h4 className="text-lg font-extrabold text-[#AD002E]">{t.noticeTitle}</h4>
-              <p className={`text-sm leading-relaxed transition-colors ${isDark ? "text-text-muted" : "text-gray-800 font-medium"}`}>
+              <h4 className="text-lg font-bold text-[#AD002E]">{t.noticeTitle}</h4>
+              <p className={`text-sm leading-relaxed transition-colors ${isDark ? "text-text-muted" : "text-[#AD002E]/70 font-normal"}`}>
                 • {t.noticeText1} <br className="hidden sm:inline" />
                 • {t.noticeText2}
               </p>
@@ -571,10 +571,10 @@ export default function InterestPage() {
         {/* 6. QUICK STATS SECTION */}
         <section id="quick-stats" className="space-y-8 scroll-mt-28 print-full-width">
           <div className="text-center space-y-3" data-aos="fade-up">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-text-main transition-colors">
+            <h2 className="text-3xl sm:text-4xl font-bold text-text-main transition-colors">
               {t.statsTitle}
             </h2>
-            <p className={`text-sm max-w-2xl mx-auto transition-colors ${isDark ? "text-text-muted" : "text-gray-600"}`}>
+            <p className={`text-sm max-w-2xl mx-auto transition-colors ${isDark ? "text-text-muted" : "text-[#AD002E]/70"}`}>
               {t.statsSubtitle}
             </p>
             <div className="w-16 h-1 bg-[#AD002E] mx-auto rounded-full" />
@@ -584,7 +584,7 @@ export default function InterestPage() {
             {stats.map((stat, idx) => (
               <div
                 key={idx}
-                className="glass-card rounded-2xl p-6 text-center border border-base-border/50 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center justify-center print-card"
+                className="glass-card rounded-lg p-6 text-center border border-[#AD002E]/20/50 shadow-md hover:shadow-md transition-all duration-300 flex flex-col items-center justify-center print-card"
                 data-aos="fade-up"
                 data-aos-delay={idx * 100}
               >
@@ -592,7 +592,7 @@ export default function InterestPage() {
                   {stat.icon}
                 </div>
                 <h4 className="text-sm font-bold text-text-muted mb-2">{stat.label}</h4>
-                <p className="text-2xl sm:text-3xl font-black text-[#AD002E] tracking-tight">{stat.value}</p>
+                <p className="text-2xl sm:text-3xl font-bold text-[#AD002E] tracking-tight">{stat.value}</p>
               </div>
             ))}
           </div>

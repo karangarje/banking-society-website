@@ -70,7 +70,7 @@ export default function EmployeesPage() {
     return (
       <div style={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: 300 }}>
         <div style={{ textAlign: "center" }}>
-          <div className="animate-spin" style={{ width: 40, height: 40, border: "4px solid #e5e7eb", borderTopColor: "#B3003C", borderRadius: "50%", margin: "0 auto 16px" }} />
+          <div className="animate-spin" style={{ width: 40, height: 40, border: "4px solid #e5e7eb", borderTopColor: "#AD002E", borderRadius: "50%", margin: "0 auto 16px" }} />
           <p style={{ color: "#666" }}>Loading...</p>
         </div>
       </div>
@@ -82,7 +82,7 @@ export default function EmployeesPage() {
     return (
       <div style={{ padding: "4rem 2rem", textAlign: "center" }}>
         <div style={{ fontSize: 64, marginBottom: 16 }}>🚫</div>
-        <h1 style={{ color: "#B3003C", fontSize: 28, fontWeight: 800 }}>403 — Access Denied</h1>
+        <h1 style={{ color: "#AD002E", fontSize: 28, fontWeight: 800 }}>403 — Access Denied</h1>
         <p style={{ color: "#666", marginTop: 8 }}>You do not have permission to view this page.</p>
       </div>
     );
@@ -360,8 +360,8 @@ export default function EmployeesPage() {
             <Statistic
               title={<span style={{ color: "#888", fontWeight: 600, fontSize: 12 }}>MANAGERS</span>}
               value={stats.managers}
-              prefix={<LockOutlined style={{ color: "#B3003C" }} />}
-              valueStyle={{ color: "#B3003C", fontWeight: 800 }}
+              prefix={<LockOutlined style={{ color: "#AD002E" }} />}
+              valueStyle={{ color: "#AD002E", fontWeight: 800 }}
             />
           </Card>
         </Col>
@@ -410,7 +410,7 @@ export default function EmployeesPage() {
               type="primary"
               icon={<PlusOutlined />}
               onClick={openAddModal}
-              style={{ backgroundColor: "#B3003C", borderColor: "#B3003C" }}
+              style={{ backgroundColor: "#AD002E", borderColor: "#AD002E" }}
             >
               Add Employee
             </Button>
@@ -445,7 +445,7 @@ export default function EmployeesPage() {
         onOk={handleSave}
         onCancel={() => setIsModalVisible(false)}
         okText="Save"
-        okButtonProps={{ style: { backgroundColor: "#B3003C", borderColor: "#B3003C" } }}
+        okButtonProps={{ style: { backgroundColor: "#AD002E", borderColor: "#AD002E" } }}
         width={520}
       >
         <Form form={form} layout="vertical" style={{ marginTop: 16 }}>
@@ -481,7 +481,7 @@ export default function EmployeesPage() {
       {/* Reset Password Modal */}
       <Modal
         title={
-          <span style={{ fontWeight: 700, color: "#B3003C" }}>
+          <span style={{ fontWeight: 700, color: "#AD002E" }}>
             <KeyOutlined /> Reset Password — {resetTarget?.name}
           </span>
         }

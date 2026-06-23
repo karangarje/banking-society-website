@@ -41,10 +41,10 @@ export default function MemberLogin() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-base-bg p-4">
-      <div className="max-w-md w-full glass-panel p-8 rounded-2xl shadow-xl border border-base-border">
+    <div className="min-h-screen flex items-center justify-center bg-white p-4">
+      <div className="max-w-md w-full glass-panel p-8 rounded-lg shadow-md border border-[#AD002E]/20">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-black text-text-main mb-2">
+          <h1 className="text-3xl font-bold text-text-main mb-2">
             {t("nav.member_portal_login") || "Member Portal"}
           </h1>
           <p className="text-sm text-text-muted">
@@ -66,7 +66,7 @@ export default function MemberLogin() {
                 required
                 value={memberId}
                 onChange={(e) => setMemberId(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-base-card border border-base-border rounded-xl focus:border-[#AD002E] focus:ring-1 focus:ring-[#AD002E] outline-none transition-colors"
+                className="w-full pl-10 pr-4 py-3 bg-white border border-[#AD002E]/20 rounded-lg focus:border-[#AD002E] focus:ring-1 focus:ring-[#AD002E] outline-none transition-colors"
                 placeholder="e.g. BK-100254"
               />
             </div>
@@ -85,7 +85,7 @@ export default function MemberLogin() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-base-card border border-base-border rounded-xl focus:border-[#AD002E] focus:ring-1 focus:ring-[#AD002E] outline-none transition-colors"
+                className="w-full pl-10 pr-4 py-3 bg-white border border-[#AD002E]/20 rounded-lg focus:border-[#AD002E] focus:ring-1 focus:ring-[#AD002E] outline-none transition-colors"
                 placeholder="••••••••"
               />
             </div>
@@ -94,13 +94,13 @@ export default function MemberLogin() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-[#AD002E] hover:bg-[#850024] disabled:opacity-70 text-white font-black py-3.5 rounded-xl uppercase tracking-wider transition-colors shadow-md"
+            className="w-full bg-[#AD002E] hover:bg-[#AD002E] disabled:opacity-70 text-white font-bold py-3.5 rounded-lg uppercase tracking-wider transition-colors shadow-md"
           >
             {loading ? (isMr ? "प्रमाणित करत आहे..." : "Authenticating...") : (t("nav.access_portal") || "Access Portal")}
           </button>
         </form>
         
-        <p className="mt-6 text-sm text-center text-text-muted border-t border-base-border pt-6">
+        <p className="mt-6 text-sm text-center text-text-muted border-t border-[#AD002E]/20 pt-6">
           {t("nav.portal_contact_msg") || "Don't have access? Contact your nearest branch for credentials."}
         </p>
       </div>

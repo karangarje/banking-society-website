@@ -466,7 +466,7 @@ export default function AboutContentPage() {
       title: "Name",
       dataIndex: "name",
       key: "name",
-      render: (text) => <span className="font-semibold text-gray-800">{text}</span>,
+      render: (text) => <span className="font-semibold text-[#AD002E]/70">{text}</span>,
     },
     {
       title: "Designation (EN)",
@@ -494,7 +494,7 @@ export default function AboutContentPage() {
       key: "actions",
       render: (_, record) => (
         <Space>
-          <Button type="text" icon={<EditOutlined className="text-blue-600" />} onClick={() => openBoardEdit(record)} />
+          <Button type="text" icon={<EditOutlined className="text-[#AD002E]" />} onClick={() => openBoardEdit(record)} />
           <Popconfirm title="Delete board director?" onConfirm={() => handleBoardDelete(record.id)} okText="Yes" cancelText="No">
             <Button type="text" danger icon={<DeleteOutlined />} />
           </Popconfirm>
@@ -516,9 +516,9 @@ export default function AboutContentPage() {
       key: "details",
       render: (_, record) => (
         <div className="flex flex-col">
-          <span className="font-bold text-gray-800">{record.titleEn} ({record.year})</span>
-          <span className="text-xs text-gray-400">{record.titleMr}</span>
-          <span className="text-xs text-gray-500 line-clamp-1 mt-1">{record.descriptionEn}</span>
+          <span className="font-bold text-[#AD002E]/70">{record.titleEn} ({record.year})</span>
+          <span className="text-xs text-[#AD002E]/70">{record.titleMr}</span>
+          <span className="text-xs text-[#AD002E]/70 line-clamp-1 mt-1">{record.descriptionEn}</span>
         </div>
       ),
     },
@@ -538,7 +538,7 @@ export default function AboutContentPage() {
       key: "actions",
       render: (_, record) => (
         <Space>
-          <Button type="text" icon={<EditOutlined className="text-blue-600" />} onClick={() => openAwardEdit(record)} />
+          <Button type="text" icon={<EditOutlined className="text-[#AD002E]" />} onClick={() => openAwardEdit(record)} />
           <Popconfirm title="Delete this award?" onConfirm={() => handleAwardDelete(record.id)} okText="Yes" cancelText="No">
             <Button type="text" danger icon={<DeleteOutlined />} />
           </Popconfirm>
@@ -560,9 +560,9 @@ export default function AboutContentPage() {
       key: "details",
       render: (_, record) => (
         <div className="flex flex-col">
-          <span className="font-bold text-gray-800">{record.titleEn}</span>
-          <span className="text-xs text-gray-400">{record.titleMr}</span>
-          <span className="text-xs text-gray-500 line-clamp-1 mt-1">{record.descriptionEn}</span>
+          <span className="font-bold text-[#AD002E]/70">{record.titleEn}</span>
+          <span className="text-xs text-[#AD002E]/70">{record.titleMr}</span>
+          <span className="text-xs text-[#AD002E]/70 line-clamp-1 mt-1">{record.descriptionEn}</span>
         </div>
       ),
     },
@@ -583,7 +583,7 @@ export default function AboutContentPage() {
       key: "actions",
       render: (_, record) => (
         <Space>
-          <Button type="text" icon={<EditOutlined className="text-blue-600" />} onClick={() => openSocialEdit(record)} />
+          <Button type="text" icon={<EditOutlined className="text-[#AD002E]" />} onClick={() => openSocialEdit(record)} />
           <Popconfirm title="Delete activity?" onConfirm={() => handleSocialDelete(record.id)} okText="Yes" cancelText="No">
             <Button type="text" danger icon={<DeleteOutlined />} />
           </Popconfirm>
@@ -608,10 +608,10 @@ export default function AboutContentPage() {
               const title = key.split(".").pop()?.toUpperCase() || key;
               return (
                 <Col span={24} key={key}>
-                  <Card title={`${title} CONTENT`} loading={coreLoading} className="shadow-sm border-gray-100">
+                  <Card title={`${title} CONTENT`} loading={coreLoading} className="shadow-md border-[#AD002E]/20">
                     <Row gutter={16}>
                       <Col xs={24} lg={12}>
-                        <div className="mb-2 font-semibold text-gray-700">English Text</div>
+                        <div className="mb-2 font-semibold text-[#AD002E]/70">English Text</div>
                         <Input.TextArea
                           rows={4}
                           value={item.valueEn}
@@ -625,7 +625,7 @@ export default function AboutContentPage() {
                         />
                       </Col>
                       <Col xs={24} lg={12}>
-                        <div className="mb-2 font-semibold text-gray-700">Marathi Text</div>
+                        <div className="mb-2 font-semibold text-[#AD002E]/70">Marathi Text</div>
                         <Input.TextArea
                           rows={4}
                           value={item.valueMr}
@@ -643,7 +643,7 @@ export default function AboutContentPage() {
                       <Button
                         type="primary"
                         onClick={() => saveCoreSetting(key)}
-                        style={{ backgroundColor: "#B3003C", borderColor: "#B3003C" }}
+                        style={{ backgroundColor: "#AD002E", borderColor: "#AD002E" }}
                       >
                         Save {title}
                       </Button>
@@ -666,12 +666,12 @@ export default function AboutContentPage() {
       children: (
         <div className="space-y-4 mt-4">
           <div className="flex justify-between items-center">
-            <h3 className="text-lg font-bold text-gray-800">Board Members</h3>
+            <h3 className="text-lg font-bold text-[#AD002E]/70">Board Members</h3>
             <Button
               type="primary"
               icon={<PlusOutlined />}
               onClick={openBoardAdd}
-              style={{ backgroundColor: "#B3003C", borderColor: "#B3003C" }}
+              style={{ backgroundColor: "#AD002E", borderColor: "#AD002E" }}
             >
               Add Board Member
             </Button>
@@ -690,12 +690,12 @@ export default function AboutContentPage() {
       children: (
         <div className="space-y-4 mt-4">
           <div className="flex justify-between items-center">
-            <h3 className="text-lg font-bold text-gray-800">Bank Awards & Recognition</h3>
+            <h3 className="text-lg font-bold text-[#AD002E]/70">Bank Awards & Recognition</h3>
             <Button
               type="primary"
               icon={<PlusOutlined />}
               onClick={openAwardAdd}
-              style={{ backgroundColor: "#B3003C", borderColor: "#B3003C" }}
+              style={{ backgroundColor: "#AD002E", borderColor: "#AD002E" }}
             >
               Add Award
             </Button>
@@ -714,12 +714,12 @@ export default function AboutContentPage() {
       children: (
         <div className="space-y-4 mt-4">
           <div className="flex justify-between items-center">
-            <h3 className="text-lg font-bold text-gray-800">Social Activities & CSR</h3>
+            <h3 className="text-lg font-bold text-[#AD002E]/70">Social Activities & CSR</h3>
             <Button
               type="primary"
               icon={<PlusOutlined />}
               onClick={openSocialAdd}
-              style={{ backgroundColor: "#B3003C", borderColor: "#B3003C" }}
+              style={{ backgroundColor: "#AD002E", borderColor: "#AD002E" }}
             >
               Add Social Activity
             </Button>
@@ -733,10 +733,10 @@ export default function AboutContentPage() {
   return (
     <div className="space-y-6">
       {/* Title Header */}
-      <div className="flex justify-between items-center bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+      <div className="flex justify-between items-center bg-white p-6 rounded-lg shadow-md border border-[#AD002E]/20">
         <div>
-          <h1 className="text-2xl font-bold text-gray-800">About Us Content Manager</h1>
-          <p className="text-sm text-gray-500">Manage history, mission/vision statements, board of directors, public awards, and social CSR activities.</p>
+          <h1 className="text-2xl font-bold text-[#AD002E]/70">About Us Content Manager</h1>
+          <p className="text-sm text-[#AD002E]/70">Manage history, mission/vision statements, board of directors, public awards, and social CSR activities.</p>
         </div>
         <Button
           icon={<ReloadOutlined />}
@@ -747,12 +747,12 @@ export default function AboutContentPage() {
             await fetchSocialData();
             message.success("Data reloaded successfully");
           }}
-          className="border-gray-300 hover:border-[#B3003C] hover:text-[#B3003C]"
+          className="border-[#AD002E]/20 hover:border-[#AD002E] hover:text-[#AD002E]"
         />
       </div>
 
       {/* Main Tabbed Panel */}
-      <Card className="shadow-sm border border-gray-100">
+      <Card className="shadow-md border border-[#AD002E]/20">
         <Tabs activeKey={activeTab} onChange={setActiveTab} items={tabItems} />
       </Card>
 
@@ -763,7 +763,7 @@ export default function AboutContentPage() {
         onOk={handleBoardSave}
         onCancel={() => setBoardModalOpen(false)}
         confirmLoading={uploading}
-        okButtonProps={{ style: { backgroundColor: "#B3003C", borderColor: "#B3003C" } }}
+        okButtonProps={{ style: { backgroundColor: "#AD002E", borderColor: "#AD002E" } }}
       >
         <Form form={boardForm} layout="vertical" className="mt-4">
           <Form.Item name="name" label="Member Full Name" rules={[{ required: true, message: "Name is required" }]}>
@@ -827,7 +827,7 @@ export default function AboutContentPage() {
         onOk={handleAwardSave}
         onCancel={() => setAwardsModalOpen(false)}
         confirmLoading={uploading}
-        okButtonProps={{ style: { backgroundColor: "#B3003C", borderColor: "#B3003C" } }}
+        okButtonProps={{ style: { backgroundColor: "#AD002E", borderColor: "#AD002E" } }}
       >
         <Form form={awardsForm} layout="vertical" className="mt-4">
           <Row gutter={16}>
@@ -897,7 +897,7 @@ export default function AboutContentPage() {
         onOk={handleSocialSave}
         onCancel={() => setSocialModalOpen(false)}
         confirmLoading={uploading}
-        okButtonProps={{ style: { backgroundColor: "#B3003C", borderColor: "#B3003C" } }}
+        okButtonProps={{ style: { backgroundColor: "#AD002E", borderColor: "#AD002E" } }}
       >
         <Form form={socialForm} layout="vertical" className="mt-4">
           <Row gutter={16}>

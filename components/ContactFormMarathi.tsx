@@ -24,7 +24,7 @@ export default function ContactFormMarathi() {
   };
 
   return (
-    <div className="w-full max-w-3xl bg-[#FFFFFF] text-text-main rounded-2xl p-6 border border-[#AD002E]/20 shadow-xl">
+    <div className="w-full max-w-3xl bg-[#FFFFFF] text-text-main rounded-lg p-6 border border-[#AD002E]/20 shadow-md">
 
       {/* Title */}
       <h2 className="text-3xl font-bold mb-1">ऑनलाईन चौकशी पाठवा</h2>
@@ -43,7 +43,7 @@ export default function ContactFormMarathi() {
             value={form.name}
             onChange={handleChange}
             placeholder="उदा. रमेश पाटील"
-            className="w-full mt-1 p-3 rounded-lg bg-white border border-[#AD002E]/20 focus:border-[#AD002E] outline-none text-text-main shadow-sm"
+            className="w-full mt-1 p-3 rounded-lg bg-white border border-[#AD002E]/20 focus:border-[#AD002E] outline-none text-text-main shadow-md"
           />
         </div>
 
@@ -58,7 +58,7 @@ export default function ContactFormMarathi() {
               value={form.email}
               onChange={handleChange}
               placeholder="name@gmail.com"
-              className="w-full mt-1 p-3 rounded-lg bg-white border border-[#AD002E]/20 focus:border-[#AD002E] outline-none text-text-main shadow-sm"
+              className="w-full mt-1 p-3 rounded-lg bg-white border border-[#AD002E]/20 focus:border-[#AD002E] outline-none text-text-main shadow-md"
             />
           </div>
 
@@ -70,7 +70,7 @@ export default function ContactFormMarathi() {
               value={form.mobile}
               onChange={handleChange}
               placeholder="9876543210"
-              className="w-full mt-1 p-3 rounded-lg bg-white border border-[#AD002E]/20 focus:border-[#AD002E] outline-none text-text-main shadow-sm"
+              className="w-full mt-1 p-3 rounded-lg bg-white border border-[#AD002E]/20 focus:border-[#AD002E] outline-none text-text-main shadow-md"
             />
           </div>
 
@@ -83,7 +83,7 @@ export default function ContactFormMarathi() {
             name="subject"
             value={form.subject}
             onChange={handleChange}
-            className="w-full mt-1 p-3 rounded-lg bg-white border border-[#AD002E]/20 focus:border-[#AD002E] outline-none text-text-main shadow-sm"
+            className="w-full mt-1 p-3 rounded-lg bg-white border border-[#AD002E]/20 focus:border-[#AD002E] outline-none text-text-main shadow-md"
           >
             <option>सामान्य चौकशी</option>
             <option>कर्ज संबंधित चौकशी</option>
@@ -101,14 +101,14 @@ export default function ContactFormMarathi() {
             onChange={handleChange}
             rows={5}
             placeholder="तुमच्या चौकशीचे तपशील लिहा..."
-            className="w-full mt-1 p-3 rounded-lg bg-white border border-[#AD002E]/20 focus:border-[#AD002E] outline-none text-text-main shadow-sm"
+            className="w-full mt-1 p-3 rounded-lg bg-white border border-[#AD002E]/20 focus:border-[#AD002E] outline-none text-text-main shadow-md"
           />
         </div>
 
         {/* Submit */}
         <button
           type="submit"
-          className="w-full bg-[#AD002E] hover:bg-[#850024] text-white transition p-3 rounded-lg font-bold uppercase tracking-wider shadow-md"
+          className="w-full bg-[#AD002E] hover:bg-[#AD002E] text-white transition p-3 rounded-lg font-bold uppercase tracking-wider shadow-md"
         >
           चौकशी पाठवा
         </button>

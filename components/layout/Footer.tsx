@@ -20,13 +20,13 @@ export default function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer className="bg-base-card border-t border-base-border pt-16 pb-8 relative z-20 transition-all duration-300">
+    <footer className="bg-white border-t border-[#AD002E]/20 pt-16 pb-8 relative z-20 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         
         {/* Column 1: About Society */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-md bg-gradient-to-br from-[#AD002E] to-[#AD002E] flex items-center justify-center font-bold text-white text-lg">
+            <div className="w-8 h-8 rounded-lg bg-[#AD002E] flex items-center justify-center font-bold text-white text-lg">
               BK
             </div>
             <div>
@@ -41,7 +41,7 @@ export default function Footer() {
           <p className="text-sm text-text-muted leading-relaxed transition-colors duration-300">
             {t("footer.desc")}
           </p>
-          <div className="inline-block bg-[#AD002E]/20 border border-[#AD002E]/30 rounded-md px-3 py-1.5 text-sm text-text-main transition-all duration-300">
+          <div className="inline-block bg-[#AD002E]/20 border border-[#AD002E]/30 rounded-lg px-3 py-1.5 text-sm text-text-main transition-all duration-300">
             ⭐ {t("footer.audit_status")}
           </div>
         </div>
@@ -63,7 +63,7 @@ export default function Footer() {
             ].map((link, idx) => (
               <li key={idx}>
                 <Link href={link.path} className="hover:text-[#AD002E] flex items-center gap-1.5 group transition-colors">
-                  <ArrowRightOutlined className="text-xs text-gray-500 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRightOutlined className="text-xs text-[#AD002E]/70 group-hover:translate-x-1 transition-transform" />
                   <span>{t(link.labelKey)}</span>
                 </Link>
               </li>
@@ -86,7 +86,7 @@ export default function Footer() {
             ].map((link, idx) => (
               <li key={idx}>
                 <Link href={link.path} className="hover:text-[#AD002E] flex items-center gap-1.5 group transition-colors">
-                  <ArrowRightOutlined className="text-xs text-gray-500 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRightOutlined className="text-xs text-[#AD002E]/70 group-hover:translate-x-1 transition-transform" />
                   <span>{t(link.labelKey) !== link.labelKey ? t(link.labelKey) : link.defaultLabel}</span>
                 </Link>
               </li>
@@ -112,7 +112,7 @@ export default function Footer() {
               <MailOutlined className="text-[#AD002E] text-base shrink-0" />
               <span>info@kavadpat.co.in</span>
             </div>
-            <div className="text-sm text-text-muted border-t border-base-border pt-2 mt-1 transition-colors duration-300">
+            <div className="text-sm text-text-muted border-t border-[#AD002E]/20 pt-2 mt-1 transition-colors duration-300">
               💼 <span className="text-text-main font-semibold transition-colors duration-300">{t("footer.working_hours")}</span>
             </div>
           </div>
@@ -120,7 +120,7 @@ export default function Footer() {
       </div>
 
       {/* Social Media & Regulatory bottom bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 pt-8 border-t border-base-border space-y-6 transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 pt-8 border-t border-[#AD002E]/20 space-y-6 transition-colors duration-300">
         
         {/* Social Icons & Copyright */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
@@ -138,7 +138,7 @@ export default function Footer() {
         </div>
 
         {/* Regulatory Disclosure */}
-        <p className="text-sm text-text-muted leading-relaxed text-center md:text-left bg-base-bg/50 border border-base-border p-3 rounded transition-all duration-300">
+        <p className="text-sm text-text-muted leading-relaxed text-center md:text-left bg-white/50 border border-[#AD002E]/20 p-3 rounded-lg transition-all duration-300">
           ⚠️ {t("footer.disclaimer")}
         </p>
       </div>

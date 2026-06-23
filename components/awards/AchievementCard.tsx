@@ -22,7 +22,7 @@ export default function AchievementCard({ item, isReverse = false }: Achievement
   return (
     <div 
       data-aos={isReverse ? "fade-left" : "fade-right"}
-      className={`flex flex-col lg:flex-row items-stretch gap-6 lg:gap-0 bg-white rounded-[30px] shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 overflow-hidden border border-gray-100 dark:border-white/5 ${
+      className={`flex flex-col lg:flex-row items-stretch gap-6 lg:gap-0 bg-white rounded-[30px] shadow-md hover:shadow-md hover:-translate-y-2 transition-all duration-300 overflow-hidden border border-[#AD002E]/20 dark:border-[#AD002E]/20 ${
         isReverse ? "lg:flex-row-reverse" : ""
       }`}
     >
@@ -39,19 +39,19 @@ export default function AchievementCard({ item, isReverse = false }: Achievement
       </div>
 
       {/* RIGHT / BLUE TEXT PANEL */}
-      <div className="w-full lg:w-1/2 bg-gradient-to-br from-[#1E1B6B] to-[#121046] text-white p-6 sm:p-8 md:p-12 flex flex-col justify-center space-y-6">
+      <div className="w-full lg:w-1/2 bg-[#AD002E] text-white p-6 sm:p-8 md:p-12 flex flex-col justify-center space-y-6">
         {/* Title */}
-        <h3 className="text-xl sm:text-2xl font-black text-[#D4AF37] leading-snug">
+        <h3 className="text-xl sm:text-2xl font-bold text-[#D4AF37] leading-snug">
           {item.title}
         </h3>
 
         {/* Marathi Description */}
-        <p className="text-sm sm:text-base leading-relaxed text-white/90 font-medium">
+        <p className="text-sm sm:text-base leading-relaxed text-white/90 font-normal">
           {item.description}
         </p>
 
         {/* Divider */}
-        <div className="w-12 h-0.5 bg-[#B3003C]" />
+        <div className="w-12 h-0.5 bg-[#AD002E]" />
 
         {/* Highlights */}
         <div className="space-y-3">
