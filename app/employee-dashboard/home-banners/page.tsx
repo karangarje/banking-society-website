@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Table, Button, Modal, Form, Input, Switch, App, Popconfirm, Image, Tag, Space, Upload, Card, Row, Col, InputNumber } from "antd";
+import { Table, Button, Modal, Form, Input, App, Popconfirm, Image, Tag, Space, Upload, Card, Row, Col, InputNumber, Spin } from "antd";
 import type { UploadFile } from "antd";
 import { PlusOutlined, DeleteOutlined, ReloadOutlined, UploadOutlined, EditOutlined } from "@ant-design/icons";
 import type { ColumnsType } from "antd/es/table";
+import { useSession } from "next-auth/react";
 
 interface HomeBannerRow {
   id: string;
@@ -16,10 +17,11 @@ interface HomeBannerRow {
   linkUrl: string | null;
   isActive: boolean;
   sortingOrder: number;
-  updatedAt: string;
+  createdAt: string;
 }
 
 export default function HomeBannersPage() {
+  const { data: session, status: sessionStatus } = useSession();
   const [data, setData] = useState<HomeBannerRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -47,8 +49,30 @@ export default function HomeBannersPage() {
   };
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    if (sessionStatus === "authenticated") {
+      fetchData();
+    }
+  }, [sessionStatus]);
+
+  if (sessionStatus === "loading") {
+    return (
+      <div className="flex justify-center items-center p-12 min-h-[400px]">
+        <Spin size="large" />
+      </div>
+    );
+  }
+
+  const userRole = (session?.user as any)?.role;
+  const allowedRoles = ["MANAGER", "EMPLOYEE"];
+
+  if (!session || !allowedRoles.includes(userRole)) {
+    return (
+      <div className="flex flex-col items-center justify-center p-12 bg-white rounded-lg shadow-md border border-[#AD002E]/20 max-w-xl mx-auto my-12 text-center space-y-4">
+        <h1 className="text-2xl font-bold text-[#AD002E]">403 - Forbidden</h1>
+        <p className="text-gray-600">You do not have permission to access the Home Banner Manager.</p>
+      </div>
+    );
+  }
 
   const handleSave = async () => {
     try {
@@ -76,6 +100,8 @@ export default function HomeBannersPage() {
           const uploadData = await uploadRes.json();
           finalImageUrl = uploadData.url;
         }
+      } else {
+        finalImageUrl = "";
       }
 
       if (!finalImageUrl) {
@@ -86,7 +112,7 @@ export default function HomeBannersPage() {
       const payload = { 
         ...values, 
         imageUrl: finalImageUrl,
-        isActive: values.isActive ?? true,
+        isActive: true,
         sortingOrder: values.sortingOrder || 0,
       };
 
@@ -102,6 +128,8 @@ export default function HomeBannersPage() {
       if (res.ok) {
         message.success(`Banner ${editingId ? "updated" : "added"} successfully`);
         setIsModalOpen(false);
+        form.resetFields();
+        setFileList([]);
         fetchData();
       } else {
         const err = await res.json();
@@ -131,14 +159,17 @@ export default function HomeBannersPage() {
 
   const openAddModal = () => {
     form.resetFields();
-    form.setFieldsValue({ isActive: true, sortingOrder: 0 });
+    form.setFieldsValue({ sortingOrder: 0 });
     setFileList([]);
     setEditingId(null);
     setIsModalOpen(true);
   };
 
   const openEditModal = (record: HomeBannerRow) => {
-    form.setFieldsValue(record);
+    form.setFieldsValue({
+      linkUrl: record.linkUrl,
+      sortingOrder: record.sortingOrder
+    });
     setFileList([
       {
         uid: "-1",
@@ -156,7 +187,7 @@ export default function HomeBannersPage() {
   const activeBanners = data.filter((b) => b.isActive).length;
   const linkBanners = data.filter((b) => b.linkUrl).length;
   const lastUpdatedText = data.length > 0
-    ? new Date(Math.max(...data.map(d => new Date(d.updatedAt).getTime()))).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })
+    ? new Date(Math.max(...data.map(d => new Date(d.createdAt).getTime()))).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })
     : "No Data";
 
   const columns: ColumnsType<HomeBannerRow> = [
@@ -168,49 +199,24 @@ export default function HomeBannersPage() {
         <Image
           src={url}
           alt="banner"
-          width={120}
-          height={60}
+          width={160}
+          height={80}
           style={{ objectFit: "cover", borderRadius: 6 }}
           fallback="/placeholder.png"
         />
       ),
     },
     {
-      title: "Banner Details (EN)",
-      key: "detailsEn",
-      render: (_, record) => (
-        <div className="flex flex-col">
-          <span className="font-semibold text-[#AD002E]/70">{record.titleEn}</span>
-          <span className="text-xs text-[#AD002E]/70">{record.subtitleEn}</span>
-          {record.linkUrl && <span className="text-xs text-[#AD002E] font-normal mt-1">Link: {record.linkUrl}</span>}
-        </div>
-      ),
-    },
-    {
-      title: "Banner Details (MR)",
-      key: "detailsMr",
-      render: (_, record) => (
-        <div className="flex flex-col text-sm">
-          <span className="text-[#AD002E]/70">{record.titleMr}</span>
-          <span className="text-xs text-[#AD002E]/70">{record.subtitleMr}</span>
-        </div>
-      ),
+      title: "Link URL",
+      dataIndex: "linkUrl",
+      key: "linkUrl",
+      render: (val) => val ? <span className="text-[#AD002E]/70">{val}</span> : <span className="text-gray-400 font-light italic">None</span>,
     },
     {
       title: "Sort Order",
       dataIndex: "sortingOrder",
       key: "sortingOrder",
       render: (val) => <span className="font-bold text-[#AD002E]/70">{val}</span>,
-    },
-    {
-      title: "Status",
-      dataIndex: "isActive",
-      key: "isActive",
-      render: (active) => (
-        <Tag color={active ? "green" : "red"} className="font-semibold px-2 py-0.5 rounded-full border-0">
-          {active ? "Active" : "Inactive"}
-        </Tag>
-      ),
     },
     {
       title: "Actions",
@@ -328,47 +334,16 @@ export default function HomeBannersPage() {
         okText={editingId ? "Save Changes" : "Upload Banner"}
         okButtonProps={{ style: { backgroundColor: "#AD002E", borderColor: "#AD002E" } }}
         width="95vw"
-        style={{ maxWidth: 700 }}
+        style={{ maxWidth: 500 }}
       >
         <Form form={form} layout="vertical" className="mt-4">
-          <Row gutter={16}>
-            <Col xs={24} md={12}>
-              <Form.Item name="titleEn" label="Title (English)" rules={[{ required: true, message: "English title is required" }]}>
-                <Input placeholder="e.g. Welcome to Kavad Bank" />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item name="titleMr" label="Title (Marathi)" rules={[{ required: true, message: "Marathi title is required" }]}>
-                <Input placeholder="e.g. कवाड बँकेत आपले स्वागत आहे" />
-              </Form.Item>
-            </Col>
-          </Row>
- 
-          <Row gutter={16}>
-            <Col xs={24} md={12}>
-              <Form.Item name="subtitleEn" label="Subtitle (English)" rules={[{ required: true, message: "English subtitle is required" }]}>
-                <Input placeholder="e.g. Your Trusted Financial Partner" />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item name="subtitleMr" label="Subtitle (Marathi)" rules={[{ required: true, message: "Marathi subtitle is required" }]}>
-                <Input placeholder="e.g. आपला विश्वासू आर्थिक भागीदार" />
-              </Form.Item>
-            </Col>
-          </Row>
- 
-          <Row gutter={16}>
-            <Col xs={24} md={12}>
-              <Form.Item name="linkUrl" label="Link URL (Optional)">
-                <Input placeholder="e.g. /services/loans" />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={12}>
-              <Form.Item name="sortingOrder" label="Sort Order" rules={[{ required: true, message: "Sort order is required" }]}>
-                <InputNumber min={0} style={{ width: "100%" }} placeholder="e.g. 1" />
-              </Form.Item>
-            </Col>
-          </Row>
+          <Form.Item name="linkUrl" label="Link URL (Optional)">
+            <Input placeholder="e.g. /services/loans" />
+          </Form.Item>
+          
+          <Form.Item name="sortingOrder" label="Sort Order" rules={[{ required: true, message: "Sort order is required" }]}>
+            <InputNumber min={0} style={{ width: "100%" }} placeholder="e.g. 1" />
+          </Form.Item>
  
           <Form.Item label="Upload Banner Image" required>
             <Upload
@@ -377,7 +352,9 @@ export default function HomeBannersPage() {
               maxCount={1}
               onRemove={() => setFileList([])}
               beforeUpload={(file) => {
-                const isValidType = ["image/jpeg", "image/png", "image/webp"].includes(file.type);
+                const ext = file.name.split('.').pop()?.toLowerCase();
+                const isValidType = ["image/jpeg", "image/jpg", "image/png", "image/webp"].includes(file.type) ||
+                                    ["jpg", "jpeg", "png", "webp"].includes(ext || "");
                 if (!isValidType) {
                   message.error("Only JPG, PNG, and WEBP image files are allowed!");
                   return Upload.LIST_IGNORE;
@@ -401,10 +378,6 @@ export default function HomeBannersPage() {
             >
               <Button icon={<UploadOutlined />}>Select Image from PC (JPG, PNG, WEBP)</Button>
             </Upload>
-          </Form.Item>
- 
-          <Form.Item name="isActive" label="Active Status" valuePropName="checked">
-            <Switch />
           </Form.Item>
         </Form>
       </Modal>

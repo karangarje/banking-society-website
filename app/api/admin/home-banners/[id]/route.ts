@@ -7,7 +7,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
   try {
     const session = await getServerSession(authOptions);
     const userRole = (session?.user as any)?.role;
-    const allowedRoles = ["SUPER_ADMIN", "MANAGER", "EMPLOYEE"];
+    const allowedRoles = ["MANAGER", "EMPLOYEE"];
     if (!session || !allowedRoles.includes(userRole)) {
       return NextResponse.json({ message: "Forbidden" }, { status: 403 });
     }
@@ -15,17 +15,21 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
     const { id } = await params;
     const data = await req.json();
 
+    const sortingOrderValue = typeof data.sortingOrder === "number" 
+      ? data.sortingOrder 
+      : (parseInt(data.sortingOrder, 10) || 0);
+
     const banner = await prisma.homeBanner.update({
       where: { id },
       data: {
-        titleEn: data.titleEn,
-        titleMr: data.titleMr,
-        subtitleEn: data.subtitleEn,
-        subtitleMr: data.subtitleMr,
+        titleEn: "",
+        titleMr: "",
+        subtitleEn: "",
+        subtitleMr: "",
         imageUrl: data.imageUrl,
-        linkUrl: data.linkUrl,
-        isActive: data.isActive,
-        sortingOrder: parseInt(data.sortingOrder) || 0,
+        linkUrl: data.linkUrl || null,
+        isActive: true,
+        sortingOrder: sortingOrderValue,
       },
     });
 
@@ -34,7 +38,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
         userId: (session.user as any)?.id,
         userRole: (session.user as any)?.role,
         action: "UPDATE_HOME_BANNER",
-        details: `Updated home banner: ${banner.titleEn}`,
+        details: `Updated home banner ID: ${banner.id}`,
       },
     });
 
@@ -48,7 +52,7 @@ export async function DELETE(req: NextRequest, { params }: { params: Promise<{ i
   try {
     const session = await getServerSession(authOptions);
     const userRole = (session?.user as any)?.role;
-    const allowedRoles = ["SUPER_ADMIN", "MANAGER", "EMPLOYEE"];
+    const allowedRoles = ["MANAGER", "EMPLOYEE"];
     if (!session || !allowedRoles.includes(userRole)) {
       return NextResponse.json({ message: "Forbidden" }, { status: 403 });
     }
@@ -67,7 +71,7 @@ export async function DELETE(req: NextRequest, { params }: { params: Promise<{ i
         userId: (session.user as any)?.id,
         userRole: (session.user as any)?.role,
         action: "DELETE_HOME_BANNER",
-        details: `Deleted home banner: ${target.titleEn}`,
+        details: `Deleted home banner ID: ${target.id}`,
       },
     });
 
