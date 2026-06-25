@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import Image from "next/image";
 import { Modal } from "antd";
 import { EyeOutlined, CalendarOutlined } from "@ant-design/icons";
 import { useTheme } from "@/components/theme/ThemeContext";
 import { useLanguage } from "@/components/theme/LanguageContext";
+import { useSearchParams } from "next/navigation";
 
 interface GalleryItem {
   id: number;
@@ -18,7 +19,7 @@ interface GalleryItem {
   descriptionMr: string;
 }
 
-export default function PhotoGallery() {
+export function PhotoGalleryContent() {
   const [activeFilter, setActiveFilter] = useState<string>("All");
   const [selectedPhoto, setSelectedPhoto] = useState<GalleryItem | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
@@ -26,6 +27,24 @@ export default function PhotoGallery() {
   const { isDark } = useTheme();
   const { locale } = useLanguage();
   const isMr = locale === "mr";
+
+  const searchParams = useSearchParams();
+  const category = searchParams.get("category");
+  const galleryRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    if (category === "new-branch-openings") {
+      setActiveFilter("inauguration");
+      setTimeout(() => {
+        galleryRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    } else if (category === "all") {
+      setActiveFilter("All");
+      setTimeout(() => {
+        galleryRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    }
+  }, [category]);
 
   React.useEffect(() => {
     const fetchPhotos = async () => {
@@ -192,7 +211,7 @@ export default function PhotoGallery() {
       </section>
 
       {/* Filter Tabs */}
-      <section className="py-8 max-w-7xl mx-auto px-4 sm:px-6">
+      <section ref={galleryRef} className="py-8 max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-center items-center gap-3 flex-wrap">
           {filters.map((filter) => (
             <button
@@ -363,5 +382,13 @@ export default function PhotoGallery() {
       </Modal>
 
     </div>
+  );
+}
+
+export default function PhotoGallery() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-white text-[#AD002E] font-bold">Loading...</div>}>
+      <PhotoGalleryContent />
+    </Suspense>
   );
 }

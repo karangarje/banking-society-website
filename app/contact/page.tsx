@@ -72,6 +72,25 @@ export default function Contact() {
 
   return (
     <div className="w-full bg-white">
+      <style dangerouslySetInnerHTML={{ __html: `
+        .w-full.bg-white aside button {
+          background-color: #B3003C !important;
+          color: white !important;
+          border: 1px solid #B3003C !important;
+          opacity: 1 !important;
+          transition: all 0.2s ease-in-out !important;
+        }
+        .w-full.bg-white aside button:hover {
+          background-color: #B3003C !important;
+          color: white !important;
+          opacity: 0.9 !important;
+          border-color: #B3003C !important;
+        }
+        .w-full.bg-white aside button svg,
+        .w-full.bg-white aside button span {
+          color: white !important;
+        }
+      `}} />
       {/* Header Banner */}
       <section className="relative py-12 md:py-16 lg:py-20 bg-gradient-to-b from-[#AD002E] to-[#1E1B6B] overflow-hidden">
         <div className="absolute inset-0 bg-white/15" />
@@ -83,7 +102,10 @@ export default function Contact() {
           <h1 className="text-4xl sm:text-6xl font-bold text-white tracking-tight drop-shadow-md">
             {t("contact.title")}
           </h1>
-          <p className="text-base text-[#AD002E] max-w-2xl mx-auto leading-relaxed drop-shadow-md">
+          <p 
+            className="text-base md:text-lg font-medium max-w-[700px] mx-auto leading-relaxed text-center"
+            style={{ color: "rgba(243, 244, 246, 0.9)", textShadow: "0 1px 3px rgba(0,0,0,0.35)" }}
+          >
             {t("contact.description")}
           </p>
         </div>
@@ -123,12 +145,12 @@ export default function Contact() {
                 <a href="tel:+912488230442" className="text-sm text-[#AD002E]/70 hover:text-[#AD002E] block">(02488) 230442</a>
               </div>
             </div>
-            <div className="flex gap-3 items-start p-4 rounded-lg bg-[#AD002E]/5/60 border border-[#AD002E]">
+            <div className="flex gap-3 items-start p-4 rounded-lg bg-[#AD002E]/5/60 border border-[#AD002E] break-words overflow-hidden max-w-full">
               <MailOutlined className="text-xl text-[#AD002E] shrink-0 mt-0.5" />
-              <div>
+              <div className="break-words overflow-hidden max-w-full w-full">
                 <h5 className="font-bold text-[#AD002E]/70 text-sm uppercase tracking-wide">{t("contact.email_label")}</h5>
-                <a href="mailto:info@kavadpat.co.in" className="text-sm text-[#AD002E]/70 hover:text-[#AD002E] mt-1 block">info@kavadpat.co.in</a>
-                <a href="mailto:support@kavadpat.co.in" className="text-sm text-[#AD002E]/70 hover:text-[#AD002E] block">support@kavadpat.co.in</a>
+                <a href="mailto:info@kavadpat.co.in" className="text-xs text-[#AD002E]/70 hover:text-[#AD002E] mt-1 block break-words overflow-hidden max-w-full">info@kavadpat.co.in</a>
+                <a href="mailto:support@kavadpat.co.in" className="text-xs text-[#AD002E]/70 hover:text-[#AD002E] block break-words overflow-hidden max-w-full">support@kavadpat.co.in</a>
               </div>
             </div>
           </div>

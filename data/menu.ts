@@ -169,7 +169,7 @@ export const navigationData: NavigationLink[] = [
           },
           {
             title: "New Branch Openings",
-            href: "/photo-gallery",
+            href: "/photo-gallery?category=new-branch-openings",
             description: "Opening ceremonies and branch inauguration photos.",
             icon: "HomeOutlined",
           },

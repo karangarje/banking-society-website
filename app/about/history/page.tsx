@@ -120,6 +120,7 @@ export default function About() {
   const [missionText, setMissionText] = React.useState("");
   const [chairmanMsg, setChairmanMsg] = React.useState("");
   const [historyText, setHistoryText] = React.useState("");
+  const [imageError, setImageError] = React.useState(false);
 
   React.useEffect(() => {
     // Initial default values from content
@@ -243,15 +244,29 @@ export default function About() {
           {/* Chairman Image / Frame */}
           <div data-aos="fade-right" className="flex justify-center">
             <div className="relative w-64 h-80 rounded-lg overflow-hidden border-2 border-[#AD002E]/20 bg-gradient-to-tr from-[#AD002E] to-[#AD002E] p-1.5 shadow-md transition-all duration-300">
-              <div className="relative w-full h-full bg-white rounded-lg overflow-hidden flex flex-col justify-end p-4 transition-all duration-300">
-                {/* SVG profile avatar representation */}
-                <div className="absolute inset-0 flex items-center justify-center bg-white transition-colors duration-300">
-                  <TeamOutlined className="text-7xl text-text-muted/30 transition-colors" />
+              <div className="w-full h-full bg-white rounded-lg overflow-hidden flex flex-col transition-all duration-300">
+                {/* Image Section */}
+                <div className="relative w-full flex-1 bg-white flex items-center justify-center overflow-hidden">
+                  {!imageError ? (
+                    <Image
+                      src="/images/chairman/vasant-babasaheb-kavad.png"
+                      alt={isMr ? "श्री. वसंत बाबासाहेब कवाद" : "Shri. Vasant Babasaheb Kavad"}
+                      fill
+                      className="object-cover object-top rounded-t-lg"
+                      onError={() => setImageError(true)}
+                    />
+                  ) : (
+                    <TeamOutlined className="text-7xl text-text-muted/30 transition-colors" />
+                  )}
                 </div>
-                <div className="z-10 bg-white/90 p-3 rounded-lg border border-[#AD002E]/20 text-center transition-all duration-300">
-                  <h4 className={`text-base font-bold transition-colors duration-300 ${"text-text-main"
-                    }`}>{isMr ? "श्री. वसंत बाबासाहेब कवाद" : "Shri. Vasant Babasaheb Kavad"}</h4>
-                  <p className="text-sm text-[#AD002E] font-semibold mt-0.5">{t.chairmanImageLabel}</p>
+                {/* Bottom Name Card */}
+                <div className="w-full bg-white p-3 flex flex-col justify-center items-center text-center rounded-b-lg border-t border-[#AD002E]/10">
+                  <h4 className={`text-base font-bold leading-snug transition-colors duration-300 ${"text-text-main"}`}>
+                    {isMr ? "श्री. वसंत बाबासाहेब कवाद" : "Shri. Vasant Babasaheb Kavad"}
+                  </h4>
+                  <p className="text-sm text-[#AD002E] font-semibold mt-0.5">
+                    {t.chairmanImageLabel}
+                  </p>
                 </div>
               </div>
             </div>

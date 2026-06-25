@@ -257,7 +257,7 @@ export default function InterestPage() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      const offset = 120; // Height of header + sticky nav bar
+      const offset = 140; // Height of header + sticky nav bar
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -332,7 +332,7 @@ export default function InterestPage() {
       </section>
 
       {/* STICKY SECTION NAVIGATION */}
-      <div className="sticky top-[72px] z-40 w-full bg-white/90 backdrop-blur border-b border-[#AD002E]/20/50 py-3 shadow-md transition-all duration-300 no-print">
+      <div className="sticky top-[80px] z-20 w-full bg-white/90 backdrop-blur border-b border-[#AD002E]/20/50 py-3 shadow-md transition-all duration-300 no-print">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-1 sm:gap-2">
             {[
