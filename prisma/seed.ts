@@ -234,6 +234,128 @@ async function main() {
       }
     ];
 
+    const defaultGalleryItems = [
+      {
+        id: "gallery-1",
+        titleEn: "Annual General Body Meeting 2024-25",
+        titleMr: "वार्षिक सर्वसाधारण सभा २०२४-२५",
+        category: "agm",
+        imageUrl: "/images/image-3.png",
+        descriptionEn: "Members and Directors aligning on society financial growth guidelines during the AGM in Pune.",
+        descriptionMr: "पुण्यात आयोजित वार्षिक सर्वसाधारण सभेमध्ये सदस्य व संचालकांनी संस्थेच्या आर्थिक विकासावर चर्चा केली.",
+        sortOrder: 1,
+        isActive: true,
+      },
+      {
+        id: "gallery-2",
+        titleEn: "Community Blood Donation Camp",
+        titleMr: "रक्तदान शिबिर",
+        category: "social",
+        imageUrl: "/images/gallery_donation.png",
+        descriptionEn: "Volunteers and medical staff organizing a blood drive on the founder's birth anniversary.",
+        descriptionMr: "संस्थापकांच्या जयंतीनिमित्त स्वयंसेवक आणि वैद्यकीय कर्मचाऱ्यांनी रक्तदान शिबिराचे आयोजन केले.",
+        sortOrder: 2,
+        isActive: true,
+      },
+      {
+        id: "gallery-3",
+        titleEn: "Village Afforestation Tree Plantation",
+        titleMr: "वृक्षारोपण अभियान",
+        category: "social",
+        imageUrl: "/images/gallery_plantation.png",
+        descriptionEn: "Co-operative youth volunteers planting over 1,000 tree saplings in Nighoj village surroundings.",
+        descriptionMr: "सहकारी तरुण स्वयंसेवकांनी निघोज गावच्या परिसरात १,००० हून अधिक झाडांची रोपे लावली.",
+        sortOrder: 3,
+        isActive: true,
+      },
+      {
+        id: "gallery-4",
+        titleEn: "Inauguration of Thane West Branch",
+        titleMr: "ठाणे पश्चिम शाखा उद्घाटन",
+        category: "inauguration",
+        imageUrl: "/images/image8.jpeg",
+        descriptionEn: "Opening of our 12th branch at Thane West to serve metropolitan merchant portfolios.",
+        descriptionMr: "महानगरीय व्यापारी सेवांसाठी ठाणे पश्चिम येथे आमच्या १२ व्या शाखेचे उद्घाटन करण्यात आले.",
+        sortOrder: 4,
+        isActive: true,
+      },
+      {
+        id: "gallery-5",
+        titleEn: "Head Office Central Conference Meeting",
+        titleMr: "मुख्य कार्यालय केंद्रीय आढावा बैठक",
+        category: "inauguration",
+        imageUrl: "/images/photo-10.jpeg",
+        descriptionEn: "Review meeting of branch managers discussing core digital banking installations.",
+        descriptionMr: "मुख्य डिजिटल बँकिंग सेवांच्या स्थापनेवर चर्चा करण्यासाठी शाखा व्यवस्थापकांची आढावा बैठक.",
+        sortOrder: 5,
+        isActive: true,
+      },
+      {
+        id: "gallery-6",
+        titleEn: "Technology Summit & Digital Launch",
+        titleMr: "तंत्रज्ञान परिषद व डिजिटल सेवा प्रारंभ",
+        category: "agm",
+        imageUrl: "/images/photo-2.jpeg",
+        descriptionEn: "Rollout event introducing mobile application UPI integration for local cooperative businesses.",
+        descriptionMr: "स्थानिक सहकारी व्यवसायांसाठी मोबाईल ॲप्लिकेशन युपीआय (UPI) एकत्रीकरण सुरू करण्याचा कार्यक्रम.",
+        sortOrder: 6,
+        isActive: true,
+      },
+      {
+        id: "gallery-7",
+        titleEn: "Community Cycling & Awareness Event",
+        titleMr: "सायकल जनजागृती व सामाजिक सहभाग कार्यक्रम",
+        category: "social",
+        imageUrl: "/images/photo-7.jpeg",
+        descriptionEn: "Cycling awareness rally and community participation event organized by the society members.",
+        descriptionMr: "संस्थेच्या सदस्यांद्वारे आयोजित सायकल जनजागृती रॅली आणि सामाजिक सहभाग कार्यक्रम.",
+        sortOrder: 7,
+        isActive: true,
+      },
+      {
+        id: "gallery-8",
+        titleEn: "Society Group Celebration & Meet",
+        titleMr: "सदस्य मेळावा व समाज स्नेहसंमेलन",
+        category: "social",
+        imageUrl: "/images/photo-8.jpeg",
+        descriptionEn: "Group gathering and celebration with members, directors, and community participants.",
+        descriptionMr: "सदस्य, संचालक आणि सामाजिक सहभाग घेणाऱ्यांसोबत एकत्रित सोहळा आणि स्नेहसंमेलन.",
+        sortOrder: 8,
+        isActive: true,
+      },
+      {
+        id: "gallery-9",
+        titleEn: "Community Felicitation Ceremony",
+        titleMr: "समाज गौरव व सत्कार समारंभ",
+        category: "social",
+        imageUrl: "/images/photo-6.jpeg",
+        descriptionEn: "Honouring members and dignitaries during a cooperative society felicitation program.",
+        descriptionMr: "सहकारी संस्था सत्कार समारंभादरम्यान सदस्य आणि मान्यवरांचा गौरव.",
+        sortOrder: 9,
+        isActive: true,
+      },
+      {
+        id: "gallery-10",
+        titleEn: "Annual Conference & Public Address",
+        titleMr: "वार्षिक परिषद व मार्गदर्शन कार्यक्रम",
+        category: "agm",
+        imageUrl: "/images/photo-5.jpeg",
+        descriptionEn: "Leadership addressing members during the annual cooperative society conference.",
+        descriptionMr: "वार्षिक सहकारी संस्था परिषदेदरम्यान सदस्यांना मार्गदर्शन करताना नेतृत्व.",
+        sortOrder: 10,
+        isActive: true,
+      },
+    ];
+
+    for (const item of defaultGalleryItems) {
+      await prisma.galleryMedia.upsert({
+        where: { id: item.id },
+        update: item,
+        create: item,
+      });
+    }
+    console.log("Gallery media seeded successfully.");
+
     for (const b of branches) {
       await prisma.branch.upsert({
         where: { id: b.id },

@@ -1,22 +1,24 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Tabs, Table, Button, Modal, Form, Input, Select, Switch, message, Popconfirm, Image, Tag, Space, Card, Upload } from "antd";
-import type { UploadFile, UploadProps } from "antd";
+import { Tabs, Table, Button, Modal, Form, Input, Select, Switch, App, Popconfirm, Image, Tag, Space, Card, Upload, InputNumber, Spin } from "antd";
+import type { UploadFile } from "antd";
 import type { ColumnsType } from "antd/es/table";
-import { PlusOutlined, DeleteOutlined, PlaySquareOutlined, FileImageOutlined, ReloadOutlined, UploadOutlined } from "@ant-design/icons";
+import { PlusOutlined, DeleteOutlined, PlaySquareOutlined, FileImageOutlined, ReloadOutlined, UploadOutlined, EditOutlined } from "@ant-design/icons";
 import { useSession } from "next-auth/react";
 
 const { Option } = Select;
 const { TabPane } = Tabs;
 
-interface GalleryImageRow {
+interface GalleryMediaRow {
   id: string;
   titleEn: string;
   titleMr: string;
+  descriptionEn: string;
+  descriptionMr: string;
   category: string;
   imageUrl: string;
-  sortingOrder: number;
+  sortOrder: number;
   isActive: boolean;
   createdAt: string;
 }
@@ -32,7 +34,7 @@ interface GalleryVideoRow {
 
 export default function GalleryMediaPage() {
   const { data: session, status: sessionStatus } = useSession();
-  const [images, setImages] = useState<GalleryImageRow[]>([]);
+  const [images, setImages] = useState<GalleryMediaRow[]>([]);
   const [videos, setVideos] = useState<GalleryVideoRow[]>([]);
   const [loadingImages, setLoadingImages] = useState(true);
   const [loadingVideos, setLoadingVideos] = useState(true);
@@ -40,13 +42,15 @@ export default function GalleryMediaPage() {
   const [isVidModalOpen, setIsVidModalOpen] = useState(false);
   const [fileList, setFileList] = useState<UploadFile[]>([]);
   const [uploadingImage, setUploadingImage] = useState(false);
+  const [editingId, setEditingId] = useState<string | null>(null);
   const [formImage] = Form.useForm();
   const [formVideo] = Form.useForm();
+  const { message } = App.useApp();
 
   const fetchImages = async () => {
     setLoadingImages(true);
     try {
-      const res = await fetch("/api/admin/gallery");
+      const res = await fetch("/api/admin/gallery-media");
       if (res.ok) {
         const json = await res.json();
         setImages(json);
@@ -81,72 +85,91 @@ export default function GalleryMediaPage() {
   }, [sessionStatus]);
 
   if (sessionStatus === "loading") {
-    return <div style={{ padding: "2rem" }}><h1>Loading...</h1></div>;
+    return (
+      <div className="flex justify-center items-center min-h-[400px]">
+        <Spin size="large" />
+      </div>
+    );
   }
 
-  if (!session) {
-    return <div style={{ padding: "2rem" }}><h1>403 - Access Denied</h1></div>;
+  const userRole = (session?.user as any)?.role;
+  const allowedRoles = ["SUPER_ADMIN", "MANAGER", "EMPLOYEE"];
+
+  if (!session || !allowedRoles.includes(userRole)) {
+    return (
+      <div className="flex flex-col items-center justify-center p-12 bg-white rounded-lg shadow-md border border-[#AD002E]/20 max-w-xl mx-auto my-12 text-center space-y-4">
+        <h1 className="text-2xl font-bold text-[#AD002E]">403 - Forbidden</h1>
+        <p className="text-gray-600">You do not have permission to access the Gallery & Media Manager.</p>
+      </div>
+    );
   }
 
-  const handleAddImage = async () => {
+  const handleSaveImage = async () => {
     try {
       const values = await formImage.validateFields();
-      
-      if (fileList.length === 0) {
-        message.error("Please upload an image");
-        return;
+      let finalImageUrl = editingId ? (images.find(img => img.id === editingId)?.imageUrl || "") : "";
+
+      if (fileList.length > 0) {
+        const file = fileList[0];
+        if (file.url) {
+          finalImageUrl = file.url;
+        } else if (file.originFileObj) {
+          setUploadingImage(true);
+          const formData = new FormData();
+          formData.append("file", file.originFileObj);
+          
+          const uploadRes = await fetch("/api/upload", {
+            method: "POST",
+            body: formData,
+          });
+
+          if (!uploadRes.ok) {
+            const err = await uploadRes.json();
+            throw new Error(err.message || "Upload failed");
+          }
+          
+          const uploadData = await uploadRes.json();
+          finalImageUrl = uploadData.url;
+        }
+      } else {
+        finalImageUrl = "";
       }
 
-      setUploadingImage(true);
-      
-      let finalImageUrl = "";
-      const file = fileList[0];
-
-      if (file.status === "done" && file.response?.url) {
-        finalImageUrl = file.response.url;
-      } else if (file.originFileObj) {
-        const formData = new FormData();
-        formData.append("file", file.originFileObj);
-        
-        const uploadRes = await fetch("/api/upload", {
-          method: "POST",
-          body: formData,
-        });
-
-        if (!uploadRes.ok) {
-          const err = await uploadRes.json();
-          throw new Error(err.message || "Upload failed");
-        }
-        
-        const uploadData = await uploadRes.json();
-        finalImageUrl = uploadData.url;
-      } else {
-        throw new Error("Invalid file state");
+      if (!finalImageUrl) {
+        message.error("Please upload an image");
+        return;
       }
 
       const payload = {
         titleEn: values.titleEn,
         titleMr: values.titleMr,
+        descriptionEn: values.descriptionEn || "",
+        descriptionMr: values.descriptionMr || "",
         category: values.category,
-        sortingOrder: values.sortingOrder,
-        isActive: values.isActive,
+        sortOrder: values.sortOrder || 0,
+        isActive: values.isActive ?? true,
         imageUrl: finalImageUrl,
       };
 
-      const res = await fetch("/api/admin/gallery", {
-        method: "POST",
+      const url = editingId ? `/api/admin/gallery-media/${editingId}` : "/api/admin/gallery-media";
+      const method = editingId ? "PUT" : "POST";
+
+      const res = await fetch(url, {
+        method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
       if (res.ok) {
-        message.success("Image added to gallery");
+        message.success(`Image ${editingId ? "updated" : "added"} successfully`);
         setIsImgModalOpen(false);
+        formImage.resetFields();
         setFileList([]);
+        setEditingId(null);
         fetchImages();
       } else {
         const err = await res.json();
-        throw new Error(err.message || "Failed to save to database");
+        throw new Error(err.message || "Failed to save image");
       }
     } catch (err: any) {
       if (err.message) {
@@ -180,9 +203,9 @@ export default function GalleryMediaPage() {
 
   const handleDeleteImage = async (id: string) => {
     try {
-      const res = await fetch(`/api/admin/gallery/${id}`, { method: "DELETE" });
+      const res = await fetch(`/api/admin/gallery-media/${id}`, { method: "DELETE" });
       if (res.ok) {
-        message.success("Image deleted");
+        message.success("Image deleted successfully");
         fetchImages();
       } else {
         const err = await res.json();
@@ -208,20 +231,49 @@ export default function GalleryMediaPage() {
     }
   };
 
-  // Helper to extract YouTube video ID to show a thumbnail preview
+  const openAddImageModal = () => {
+    formImage.resetFields();
+    formImage.setFieldsValue({ isActive: true, sortOrder: 0 });
+    setFileList([]);
+    setEditingId(null);
+    setIsImgModalOpen(true);
+  };
+
+  const openEditImageModal = (record: GalleryMediaRow) => {
+    formImage.setFieldsValue({
+      titleEn: record.titleEn,
+      titleMr: record.titleMr,
+      descriptionEn: record.descriptionEn,
+      descriptionMr: record.descriptionMr,
+      category: record.category,
+      sortOrder: record.sortOrder,
+      isActive: record.isActive,
+    });
+    setFileList([
+      {
+        uid: "-1",
+        name: "gallery-image.jpg",
+        status: "done",
+        url: record.imageUrl,
+      },
+    ]);
+    setEditingId(record.id);
+    setIsImgModalOpen(true);
+  };
+
   const getYoutubeId = (url: string) => {
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
     const match = url.match(regExp);
     return match && match[2].length === 11 ? match[2] : null;
   };
 
-  const imageColumns: ColumnsType<GalleryImageRow> = [
+  const imageColumns: ColumnsType<GalleryMediaRow> = [
     {
       title: "Preview",
       dataIndex: "imageUrl",
       key: "preview",
       width: 100,
-      render: (url: string) => <Image src={url} alt="preview" width={60} height={40} style={{ objectFit: "cover", borderRadius: 4 }} />,
+      render: (url: string) => <Image src={url} alt="preview" width={70} height={50} style={{ objectFit: "cover", borderRadius: 4 }} />,
     },
     {
       title: "Title (English)",
@@ -241,8 +293,8 @@ export default function GalleryMediaPage() {
     },
     {
       title: "Sort Order",
-      dataIndex: "sortingOrder",
-      key: "sortingOrder",
+      dataIndex: "sortOrder",
+      key: "sortOrder",
     },
     {
       title: "Status",
@@ -253,11 +305,14 @@ export default function GalleryMediaPage() {
     {
       title: "Actions",
       key: "actions",
-      width: 100,
-      render: (_, record: GalleryImageRow) => (
-        <Popconfirm title="Delete image?" onConfirm={() => handleDeleteImage(record.id)} okText="Yes" cancelText="No">
-          <Button danger icon={<DeleteOutlined />} />
-        </Popconfirm>
+      width: 120,
+      render: (_, record: GalleryMediaRow) => (
+        <Space>
+          <Button icon={<EditOutlined />} onClick={() => openEditImageModal(record)} />
+          <Popconfirm title="Delete image?" onConfirm={() => handleDeleteImage(record.id)} okText="Yes" cancelText="No">
+            <Button danger icon={<DeleteOutlined />} />
+          </Popconfirm>
+        </Space>
       ),
     },
   ];
@@ -329,12 +384,7 @@ export default function GalleryMediaPage() {
       <Tabs defaultActiveKey="1" type="card">
         <TabPane tab={<span><FileImageOutlined /> Photos / Images</span>} key="1">
           <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 16 }}>
-            <Button type="primary" icon={<PlusOutlined />} onClick={() => { 
-              formImage.resetFields(); 
-              formImage.setFieldsValue({ isActive: true }); 
-              setFileList([]);
-              setIsImgModalOpen(true); 
-            }}>
+            <Button type="primary" icon={<PlusOutlined />} onClick={openAddImageModal}>
               Add Image
             </Button>
           </div>
@@ -352,20 +402,32 @@ export default function GalleryMediaPage() {
       </Tabs>
 
       {/* Image Modal */}
-      <Modal title="Add Gallery Image" open={isImgModalOpen} onOk={handleAddImage} onCancel={() => setIsImgModalOpen(false)} okText="Save" confirmLoading={uploadingImage}>
+      <Modal 
+        title={editingId ? "Edit Gallery Image" : "Add Gallery Image"} 
+        open={isImgModalOpen} 
+        onOk={handleSaveImage} 
+        onCancel={() => setIsImgModalOpen(false)} 
+        okText="Save" 
+        confirmLoading={uploadingImage}
+      >
         <Form form={formImage} layout="vertical">
-          <Form.Item name="titleEn" label="Title (English)" rules={[{ required: true }]}>
+          <Form.Item name="titleEn" label="Title (English)" rules={[{ required: true, message: "Title in English is required" }]}>
             <Input />
           </Form.Item>
-          <Form.Item name="titleMr" label="Title (Marathi)" rules={[{ required: true }]}>
+          <Form.Item name="titleMr" label="Title (Marathi)" rules={[{ required: true, message: "Title in Marathi is required" }]}>
             <Input />
           </Form.Item>
-          <Form.Item name="category" label="Category / Album" rules={[{ required: true }]}>
+          <Form.Item name="descriptionEn" label="Description (English)">
+            <Input.TextArea rows={3} />
+          </Form.Item>
+          <Form.Item name="descriptionMr" label="Description (Marathi)">
+            <Input.TextArea rows={3} />
+          </Form.Item>
+          <Form.Item name="category" label="Category / Album" rules={[{ required: true, message: "Please select a category" }]}>
             <Select placeholder="Select album category">
-              <Option value="events">Events</Option>
-              <Option value="branches">Branches</Option>
-              <Option value="awards">Awards & Audits</Option>
-              <Option value="inauguration">Inauguration / VIPs</Option>
+              <Option value="agm">AGMs & Summits</Option>
+              <Option value="social">Social Work</Option>
+              <Option value="inauguration">Branch Openings</Option>
             </Select>
           </Form.Item>
           <Form.Item label="Upload Image" required>
@@ -375,7 +437,9 @@ export default function GalleryMediaPage() {
               maxCount={1}
               onRemove={() => setFileList([])}
               beforeUpload={(file) => {
-                const isValidType = ["image/jpeg", "image/png", "image/webp"].includes(file.type);
+                const ext = file.name.split('.').pop()?.toLowerCase();
+                const isValidType = ["image/jpeg", "image/jpg", "image/png", "image/webp"].includes(file.type) ||
+                                    ["jpg", "jpeg", "png", "webp"].includes(ext || "");
                 if (!isValidType) {
                   message.error("You can only upload JPG, PNG, or WEBP files!");
                   return Upload.LIST_IGNORE;
@@ -388,22 +452,22 @@ export default function GalleryMediaPage() {
                 setFileList([{
                   uid: file.uid,
                   name: file.name,
-                  status: "done", // mock done so it doesn't auto upload, we upload on save
+                  status: "done",
                   originFileObj: file,
                 } as any]);
-                return false; // Prevent automatic upload
+                return false;
               }}
             >
               {fileList.length < 1 && (
                 <div>
-                  <UploadOutlined />
-                  <div style={{ marginTop: 8 }}>Select Image from PC</div>
+                  <PlusOutlined />
+                  <div style={{ marginTop: 8 }}>Select Image</div>
                 </div>
               )}
             </Upload>
           </Form.Item>
-          <Form.Item name="sortingOrder" label="Sort Order" rules={[{ required: true }]}>
-            <Input type="number" placeholder="0" />
+          <Form.Item name="sortOrder" label="Sort Order" rules={[{ required: true, message: "Sort order is required" }]}>
+            <InputNumber min={0} style={{ width: "100%" }} />
           </Form.Item>
           <Form.Item name="isActive" label="Active" valuePropName="checked">
             <Switch />

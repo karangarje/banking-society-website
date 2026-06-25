@@ -30,7 +30,7 @@ export default function PhotoGallery() {
   React.useEffect(() => {
     const fetchPhotos = async () => {
       try {
-        const res = await fetch("/api/public/gallery");
+        const res = await fetch("/api/public/gallery-media");
         if (res.ok) {
           const json = await res.json();
           if (json && json.length > 0) {
@@ -41,8 +41,8 @@ export default function PhotoGallery() {
               category: p.category,
               image: p.imageUrl,
               date: new Date(p.createdAt || new Date()).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }),
-              description: p.titleEn,
-              descriptionMr: p.titleMr,
+              description: p.descriptionEn,
+              descriptionMr: p.descriptionMr,
             }));
             setDynamicPhotos(mapped);
           }

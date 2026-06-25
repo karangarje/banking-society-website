@@ -253,6 +253,20 @@ model GalleryImage {
   createdAt       DateTime    @default(now())
 }
 
+model GalleryMedia {
+  id              String      @id @default(uuid())
+  titleEn         String
+  titleMr         String
+  descriptionEn   String      @db.Text
+  descriptionMr   String      @db.Text
+  imageUrl        String      @db.Text
+  category        String
+  sortOrder       Int         @default(0)
+  isActive        Boolean     @default(true)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+}
+
 model GalleryVideo {
   id              String      @id @default(uuid())
   titleEn         String
