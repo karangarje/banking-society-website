@@ -95,18 +95,18 @@ export default function Header() {
 
           {/* Contact Info Section */}
           <div className="text-right flex flex-col items-end justify-center gap-2">
-             <div className="flex items-center gap-6 text-base font-bold tracking-wider text-white/90">
-                <a href="tel:+912488230449" className="flex items-center gap-2 hover:text-white transition-colors">
+             <div className="flex items-center gap-6 text-base font-semibold text-white opacity-100 !text-white !opacity-100">
+                <a href="tel:+912488230449" className="flex items-center gap-2 text-white font-semibold opacity-100 !text-white !opacity-100 hover:text-white transition-colors">
                   <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
-                    <PhoneOutlined className="text-base" />
+                    <PhoneOutlined className="text-base text-white opacity-100 !text-white !opacity-100" />
                   </div>
-                  <span>(02488) 230449, 230442</span>
+                  <span className="text-white font-semibold opacity-100 !text-white !opacity-100">(02488) 230449, 230442</span>
                 </a>
-                <a href="mailto:info@babasahebkavad.com" className="flex items-center gap-2 hover:text-white transition-colors">
+                <a href="mailto:info@babasahebkavad.com" className="flex items-center gap-2 text-white font-semibold opacity-100 !text-white !opacity-100 hover:text-white transition-colors">
                   <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
-                    <MailOutlined className="text-base" />
+                    <MailOutlined className="text-base text-white opacity-100 !text-white !opacity-100" />
                   </div>
-                  <span>info@babasahebkavad.com</span>
+                  <span className="text-white font-semibold opacity-100 !text-white !opacity-100">info@babasahebkavad.com</span>
                 </a>
              </div>
              <div className="text-base font-bold text-white tracking-wide pr-2 mt-2">
