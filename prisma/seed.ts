@@ -356,6 +356,108 @@ async function main() {
     }
     console.log("Gallery media seeded successfully.");
 
+    const defaultDownloads = [
+      {
+        id: "download-1",
+        titleEn: "Saving Account Opening Form",
+        titleMr: "बचत खाते उघडण्याचा अर्ज",
+        descriptionEn: "Standard application template required to open single or joint savings accounts.",
+        descriptionMr: "एकल किंवा संयुक्त बचत खाते उघडण्यासाठी आवश्यक अर्ज नमुना.",
+        fileUrl: "#",
+        category: "Forms",
+        documentType: "FORM",
+        fileSize: "1.2 MB",
+        fileFormat: "PDF",
+        sortOrder: 1,
+        isActive: true,
+        downloadCount: 0,
+      },
+      {
+        id: "download-2",
+        titleEn: "Gold Loan Request Application Form",
+        titleMr: "सुवर्ण कर्ज अर्ज",
+        descriptionEn: "Gold asset description details, borrower declaration, and guarantor signing page.",
+        descriptionMr: "सोन्याचे तारण मूल्यमापन तपशील, कर्जदाराचे घोषणापत्र आणि जामीनदाराच्या स्वाक्षरीचे पान.",
+        fileUrl: "#",
+        category: "Forms",
+        documentType: "FORM",
+        fileSize: "840 KB",
+        fileFormat: "PDF",
+        sortOrder: 2,
+        isActive: true,
+        downloadCount: 0,
+      },
+      {
+        id: "download-3",
+        titleEn: "KYC Record Update & Details Form",
+        titleMr: "केवायसी माहिती अद्ययावत अर्ज",
+        descriptionEn: "Required to submit updated Aadhaar Card, PAN Card, and active mobile specifications.",
+        descriptionMr: "अद्ययावत आधार कार्ड, पॅन कार्ड आणि चालू मोबाईल क्रमांक सादर करण्यासाठी आवश्यक.",
+        fileUrl: "#",
+        category: "Forms",
+        documentType: "FORM",
+        fileSize: "450 KB",
+        fileFormat: "PDF",
+        sortOrder: 3,
+        isActive: true,
+        downloadCount: 0,
+      },
+      {
+        id: "download-4",
+        titleEn: "Safe Locker Vault Agreement Form",
+        titleMr: "सुरक्षित लॉकर करारपत्र",
+        descriptionEn: "Locker hire terms, nominee declarations, and liability clause agreements.",
+        descriptionMr: "लॉकर भाडे अटी, वारसदार घोषणापत्र आणि उत्तरदायित्व कराराचे नियम.",
+        fileUrl: "#",
+        category: "Forms",
+        documentType: "FORM",
+        fileSize: "950 KB",
+        fileFormat: "PDF",
+        sortOrder: 4,
+        isActive: true,
+        downloadCount: 0,
+      },
+      {
+        id: "download-5",
+        titleEn: "Annual Balance Sheet & Audit Report 2024-25",
+        titleMr: "वार्षिक ताळेबंद व लेखापरीक्षण अहवाल २०२४-२५",
+        descriptionEn: "Official publication detailing our assets, liability ratios, and profit audits.",
+        descriptionMr: "आमच्या मालमत्ता, दायित्व गुणोत्तर आणि नफा लेखापरीक्षणाचा तपशील देणारे अधिकृत प्रकाशन.",
+        fileUrl: "#",
+        category: "Reports",
+        documentType: "ANNUAL_REPORT",
+        fileSize: "4.8 MB",
+        fileFormat: "PDF",
+        sortOrder: 5,
+        isActive: true,
+        downloadCount: 0,
+      },
+      {
+        id: "download-6",
+        titleEn: "Society Bye-Laws & Operational Regulations",
+        titleMr: "संस्थेचे नियम व कार्यप्रणाली मार्गदर्शक",
+        descriptionEn: "The regulatory handbook and legal guidelines governing our co-operative governance.",
+        descriptionMr: "आमच्या सहकारी कारभाराचे नियमन करणारे नियमावली आणि कायदेशीर मार्गदर्शक तत्त्वे.",
+        fileUrl: "#",
+        category: "Reports",
+        documentType: "CIRCULAR",
+        fileSize: "2.1 MB",
+        fileFormat: "PDF",
+        sortOrder: 6,
+        isActive: true,
+        downloadCount: 0,
+      },
+    ];
+
+    for (const item of defaultDownloads) {
+      await prisma.downloadDocument.upsert({
+        where: { id: item.id },
+        update: item,
+        create: item,
+      });
+    }
+    console.log("Downloads seeded successfully.");
+
     for (const b of branches) {
       await prisma.branch.upsert({
         where: { id: b.id },

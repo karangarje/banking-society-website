@@ -6,20 +6,33 @@ import prisma from "@/lib/prisma";
 export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const session = await getServerSession(authOptions);
-    if (!session || ((session.user as any)?.role !== "MANAGER" && (session.user as any)?.role !== "SUPER_ADMIN")) {
+    const userRole = (session?.user as any)?.role;
+    const allowedRoles = ["SUPER_ADMIN", "MANAGER", "EMPLOYEE"];
+    if (!session || !allowedRoles.includes(userRole)) {
       return NextResponse.json({ message: "Forbidden" }, { status: 403 });
     }
 
     const { id } = await params;
     const data = await req.json();
 
-    const item = await prisma.download.update({
+    const sortOrderValue = typeof data.sortOrder === "number" 
+      ? data.sortOrder 
+      : (parseInt(data.sortOrder, 10) || 0);
+
+    const item = await prisma.downloadDocument.update({
       where: { id },
       data: {
         titleEn: data.titleEn,
         titleMr: data.titleMr,
-        type: data.type,
+        descriptionEn: data.descriptionEn ?? "",
+        descriptionMr: data.descriptionMr ?? "",
         fileUrl: data.fileUrl,
+        category: data.category,
+        documentType: data.documentType || data.category,
+        fileSize: data.fileSize,
+        fileFormat: data.fileFormat,
+        sortOrder: sortOrderValue,
+        isActive: data.isActive,
       },
     });
 
@@ -27,8 +40,8 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
       data: {
         userId: (session.user as any)?.id,
         userRole: (session.user as any)?.role,
-        action: "UPDATE_DOWNLOAD",
-        details: `Updated download: ${item.titleEn}`,
+        action: "UPDATE_DOWNLOAD_DOCUMENT",
+        details: `Updated download document: ${item.titleEn}`,
       },
     });
 
@@ -41,25 +54,27 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
 export async function DELETE(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const session = await getServerSession(authOptions);
-    if (!session || ((session.user as any)?.role !== "MANAGER" && (session.user as any)?.role !== "SUPER_ADMIN")) {
+    const userRole = (session?.user as any)?.role;
+    const allowedRoles = ["SUPER_ADMIN", "MANAGER", "EMPLOYEE"];
+    if (!session || !allowedRoles.includes(userRole)) {
       return NextResponse.json({ message: "Forbidden" }, { status: 403 });
     }
 
     const { id } = await params;
     
-    const target = await prisma.download.findUnique({ where: { id } });
+    const target = await prisma.downloadDocument.findUnique({ where: { id } });
     if (!target) {
       return NextResponse.json({ message: "Not found" }, { status: 404 });
     }
 
-    await prisma.download.delete({ where: { id } });
+    await prisma.downloadDocument.delete({ where: { id } });
 
     await prisma.auditLog.create({
       data: {
         userId: (session.user as any)?.id,
         userRole: (session.user as any)?.role,
-        action: "DELETE_DOWNLOAD",
-        details: `Deleted download: ${target.titleEn}`,
+        action: "DELETE_DOWNLOAD_DOCUMENT",
+        details: `Deleted download document: ${target.titleEn}`,
       },
     });
 

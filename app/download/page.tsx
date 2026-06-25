@@ -39,28 +39,17 @@ export default function Download() {
         if (res.ok) {
           const json = await res.json();
           if (json && json.length > 0) {
-            const mapped = json.map((item: any) => {
-              const filename = item.fileUrl.split("?")[0].split("/").pop() || "";
-              const ext = filename.split(".").pop()?.toUpperCase() || "PDF";
-              // Deterministic size calculation based on id hash
-              let hash = 0;
-              for (let i = 0; i < item.id.length; i++) {
-                hash = item.id.charCodeAt(i) + ((hash << 5) - hash);
-              }
-              const sizeMB = (Math.abs(hash % 40) / 10 + 0.8).toFixed(1) + " MB";
-
-              return {
-                id: item.id,
-                title: item.titleEn,
-                titleMr: item.titleMr,
-                category: item.type === "FORM" ? "form" : "publication",
-                size: sizeMB,
-                format: ext,
-                description: item.type === "FORM" ? "Application form template." : "Official regulatory / report publication.",
-                descriptionMr: item.type === "FORM" ? "अधिकृत अर्ज नमुना पत्रक." : "अधिकृत माहिती व नियमावली पत्रक.",
-                fileUrl: item.fileUrl,
-              };
-            });
+            const mapped = json.map((item: any) => ({
+              id: item.id,
+              title: item.titleEn,
+              titleMr: item.titleMr,
+              category: item.category === "Forms" ? "form" : "publication",
+              size: item.fileSize || "0 KB",
+              format: item.fileFormat || "PDF",
+              description: item.descriptionEn || "",
+              descriptionMr: item.descriptionMr || "",
+              fileUrl: item.fileUrl,
+            }));
             setDynamicDocs(mapped);
           }
         }
@@ -148,12 +137,19 @@ export default function Download() {
         ? `दस्तऐवज तयार होत आहे...`
         : `Preparing document: ${isMr ? doc.titleMr : doc.title}...`,
       1
-    ).then(() => {
+    ).then(async () => {
       message.success(
         isMr
           ? `डाउनलोड सुरू झाले`
           : `Downloading started: ${isMr ? doc.titleMr : doc.title}`
       );
+      
+      try {
+        await fetch(`/api/public/downloads/${doc.id}`, { method: "POST" });
+      } catch (err) {
+        console.error("Failed to increment download count:", err);
+      }
+
       if (doc.fileUrl && doc.fileUrl !== "#") {
         window.open(doc.fileUrl, "_blank");
       }
@@ -345,15 +341,28 @@ export default function Download() {
 
                       {/* Download Action */}
                       <td className="py-5 px-6 text-center">
-                        <button
-                          onClick={() => handleDownload(doc)}
-                          className="bg-[#AD002E] hover:bg-[#AD002E] border border-[#AD002E] hover:border-[#AD002E] text-white p-2 sm:px-4 sm:py-2 rounded-lg font-bold uppercase tracking-wider text-sm inline-flex items-center gap-1.5 transition-all shadow-md shadow-[#AD002E]/20 cursor-pointer"
-                        >
-                          <DownloadOutlined />
-                          <span className="hidden sm:inline">
-                            {isMr ? "डाउनलोड" : "Download"}
-                          </span>
-                        </button>
+                        {(!doc.fileUrl || doc.fileUrl === "#") ? (
+                          <button
+                            disabled
+                            className="bg-gray-400 border border-gray-400 text-white/80 p-2 sm:px-4 sm:py-2 rounded-lg font-bold uppercase tracking-wider text-sm inline-flex items-center gap-1.5 cursor-not-allowed opacity-60"
+                            style={{ color: "white", backgroundColor: "#9ca3af", borderColor: "#9ca3af" }}
+                          >
+                            <span style={{ color: "white" }}>
+                              {isMr ? "फाईल गहाळ" : "File Missing"}
+                            </span>
+                          </button>
+                        ) : (
+                          <button
+                            onClick={() => handleDownload(doc)}
+                            className="bg-[#B3003C] hover:bg-[#B3003C] border border-[#B3003C] hover:border-[#B3003C] text-white p-2 sm:px-4 sm:py-2 rounded-lg font-bold uppercase tracking-wider text-sm inline-flex items-center gap-1.5 transition-all shadow-md shadow-[#B3003C]/20 cursor-pointer"
+                            style={{ color: "white", backgroundColor: "#B3003C", borderColor: "#B3003C" }}
+                          >
+                            <DownloadOutlined style={{ color: "white" }} />
+                            <span style={{ color: "white" }}>
+                              {isMr ? "डाउनलोड" : "Download"}
+                            </span>
+                          </button>
+                        )}
                       </td>
 
                     </tr>

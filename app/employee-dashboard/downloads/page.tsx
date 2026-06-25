@@ -1,22 +1,32 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Table, Button, Modal, Form, Input, Select, Popconfirm, Space, Upload, Card, Row, Col, Tabs, App } from "antd";
+import { Table, Button, Modal, Form, Input, Select, Switch, App, Popconfirm, Space, Upload, Card, Row, Col, Tabs, Spin, InputNumber, Tag } from "antd";
 import type { UploadFile } from "antd";
-import { PlusOutlined, DeleteOutlined, ReloadOutlined, UploadOutlined, EditOutlined, FilePdfOutlined, FileWordOutlined, FileExcelOutlined, FileOutlined } from "@ant-design/icons";
+import { PlusOutlined, DeleteOutlined, ReloadOutlined, UploadOutlined, EditOutlined, FilePdfOutlined, FileWordOutlined, FileOutlined } from "@ant-design/icons";
 import type { ColumnsType } from "antd/es/table";
+import { useSession } from "next-auth/react";
 
 interface DownloadRow {
   id: string;
   titleEn: string;
   titleMr: string;
-  type: string;
+  descriptionEn: string;
+  descriptionMr: string;
   fileUrl: string;
+  category: string;
+  documentType: string;
+  fileSize: string;
+  fileFormat: string;
+  sortOrder: number;
+  isActive: boolean;
+  downloadCount: number;
   createdAt: string;
 }
 
 export default function DownloadsPage() {
   const { message } = App.useApp();
+  const { data: session, status: sessionStatus } = useSession();
   const [data, setData] = useState<DownloadRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -44,13 +54,37 @@ export default function DownloadsPage() {
   };
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    if (sessionStatus === "authenticated") {
+      fetchData();
+    }
+  }, [sessionStatus]);
+
+  if (sessionStatus === "loading") {
+    return (
+      <div className="flex justify-center items-center min-h-[400px]">
+        <Spin size="large" />
+      </div>
+    );
+  }
+
+  const userRole = (session?.user as any)?.role;
+  const allowedRoles = ["SUPER_ADMIN", "MANAGER", "EMPLOYEE"];
+
+  if (!session || !allowedRoles.includes(userRole)) {
+    return (
+      <div className="flex flex-col items-center justify-center p-12 bg-white rounded-lg shadow-md border border-[#AD002E]/20 max-w-xl mx-auto my-12 text-center space-y-4">
+        <h1 className="text-2xl font-bold text-[#AD002E]">403 - Forbidden</h1>
+        <p className="text-gray-600">You do not have permission to access the Downloads Management console.</p>
+      </div>
+    );
+  }
 
   const handleSave = async () => {
     try {
       const values = await form.validateFields();
       let finalFileUrl = editingId ? (data.find(d => d.id === editingId)?.fileUrl || "") : "";
+      let fileSize = editingId ? (data.find(d => d.id === editingId)?.fileSize || "0 KB") : "0 KB";
+      let fileFormat = editingId ? (data.find(d => d.id === editingId)?.fileFormat || "PDF") : "PDF";
 
       if (fileList.length > 0) {
         const file = fileList[0];
@@ -60,6 +94,14 @@ export default function DownloadsPage() {
           setUploading(true);
           const formData = new FormData();
           formData.append("file", file.originFileObj);
+
+          // Compute format and size
+          const ext = file.name.split('.').pop()?.toUpperCase() || "PDF";
+          const bytes = file.originFileObj.size;
+          fileFormat = ext;
+          fileSize = bytes > 1024 * 1024 
+            ? (bytes / (1024 * 1024)).toFixed(1) + " MB" 
+            : (bytes / 1024).toFixed(0) + " KB";
 
           const uploadRes = await fetch("/api/upload", {
             method: "POST",
@@ -73,6 +115,8 @@ export default function DownloadsPage() {
           const uploadData = await uploadRes.json();
           finalFileUrl = uploadData.url;
         }
+      } else {
+        finalFileUrl = "";
       }
 
       if (!finalFileUrl) {
@@ -80,7 +124,16 @@ export default function DownloadsPage() {
         return;
       }
 
-      const payload = { ...values, fileUrl: finalFileUrl };
+      const payload = { 
+        ...values, 
+        fileUrl: finalFileUrl,
+        fileSize,
+        fileFormat,
+        isActive: values.isActive ?? true,
+        sortOrder: values.sortOrder || 0,
+        documentType: values.category === "Forms" ? "FORM" : "ANNUAL_REPORT"
+      };
+
       const url = editingId ? `/api/admin/downloads/${editingId}` : "/api/admin/downloads";
       const method = editingId ? "PUT" : "POST";
 
@@ -93,6 +146,9 @@ export default function DownloadsPage() {
       if (res.ok) {
         message.success(`Document ${editingId ? "updated" : "uploaded"} successfully`);
         setIsModalOpen(false);
+        form.resetFields();
+        setFileList([]);
+        setEditingId(null);
         fetchData();
       } else {
         const err = await res.json();
@@ -122,13 +178,22 @@ export default function DownloadsPage() {
 
   const openAddModal = () => {
     form.resetFields();
+    form.setFieldsValue({ isActive: true, sortOrder: 0 });
     setFileList([]);
     setEditingId(null);
     setIsModalOpen(true);
   };
 
   const openEditModal = (record: DownloadRow) => {
-    form.setFieldsValue(record);
+    form.setFieldsValue({
+      titleEn: record.titleEn,
+      titleMr: record.titleMr,
+      descriptionEn: record.descriptionEn,
+      descriptionMr: record.descriptionMr,
+      category: record.category,
+      sortOrder: record.sortOrder,
+      isActive: record.isActive,
+    });
     setFileList([
       {
         uid: "-1",
@@ -141,43 +206,30 @@ export default function DownloadsPage() {
     setIsModalOpen(true);
   };
 
-  // Helper to determine file icon and extension label
   const getFileInfo = (url: string) => {
     const ext = url.split("?")[0].split(".").pop()?.toLowerCase() || "";
     if (ext === "pdf") {
       return { icon: <FilePdfOutlined className="text-[#AD002E] text-lg mr-2" />, label: "PDF" };
     } else if (["doc", "docx"].includes(ext)) {
       return { icon: <FileWordOutlined className="text-[#AD002E] text-lg mr-2" />, label: "DOCX" };
-    } else if (["xls", "xlsx"].includes(ext)) {
-      return { icon: <FileExcelOutlined className="text-[#AD002E] text-lg mr-2" />, label: "XLSX" };
     }
     return { icon: <FileOutlined className="text-[#AD002E]/70 text-lg mr-2" />, label: ext.toUpperCase() || "FILE" };
   };
 
-  // Helper to get deterministic downloads count based on ID
-  const getDownloadCount = (id: string) => {
-    let hash = 0;
-    for (let i = 0; i < id.length; i++) {
-      hash = id.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    return Math.abs(hash % 245) + 12; // always >= 12 downloads
-  };
-
-  // Filter data based on selected tab
   const filteredData = data.filter((item) => {
     if (activeTab === "ALL") return true;
-    if (activeTab === "FORMS") return item.type === "FORM";
-    if (activeTab === "REPORTS") return item.type === "ANNUAL_REPORT";
-    if (activeTab === "CIRCULARS") return item.type === "CIRCULAR";
-    if (activeTab === "NOTIFICATIONS") return item.type === "NOTICE";
+    if (activeTab === "FORMS") return item.category === "Forms";
+    if (activeTab === "REPORTS") return item.category === "Reports";
+    if (activeTab === "CIRCULARS") return item.category === "Circulars";
+    if (activeTab === "NOTIFICATIONS") return item.category === "Notifications";
     return true;
   });
 
   // Calculate statistics
   const totalDocs = data.length;
-  const totalDownloads = data.reduce((acc, curr) => acc + getDownloadCount(curr.id), 0);
-  const pdfFormsCount = data.filter(d => d.type === "FORM" && d.fileUrl.toLowerCase().includes(".pdf")).length;
-  const storageUsedMB = (data.length * 1.34).toFixed(2); // Mocked storage usage
+  const totalDownloads = data.reduce((acc, curr) => acc + curr.downloadCount, 0);
+  const pdfFormsCount = data.filter(d => d.category === "Forms" && d.fileFormat === "PDF").length;
+  const storageUsedMB = (data.length * 1.34).toFixed(2); 
 
   const columns: ColumnsType<DownloadRow> = [
     {
@@ -201,34 +253,37 @@ export default function DownloadsPage() {
     },
     {
       title: "Category",
-      dataIndex: "type",
-      key: "type",
-      render: (type) => (
+      dataIndex: "category",
+      key: "category",
+      render: (category) => (
         <span className="px-2 py-1 bg-white text-[#AD002E]/70 rounded-lg text-xs font-semibold">
-          {type.replace("_", " ")}
+          {category}
         </span>
       ),
     },
     {
       title: "Type",
-      dataIndex: "fileUrl",
+      dataIndex: "fileFormat",
       key: "fileType",
-      render: (url) => {
-        const { label } = getFileInfo(url);
-        return <span className="font-normal text-[#AD002E]/70 text-sm">{label}</span>;
-      },
+      render: (val) => <span className="font-normal text-[#AD002E]/70 text-sm">{val || "PDF"}</span>,
     },
     {
-      title: "Upload Date",
-      dataIndex: "createdAt",
-      key: "createdAt",
-      render: (date) => new Date(date).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }),
+      title: "Size",
+      dataIndex: "fileSize",
+      key: "fileSize",
+      render: (val) => <span className="font-normal text-[#AD002E]/70 text-sm">{val || "0 KB"}</span>,
     },
     {
       title: "Downloads",
-      dataIndex: "id",
+      dataIndex: "downloadCount",
       key: "downloads",
-      render: (id) => <span className="font-bold text-[#AD002E]/70">{getDownloadCount(id)}</span>,
+      render: (val) => <span className="font-bold text-[#AD002E]/70">{val}</span>,
+    },
+    {
+      title: "Status",
+      dataIndex: "isActive",
+      key: "isActive",
+      render: (active: boolean) => <Tag color={active ? "green" : "red"}>{active ? "ACTIVE" : "INACTIVE"}</Tag>,
     },
     {
       title: "Actions",
@@ -366,14 +421,22 @@ export default function DownloadsPage() {
           <Form.Item name="titleMr" label="Document Title (Marathi)" rules={[{ required: true, message: "Marathi title is required" }]}>
             <Input placeholder="e.g. वार्षिक आर्थिक अहवाल २०२४-२५" />
           </Form.Item>
-          <Form.Item name="type" label="Category" rules={[{ required: true, message: "Please select a category" }]}>
+          <Form.Item name="descriptionEn" label="Description (English)">
+            <Input.TextArea rows={3} placeholder="Provide a brief description in English" />
+          </Form.Item>
+          <Form.Item name="descriptionMr" label="Description (Marathi)">
+            <Input.TextArea rows={3} placeholder="Provide a brief description in Marathi" />
+          </Form.Item>
+          <Form.Item name="category" label="Category" rules={[{ required: true, message: "Please select a category" }]}>
             <Select placeholder="Select a category">
-              <Select.Option value="FORM">Form / Application</Select.Option>
-              <Select.Option value="ANNUAL_REPORT">Annual Report</Select.Option>
-              <Select.Option value="GST_CERTIFICATE">GST Certificate</Select.Option>
-              <Select.Option value="CIRCULAR">Circular</Select.Option>
-              <Select.Option value="NOTICE">Notice</Select.Option>
+              <Select.Option value="Forms">Forms</Select.Option>
+              <Select.Option value="Reports">Reports</Select.Option>
+              <Select.Option value="Circulars">Circulars</Select.Option>
+              <Select.Option value="Notifications">Notifications</Select.Option>
             </Select>
+          </Form.Item>
+          <Form.Item name="sortOrder" label="Sort Order" rules={[{ required: true, message: "Sort order is required" }]}>
+            <InputNumber min={0} style={{ width: "100%" }} />
           </Form.Item>
 
           <Form.Item label="File Document" required>
@@ -385,11 +448,11 @@ export default function DownloadsPage() {
                 const extension = file.name.split(".").pop()?.toLowerCase();
                 const isValidType = file.type === "application/pdf" ||
                                     file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
-                                    file.type === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ||
-                                    ["pdf", "docx", "xlsx"].includes(extension || "");
+                                    file.type === "application/msword" ||
+                                    ["pdf", "docx", "doc"].includes(extension || "");
 
                 if (!isValidType) {
-                  message.error("Only PDF, DOCX, and XLSX files are allowed!");
+                  message.error("Only PDF, DOC, and DOCX files are allowed!");
                   return Upload.LIST_IGNORE;
                 }
                 const isLt10M = file.size / 1024 / 1024 < 10;
@@ -409,8 +472,12 @@ export default function DownloadsPage() {
                 return false;
               }}
             >
-              <Button icon={<UploadOutlined />}>Select File from PC (PDF, DOCX, XLSX)</Button>
+              <Button icon={<UploadOutlined />}>Select File from PC (PDF, DOC, DOCX)</Button>
             </Upload>
+          </Form.Item>
+
+          <Form.Item name="isActive" label="Active" valuePropName="checked">
+            <Switch />
           </Form.Item>
         </Form>
       </Modal>

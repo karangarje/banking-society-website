@@ -241,6 +241,24 @@ model Download {
   createdAt       DateTime     @default(now())
 }
 
+model DownloadDocument {
+  id             String    @id @default(uuid())
+  titleEn        String
+  titleMr        String
+  descriptionEn  String    @db.Text
+  descriptionMr  String    @db.Text
+  fileUrl        String    @db.Text
+  category       String
+  documentType   String
+  fileSize       String    @default("0 KB")
+  fileFormat     String    @default("PDF")
+  sortOrder      Int       @default(0)
+  isActive       Boolean   @default(true)
+  downloadCount  Int       @default(0)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
 model GalleryImage {
   id              String      @id @default(uuid())
   titleEn         String

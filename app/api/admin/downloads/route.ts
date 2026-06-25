@@ -5,8 +5,15 @@ import prisma from "@/lib/prisma";
 
 export async function GET() {
   try {
-    const items = await prisma.download.findMany({
-      orderBy: { createdAt: 'desc' },
+    const session = await getServerSession(authOptions);
+    const userRole = (session?.user as any)?.role;
+    const allowedRoles = ["SUPER_ADMIN", "MANAGER", "EMPLOYEE"];
+    if (!session || !allowedRoles.includes(userRole)) {
+      return NextResponse.json({ message: "Forbidden" }, { status: 403 });
+    }
+
+    const items = await prisma.downloadDocument.findMany({
+      orderBy: { sortOrder: "asc" },
     });
     return NextResponse.json(items);
   } catch (error: any) {
@@ -17,17 +24,31 @@ export async function GET() {
 export async function POST(req: NextRequest) {
   try {
     const session = await getServerSession(authOptions);
-    if (!session || ((session.user as any)?.role !== "MANAGER" && (session.user as any)?.role !== "SUPER_ADMIN")) {
+    const userRole = (session?.user as any)?.role;
+    const allowedRoles = ["SUPER_ADMIN", "MANAGER", "EMPLOYEE"];
+    if (!session || !allowedRoles.includes(userRole)) {
       return NextResponse.json({ message: "Forbidden" }, { status: 403 });
     }
 
     const data = await req.json();
-    const item = await prisma.download.create({
+    const sortOrderValue = typeof data.sortOrder === "number" 
+      ? data.sortOrder 
+      : (parseInt(data.sortOrder, 10) || 0);
+
+    const item = await prisma.downloadDocument.create({
       data: {
         titleEn: data.titleEn,
         titleMr: data.titleMr,
-        type: data.type,
+        descriptionEn: data.descriptionEn || "",
+        descriptionMr: data.descriptionMr || "",
         fileUrl: data.fileUrl,
+        category: data.category,
+        documentType: data.documentType || data.category,
+        fileSize: data.fileSize || "0 KB",
+        fileFormat: data.fileFormat || "PDF",
+        sortOrder: sortOrderValue,
+        isActive: data.isActive ?? true,
+        downloadCount: 0,
       },
     });
 
@@ -35,8 +56,8 @@ export async function POST(req: NextRequest) {
       data: {
         userId: (session.user as any)?.id,
         userRole: (session.user as any)?.role,
-        action: "CREATE_DOWNLOAD",
-        details: `Created download: ${item.titleEn}`,
+        action: "CREATE_DOWNLOAD_DOCUMENT",
+        details: `Created download document: ${item.titleEn}`,
       },
     });
 

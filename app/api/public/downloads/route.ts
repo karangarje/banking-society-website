@@ -3,8 +3,9 @@ import prisma from "@/lib/prisma";
 
 export async function GET() {
   try {
-    const items = await prisma.download.findMany({
-      orderBy: { createdAt: 'desc' },
+    const items = await prisma.downloadDocument.findMany({
+      where: { isActive: true },
+      orderBy: { sortOrder: "asc" },
     });
     return NextResponse.json(items);
   } catch (error: any) {
