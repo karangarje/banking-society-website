@@ -32,21 +32,42 @@ export default function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // Simulate API request
-    setTimeout(() => {
-      setLoading(false);
-      message.success(t("contact.success_message"));
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "inquiry",
-        message: "",
+    try {
+      const res = await fetch("/api/public/contact-inquiries", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName: formData.name,
+          email: formData.email,
+          mobileNumber: formData.phone,
+          subject: formData.subject,
+          message: formData.message,
+        }),
       });
-    }, 1500);
+
+      if (res.ok) {
+        message.success(t("contact.success_message"));
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "inquiry",
+          message: "",
+        });
+      } else {
+        const errData = await res.json();
+        message.error(errData.message || "Failed to submit inquiry");
+      }
+    } catch (err) {
+      message.error("An error occurred during submission");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

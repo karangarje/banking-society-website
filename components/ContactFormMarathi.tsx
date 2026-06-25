@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { message } from "antd";
 
 export default function ContactFormMarathi() {
   const [form, setForm] = useState({
@@ -10,6 +11,7 @@ export default function ContactFormMarathi() {
     subject: "सामान्य चौकशी",
     message: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -17,10 +19,42 @@ export default function ContactFormMarathi() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("फॉर्म डेटा:", form);
-    alert("तुमची चौकशी यशस्वीरित्या पाठवली गेली आहे!");
+    setLoading(true);
+    try {
+      const res = await fetch("/api/public/contact-inquiries", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName: form.name,
+          email: form.email,
+          mobileNumber: form.mobile,
+          subject: form.subject,
+          message: form.message,
+        }),
+      });
+
+      if (res.ok) {
+        message.success("तुमची चौकशी यशस्वीरित्या पाठवली गेली आहे!");
+        setForm({
+          name: "",
+          email: "",
+          mobile: "",
+          subject: "सामान्य चौकशी",
+          message: "",
+        });
+      } else {
+        const errData = await res.json();
+        message.error(errData.message || "चौकशी पाठवण्यात त्रुटी आली.");
+      }
+    } catch (err) {
+      message.error("काहीतरी त्रुटी आली. कृपया नंतर पुन्हा प्रयत्न करा.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -39,6 +73,7 @@ export default function ContactFormMarathi() {
           <label className="text-sm text-text-muted font-bold">पूर्ण नाव</label>
           <input
             type="text"
+            required
             name="name"
             value={form.name}
             onChange={handleChange}
@@ -54,6 +89,7 @@ export default function ContactFormMarathi() {
             <label className="text-sm text-text-muted font-bold">ईमेल पत्ता</label>
             <input
               type="email"
+              required
               name="email"
               value={form.email}
               onChange={handleChange}
@@ -66,6 +102,7 @@ export default function ContactFormMarathi() {
             <label className="text-sm text-text-muted font-bold">मोबाईल क्रमांक</label>
             <input
               type="tel"
+              required
               name="mobile"
               value={form.mobile}
               onChange={handleChange}
@@ -85,10 +122,10 @@ export default function ContactFormMarathi() {
             onChange={handleChange}
             className="w-full mt-1 p-3 rounded-lg bg-white border border-[#AD002E]/20 focus:border-[#AD002E] outline-none text-text-main shadow-md"
           >
-            <option>सामान्य चौकशी</option>
-            <option>कर्ज संबंधित चौकशी</option>
-            <option>खाते उघडणे</option>
-            <option>शाखा माहिती</option>
+            <option value="सामान्य चौकशी">सामान्य चौकशी</option>
+            <option value="कर्ज संबंधित चौकशी">कर्ज संबंधित चौकशी</option>
+            <option value="खाते उघडणे">खाते उघडणे</option>
+            <option value="शाखा माहिती">शाखा माहिती</option>
           </select>
         </div>
 
@@ -97,6 +134,7 @@ export default function ContactFormMarathi() {
           <label className="text-sm text-text-muted font-bold">तुमचा संदेश</label>
           <textarea
             name="message"
+            required
             value={form.message}
             onChange={handleChange}
             rows={5}
@@ -108,9 +146,10 @@ export default function ContactFormMarathi() {
         {/* Submit */}
         <button
           type="submit"
-          className="w-full bg-[#AD002E] hover:bg-[#AD002E] text-white transition p-3 rounded-lg font-bold uppercase tracking-wider shadow-md"
+          disabled={loading}
+          className="w-full bg-[#AD002E] hover:bg-[#AD002E]/90 text-white transition p-3 rounded-lg font-bold uppercase tracking-wider shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          चौकशी पाठवा
+          {loading ? "पाठवत आहे..." : "चौकशी पाठवा"}
         </button>
       </form>
     </div>

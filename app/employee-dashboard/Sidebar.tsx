@@ -23,6 +23,7 @@ const menuItems = [
   { name: "Interest Rates", href: "/employee-dashboard/interest-rates", icon: "📈", managerOnly: false },
   { name: "News & Notices", href: "/employee-dashboard/news", icon: "📰", managerOnly: false },
   { name: "About Us Content", href: "/employee-dashboard/about-content", icon: "ℹ️", managerOnly: false },
+  { name: "Contact Inquiries", href: "/employee-dashboard/contact-inquiries", icon: "✉️", managerOnly: false },
   { name: "Audit Logs", href: "/employee-dashboard/audit-logs", icon: "📜", managerOnly: true },
 ];
 

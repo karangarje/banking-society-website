@@ -1,14 +1,33 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { 
   TeamOutlined, 
   BankOutlined, 
   DollarOutlined, 
   GlobalOutlined 
 } from "@ant-design/icons";
+import Link from "next/link";
 
 export default function EmployeeDashboard() {
+  const [newInquiriesCount, setNewInquiriesCount] = useState(0);
+
+  useEffect(() => {
+    const fetchInquiriesCount = async () => {
+      try {
+        const res = await fetch("/api/admin/contact-inquiries");
+        if (res.ok) {
+          const json = await res.json();
+          const count = json.filter((item: any) => item.status === "NEW").length;
+          setNewInquiriesCount(count);
+        }
+      } catch (err) {
+        console.error("Failed to fetch contact inquiries count:", err);
+      }
+    };
+    fetchInquiriesCount();
+  }, []);
+
   const stats = [
     { label: "Total Members", value: "24,183", icon: <TeamOutlined />, color: "bg-[#AD002E]" },
     { label: "Total Loans", value: "1,432", icon: <BankOutlined />, color: "bg-[#AD002E]" },
@@ -63,11 +82,15 @@ export default function EmployeeDashboard() {
           <div className="space-y-4">
             <div className="flex justify-between items-center p-3 bg-[#AD002E]/5 text-[#AD002E] rounded-lg text-sm font-semibold border border-[#AD002E]">
               <span>5 New Loan Applications</span>
-              <button className="text-xs uppercase bg-[#AD002E] text-white px-2 py-1 rounded-lg">Review</button>
+              <Link href="/employee-dashboard/loan-applications" className="text-xs uppercase bg-[#AD002E] text-white px-2 py-1 rounded-lg">Review</Link>
+            </div>
+            <div className="flex justify-between items-center p-3 bg-[#AD002E]/5 text-[#AD002E] rounded-lg text-sm font-semibold border border-[#AD002E]">
+              <span>New Contact Inquiries: {newInquiriesCount}</span>
+              <Link href="/employee-dashboard/contact-inquiries" className="text-xs uppercase bg-[#AD002E] text-white px-2 py-1 rounded-lg">Review</Link>
             </div>
             <div className="flex justify-between items-center p-3 bg-[#AD002E]/5 text-[#AD002E] rounded-lg text-sm font-semibold border border-[#AD002E]">
               <span>2 Employee Access Requests</span>
-              <button className="text-xs uppercase bg-[#AD002E] text-white px-2 py-1 rounded-lg">Review</button>
+              <Link href="/employee-dashboard/employees" className="text-xs uppercase bg-[#AD002E] text-white px-2 py-1 rounded-lg">Review</Link>
             </div>
           </div>
         </div>
