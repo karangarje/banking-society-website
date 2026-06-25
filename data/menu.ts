@@ -173,12 +173,6 @@ export const navigationData: NavigationLink[] = [
             description: "Opening ceremonies and branch inauguration photos.",
             icon: "HomeOutlined",
           },
-          {
-            title: "Vikhroli New Head Office Opening",
-            href: "/photo-gallery",
-            description: "Highlights from the new head office launch event.",
-            icon: "BankOutlined",
-          },
         ],
       },
     ],
@@ -196,21 +190,21 @@ export const navigationData: NavigationLink[] = [
         items: [
           {
             title: "Annual Reports",
-            href: "/download#reports",
+            href: "/download?category=reports",
             description: "Full PDF reports for member review.",
             icon: "FileDoneOutlined",
             badge: "PDF",
           },
           {
             title: "Forms",
-            href: "/download#forms",
+            href: "/download?category=forms",
             description: "All application and service request forms.",
             icon: "FileTextOutlined",
             badge: "PDF",
           },
           {
             title: "GST Certificate",
-            href: "/download#reports",
+            href: "/download?category=gst-certificate",
             description: "Official compliance certificate for the society.",
             icon: "FilePdfOutlined",
             badge: "PDF",

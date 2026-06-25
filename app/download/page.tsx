@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, Suspense, useEffect } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import { 
   FilePdfOutlined, 
   DownloadOutlined, 
@@ -23,16 +24,19 @@ interface DownloadDoc {
   fileUrl: string;
 }
 
-export default function Download() {
+export function DownloadContent() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [activeCategory, setActiveCategory] = useState<string>("All");
   const [dynamicDocs, setDynamicDocs] = useState<DownloadDoc[]>([]);
   const { locale } = useLanguage();
   const isMr = locale === "mr";
   const { isDark } = useTheme();
   const { message } = App.useApp();
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const categoryParam = searchParams.get("category");
+  const tableRef = React.useRef<HTMLDivElement>(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchDocs = async () => {
       try {
         const res = await fetch("/api/public/downloads");
@@ -59,6 +63,12 @@ export default function Download() {
     };
     fetchDocs();
   }, []);
+
+  useEffect(() => {
+    if (categoryParam) {
+      tableRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [categoryParam]);
 
   const defaultDocuments: DownloadDoc[] = [
     {
@@ -156,20 +166,56 @@ export default function Download() {
     });
   };
 
+  const handleCategoryChange = (key: string) => {
+    if (key === "All") {
+      router.push("/download", { scroll: false });
+    } else if (key === "form") {
+      router.push("/download?category=forms", { scroll: false });
+    } else if (key === "publication") {
+      router.push("/download?category=publications", { scroll: false });
+    }
+  };
+
+  let activeCategory = "All";
+  if (categoryParam === "forms") {
+    activeCategory = "form";
+  } else if (categoryParam === "reports" || categoryParam === "gst-certificate" || categoryParam === "publications") {
+    activeCategory = "publication";
+  }
+
   const filteredDocs = documents.filter((doc) => {
     const searchTarget = isMr 
       ? `${doc.titleMr} ${doc.descriptionMr}`.toLowerCase()
       : `${doc.title} ${doc.description}`.toLowerCase();
     const matchesSearch = searchTarget.includes(searchTerm.toLowerCase());
-    const matchesCategory = activeCategory === "All" || doc.category === activeCategory;
+
+    let matchesCategory = false;
+    if (!categoryParam || categoryParam === "All") {
+      matchesCategory = true;
+    } else if (categoryParam === "forms") {
+      matchesCategory = doc.category === "form";
+    } else if (categoryParam === "reports") {
+      const titleLower = doc.title.toLowerCase();
+      const descLower = doc.description.toLowerCase();
+      matchesCategory = doc.category === "publication" && 
+        (titleLower.includes("report") || 
+         titleLower.includes("balance sheet") || 
+         titleLower.includes("audit") ||
+         descLower.includes("report") || 
+         descLower.includes("balance sheet") || 
+         descLower.includes("audit"));
+    } else if (categoryParam === "gst-certificate") {
+      const titleLower = doc.title.toLowerCase();
+      const descLower = doc.description.toLowerCase();
+      matchesCategory = titleLower.includes("gst") || descLower.includes("gst");
+    } else if (categoryParam === "publications") {
+      matchesCategory = doc.category === "publication";
+    } else {
+      matchesCategory = true;
+    }
 
     return matchesSearch && matchesCategory;
   });
-
-  // Helper function for row map trigger
-  const handleDownloadTrigger = (doc: DownloadDoc) => {
-    handleDownload(doc);
-  };
 
   return (
     <div className="w-full bg-white transition-colors duration-300">
@@ -238,7 +284,7 @@ export default function Download() {
             ].map((cat) => (
               <button
                 key={cat.key}
-                onClick={() => setActiveCategory(cat.key)}
+                onClick={() => handleCategoryChange(cat.key)}
                 className={`text-sm px-4 py-2 rounded-lg font-bold uppercase tracking-wider transition-all border ${
                   activeCategory === cat.key
                     ? "bg-[#AD002E] text-white border-[#AD002E]"
@@ -256,7 +302,7 @@ export default function Download() {
       </section>
 
       {/* Downloads List Table */}
-      <section className="pb-20 max-w-7xl mx-auto px-4 sm:px-6">
+      <section ref={tableRef} className="pb-20 max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* Responsive Table Wrapper */}
         <div className={`glass-panel rounded-lg overflow-hidden border transition-colors duration-300 ${
@@ -405,5 +451,13 @@ export default function Download() {
       </section>
 
     </div>
+  );
+}
+
+export default function Download() {
+  return (
+    <Suspense fallback={<div className="text-center py-20 text-[#AD002E]/70 font-bold uppercase tracking-wider animate-pulse">Loading Downloads...</div>}>
+      <DownloadContent />
+    </Suspense>
   );
 }
