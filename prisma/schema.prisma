@@ -393,6 +393,7 @@ model InterestRate {
   durationEn      String
   durationMr      String
   rate            Decimal     @db.Decimal(5, 2)
+  seniorCitizenRate Float?
   isActive        Boolean     @default(true)
   sortingOrder    Int         @default(0)
   

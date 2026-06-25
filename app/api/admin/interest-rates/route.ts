@@ -22,6 +22,7 @@ export async function POST(req: NextRequest) {
     }
 
     const data = await req.json();
+    const rateVal = data.interestRate !== undefined && data.interestRate !== null ? data.interestRate : data.rate;
     const item = await prisma.interestRate.create({
       data: {
         type: data.type,
@@ -29,7 +30,8 @@ export async function POST(req: NextRequest) {
         schemeNameMr: data.schemeNameMr,
         durationEn: data.durationEn,
         durationMr: data.durationMr,
-        rate: data.rate,
+        rate: rateVal,
+        seniorCitizenRate: data.seniorCitizenRate !== undefined && data.seniorCitizenRate !== null ? parseFloat(data.seniorCitizenRate as any) : null,
         isActive: data.isActive ?? true,
         sortingOrder: parseInt(data.sortingOrder) || 0,
       },

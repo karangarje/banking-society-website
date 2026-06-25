@@ -13,6 +13,7 @@ interface InterestRateRow {
   durationEn: string;
   durationMr: string;
   rate: number;
+  seniorCitizenRate: number | null;
   isActive: boolean;
   sortingOrder: number;
   updatedAt: string;
@@ -101,7 +102,10 @@ export default function InterestRatesPage() {
   };
 
   const openEditModal = (record: InterestRateRow) => {
-    form.setFieldsValue(record);
+    form.setFieldsValue({
+      ...record,
+      interestRate: record.rate !== undefined ? Number(record.rate) : undefined,
+    });
     setEditingId(record.id);
     setIsModalOpen(true);
   };
@@ -146,6 +150,15 @@ export default function InterestRatesPage() {
       dataIndex: "rate",
       key: "rate",
       render: (rate) => <span className="font-bold text-[#AD002E]">{Number(rate).toFixed(2)}% p.a.</span>,
+    },
+    {
+      title: "Senior Citizen Rate",
+      dataIndex: "seniorCitizenRate",
+      key: "seniorCitizenRate",
+      render: (val, record) => {
+        const rateVal = val !== undefined && val !== null ? Number(val) : Number(record.rate);
+        return <span className="font-bold text-[#AD002E]">{rateVal.toFixed(2)}% p.a.</span>;
+      },
     },
     {
       title: "Tenure",
@@ -327,18 +340,23 @@ export default function InterestRatesPage() {
 
           <Row gutter={16}>
             <Col span={12}>
-              <Form.Item name="rate" label="Interest Rate (% p.a.)" rules={[{ required: true, message: "Interest rate is required" }]}>
+              <Form.Item name="interestRate" label="Interest Rate (% p.a.)" rules={[{ required: true, message: "Interest rate is required" }]}>
                 <InputNumber min={0} max={100} step={0.01} style={{ width: "100%" }} placeholder="e.g. 7.50" />
               </Form.Item>
             </Col>
             <Col span={12}>
-              <Form.Item name="sortingOrder" label="Sort Order" rules={[{ required: true }]}>
-                <InputNumber min={0} style={{ width: "100%" }} placeholder="e.g. 1" />
+              <Form.Item name="seniorCitizenRate" label="Senior Citizen Rate (% p.a.)">
+                <InputNumber min={0} max={100} step={0.01} style={{ width: "100%" }} placeholder="e.g. 8.50" />
               </Form.Item>
             </Col>
           </Row>
 
           <Row gutter={16}>
+            <Col span={12}>
+              <Form.Item name="sortingOrder" label="Sort Order" rules={[{ required: true }]}>
+                <InputNumber min={0} style={{ width: "100%" }} placeholder="e.g. 1" />
+              </Form.Item>
+            </Col>
             <Col span={12}>
               <Form.Item name="isActive" label="Active Status" valuePropName="checked">
                 <Switch />

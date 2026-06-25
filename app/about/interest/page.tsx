@@ -201,16 +201,20 @@ export default function InterestPage() {
             const loans = json.filter((r: any) => r.type === "LOAN");
             
             if (deposits.length > 0) {
-              setDynamicDepositRates(deposits.map((r: any) => ({
-                type: isMr ? r.schemeNameMr : r.schemeNameEn,
-                duration: isMr ? r.durationMr : r.durationEn,
-                rate: parseFloat(r.rate).toFixed(2) + "%",
-                seniorRate: (parseFloat(r.rate) + 0.50).toFixed(2) + "%",
-                isSpecial: r.schemeNameEn.toLowerCase().includes("special") || 
-                           r.schemeNameEn.toLowerCase().includes("double") || 
-                           r.schemeNameEn.toLowerCase().includes("damduppat") ||
-                           r.schemeNameEn.toLowerCase().includes("pension")
-              })));
+              setDynamicDepositRates(deposits.map((r: any) => {
+                const baseRate = parseFloat(r.rate);
+                const srRate = r.seniorCitizenRate !== undefined && r.seniorCitizenRate !== null ? parseFloat(r.seniorCitizenRate) : baseRate;
+                return {
+                  type: isMr ? r.schemeNameMr : r.schemeNameEn,
+                  duration: isMr ? r.durationMr : r.durationEn,
+                  rate: baseRate.toFixed(2) + "%",
+                  seniorRate: srRate.toFixed(2) + "%",
+                  isSpecial: r.schemeNameEn.toLowerCase().includes("special") || 
+                             r.schemeNameEn.toLowerCase().includes("double") || 
+                             r.schemeNameEn.toLowerCase().includes("damduppat") ||
+                             r.schemeNameEn.toLowerCase().includes("pension")
+                };
+              }));
             }
             if (loans.length > 0) {
               setDynamicLoanRates(loans.map((r: any) => {

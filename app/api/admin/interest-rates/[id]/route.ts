@@ -12,6 +12,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
 
     const { id } = await params;
     const data = await req.json();
+    const rateVal = data.interestRate !== undefined && data.interestRate !== null ? data.interestRate : data.rate;
 
     const item = await prisma.interestRate.update({
       where: { id },
@@ -21,7 +22,8 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
         schemeNameMr: data.schemeNameMr,
         durationEn: data.durationEn,
         durationMr: data.durationMr,
-        rate: data.rate,
+        rate: rateVal,
+        seniorCitizenRate: data.seniorCitizenRate !== undefined && data.seniorCitizenRate !== null ? parseFloat(data.seniorCitizenRate as any) : null,
         isActive: data.isActive,
         sortingOrder: parseInt(data.sortingOrder) || 0,
       },
