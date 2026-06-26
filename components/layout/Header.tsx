@@ -81,170 +81,172 @@ export default function Header() {
 
   return (
     <>
-      {/* ─── Top Bar (Logo & Contact Info) ──────────────── */}
-      <div className="bg-[#AD002E] text-white py-4 hidden lg:block border-b border-[#AD002E]">
-        <div className="max-w-[1536px] mx-auto px-4 lg:px-8 xl:px-10 flex justify-between items-center">
-          {/* Logo Section */}
-          <Link href="/" className="flex items-center group">
-            <img 
-              src="/Name%20Red.jpeg" 
-              alt={t("nav.logo_title")} 
-              className="h-14 sm:h-16 md:h-20 w-auto object-contain rounded-lg shadow-md"
-            />
-          </Link>
-
-          {/* Contact Info Section */}
-          <div className="text-right flex flex-col items-end justify-center gap-2">
-             <div className="flex items-center gap-6 text-base font-semibold text-white opacity-100 !text-white !opacity-100">
-                <a href="tel:+912488230449" className="flex items-center gap-2 text-white font-semibold opacity-100 !text-white !opacity-100 hover:text-white transition-colors">
-                  <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
-                    <PhoneOutlined className="text-base text-white opacity-100 !text-white !opacity-100" />
-                  </div>
-                  <span className="text-white font-semibold opacity-100 !text-white !opacity-100">(02488) 230449, 230442</span>
-                </a>
-                <a href="mailto:info@babasahebkavad.com" className="flex items-center gap-2 text-white font-semibold opacity-100 !text-white !opacity-100 hover:text-white transition-colors">
-                  <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
-                    <MailOutlined className="text-base text-white opacity-100 !text-white !opacity-100" />
-                  </div>
-                  <span className="text-white font-semibold opacity-100 !text-white !opacity-100">info@babasahebkavad.com</span>
-                </a>
-             </div>
-             <div className="text-base font-bold text-white tracking-wide pr-2 mt-2">
-               सहकारातून समृद्धी
-             </div>
-          </div>
-        </div>
-      </div>
-
-      {/* ─── Sticky Header ─────────────────────────────── */}
-      <header
-        className={`sticky top-0 z-[9999] transition-all duration-300 ${scrolled
-            ? "bg-white/95 backdrop-blur-md shadow-md border-b border-[#AD002E]/20"
-            : "bg-white border-b border-[#AD002E]/20/50"
-          }`}
-      >
-        <div className="max-w-[1536px] mx-auto px-4 lg:px-8 xl:px-10 h-20 flex items-center justify-between gap-4">
-
-          {/* Logo */}
-          <Link href="/" className={`flex items-center gap-2 sm:gap-2.5 group shrink-0 mr-auto lg:mr-0 ${!scrolled ? 'lg:hidden' : 'transition-opacity duration-300'}`}>
-            <div className="w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-lg bg-[#AD002E] flex items-center justify-center font-bold text-white text-base shadow-md shadow-[#AD002E]/30 transition-transform duration-300 group-hover:scale-110">
-              BK
-            </div>
-            <div className="leading-none shrink-0 max-w-[130px] xs:max-w-[180px] sm:max-w-[240px] md:max-w-[300px] lg:max-w-none">
-              <p className="text-base xs:text-base font-bold text-[#AD002E] tracking-wide group-hover:text-[#AD002E] transition-colors truncate">
-                {t("nav.logo_title")}
-              </p>
-              <p className="text-[10px] text-base text-[#AD002E]/70 font-semibold uppercase tracking-widest mt-0.5 truncate hidden sm:block">
-                {t("nav.logo_subtitle")}
-              </p>
-            </div>
-          </Link>
-
-          {/* ─── Desktop Nav ──────────────────────── */}
-          <nav className="hidden xl:flex items-center gap-0 lg:gap-0.5">
-            {navigationData.map((link, idx) => {
-              const hasMegaMenu = !!link.megaMenu;
-              const isOpen = activeMenu === link.title;
-              const isActive = pathname === link.href;
-              const transKey = getNavTranslationKey(link.title);
-              const label = transKey ? t(transKey) : link.title;
-
-              return (
-                <div
-                  key={idx}
-                  className="relative"
-                  onMouseEnter={() => hasMegaMenu && handleMouseEnter(link.title)}
-                  onMouseLeave={hasMegaMenu ? handleMouseLeave : undefined}
-                >
-                  {link.href ? (
-                    <Link
-                      href={link.href}
-                      className={`inline-flex items-center h-20 px-1 xl:px-1.5 2xl:px-4 !text-[20px] !font-bold border-b-2 transition-all duration-200 whitespace-nowrap ${isActive
-                          ? "!text-[#AD002E] border-[#AD002E]"
-                          : "!text-[#AD002E] border-transparent hover:border-[#AD002E]"
-                        }`}
-                    >
-                      {label}
-                    </Link>
-                  ) : (
-                    <button
-                      className={`inline-flex items-center gap-1.5 h-20 px-1 xl:px-1.5 2xl:px-4 !text-[20px] !font-bold border-b-2 transition-all duration-200 whitespace-nowrap ${isOpen
-                          ? "!text-[#AD002E] border-[#AD002E]"
-                          : "!text-[#AD002E] border-transparent hover:border-[#AD002E]"
-                        }`}
-                    >
-                      <span>{label}</span>
-                      <DownOutlined
-                        className={`text-[14px] transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
-                      />
-                    </button>
-                  )}
-
-                  {/* Mega Menu Dropdown */}
-                  {hasMegaMenu && isOpen && link.megaMenu && (
-                    <MegaMenu
-                      sections={link.megaMenu}
-                      onClose={() => setActiveMenu(null)}
-                    />
-                  )}
-                </div>
-              );
-            })}
-          </nav>
-
-          {/* Right-side actions */}
-          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-            {/* Portal login */}
-            <Link
-              href="/employee-login"
-              className="hidden sm:flex items-center gap-1.5 bg-[#AD002E] hover:bg-[#AD002E] text-white px-3.5 py-1.5 rounded-lg text-[20px] font-bold tracking-wider uppercase border border-[#AD002E] hover:border-[#AD002E] transition-all duration-200 shadow-md shadow-[#AD002E]/20"
-            >
-              <LockOutlined className="text-[20px]" />
-              <span>{t("nav.portal")}</span>
+      <div className="sticky top-0 z-[9999] w-full flex flex-col">
+        {/* ─── Top Bar (Logo & Contact Info) ──────────────── */}
+        <div className="bg-[#AD002E] text-white py-4 border-b border-[#AD002E]">
+          <div className="max-w-[1536px] mx-auto px-4 lg:px-8 xl:px-10 flex flex-col md:flex-row justify-between items-center gap-4 w-full">
+            {/* Logo Section */}
+            <Link href="/" className="flex items-center group">
+              <img 
+                src="/Name%20Red.jpeg" 
+                alt={t("nav.logo_title")} 
+                className="h-14 sm:h-16 md:h-20 w-auto object-contain rounded-lg shadow-md"
+              />
             </Link>
 
-            {/* Language selector dropdown */}
-            <select
-              value={locale}
-              onChange={(e) => setLocale(e.target.value as any)}
-              className={`text-[20px] font-bold uppercase tracking-wider rounded-lg border px-2 py-1 focus:outline-none transition-all duration-200 cursor-pointer ${isDark
-                  ? "bg-[#FDFDFD] border-[#AD002E]/20 text-[#AD002E] focus:border-[#AD002E]"
-                  : "bg-white border-[#AD002E]/20 text-[#AD002E] focus:border-[#AD002E]"
-                }`}
-              title="Select Language / भाषा निवडा"
-            >
-              <option value="en">EN</option>
-              <option value="mr">मराठी</option>
-            </select>
-
-            {/* Dark/Light mode toggle switch */}
-            <button
-              onClick={toggleTheme}
-              className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-200 ${isDark
-                  ? "bg-[rgba(255,255,255,0.05)] border-[#AD002E]/20 text-[#AD002E]/70 hover:text-[#AD002E]"
-                  : "bg-white border-[#AD002E]/20 text-[#AD002E]/70 hover:text-[#AD002E] hover:border-[#AD002E] shadow-md"
-                }`}
-              title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
-            >
-              {isDark ? <SunOutlined className="text-base" /> : <MoonOutlined className="text-base" />}
-            </button>
-
-            {/* Mobile hamburger */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`xl:hidden flex items-center justify-center w-8 h-8 rounded-lg border transition-colors ${isDark
-                  ? "bg-[rgba(255,255,255,0.04)] border-[#AD002E]/20 text-white hover:text-[#AD002E]"
-                  : "bg-white border-[#AD002E]/20 text-[#AD002E]/70 hover:text-[#AD002E]"
-                }`}
-            >
-              {mobileMenuOpen ? <CloseOutlined /> : <MenuOutlined />}
-            </button>
+            {/* Contact Info Section */}
+            <div className="text-center md:text-right flex flex-col items-center md:items-end justify-center gap-2">
+               <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 text-base font-semibold text-white opacity-100 !text-white !opacity-100">
+                  <a href="tel:+912488230449" className="flex items-center gap-2 text-white font-semibold opacity-100 !text-white !opacity-100 hover:text-white transition-colors">
+                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
+                      <PhoneOutlined className="text-base text-white opacity-100 !text-white !opacity-100" />
+                    </div>
+                    <span className="text-white font-semibold opacity-100 !text-white !opacity-100">(02488) 230449, 230442</span>
+                  </a>
+                  <a href="mailto:info@babasahebkavad.com" className="flex items-center gap-2 text-white font-semibold opacity-100 !text-white !opacity-100 hover:text-white transition-colors">
+                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
+                      <MailOutlined className="text-base text-white opacity-100 !text-white !opacity-100" />
+                    </div>
+                    <span className="text-white font-semibold opacity-100 !text-white !opacity-100">info@babasahebkavad.com</span>
+                  </a>
+               </div>
+               <div className="text-base font-bold text-white tracking-wide pr-2 mt-2 text-center md:text-right">
+                 सहकारातून समृद्धी
+               </div>
+            </div>
           </div>
         </div>
+
+        {/* ─── Sticky Header ─────────────────────────────── */}
+        <header
+          className={`transition-all duration-300 ${scrolled
+              ? "bg-white/95 backdrop-blur-md shadow-md border-b border-[#AD002E]/20"
+              : "bg-white border-b border-[#AD002E]/20/50"
+            }`}
+        >
+          <div className="max-w-[1536px] mx-auto px-4 lg:px-8 xl:px-10 h-20 flex items-center justify-between gap-4">
+
+            {/* Logo */}
+            <Link href="/" className={`flex items-center gap-2 sm:gap-2.5 group shrink-0 mr-auto lg:mr-0 ${!scrolled ? 'lg:hidden' : 'transition-opacity duration-300'}`}>
+              <div className="w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-lg bg-[#AD002E] flex items-center justify-center font-bold text-white text-base shadow-md shadow-[#AD002E]/30 transition-transform duration-300 group-hover:scale-110">
+                BK
+              </div>
+              <div className="leading-none shrink-0 max-w-[130px] xs:max-w-[180px] sm:max-w-[240px] md:max-w-[300px] lg:max-w-none">
+                <p className="text-base xs:text-base font-bold text-[#AD002E] tracking-wide group-hover:text-[#AD002E] transition-colors truncate">
+                  {t("nav.logo_title")}
+                </p>
+                <p className="text-[10px] text-base text-[#AD002E]/70 font-semibold uppercase tracking-widest mt-0.5 truncate hidden sm:block">
+                  {t("nav.logo_subtitle")}
+                </p>
+              </div>
+            </Link>
+
+            {/* ─── Desktop Nav ──────────────────────── */}
+            <nav className="hidden xl:flex items-center gap-0 lg:gap-0.5">
+              {navigationData.map((link, idx) => {
+                const hasMegaMenu = !!link.megaMenu;
+                const isOpen = activeMenu === link.title;
+                const isActive = pathname === link.href;
+                const transKey = getNavTranslationKey(link.title);
+                const label = transKey ? t(transKey) : link.title;
+
+                return (
+                  <div
+                    key={idx}
+                    className="relative"
+                    onMouseEnter={() => hasMegaMenu && handleMouseEnter(link.title)}
+                    onMouseLeave={hasMegaMenu ? handleMouseLeave : undefined}
+                  >
+                    {link.href ? (
+                      <Link
+                        href={link.href}
+                        className={`inline-flex items-center h-20 px-1 xl:px-1.5 2xl:px-4 !text-[20px] !font-bold border-b-2 transition-all duration-200 whitespace-nowrap ${isActive
+                            ? "!text-[#AD002E] border-[#AD002E]"
+                            : "!text-[#AD002E] border-transparent hover:border-[#AD002E]"
+                          }`}
+                      >
+                        {label}
+                      </Link>
+                    ) : (
+                      <button
+                        className={`inline-flex items-center gap-1.5 h-20 px-1 xl:px-1.5 2xl:px-4 !text-[20px] !font-bold border-b-2 transition-all duration-200 whitespace-nowrap ${isOpen
+                            ? "!text-[#AD002E] border-[#AD002E]"
+                            : "!text-[#AD002E] border-transparent hover:border-[#AD002E]"
+                          }`}
+                      >
+                        <span>{label}</span>
+                        <DownOutlined
+                          className={`text-[14px] transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+                        />
+                      </button>
+                    )}
+
+                    {/* Mega Menu Dropdown */}
+                    {hasMegaMenu && isOpen && link.megaMenu && (
+                      <MegaMenu
+                        sections={link.megaMenu}
+                        onClose={() => setActiveMenu(null)}
+                      />
+                    )}
+                  </div>
+                );
+              })}
+            </nav>
+
+            {/* Right-side actions */}
+            <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+              {/* Portal login */}
+              <Link
+                href="/employee-login"
+                className="hidden sm:flex items-center gap-1.5 bg-[#AD002E] hover:bg-[#AD002E] text-white px-3.5 py-1.5 rounded-lg text-[20px] font-bold tracking-wider uppercase border border-[#AD002E] hover:border-[#AD002E] transition-all duration-200 shadow-md shadow-[#AD002E]/20"
+              >
+                <LockOutlined className="text-[20px]" />
+                <span>{t("nav.portal")}</span>
+              </Link>
+
+              {/* Language selector dropdown */}
+              <select
+                value={locale}
+                onChange={(e) => setLocale(e.target.value as any)}
+                className={`text-[20px] font-bold uppercase tracking-wider rounded-lg border px-2 py-1 focus:outline-none transition-all duration-200 cursor-pointer ${isDark
+                    ? "bg-[#FDFDFD] border-[#AD002E]/20 text-[#AD002E] focus:border-[#AD002E]"
+                    : "bg-white border-[#AD002E]/20 text-[#AD002E] focus:border-[#AD002E]"
+                  }`}
+                title="Select Language / भाषा निवडा"
+              >
+                <option value="en">EN</option>
+                <option value="mr">मराठी</option>
+              </select>
+
+              {/* Dark/Light mode toggle switch */}
+              <button
+                onClick={toggleTheme}
+                className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-200 ${isDark
+                    ? "bg-[rgba(255,255,255,0.05)] border-[#AD002E]/20 text-[#AD002E]/70 hover:text-[#AD002E]"
+                    : "bg-white border-[#AD002E]/20 text-[#AD002E]/70 hover:text-[#AD002E] hover:border-[#AD002E] shadow-md"
+                  }`}
+                title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+              >
+                {isDark ? <SunOutlined className="text-base" /> : <MoonOutlined className="text-base" />}
+              </button>
+
+              {/* Mobile hamburger */}
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className={`xl:hidden flex items-center justify-center w-8 h-8 rounded-lg border transition-colors ${isDark
+                    ? "bg-[rgba(255,255,255,0.04)] border-[#AD002E]/20 text-white hover:text-[#AD002E]"
+                    : "bg-white border-[#AD002E]/20 text-[#AD002E]/70 hover:text-[#AD002E]"
+                  }`}
+              >
+                {mobileMenuOpen ? <CloseOutlined /> : <MenuOutlined />}
+              </button>
+            </div>
+          </div>
+        </header>
 
         {/* ─── Mobile Drawer ──────────────────────── */}
         {mobileMenuOpen && (
-          <div className="fixed inset-0 top-20 z-30 bg-white overflow-y-auto xl:hidden">
+          <div className="absolute top-full left-0 right-0 h-[calc(100vh-100%)] z-[99999] bg-white overflow-y-auto xl:hidden shadow-lg border-t border-[#AD002E]/20">
             <div className="px-4 py-4 space-y-1">
               {navigationData.map((link, idx) => {
                 const hasMegaMenu = !!link.megaMenu;
@@ -435,7 +437,7 @@ export default function Header() {
             </div>
           </div>
         )}
-      </header>
+      </div>
 
       {/* ─── Login Modal ──────────────────────────────── */}
       <Modal

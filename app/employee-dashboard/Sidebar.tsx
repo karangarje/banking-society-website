@@ -33,7 +33,7 @@ export default function Sidebar({ role, isManagerOrAdmin }: SidebarProps) {
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
 
   return (
-    <aside className="w-[260px] bg-white border-r border-[#E5E7EB] text-[#AD002E]/70 fixed h-full flex flex-col z-10">
+    <aside className="w-[260px] bg-white border-r border-[#E5E7EB] text-[#AD002E]/70 fixed top-[208px] sm:top-[144px] md:top-[112px] h-[calc(100vh-208px)] sm:h-[calc(100vh-144px)] md:h-[calc(100vh-112px)] flex flex-col z-10">
       {/* Header */}
       <div className="p-6 border-b border-[#AD002E]/20 bg-white">
         <h2 className="text-xl font-bold tracking-wider text-[#AD002E]">BANK PORTAL</h2>

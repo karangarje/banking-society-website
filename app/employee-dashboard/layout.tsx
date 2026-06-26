@@ -1,4 +1,5 @@
 import Sidebar from "@/app/employee-dashboard/Sidebar";
+import DashboardTopHeader from "@/components/dashboard/DashboardTopHeader";
 import { ReactNode } from "react";
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
@@ -24,19 +25,25 @@ export default async function EmployeeDashboardLayout({
   const isManagerOrAdmin = role === "MANAGER" || role === "SUPER_ADMIN";
 
   return (
-    <div className="relative min-h-screen bg-[#F8FAFC]">
-      {/* Sidebar */}
-      <Sidebar role={role} isManagerOrAdmin={isManagerOrAdmin} />
-      {/* Main Content */}
-      <div className="ml-[260px] min-h-screen p-6 overflow-auto">
-        {/* Top Bar */}
-        <header className="flex items-center justify-between mb-4">
-          <h1 className="text-2xl font-bold text-[#AD002E]/70">Management Console</h1>
-          <div className="text-sm text-[#AD002E]/70">
-            Welcome, {session.user?.name || "Employee"} ({role})
-          </div>
-        </header>
-        {children}
+    <div className="relative min-h-screen bg-[#F8FAFC] flex flex-col">
+      {/* Top Header matching public website exactly */}
+      <DashboardTopHeader />
+      
+      {/* Dashboard Body container */}
+      <div className="flex-grow relative w-full">
+        {/* Sidebar */}
+        <Sidebar role={role} isManagerOrAdmin={isManagerOrAdmin} />
+        {/* Main Content */}
+        <div className="ml-[260px] min-h-[calc(100vh-208px)] sm:min-h-[calc(100vh-144px)] md:min-h-[calc(100vh-112px)] p-6 overflow-auto">
+          {/* Top Bar */}
+          <header className="flex items-center justify-between mb-4">
+            <h1 className="text-2xl font-bold text-[#AD002E]/70">Management Console</h1>
+            <div className="text-sm text-[#AD002E]/70">
+              Welcome, {session.user?.name || "Employee"} ({role})
+            </div>
+          </header>
+          {children}
+        </div>
       </div>
     </div>
   );

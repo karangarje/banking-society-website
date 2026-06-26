@@ -407,7 +407,7 @@ export default function MegaMenu({ sections, onClose }: MegaMenuProps) {
 
   return (
     <div
-      className={`absolute left-0 top-full mt-1 z-50 ${
+      className={`absolute left-0 top-full mt-1 z-[99999] ${
         isCategorized ? "w-[560px]" : "min-w-[280px] w-max max-w-[580px]"
       }`}
       onMouseLeave={onClose}
