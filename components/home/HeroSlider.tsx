@@ -14,6 +14,39 @@ interface BannerSlide {
   linkUrl: string | null;
 }
 
+// Dynamic safe image component with error fallback
+function SafeImage({ src, alt, fill, priority, className, sizes, fallbackSrc = "/images/main.png" }: {
+  src: string;
+  alt: string;
+  fill?: boolean;
+  priority?: boolean;
+  className?: string;
+  sizes?: string;
+  fallbackSrc?: string;
+}) {
+  const [imgSrc, setImgSrc] = useState(src);
+
+  useEffect(() => {
+    setImgSrc(src);
+  }, [src]);
+
+  return (
+    <Image
+      src={imgSrc}
+      alt={alt}
+      fill={fill}
+      priority={priority}
+      className={className}
+      sizes={sizes}
+      onError={() => {
+        if (imgSrc !== fallbackSrc) {
+          setImgSrc(fallbackSrc);
+        }
+      }}
+    />
+  );
+}
+
 export default function HeroSlider() {
   const { locale, t } = useLanguage();
   const isMr = locale === "mr";
@@ -70,13 +103,14 @@ export default function HeroSlider() {
       <div className="flex flex-col lg:flex-row w-full">
         {/* Left Section: Static Image */}
         <div className="w-full lg:w-1/3 relative h-[350px] md:h-[450px] lg:h-[700px] border-b-4 lg:border-b-0 lg:border-r-4 border-gray-100 bg-white overflow-hidden flex items-center justify-center">
-          <Image
+          <SafeImage
             src="/images/main.png"
             alt="Feature image"
             fill
             className="object-contain object-center p-2 lg:p-4"
             sizes="(max-width: 1024px) 100vw, 33vw"
             priority
+            fallbackSrc="/images/hero_slide_1.png"
           />
         </div>
 
@@ -93,13 +127,14 @@ export default function HeroSlider() {
                   <div key={idx} className="relative w-full h-[420px] md:h-[550px] lg:h-[700px] group focus:outline-none">
                     {/* Slide Image */}
                     <div className="relative w-full h-full">
-                      <Image
+                      <SafeImage
                         src={slide.image}
                         alt={slide.title || "Home banner image"}
                         fill
                         priority={idx === 0}
                         className="object-cover object-center transition-transform duration-[6500ms] ease-out scale-100 group-hover:scale-105"
                         sizes="(max-width: 1024px) 100vw, 66vw"
+                        fallbackSrc="/images/main.png"
                       />
                     </div>
 
