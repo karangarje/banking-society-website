@@ -56,38 +56,34 @@ const MenuCard = ({
   return (
     <Link
       href={item.href}
-      className={`group flex items-start gap-3 p-4 rounded-lg border transition-all duration-200 ${
-        isDark
+      className={`group flex items-start gap-3 p-4 rounded-lg border transition-all duration-200 ${isDark
           ? "bg-white hover:bg-[#112236] border-[#AD002E]/20 hover:border-[#AD002E]/60"
           : "bg-white hover:bg-white border-[#AD002E]/20 hover:border-[#AD002E]/60 shadow-md hover:shadow-md"
-      } ${isGrid ? "" : "w-full"}`}
+        } ${isGrid ? "" : "w-full"}`}
     >
       <div
-        className={`flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 ${
-          isDark
+        className={`flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 ${isDark
             ? "bg-[#AD002E]/20 border border-[#AD002E]/30 group-hover:bg-[#AD002E]/40 group-hover:border-[#AD002E]"
             : "bg-[#AD002E]/10 border border-[#AD002E]/20 group-hover:bg-[#AD002E]/20 group-hover:border-[#AD002E]"
-        }`}
+          }`}
       >
         {item.icon && (
           <DynamicIcon
             name={item.icon}
-            className={`text-base transition-colors ${
-              isDark
+            className={`text-base transition-colors ${isDark
                 ? "text-[#AD002E] group-hover:text-white"
                 : "text-[#AD002E] group-hover:text-[#AD002E]"
-            }`}
+              }`}
           />
         )}
       </div>
       <div className="flex-1 min-w-0 space-y-1">
         <div className="flex items-center gap-2 flex-wrap">
           <span
-            className={`text-base font-bold transition-colors leading-tight ${
-              isDark
+            className={`text-base font-bold transition-colors leading-tight ${isDark
                 ? "text-white group-hover:text-[#AD002E]"
                 : "text-[#AD002E]/70 group-hover:text-[#AD002E]"
-            }`}
+              }`}
           >
             {displayTitle}
           </span>
@@ -99,11 +95,10 @@ const MenuCard = ({
         </div>
         {item.description && (
           <p
-            className={`text-base leading-snug transition-colors ${
-              isDark
+            className={`text-base leading-snug transition-colors ${isDark
                 ? "text-[#AD002E]/70 group-hover:text-[#AD002E]/70"
                 : "text-[#AD002E]/70 group-hover:text-[#AD002E]/70"
-            }`}
+              }`}
           >
             {displayDesc}
           </p>
@@ -137,7 +132,7 @@ const CategorizedMenu = ({
 
   const handleCatLeave = useCallback(() => {
     // small delay so moving to the submenu panel doesn't close it
-    subTimer.current = setTimeout(() => {}, 80);
+    subTimer.current = setTimeout(() => { }, 80);
   }, []);
 
   const activeCategory = section.items[activeCat];
@@ -161,17 +156,15 @@ const CategorizedMenu = ({
     <div className="flex">
       {/* ── Left: Category List ─────────────── */}
       <div
-        className={`w-[260px] shrink-0 border-r ${
-          isDark ? "border-[#AD002E]/20" : "border-[#AD002E]/20"
-        }`}
+        className={`w-[260px] shrink-0 border-r ${isDark ? "border-[#AD002E]/20" : "border-[#AD002E]/20"
+          }`}
       >
         {/* Header */}
         <div
-          className={`px-4 py-3 border-b ${
-            isDark
+          className={`px-4 py-3 border-b ${isDark
               ? "border-[#AD002E]/20 bg-[#0F0F1A]"
               : "border-[#AD002E]/20 bg-white"
-          }`}
+            }`}
         >
           <span className="text-base font-bold tracking-[0.15em] uppercase text-[#AD002E]">
             {t("nav.services") || section.title}
@@ -186,32 +179,29 @@ const CategorizedMenu = ({
                 key={idx}
                 onMouseEnter={() => handleCatEnter(idx)}
                 onMouseLeave={handleCatLeave}
-                className={`w-full flex items-center gap-3 px-4 py-3 text-left transition-all duration-200 group ${
-                  isActive
+                className={`w-full flex items-center gap-3 px-4 py-3 text-left transition-all duration-200 group ${isActive
                     ? isDark
                       ? "bg-[#AD002E]/15 border-l-[3px] border-l-[#AD002E]"
                       : "bg-[#AD002E]/8 border-l-[3px] border-l-[#AD002E]"
                     : "border-l-[3px] border-l-transparent hover:bg-[#AD002E]/5"
-                }`}
+                  }`}
               >
                 {/* Icon */}
                 <div
-                  className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200 ${
-                    isActive
+                  className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200 ${isActive
                       ? "bg-[#AD002E] shadow-md shadow-[#AD002E]/30"
                       : isDark
                         ? "bg-[#AD002E]/15 group-hover:bg-[#AD002E]/25"
                         : "bg-[#AD002E]/10 group-hover:bg-[#AD002E]/15"
-                  }`}
+                    }`}
                 >
                   {cat.icon && (
                     <DynamicIcon
                       name={cat.icon}
-                      className={`text-base transition-colors ${
-                        isActive
+                      className={`text-base transition-colors ${isActive
                           ? "text-white"
                           : "text-[#AD002E]"
-                      }`}
+                        }`}
                     />
                   )}
                 </div>
@@ -219,20 +209,18 @@ const CategorizedMenu = ({
                 {/* Label + description */}
                 <div className="flex-1 min-w-0">
                   <span
-                    className={`text-base font-bold block transition-colors ${
-                      isActive
+                    className={`text-base font-bold block transition-colors ${isActive
                         ? "text-[#AD002E]"
                         : isDark
                           ? "text-white group-hover:text-[#AD002E]"
                           : "text-[#AD002E]/70 group-hover:text-[#AD002E]"
-                    }`}
+                      }`}
                   >
                     {catTitle(cat)}
                   </span>
                   <span
-                    className={`text-base block mt-0.5 transition-colors truncate ${
-                      isDark ? "text-[#AD002E]/70" : "text-[#AD002E]/70"
-                    }`}
+                    className={`text-base block mt-0.5 transition-colors truncate ${isDark ? "text-[#AD002E]/70" : "text-[#AD002E]/70"
+                      }`}
                   >
                     {cat.subItems?.length ?? 0}{" "}
                     {(cat.subItems?.length ?? 0) === 1
@@ -243,13 +231,12 @@ const CategorizedMenu = ({
 
                 {/* Right arrow */}
                 <AntIcons.RightOutlined
-                  className={`text-[10px] transition-all duration-200 ${
-                    isActive
+                  className={`text-[10px] transition-all duration-200 ${isActive
                       ? "text-[#AD002E] translate-x-0.5"
                       : isDark
                         ? "text-[#AD002E]/70 group-hover:text-[#AD002E]"
                         : "text-[#AD002E]/70 group-hover:text-[#AD002E]"
-                  }`}
+                    }`}
                 />
               </button>
             );
@@ -266,16 +253,14 @@ const CategorizedMenu = ({
       >
         {/* Sub-header */}
         <div
-          className={`px-4 py-3 border-b ${
-            isDark
+          className={`px-4 py-3 border-b ${isDark
               ? "border-[#AD002E]/20 bg-[#0F0F1A]"
               : "border-[#AD002E]/20 bg-white"
-          }`}
+            }`}
         >
           <span
-            className={`text-base font-bold tracking-[0.12em] uppercase ${
-              isDark ? "text-[#AD002E]/70" : "text-[#AD002E]/70"
-            }`}
+            className={`text-base font-bold tracking-[0.12em] uppercase ${isDark ? "text-[#AD002E]/70" : "text-[#AD002E]/70"
+              }`}
           >
             {catTitle(activeCategory)}
           </span>
@@ -306,28 +291,25 @@ const CategorizedMenu = ({
                 key={sIdx}
                 href={sub.href}
                 onClick={onClose}
-                className={`group flex items-start gap-3 p-3 rounded-lg border transition-all duration-200 ${
-                  isDark
+                className={`group flex items-start gap-3 p-3 rounded-lg border transition-all duration-200 ${isDark
                     ? "bg-white hover:bg-[#112236] border-[#AD002E]/20 hover:border-[#AD002E]/60"
                     : "bg-white hover:bg-white border-[#AD002E]/20 hover:border-[#AD002E]/60 shadow-md hover:shadow-md"
-                }`}
+                  }`}
               >
                 {/* Icon */}
                 <div
-                  className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 ${
-                    isDark
+                  className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 ${isDark
                       ? "bg-[#AD002E]/20 border border-[#AD002E]/30 group-hover:bg-[#AD002E]/40"
                       : "bg-[#AD002E]/10 border border-[#AD002E]/20 group-hover:bg-[#AD002E]/20"
-                  }`}
+                    }`}
                 >
                   {sub.icon && (
                     <DynamicIcon
                       name={sub.icon}
-                      className={`text-base transition-colors ${
-                        isDark
+                      className={`text-base transition-colors ${isDark
                           ? "text-[#AD002E] group-hover:text-white"
                           : "text-[#AD002E]"
-                      }`}
+                        }`}
                     />
                   )}
                 </div>
@@ -335,21 +317,19 @@ const CategorizedMenu = ({
                 {/* Text */}
                 <div className="flex-1 min-w-0">
                   <span
-                    className={`text-base font-bold block transition-colors ${
-                      isDark
+                    className={`text-base font-bold block transition-colors ${isDark
                         ? "text-white group-hover:text-[#AD002E]"
                         : "text-[#AD002E]/70 group-hover:text-[#AD002E]"
-                    }`}
+                      }`}
                   >
                     {subTitle}
                   </span>
                   {subDesc && (
                     <p
-                      className={`text-base mt-0.5 leading-snug transition-colors ${
-                        isDark
+                      className={`text-base mt-0.5 leading-snug transition-colors ${isDark
                           ? "text-[#AD002E]/70 group-hover:text-[#AD002E]/70"
                           : "text-[#AD002E]/70 group-hover:text-[#AD002E]/70"
-                      }`}
+                        }`}
                     >
                       {subDesc}
                     </p>
@@ -357,11 +337,10 @@ const CategorizedMenu = ({
                 </div>
 
                 <AntIcons.RightOutlined
-                  className={`text-[10px] mt-1 transition-all duration-200 ${
-                    isDark
+                  className={`text-[10px] mt-1 transition-all duration-200 ${isDark
                       ? "text-[#AD002E]/70 group-hover:text-[#AD002E] group-hover:translate-x-0.5"
                       : "text-[#AD002E]/70 group-hover:text-[#AD002E] group-hover:translate-x-0.5"
-                  }`}
+                    }`}
                 />
               </Link>
             );
@@ -407,18 +386,16 @@ export default function MegaMenu({ sections, onClose }: MegaMenuProps) {
 
   return (
     <div
-      className={`absolute left-0 top-full mt-1 z-[99999] ${
-        isCategorized ? "w-[560px]" : "min-w-[280px] w-max max-w-[580px]"
-      }`}
+      className={`absolute left-0 top-full mt-1 z-[99999] ${isCategorized ? "w-[560px]" : "min-w-[280px] w-max max-w-[580px]"
+        }`}
       onMouseLeave={onClose}
       style={{ animation: "megaFadeIn 0.2s ease-out" }}
     >
       <div
-        className={`rounded-lg overflow-hidden border shadow-md transition-colors duration-200 ${
-          isDark
+        className={`rounded-lg overflow-hidden border shadow-md transition-colors duration-200 ${isDark
             ? "bg-[#0A0A12] border-[#AD002E]/20 shadow-black/60"
             : "bg-white border-[#AD002E]/20 shadow-gray-300/40"
-        }`}
+          }`}
       >
         {/* ── Categorized Layout (Services) ──── */}
         {isCategorized ? (
@@ -431,19 +408,17 @@ export default function MegaMenu({ sections, onClose }: MegaMenuProps) {
           <>
             {/* Header */}
             <div
-              className={`flex items-center justify-between px-4 py-3 border-b transition-colors duration-200 ${
-                isDark
+              className={`flex items-center justify-between px-4 py-3 border-b transition-colors duration-200 ${isDark
                   ? "border-[#AD002E]/20 bg-[#0F0F1A]"
                   : "border-[#AD002E]/20 bg-white"
-              }`}
+                }`}
             >
               <span className="text-base font-bold tracking-[0.15em] uppercase text-[#AD002E]">
                 {sectionTitle}
               </span>
               <span
-                className={`text-base font-bold tracking-widest uppercase ${
-                  isDark ? "text-[#AD002E]/70" : "text-[#AD002E]/70"
-                }`}
+                className={`text-base font-bold tracking-widest uppercase ${isDark ? "text-[#AD002E]/70" : "text-[#AD002E]/70"
+                  }`}
               >
                 {itemCount}{" "}
                 {itemCount === 1

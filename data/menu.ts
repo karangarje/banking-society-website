@@ -49,12 +49,6 @@ export const navigationData: NavigationLink[] = [
             description: "Meet the leadership guiding member-first finance.",
             icon: "TeamOutlined",
           },
-          {
-            title: "Interest Rate",
-            href: "/about/interest",
-            description: "Current deposit and loan rate details.",
-            icon: "PercentageOutlined",
-          },
         ],
       },
     ],
@@ -64,87 +58,25 @@ export const navigationData: NavigationLink[] = [
     megaMenu: [
       {
         title: "Services",
-        layout: "categorized",
+        layout: "list",
         items: [
           {
             title: "Banking Services",
             href: "/services?tab=deposits",
             description: "Core banking products and financial services.",
             icon: "BankOutlined",
-            subItems: [
-              {
-                title: "Deposits",
-                href: "/services?tab=deposits",
-                description: "Secure savings options with attractive returns.",
-                icon: "WalletOutlined",
-              },
-              {
-                title: "Loans",
-                href: "/services?tab=loans",
-                description: "Flexible loan products for personal and business needs.",
-                icon: "DollarOutlined",
-              },
-              {
-                title: "Loan Calculator",
-                href: "/services/loan-calculator",
-                description: "Calculate EMIs and generate repayment schedules.",
-                icon: "CalculatorOutlined",
-              },
-              {
-                title: "Core Banking",
-                href: "/services?tab=digital",
-                description: "Reliable banking support across branches.",
-                icon: "BankOutlined",
-              },
-            ],
           },
           {
-            title: "Digital Services",
-            href: "/services?tab=digital",
-            description: "Online and mobile banking solutions.",
-            icon: "MobileOutlined",
-            subItems: [
-              {
-                title: "E-Services",
-                href: "/services?tab=digital",
-                description: "Digital account access from any device.",
-                icon: "MobileOutlined",
-              },
-              {
-                title: "SMS Banking",
-                href: "/services?tab=digital",
-                description: "Instant transaction alerts and balance updates.",
-                icon: "MessageOutlined",
-              },
-            ],
+            title: "Loan Calculator",
+            href: "/services/loan-calculator",
+            description: "Calculate EMIs and repayment schedules.",
+            icon: "CalculatorOutlined",
           },
           {
-            title: "Member Services",
-            href: "/services?tab=vault",
-            description: "Exclusive member-only facilities.",
-            icon: "SafetyOutlined",
-            subItems: [
-              {
-                title: "Safe Deposit Vaults",
-                href: "/services?tab=vault",
-                description: "Secure storage for valuables and documents.",
-                icon: "LockOutlined",
-              },
-            ],
-          },
-          {
-            title: "Future Services",
-            href: "/services",
-            description: "Upcoming products and digital expansion.",
-            icon: "RocketOutlined",
-            subItems: [
-              {
-                title: "Upcoming Services",
-                href: "/services",
-                description: "New products and digital expansion plans.",
-                icon: "RocketOutlined",
-              },
-            ],
+            title: "Interest Rate",
+            href: "/services/interest",
+            description: "Current deposit and loan rate details.",
+            icon: "PercentageOutlined",
           },
         ],
       },

@@ -87,32 +87,32 @@ export default function Header() {
           <div className="max-w-[1536px] mx-auto px-4 lg:px-8 xl:px-10 flex flex-col md:flex-row justify-between items-center gap-4 w-full">
             {/* Logo Section */}
             <Link href="/" className="flex items-center group">
-              <img 
-                src="/Name%20Red.jpeg" 
-                alt={t("nav.logo_title")} 
+              <img
+                src="/Name%20Red.jpeg"
+                alt={t("nav.logo_title")}
                 className="h-14 sm:h-16 md:h-20 w-auto object-contain rounded-lg shadow-md"
               />
             </Link>
 
             {/* Contact Info Section */}
             <div className="text-center md:text-right flex flex-col items-center md:items-end justify-center gap-2">
-               <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 text-base font-semibold text-white opacity-100 !text-white !opacity-100">
-                  <a href="tel:+912488230449" className="flex items-center gap-2 text-white font-semibold opacity-100 !text-white !opacity-100 hover:text-white transition-colors">
-                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
-                      <PhoneOutlined className="text-base text-white opacity-100 !text-white !opacity-100" />
-                    </div>
-                    <span className="text-white font-semibold opacity-100 !text-white !opacity-100">(02488) 230449, 230442</span>
-                  </a>
-                  <a href="mailto:info@babasahebkavad.com" className="flex items-center gap-2 text-white font-semibold opacity-100 !text-white !opacity-100 hover:text-white transition-colors">
-                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
-                      <MailOutlined className="text-base text-white opacity-100 !text-white !opacity-100" />
-                    </div>
-                    <span className="text-white font-semibold opacity-100 !text-white !opacity-100">info@babasahebkavad.com</span>
-                  </a>
-               </div>
-               <div className="text-base font-bold text-white tracking-wide pr-2 mt-2 text-center md:text-right">
-                 सहकारातून समृद्धी
-               </div>
+              <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 text-base font-semibold text-white opacity-100 !text-white !opacity-100">
+                <a href="tel:+912488230449" className="flex items-center gap-2 text-white font-semibold opacity-100 !text-white !opacity-100 hover:text-white transition-colors">
+                  <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
+                    <PhoneOutlined className="text-base text-white opacity-100 !text-white !opacity-100" />
+                  </div>
+                  <span className="text-white font-semibold opacity-100 !text-white !opacity-100">(02488) 230449, 230442</span>
+                </a>
+                <a href="mailto:info@babasahebkavad.com" className="flex items-center gap-2 text-white font-semibold opacity-100 !text-white !opacity-100 hover:text-white transition-colors">
+                  <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
+                    <MailOutlined className="text-base text-white opacity-100 !text-white !opacity-100" />
+                  </div>
+                  <span className="text-white font-semibold opacity-100 !text-white !opacity-100">info@babasahebkavad.com</span>
+                </a>
+              </div>
+              <div className="text-base font-bold text-white tracking-wide pr-2 mt-2 text-center md:text-right">
+                सहकारातून समृद्धी
+              </div>
             </div>
           </div>
         </div>
@@ -120,8 +120,8 @@ export default function Header() {
         {/* ─── Sticky Header ─────────────────────────────── */}
         <header
           className={`transition-all duration-300 ${scrolled
-              ? "bg-white/95 backdrop-blur-md shadow-md border-b border-[#AD002E]/20"
-              : "bg-white border-b border-[#AD002E]/20/50"
+            ? "bg-white/95 backdrop-blur-md shadow-md border-b border-[#AD002E]/20"
+            : "bg-white border-b border-[#AD002E]/20/50"
             }`}
         >
           <div className="max-w-[1536px] mx-auto px-4 lg:px-8 xl:px-10 h-20 flex items-center justify-between gap-4">
@@ -161,8 +161,8 @@ export default function Header() {
                       <Link
                         href={link.href}
                         className={`inline-flex items-center h-20 px-1 xl:px-1.5 2xl:px-4 !text-[20px] !font-bold border-b-2 transition-all duration-200 whitespace-nowrap ${isActive
-                            ? "!text-[#AD002E] border-[#AD002E]"
-                            : "!text-[#AD002E] border-transparent hover:border-[#AD002E]"
+                          ? "!text-[#AD002E] border-[#AD002E]"
+                          : "!text-[#AD002E] border-transparent hover:border-[#AD002E]"
                           }`}
                       >
                         {label}
@@ -170,8 +170,8 @@ export default function Header() {
                     ) : (
                       <button
                         className={`inline-flex items-center gap-1.5 h-20 px-1 xl:px-1.5 2xl:px-4 !text-[20px] !font-bold border-b-2 transition-all duration-200 whitespace-nowrap ${isOpen
-                            ? "!text-[#AD002E] border-[#AD002E]"
-                            : "!text-[#AD002E] border-transparent hover:border-[#AD002E]"
+                          ? "!text-[#AD002E] border-[#AD002E]"
+                          : "!text-[#AD002E] border-transparent hover:border-[#AD002E]"
                           }`}
                       >
                         <span>{label}</span>
@@ -209,8 +209,8 @@ export default function Header() {
                 value={locale}
                 onChange={(e) => setLocale(e.target.value as any)}
                 className={`text-[20px] font-bold uppercase tracking-wider rounded-lg border px-2 py-1 focus:outline-none transition-all duration-200 cursor-pointer ${isDark
-                    ? "bg-[#FDFDFD] border-[#AD002E]/20 text-[#AD002E] focus:border-[#AD002E]"
-                    : "bg-white border-[#AD002E]/20 text-[#AD002E] focus:border-[#AD002E]"
+                  ? "bg-[#FDFDFD] border-[#AD002E]/20 text-[#AD002E] focus:border-[#AD002E]"
+                  : "bg-white border-[#AD002E]/20 text-[#AD002E] focus:border-[#AD002E]"
                   }`}
                 title="Select Language / भाषा निवडा"
               >
@@ -222,8 +222,8 @@ export default function Header() {
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className={`xl:hidden flex items-center justify-center w-8 h-8 rounded-lg border transition-colors ${isDark
-                    ? "bg-[rgba(255,255,255,0.04)] border-[#AD002E]/20 text-white hover:text-[#AD002E]"
-                    : "bg-white border-[#AD002E]/20 text-[#AD002E]/70 hover:text-[#AD002E]"
+                  ? "bg-[rgba(255,255,255,0.04)] border-[#AD002E]/20 text-white hover:text-[#AD002E]"
+                  : "bg-white border-[#AD002E]/20 text-[#AD002E]/70 hover:text-[#AD002E]"
                   }`}
               >
                 {mobileMenuOpen ? <CloseOutlined /> : <MenuOutlined />}
@@ -288,21 +288,19 @@ export default function Header() {
                                   {/* Category button */}
                                   <button
                                     onClick={() => toggleMobileSubmenu(catKey)}
-                                    className={`w-full flex items-center justify-between p-3 rounded-lg border transition-all ${
-                                      catExpanded
+                                    className={`w-full flex items-center justify-between p-3 rounded-lg border transition-all ${catExpanded
                                         ? isDark
                                           ? "bg-[#AD002E]/15 border-[#AD002E]/40"
                                           : "bg-[#AD002E]/5 border-[#AD002E]/30"
                                         : isDark
                                           ? "bg-white border-[#AD002E]/20 hover:border-[#AD002E]/40"
                                           : "bg-white border-[#AD002E]/20 hover:border-[#AD002E]/40 shadow-md"
-                                    }`}
+                                      }`}
                                   >
                                     <div className="flex items-center gap-2.5">
                                       {cat.icon && (
-                                        <span className={`w-7 h-7 rounded-lg flex items-center justify-center ${
-                                          catExpanded ? "bg-[#AD002E]" : isDark ? "bg-[#AD002E]/20" : "bg-[#AD002E]/10"
-                                        }`}>
+                                        <span className={`w-7 h-7 rounded-lg flex items-center justify-center ${catExpanded ? "bg-[#AD002E]" : isDark ? "bg-[#AD002E]/20" : "bg-[#AD002E]/10"
+                                          }`}>
                                           {(() => {
                                             const icons = AntIcons as unknown as Record<string, React.ComponentType<{ className?: string }>>;
                                             const Icon = icons[cat.icon!];
@@ -340,11 +338,10 @@ export default function Header() {
                                             key={sIdx}
                                             href={sub.href}
                                             onClick={() => setMobileMenuOpen(false)}
-                                            className={`flex items-center gap-2.5 p-2.5 rounded-lg border transition-all ${
-                                              isDark
+                                            className={`flex items-center gap-2.5 p-2.5 rounded-lg border transition-all ${isDark
                                                 ? "bg-white/60 border-[rgba(255,255,255,0.04)] hover:border-[#AD002E]/50"
                                                 : "bg-white border-[#AD002E]/20 hover:border-[#AD002E]/40"
-                                            }`}
+                                              }`}
                                           >
                                             <span className="w-1.5 h-1.5 rounded-full bg-[#AD002E] shrink-0" />
                                             <span className="text-base font-bold text-[#AD002E]">
@@ -371,8 +368,8 @@ export default function Header() {
                                   href={item.href}
                                   onClick={() => setMobileMenuOpen(false)}
                                   className={`flex items-center justify-between p-3 rounded-lg border transition-all ${isDark
-                                      ? "bg-white border-[#AD002E]/20 hover:border-[#AD002E]/60"
-                                      : "bg-white border-[#AD002E]/20 hover:border-[#AD002E]/60 shadow-md"
+                                    ? "bg-white border-[#AD002E]/20 hover:border-[#AD002E]/60"
+                                    : "bg-white border-[#AD002E]/20 hover:border-[#AD002E]/60 shadow-md"
                                     }`}
                                 >
                                   <div>
@@ -454,8 +451,8 @@ export default function Header() {
               required
               placeholder="e.g. BK-100254"
               className={`mt-1 w-full border rounded-lg px-3.5 py-2 text-base focus:outline-none focus:border-[#AD002E] transition-colors ${isDark
-                  ? "bg-[#FFFFFF] border-[#AD002E]/20 text-white"
-                  : "bg-white border-[#AD002E]/20 text-[#AD002E]"
+                ? "bg-[#FFFFFF] border-[#AD002E]/20 text-white"
+                : "bg-white border-[#AD002E]/20 text-[#AD002E]"
                 }`}
             />
           </div>
@@ -466,8 +463,8 @@ export default function Header() {
               required
               placeholder="••••••••"
               className={`mt-1 w-full border rounded-lg px-3.5 py-2 text-base focus:outline-none focus:border-[#AD002E] transition-colors ${isDark
-                  ? "bg-[#FFFFFF] border-[#AD002E]/20 text-white"
-                  : "bg-white border-[#AD002E]/20 text-[#AD002E]"
+                ? "bg-[#FFFFFF] border-[#AD002E]/20 text-white"
+                : "bg-white border-[#AD002E]/20 text-[#AD002E]"
                 }`}
             />
           </div>
@@ -479,8 +476,8 @@ export default function Header() {
           </button>
         </form>
         <p className={`mt-5 text-base text-center leading-relaxed border-t pt-4 ${isDark
-            ? "text-[#AD002E]/70 border-[#AD002E]/20"
-            : "text-[#AD002E]/70 border-[#AD002E]/20"
+          ? "text-[#AD002E]/70 border-[#AD002E]/20"
+          : "text-[#AD002E]/70 border-[#AD002E]/20"
           }`}>
           {t("nav.portal_contact_msg")}
         </p>
