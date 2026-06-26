@@ -92,22 +92,12 @@ export default function Contact() {
         }
       `}} />
       {/* Header Banner */}
-      <section className="relative py-12 md:py-16 lg:py-20 bg-gradient-to-b from-[#AD002E] to-[#1E1B6B] overflow-hidden">
-        <div className="absolute inset-0 bg-white/15" />
-        <div className="absolute top-0 right-0 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center space-y-4 z-10">
-          <span className="inline-block mb-2 text-[#AD002E] text-sm uppercase tracking-widest font-semibold">
-            {t("contact.banner_badge")}
-          </span>
-          <h1 className="text-4xl sm:text-6xl font-bold text-white tracking-tight drop-shadow-md">
+      <section className="relative py-20 bg-gradient-to-b from-base-card to-base-bg border-b border-[#AD002E]/20/50 overflow-hidden transition-all duration-300">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-[#AD002E]/5 rounded-full blur-3xl" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative text-center">
+          <h1 className="text-4xl sm:text-6xl font-bold text-text-main tracking-tight transition-colors duration-300">
             {t("contact.title")}
           </h1>
-          <p 
-            className="text-base md:text-lg font-medium max-w-[700px] mx-auto leading-relaxed text-center"
-            style={{ color: "rgba(243, 244, 246, 0.9)", textShadow: "0 1px 3px rgba(0,0,0,0.35)" }}
-          >
-            {t("contact.description")}
-          </p>
         </div>
       </section>
 
@@ -209,8 +199,8 @@ export default function Contact() {
                   <InfoCircleOutlined className="text-[#AD002E] mt-0.5 shrink-0" />
                   <p>{t("contact.privacy_note")}</p>
                 </div>
-                <button type="submit" disabled={loading} className="w-full bg-[#AD002E] hover:bg-[#AD002E]/90 text-white py-3 rounded-lg font-bold uppercase text-sm tracking-wider transition-all duration-300 flex items-center justify-center gap-2 shadow-md">
-                  {loading ? (<span>{t("contact.submitting")}</span>) : (<><SendOutlined /><span>{t("contact.submit")}</span></>)}
+                <button type="submit" disabled={loading} className="w-full !bg-[#B3003C] hover:!bg-[#990033] !text-white hover:!text-white active:!text-white focus:!text-white py-3 rounded-lg font-bold uppercase text-sm tracking-wider transition-all duration-300 flex items-center justify-center gap-2 shadow-md">
+                  {loading ? (<span className="!text-white">{t("contact.submitting")}</span>) : (<><SendOutlined className="!text-white" /><span className="!text-white">{t("contact.submit")}</span></>)}
                 </button>
               </form>
             </>

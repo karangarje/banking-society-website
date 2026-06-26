@@ -156,26 +156,7 @@ export const navigationData: NavigationLink[] = [
   },
   {
     title: "Photos",
-    megaMenu: [
-      {
-        title: "Photo Gallery",
-        layout: "list",
-        items: [
-          {
-            title: "Photo Gallery",
-            href: "/photo-gallery",
-            description: "Member events, branch updates, and community moments.",
-            icon: "PictureOutlined",
-          },
-          {
-            title: "New Branch Openings",
-            href: "/photo-gallery?category=new-branch-openings",
-            description: "Opening ceremonies and branch inauguration photos.",
-            icon: "HomeOutlined",
-          },
-        ],
-      },
-    ],
+    href: "/photo-gallery",
   },
   {
     title: "Videos",

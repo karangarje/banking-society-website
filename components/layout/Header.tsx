@@ -127,7 +127,7 @@ export default function Header() {
           <div className="max-w-[1536px] mx-auto px-4 lg:px-8 xl:px-10 h-20 flex items-center justify-between gap-4">
 
             {/* Logo */}
-            <Link href="/" className={`flex items-center gap-2 sm:gap-2.5 group shrink-0 mr-auto lg:mr-0 ${!scrolled ? 'lg:hidden' : 'transition-opacity duration-300'}`}>
+            <Link href="/" className="flex items-center gap-2 sm:gap-2.5 group shrink-0 mr-auto lg:mr-0">
               <div className="w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-lg bg-[#AD002E] flex items-center justify-center font-bold text-white text-base shadow-md shadow-[#AD002E]/30 transition-transform duration-300 group-hover:scale-110">
                 BK
               </div>
@@ -217,18 +217,6 @@ export default function Header() {
                 <option value="en">EN</option>
                 <option value="mr">मराठी</option>
               </select>
-
-              {/* Dark/Light mode toggle switch */}
-              <button
-                onClick={toggleTheme}
-                className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-200 ${isDark
-                    ? "bg-[rgba(255,255,255,0.05)] border-[#AD002E]/20 text-[#AD002E]/70 hover:text-[#AD002E]"
-                    : "bg-white border-[#AD002E]/20 text-[#AD002E]/70 hover:text-[#AD002E] hover:border-[#AD002E] shadow-md"
-                  }`}
-                title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
-              >
-                {isDark ? <SunOutlined className="text-base" /> : <MoonOutlined className="text-base" />}
-              </button>
 
               {/* Mobile hamburger */}
               <button
