@@ -83,7 +83,7 @@ export default function Header() {
     <>
       <div className="sticky top-0 z-[9999] w-full flex flex-col">
         {/* ─── Top Bar (Logo & Contact Info) ──────────────── */}
-        <div className="bg-[#AD002E] text-white py-4 border-b border-[#AD002E]">
+        <div className="hidden md:flex bg-[#AD002E] text-white py-4 border-b border-[#AD002E]">
           <div className="max-w-[1536px] mx-auto px-4 lg:px-8 xl:px-10 flex flex-col md:flex-row justify-between items-center gap-4 w-full">
             {/* Logo Section */}
             <Link href="/" className="flex items-center group">
