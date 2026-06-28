@@ -61,13 +61,18 @@ export default function HeroSlider() {
           const json = await res.json();
           if (json && json.length > 0) {
             const mapped = json.map((b: any) => ({
-              id: b.id,
-              image: b.imageUrl,
-              title: isMr ? b.titleMr : b.titleEn,
-              subtitle: isMr ? b.subtitleMr : b.subtitleEn,
-              linkUrl: b.linkUrl,
-            }));
-            setSlides(mapped);
+  id: b.id,
+  image: b.imageUrl,
+  title: isMr ? b.titleMr : b.titleEn,
+  subtitle: isMr ? b.subtitleMr : b.subtitleEn,
+  linkUrl: b.linkUrl,
+}));
+// Exclude the Financial Statistics poster or any banner containing keywords indicating statistics/highlights
+const filtered = mapped.filter((item) => {
+  const lowerTitle = (item.title || "").toLowerCase();
+  return !lowerTitle.includes("financial") && !lowerTitle.includes("statistics") && !lowerTitle.includes("highlights");
+});
+setSlides(filtered);
           } else {
             setSlides([]);
           }
